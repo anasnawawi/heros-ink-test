@@ -600,6 +600,8 @@ async function generateCharacterSheetPDF(playerName, topColor, myClass, scores, 
 }
 
 // ── App ───────────────────────────────────────────────────────────────────────
+const ALL_RUNES=[{r:"ᚱ",c:"#C0392B"},{r:"ᛈ",c:"#6C3483"},{r:"ᛒ",c:"#1A5276"},{r:"ᚷ",c:"#1E8449"}];
+
 export default function App(){
   const [phase,setPhase]=useState("intro");
   const [playerName,setPlayerName]=useState("");
@@ -609,7 +611,7 @@ export default function App(){
   const [animating,setAnimating]=useState(false);
   const [generating,setGenerating]=useState(false);
   const [revealed,setRevealed]=useState(false);
-  const [revealStep,setRevealStep]=useState(0);
+
   const [cycleRune,setCycleRune]=useState("ᚱ");
   const [cycleColor,setCycleColor]=useState("#C0392B");
   const QUESTIONS=useMemo(()=>buildShuffledQuestions(),[]);
@@ -648,7 +650,6 @@ export default function App(){
     } catch(e) { console.warn("Sheet submission failed:", e); }
   }
 
-  const ALL_RUNES=[{r:"ᚱ",c:"#C0392B"},{r:"ᛈ",c:"#6C3483"},{r:"ᛒ",c:"#1A5276"},{r:"ᚷ",c:"#1E8449"}];
   const cycleRef=useRef(null);
 
   // Start cycling runes when result phase begins and not yet revealed
@@ -686,7 +687,7 @@ export default function App(){
     },320);
   }
 
-  function reset(){setPhase("intro");setAnswers({});setCurrent(0);setResult(null);setRevealed(false);setRevealStep(0);setCycleRune("ᚱ");setCycleColor("#C0392B");scrollTop();}
+  function reset(){setPhase("intro");setAnswers({});setCurrent(0);setResult(null);setRevealed(false);setCycleRune("ᚱ");setCycleColor("#C0392B");scrollTop();}
 
   async function handleDownloadPDF(){
     if(!result)return;
