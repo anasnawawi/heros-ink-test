@@ -393,7 +393,6 @@ const LABELS=["A","B","C","D"];
 
 // ── PDF Generator ─────────────────────────────────────────────────────────────
 async function generateCharacterSheetPDF(playerName, topColor, myClass, scores, data) {
-  // Dynamically load jsPDF
   if (!window.jspdf) {
     await new Promise((resolve, reject) => {
       const s = document.createElement("script");
@@ -405,199 +404,246 @@ async function generateCharacterSheetPDF(playerName, topColor, myClass, scores, 
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ orientation:"portrait", unit:"mm", format:"a4" });
   const W = 210; const H = 297;
-  const col = data.color;
 
-  // Helper: hex to rgb
   function hexRGB(hex) {
-    const r = parseInt(hex.slice(1,3),16);
-    const g = parseInt(hex.slice(3,5),16);
-    const b = parseInt(hex.slice(5,7),16);
+    const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
     return [r,g,b];
   }
-  const [cr,cg,cb] = hexRGB(col);
+  const [cr,cg,cb] = hexRGB(data.color);
 
-  // Background — character sheet image
-  const CHAR_SHEET_B64 = ASSETS.CHAR_SHEET.replace("data:image/png;base64,","");
-  doc.addImage(CHAR_SHEET_B64,"PNG",0,0,W,H);
+  // ── Background: character sheet image ─────────────────────────────────────
+  try {
+    const csB64 = ASSETS.CHAR_SHEET.replace("data:image/png;base64,","");
+    doc.addImage(csB64,"PNG",0,0,W,H);
+  } catch(e) {}
 
-  // Dark overlay to ensure text readability
-  doc.setFillColor(12,8,4);
-  doc.setGState(new doc.GState({opacity:0.45}));
+  // Dark overlay for readability
+  doc.setFillColor(8,5,2);
+  doc.setGState(new doc.GState({opacity:0.55}));
   doc.rect(0,0,W,H,"F");
   doc.setGState(new doc.GState({opacity:1}));
 
-  // Top color band
+  // ── Header band ────────────────────────────────────────────────────────────
   doc.setFillColor(cr,cg,cb);
-  doc.rect(0,0,W,28,"F");
-
-  // Dark overlay on band
-  doc.setFillColor(0,0,0);
-  doc.setGState(new doc.GState({opacity:0.35}));
-  doc.rect(0,0,W,28,"F");
+  doc.setGState(new doc.GState({opacity:0.92}));
+  doc.rect(0,0,W,32,"F");
   doc.setGState(new doc.GState({opacity:1}));
 
-  // Crest image in top right of band
+  // Crest top-right
   try {
-    const crestB64Map = {
-      RED: ASSETS.CREST_RED, PURPLE: ASSETS.CREST_PURPLE,
-      BLUE: ASSETS.CREST_BLUE, GREEN: ASSETS.CREST_GREEN,
-    };
-    const crestB64 = (crestB64Map[topColor]||"").replace("data:image/png;base64,","");
-    if (crestB64) doc.addImage(crestB64,"PNG",W-30,2,24,24);
-  } catch(e){}
+    const crestMap = {RED:ASSETS.CREST_RED,PURPLE:ASSETS.CREST_PURPLE,BLUE:ASSETS.CREST_BLUE,GREEN:ASSETS.CREST_GREEN};
+    const cB64 = (crestMap[topColor]||"").replace("data:image/png;base64,","");
+    if (cB64) doc.addImage(cB64,"PNG",W-32,2,28,28);
+  } catch(e) {}
 
-  // Rune watermark in band
+  // Workshop label
   doc.setTextColor(255,255,255);
-  doc.setFontSize(48);
-  doc.setFont("helvetica","bold");
-  doc.setGState(new doc.GState({opacity:0.12}));
-  doc.text(data.rune, W-36, 22, {align:"right"});
-  doc.setGState(new doc.GState({opacity:1}));
-
-  // Title in band
-  doc.setTextColor(255,255,255);
-  doc.setFontSize(9);
-  doc.setFont("helvetica","normal");
-  doc.text("HERO'S JOURNEY WORKSHOP  ·  CHARACTER SHEET", 14, 10);
-
-  doc.setFontSize(20);
-  doc.setFont("helvetica","bold");
-  doc.text(myClass.toUpperCase(), 14, 22);
-
-  doc.setFontSize(10);
-  doc.setFont("helvetica","normal");
-  doc.setTextColor(cr,cg,cb);
-  doc.text(data.label, W-14, 22, {align:"right"});
-
-  // Player name area
-  doc.setFillColor(22,18,32);
-  doc.roundedRect(14,34,W-28,16,3,3,"F");
-  doc.setDrawColor(cr,cg,cb);
-  doc.setLineWidth(0.4);
-  doc.roundedRect(14,34,W-28,16,3,3,"S");
-  doc.setTextColor(160,140,100);
   doc.setFontSize(7);
   doc.setFont("helvetica","normal");
-  doc.text("ADVENTURER NAME", 20,41);
-  doc.setTextColor(240,235,220);
+  doc.setGState(new doc.GState({opacity:0.7}));
+  doc.text("HERO'S JOURNEY WORKSHOP  ·  CHARACTER SHEET", 10, 9);
+  doc.setGState(new doc.GState({opacity:1}));
+
+  // Class name — large
+  doc.setTextColor(255,255,255);
+  doc.setFontSize(22);
+  doc.setFont("helvetica","bold");
+  doc.text(myClass.toUpperCase(), 10, 24);
+
+  // Brain color label top right (next to crest)
+  doc.setFontSize(7);
+  doc.setFont("helvetica","bold");
+  doc.setTextColor(255,255,255);
+  doc.setGState(new doc.GState({opacity:0.8}));
+  doc.text(data.label, W-36, 28, {align:"right"});
+  doc.setGState(new doc.GState({opacity:1}));
+
+  // ── Name box ───────────────────────────────────────────────────────────────
+  const boxR = 3;
+  doc.setFillColor(15,10,5);
+  doc.setGState(new doc.GState({opacity:0.75}));
+  doc.roundedRect(10,36,W-20,18,boxR,boxR,"F");
+  doc.setGState(new doc.GState({opacity:1}));
+  doc.setDrawColor(cr,cg,cb);
+  doc.setLineWidth(0.5);
+  doc.roundedRect(10,36,W-20,18,boxR,boxR,"S");
+
+  doc.setFontSize(6.5);
+  doc.setFont("helvetica","normal");
+  doc.setTextColor(cr,cg,cb);
+  doc.text("ADVENTURER NAME", 15, 42);
   doc.setFontSize(13);
   doc.setFont("helvetica","bold");
-  doc.text(playerName || "— Unknown Hero —", 20, 47);
+  doc.setTextColor(240,232,210);
+  doc.text(playerName || "— Unknown Hero —", 15, 51);
 
-  // Score bars
+  // ── Score bars ─────────────────────────────────────────────────────────────
+  doc.setFontSize(6.5);
+  doc.setFont("helvetica","bold");
+  doc.setTextColor(cr,cg,cb);
+  doc.text("BRAIN COLOR SCORES", 10, 63);
+
   const sorted = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
   const colorHex = {RED:"#C0392B",PURPLE:"#6C3483",BLUE:"#1A5276",GREEN:"#1E8449"};
-  doc.setFontSize(7);
-  doc.setFont("helvetica","bold");
-  doc.setTextColor(160,140,100);
-  doc.text("BRAIN COLOR SCORES", 14,62);
-  sorted.forEach(([clr,score],i)=>{
-    const y = 65 + i*9;
+  sorted.forEach(([clr,score],i) => {
+    const y = 66 + i*11;
     const [br,bg,bb] = hexRGB(colorHex[clr]);
-    doc.setFillColor(30,24,44);
-    doc.roundedRect(14,y,W-28,7,1.5,1.5,"F");
+    const barW = W-30;
+    const fillW = (score/20)*barW;
+
+    // Track bg
+    doc.setFillColor(20,14,8);
+    doc.setGState(new doc.GState({opacity:0.8}));
+    doc.roundedRect(10,y,barW,8,1.5,1.5,"F");
+    doc.setGState(new doc.GState({opacity:1}));
+
+    // Fill
     doc.setFillColor(br,bg,bb);
-    doc.roundedRect(14,y,((W-28)*(score/20)),7,1.5,1.5,"F");
-    doc.setTextColor(240,235,220);
+    if (fillW > 3) doc.roundedRect(10,y,fillW,8,1.5,1.5,"F");
+
+    // Label
     doc.setFontSize(7);
     doc.setFont("helvetica","bold");
-    doc.text(clr, 17, y+4.8);
-    doc.text(String(score), W-15, y+4.8, {align:"right"});
+    doc.setTextColor(240,232,210);
+    doc.text(clr, 13, y+5.5);
+
+    // Score number
+    doc.setTextColor(240,232,210);
+    doc.text(String(score), W-18, y+5.5, {align:"right"});
   });
 
-  // Divider
+  // ── Divider ────────────────────────────────────────────────────────────────
   doc.setDrawColor(cr,cg,cb);
-  doc.setLineWidth(0.3);
-  doc.line(14,103,W-14,103);
+  doc.setLineWidth(0.4);
+  doc.setGState(new doc.GState({opacity:0.5}));
+  doc.line(10,112,W-10,112);
+  doc.setGState(new doc.GState({opacity:1}));
 
-  // EQ Strengths
-  doc.setFontSize(7);
+  // ── EQ Strengths ───────────────────────────────────────────────────────────
+  doc.setFillColor(cr,cg,cb);
+  doc.setGState(new doc.GState({opacity:0.15}));
+  doc.roundedRect(10,115,W-20,30,boxR,boxR,"F");
+  doc.setGState(new doc.GState({opacity:1}));
+  doc.setDrawColor(cr,cg,cb);
+  doc.setLineWidth(0.4);
+  doc.roundedRect(10,115,W-20,30,boxR,boxR,"S");
+
+  doc.setFontSize(6.5);
   doc.setFont("helvetica","bold");
   doc.setTextColor(cr,cg,cb);
-  doc.text("⚔  EQ STRENGTHS", 14,110);
+  doc.text("EQ STRENGTHS", 15,121);
+
   doc.setFont("helvetica","normal");
-  doc.setTextColor(200,192,175);
-  data.strengths.forEach((s,i)=>{
-    const lines = doc.splitTextToSize(`• ${s}`, W-30);
-    doc.text(lines, 14, 115+i*12);
+  doc.setTextColor(220,210,185);
+  doc.setFontSize(8);
+  data.strengths.forEach((s,i) => {
+    const lines = doc.splitTextToSize(`• ${s}`, W-32);
+    doc.text(lines, 15, 126 + i*10);
   });
 
-  // Blind spot
-  doc.setFontSize(7);
-  doc.setFont("helvetica","bold");
-  doc.setTextColor(192,57,43);
-  doc.text("⚠  BLIND SPOT", 14,140);
-  doc.setFont("helvetica","normal");
-  doc.setTextColor(200,192,175);
-  const blines = doc.splitTextToSize(data.blindspot, W-30);
-  doc.text(blines, 14,145);
-
-  // First quest
-  doc.setFillColor(25,18,4);
-  doc.roundedRect(14,158,W-28,20,3,3,"F");
-  doc.setDrawColor(183,149,11);
+  // ── Blind Spot ─────────────────────────────────────────────────────────────
+  doc.setFillColor(120,20,20);
+  doc.setGState(new doc.GState({opacity:0.18}));
+  doc.roundedRect(10,149,W-20,22,boxR,boxR,"F");
+  doc.setGState(new doc.GState({opacity:1}));
+  doc.setDrawColor(180,40,40);
   doc.setLineWidth(0.4);
-  doc.roundedRect(14,158,W-28,20,3,3,"S");
-  doc.setFontSize(7);
+  doc.roundedRect(10,149,W-20,22,boxR,boxR,"S");
+
+  doc.setFontSize(6.5);
   doc.setFont("helvetica","bold");
-  doc.setTextColor(183,149,11);
-  doc.text("✦  YOUR FIRST QUEST", 20,164);
+  doc.setTextColor(220,80,80);
+  doc.text("BLIND SPOT", 15,155);
+
   doc.setFont("helvetica","normal");
-  doc.setTextColor(245,232,185);
-  const qlines = doc.splitTextToSize(data.quest, W-42);
-  doc.text(qlines, 20,170);
-
-  // Abilities section
-  const myAbilities = data.abilities[myClass] || [];
-  const locked = data.lockedAbilities || [];
-
+  doc.setTextColor(220,210,185);
   doc.setFontSize(8);
+  const blines = doc.splitTextToSize(data.blindspot, W-32);
+  doc.text(blines, 15, 161);
+
+  // ── First Quest ────────────────────────────────────────────────────────────
+  doc.setFillColor(120,90,10);
+  doc.setGState(new doc.GState({opacity:0.2}));
+  doc.roundedRect(10,175,W-20,24,boxR,boxR,"F");
+  doc.setGState(new doc.GState({opacity:1}));
+  doc.setDrawColor(183,149,11);
+  doc.setLineWidth(0.5);
+  doc.roundedRect(10,175,W-20,24,boxR,boxR,"S");
+
+  doc.setFontSize(6.5);
+  doc.setFont("helvetica","bold");
+  doc.setTextColor(210,170,40);
+  doc.text("YOUR FIRST QUEST", 15,181);
+
+  doc.setFont("helvetica","normal");
+  doc.setTextColor(240,225,180);
+  doc.setFontSize(8);
+  const qlines = doc.splitTextToSize(data.quest, W-32);
+  doc.text(qlines, 15, 187);
+
+  // ── Class Abilities ────────────────────────────────────────────────────────
+  doc.setFontSize(7);
   doc.setFont("helvetica","bold");
   doc.setTextColor(cr,cg,cb);
-  doc.text("CLASS ABILITIES", 14,186);
+  doc.text("CLASS ABILITIES", 10, 206);
 
-  myAbilities.forEach((ab,i)=>{
-    const isLocked = locked.includes(ab.name);
-    const y = 190 + i*18;
-    doc.setFillColor(isLocked?18:22, isLocked?14:18, isLocked?26:38);
-    doc.roundedRect(14,y,W-28,16,2,2,"F");
-    doc.setDrawColor(isLocked?50:cr, isLocked?40:cg, isLocked?70:cb);
+  const myAbilities = data.abilities[myClass] || [];
+  const singleLockedName = data.lockedByClass ? data.lockedByClass[myClass] : null;
+
+  myAbilities.forEach((ab, i) => {
+    const isLocked = singleLockedName === ab.name;
+    const y = 209 + i * 18;
+
+    if (isLocked) {
+      doc.setFillColor(18,12,6);
+      doc.setGState(new doc.GState({opacity:0.85}));
+    } else {
+      doc.setFillColor(cr,cg,cb);
+      doc.setGState(new doc.GState({opacity:0.12}));
+    }
+    doc.roundedRect(10,y,W-20,16,2,2,"F");
+    doc.setGState(new doc.GState({opacity:1}));
+
+    doc.setDrawColor(isLocked?40:cr, isLocked?30:cg, isLocked?20:cb);
     doc.setLineWidth(0.3);
-    doc.roundedRect(14,y,W-28,16,2,2,"S");
+    doc.roundedRect(10,y,W-20,16,2,2,"S");
 
-    if(isLocked){
+    if (isLocked) {
       doc.setFontSize(8);
       doc.setFont("helvetica","bold");
-      doc.setTextColor(80,70,100);
-      doc.text("🔒  "+ab.name, 20, y+6);
+      doc.setTextColor(80,65,45);
+      doc.text("LOCKED — Unlock by joining the Hero's Journey Workshop", 15, y+7);
       doc.setFontSize(6.5);
       doc.setFont("helvetica","italic");
-      doc.setTextColor(60,55,80);
-      doc.text("Unlock this ability by joining the Hero's Journey Workshop", 20, y+12);
+      doc.setTextColor(60,50,35);
+      doc.text(ab.name, 15, y+12);
     } else {
-      doc.setFontSize(8);
+      doc.setFontSize(8.5);
       doc.setFont("helvetica","bold");
       doc.setTextColor(cr,cg,cb);
-      doc.text(ab.name, 20, y+6);
-      doc.setFontSize(6.5);
+      doc.text(ab.name, 15, y+7);
+      doc.setFontSize(7);
       doc.setFont("helvetica","normal");
-      doc.setTextColor(190,180,160);
-      doc.text(ab.desc, 20, y+11);
-      doc.setTextColor(120,110,90);
-      doc.text("EQ Skill: "+ab.eq, 20, y+14.5);
+      doc.setTextColor(190,178,150);
+      doc.text(ab.desc, 15, y+12);
+      doc.setTextColor(130,115,80);
+      doc.text(`EQ: ${ab.eq}`, W-12, y+12, {align:"right"});
     }
   });
 
-  // Footer
+  // ── Footer ─────────────────────────────────────────────────────────────────
   doc.setFillColor(cr,cg,cb);
-  doc.rect(0,H-12,W,12,"F");
-  doc.setTextColor(0,0,0);
+  doc.setGState(new doc.GState({opacity:0.85}));
+  doc.rect(0,H-10,W,10,"F");
+  doc.setGState(new doc.GState({opacity:1}));
   doc.setFontSize(7);
   doc.setFont("helvetica","normal");
-  doc.text("Hero's Journey Workshop  ·  Your class is set. Your quest begins now.", W/2, H-5, {align:"center"});
+  doc.setTextColor(255,255,255);
+  doc.text("Hero's Journey Workshop  ·  Your class is set. Your quest begins now.", W/2, H-4, {align:"center"});
 
   doc.save(`HeroInkTest_${myClass}_CharacterSheet.pdf`);
 }
+
 
 // ── App ───────────────────────────────────────────────────────────────────────
 const ALL_RUNES=[{r:"ᚱ",c:"#C0392B"},{r:"ᛈ",c:"#6C3483"},{r:"ᛒ",c:"#1A5276"},{r:"ᚷ",c:"#1E8449"}];
@@ -641,11 +687,11 @@ export default function App(){
         scoreBLUE:    scores.BLUE,
         scoreGREEN:   scores.GREEN,
       };
-      await fetch(SHEET_WEBHOOK_URL, {
-        method: "POST",
+      // Use GET with URL params — avoids CORS preflight on Apps Script
+      const params = new URLSearchParams(payload).toString();
+      await fetch(`${SHEET_WEBHOOK_URL}?${params}`, {
+        method: "GET",
         mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
       });
     } catch(e) { console.warn("Sheet submission failed:", e); }
   }
