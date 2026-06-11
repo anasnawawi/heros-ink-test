@@ -1419,7 +1419,7 @@ async function generateCharacterSheetPDF(playerName, topColor, myClass, scores, 
   doc.line(10,112,W-10,112);
   doc.setGState(new doc.GState({opacity:1}));
 
-  // ── Strengthss ───────────────────────────────────────────────────────────
+  // ── Strengths ───────────────────────────────────────────────────────────
   doc.setFillColor(cr,cg,cb);
   doc.setGState(new doc.GState({opacity:0.15}));
   doc.roundedRect(10,115,W-20,30,boxR,boxR,"F");
@@ -1908,7 +1908,7 @@ export default function App(){
             {/* Strengths & Blindspot */}
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:18,alignItems:"start"}}>
               <div style={{background:`${data.color}12`,border:`1px solid ${data.color}33`,borderRadius:12,padding:"18px 16px"}}>
-                <div style={{fontSize:11,letterSpacing:"0.2em",color:isTie?"#b7950b":data.color,textTransform:"uppercase",marginBottom:10}}>⚔ Strengthss</div>
+                <div style={{fontSize:11,letterSpacing:"0.2em",color:isTie?"#b7950b":data.color,textTransform:"uppercase",marginBottom:10}}>⚔ Strengths</div>
                 {(insight&&insight.personalisedStrengths&&insight.personalisedStrengths.length>0
                   ?insight.personalisedStrengths
                   :displayStrengths
