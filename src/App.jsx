@@ -1570,7 +1570,7 @@ export default function App(){
   const QUESTIONS=useMemo(()=>buildShuffledQuestions(),[shuffleKey]);
 
   // ── Google Sheets webhook URL — paste your Apps Script Web App URL here ──
-  const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwk67aa9yjMDqGxTDlb-in0T1AaRclGzv8XD4T2WgoiyL97HnKCtJ-4aC8xSO6AJ3qR/exec";
+  const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyGmAxsIA4QqcrbcsZvl3OKi-vsFZIUIxAqEU3wSIFYTojq5i8hEOS6DcT-8cMRmJ3G/exec";
 
   async function submitResult(resolvedResult, scores, topColor, myClass, dualProfile, rawAnswers) {
     if (!SHEET_WEBHOOK_URL || SHEET_WEBHOOK_URL === "YOUR_APPS_SCRIPT_URL_HERE") return;
