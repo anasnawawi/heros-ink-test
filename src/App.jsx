@@ -1579,6 +1579,12 @@ export default function App(){
       const secondClass = isTieResult && secondColor
         ? getClass(CLASSES[secondColor], scores[secondColor])
         : "";
+      // Compute weakest color (lowest score, not primary or dual partner, score < 5)
+      const _excludeWeak = new Set([topColor, ...(resolvedResult.influence||[])]);
+      const _weakest = ["RED","PURPLE","BLUE","GREEN"]
+        .filter(c => !_excludeWeak.has(c))
+        .sort((a,b) => (scores[a]||0) - (scores[b]||0))[0];
+      const _weakestScore = _weakest ? (scores[_weakest]||0) : 0;
       // Encode raw per-question answers as Q00=RED,Q01=BLUE,... for the sheet
       const answerStr = rawAnswers
         ? Object.entries(rawAnswers)
@@ -1601,8 +1607,8 @@ export default function App(){
         scoreGREEN:   scores.GREEN,
         answers:      answerStr,
         influence:    (resolvedResult.influence||[]).join("+"),
-        weakestColor: insight?.weakestColor||"",
-        weakestScore: insight?.weakestScore||0,
+        weakestColor: (_weakestScore < 5 ? _weakest : "")||"",
+        weakestScore: _weakestScore,
       };
       // Use GET with URL params — avoids CORS preflight on Apps Script
       const params = new URLSearchParams(payload).toString();
