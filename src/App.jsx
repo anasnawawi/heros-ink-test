@@ -178,7 +178,7 @@ const CLASSES = {
       },
       Bard:{
         strengths:["You shift group energy through presence, story, and warmth — people don't know why they feel better, but you do","You build relational bridges between people who wouldn't naturally connect"],
-        blindspot:"The price of warmth is that the truth sometimes can\'t find a way through it. People feel good around you — and that feeling can cost them the honest feedback they needed more than the comfort you gave.",
+        blindspot:"The price of warmth is that the truth sometimes can't find a way through it. People feel good around you — and that feeling can cost them the honest feedback they needed more than the comfort you gave.",
         quest:"This week, in one conversation, give honest feedback instead of reassurance — even if the moment feels uncomfortable.",
         abilities:[
           {name:"Song of Unity",desc:"Shift group mood toward connection through warmth and shared narrative.",eq:"Relationship building"},
@@ -190,7 +190,7 @@ const CLASSES = {
       },
       Champion:{
         strengths:["You hold groups together under pressure that would fracture most teams — people stay because of you","Your empathy has edges: you can advocate, confront, and protect, not just support"],
-        blindspot:"The price of holding the group together is carried quietly and almost entirely by you. Every fracture you absorb, every conflict you internalise — it compounds in a place others don\'t see, because you made it look like nothing.",
+        blindspot:"The price of holding the group together is carried quietly and almost entirely by you. Every fracture you absorb, every conflict you internalise — it compounds in a place others don't see, because you made it look like nothing.",
         quest:"This week, name one thing you've been carrying on behalf of the group and put it back in the room — openly.",
         abilities:[
           {name:"Shield of Trust",desc:"Build reliability so complete that the group trusts you before the crisis hits.",eq:"Trust-building"},
@@ -210,7 +210,7 @@ const CLASSES = {
     classData:{
       Ranger:{
         strengths:["You find paths others don't look for — your instinct for alternatives keeps the group from getting stuck","You adapt your approach quickly when the situation changes"],
-        blindspot:"The price of always moving toward what\'s next is that some things worth finishing never get finished. The people who believed in your ideas pay that price alongside you.",
+        blindspot:"The price of always moving toward what's next is that some things worth finishing never get finished. The people who believed in your ideas pay that price alongside you.",
         quest:"Pick one project you have started but not finished and spend one focused hour this week moving it forward — no new ideas allowed.",
         abilities:[
           {name:"Trailblazer",desc:"Generate viable alternative routes when the group hits a dead end.",eq:"Creative problem-solving"},
@@ -262,7 +262,6 @@ function resolveResult(scores) {
   const third  = sorted[2][1];
   const fourth = sorted[3][1];
   const gap      = top - second;
-  const combined = top + second;
   const sep      = second - third;
 
   // Shapeshifter: all four exactly equal
@@ -308,123 +307,123 @@ function resolveResult(scores) {
 const ANSWER_VARIANTS = {
   Q01:{
     RED:["Plan your route, mark your waypoints, and move at first light","Lay out everything you need, set a clear objective, and get moving","Map the fastest path to the goal and prepare to leave immediately","Organise your gear, set your target, and head out on schedule","Set a clear plan, brief anyone coming with you, and depart without delay"],
-    PURPLE:["Study every map and legend you can find before taking a single step","Research the terrain, the risks, and the context thoroughly before committing","Gather as much information as possible — you won\'t move until you understand the full picture","Read everything available about the assignment before deciding how to approach it","Spend time learning the background and conditions before forming a plan"],
-    BLUE:["Check in with your companions — you travel together or not at all","Talk to the people who\'ll be joining you before anything else is decided","Make sure everyone is aligned and comfortable with the direction before you move","Find out how your group feels about the task before you start planning","Bring the team together first — shared readiness matters more than speed"],
-    GREEN:["Grab your pack and head out — the road will show you the way","Set off now and figure out the details as you go","Trust your instincts and start moving — you\'ll adapt as needed","Pick a direction and go — the journey itself will reveal what\'s needed","Get started immediately and adjust the plan as things unfold"]
+    PURPLE:["Study every map and legend you can find before taking a single step","Research the terrain, the risks, and the context thoroughly before committing","Gather as much information as possible — you won't move until you understand the full picture","Read everything available about the assignment before deciding how to approach it","Spend time learning the background and conditions before forming a plan"],
+    BLUE:["Check in with your companions — you travel together or not at all","Talk to the people who'll be joining you before anything else is decided","Make sure everyone is aligned and comfortable with the direction before you move","Find out how your group feels about the task before you start planning","Bring the team together first — shared readiness matters more than speed"],
+    GREEN:["Grab your pack and head out — the road will show you the way","Set off now and figure out the details as you go","Trust your instincts and start moving — you'll adapt as needed","Pick a direction and go — the journey itself will reveal what's needed","Get started immediately and adjust the plan as things unfold"]
   },
   Q02:{
-    RED:["Push for a decision — every hour spent arguing is a mile you\'re not covering","Cut the debate short and call for a vote — you need to move","Name the most likely option and push the group to commit","Step in and make the call — indecision is the biggest risk right now","Drive the group toward a decision — standing still costs more than being wrong"],
+    RED:["Push for a decision — every hour spent arguing is a mile you're not covering","Cut the debate short and call for a vote — you need to move","Name the most likely option and push the group to commit","Step in and make the call — indecision is the biggest risk right now","Drive the group toward a decision — standing still costs more than being wrong"],
     PURPLE:["Stay quiet, weigh both arguments carefully, then speak once with precision","Listen to every point made, then offer the most logically sound option","Hold back until you have a clear view, then make one well-reasoned contribution","Analyse both paths quietly before stating your conclusion with evidence","Wait for the full picture before you speak — then say exactly what you think"],
-    BLUE:["Watch how your companions are feeling and guide the group toward unity","Pay attention to who\'s being heard and who isn\'t, and bring the group into alignment","Focus on what the team can agree on and build the decision from there","Make sure everyone\'s perspective is included before the group commits","Read the room and help the group find the path they can all support"],
-    GREEN:["Suggest a third path nobody considered yet","Offer a completely different option that reframes the whole conversation","Interrupt the debate with an idea that changes what\'s being debated","Propose something unexpected that opens up possibilities they hadn\'t seen","Find the angle nobody\'s thought of and put it on the table"]
+    BLUE:["Watch how your companions are feeling and guide the group toward unity","Pay attention to who's being heard and who isn't, and bring the group into alignment","Focus on what the team can agree on and build the decision from there","Make sure everyone's perspective is included before the group commits","Read the room and help the group find the path they can all support"],
+    GREEN:["Suggest a third path nobody considered yet","Offer a completely different option that reframes the whole conversation","Interrupt the debate with an idea that changes what's being debated","Propose something unexpected that opens up possibilities they hadn't seen","Find the angle nobody's thought of and put it on the table"]
   },
   Q03:{
-    RED:["The target — every step gets you closer to completing the mission","The finish line — knowing the goal exists is enough to keep you going","The objective — you measure progress in outcomes, not effort","The result you\'re working toward — it pulls you forward through everything","The clear destination — when you know what success looks like, you keep moving"],
-    PURPLE:["The knowledge you\'re gaining — each challenge teaches you something new","The understanding you\'re building — the difficulty itself is the lesson","The insight that comes from facing hard problems — it compounds over time","The learning — every obstacle is information you didn\'t have before","The intellectual depth you\'re developing — that growth sustains you"],
-    BLUE:["The people beside you — you fight harder for your companions than for yourself","The relationships — knowing the people around you are depending on you","The team — their belief in the mission is what keeps yours alive","The group — you\'d quit for yourself long before you\'d quit for them","The bonds built on the road — they\'re the reason the difficulty is worth it"],
-    GREEN:["The unknown ahead — you never know what you might discover around the next bend","The possibility of what comes next — the uncertainty is the draw, not the destination","The sense that something surprising might be just ahead — that keeps you curious","The uncharted territory — each day could bring something completely unexpected","The adventure itself — not knowing what\'s coming is exactly what motivates you"]
+    RED:["The target — every step gets you closer to completing the mission","The finish line — knowing the goal exists is enough to keep you going","The objective — you measure progress in outcomes, not effort","The result you're working toward — it pulls you forward through everything","The clear destination — when you know what success looks like, you keep moving"],
+    PURPLE:["The knowledge you're gaining — each challenge teaches you something new","The understanding you're building — the difficulty itself is the lesson","The insight that comes from facing hard problems — it compounds over time","The learning — every obstacle is information you didn't have before","The intellectual depth you're developing — that growth sustains you"],
+    BLUE:["The people beside you — you fight harder for your companions than for yourself","The relationships — knowing the people around you are depending on you","The team — their belief in the mission is what keeps yours alive","The group — you'd quit for yourself long before you'd quit for them","The bonds built on the road — they're the reason the difficulty is worth it"],
+    GREEN:["The unknown ahead — you never know what you might discover around the next bend","The possibility of what comes next — the uncertainty is the draw, not the destination","The sense that something surprising might be just ahead — that keeps you curious","The uncharted territory — each day could bring something completely unexpected","The adventure itself — not knowing what's coming is exactly what motivates you"]
   },
   Q04:{
     RED:["Identify the most likely escape route and move immediately","Assess the fastest path to recover the situation and act on it","Make a quick decision about direction and start closing the distance","Take immediate action — waiting costs you the advantage","Move toward the problem without hesitation — speed matters here"],
-    PURPLE:["Examine every track, piece of cargo, and clue before drawing any conclusion","Gather evidence carefully — you won\'t move until you understand what happened","Study the scene in detail before committing to any direction","Analyse everything available before forming a theory about what occurred","Take stock of all the information before deciding what to do next"],
-    BLUE:["Speak to the shaken merchant first — their state matters before the logistics do","Check on the merchant before anything else — they need steadying before you can help effectively","Make sure the merchant is alright before you start investigating","Attend to the person first — the situation can wait a moment","Ask the merchant how they\'re doing before you start asking what happened"],
-    GREEN:["Start suggesting theories and see which one the evidence supports","Generate several possible explanations and explore which fits best","Think out loud about what might have happened and follow the most interesting lead","Offer a range of interpretations of what you\'re seeing before narrowing anything down","Let your mind go wide — consider every possibility before committing to one"]
+    PURPLE:["Examine every track, piece of cargo, and clue before drawing any conclusion","Gather evidence carefully — you won't move until you understand what happened","Study the scene in detail before committing to any direction","Analyse everything available before forming a theory about what occurred","Take stock of all the information before deciding what to do next"],
+    BLUE:["Speak to the shaken merchant first — their state matters before the logistics do","Check on the merchant before anything else — they need steadying before you can help effectively","Make sure the merchant is alright before you start investigating","Attend to the person first — the situation can wait a moment","Ask the merchant how they're doing before you start asking what happened"],
+    GREEN:["Start suggesting theories and see which one the evidence supports","Generate several possible explanations and explore which fits best","Think out loud about what might have happened and follow the most interesting lead","Offer a range of interpretations of what you're seeing before narrowing anything down","Let your mind go wide — consider every possibility before committing to one"]
   },
   Q05:{
     RED:["Everything in place, gear sorted, fire banked — ready for an early departure","Organised, efficient, nothing wasted — this person knows exactly what they need","Prepared and orderly — this space is optimised for the mission","Clean lines, clear purpose — the person who built this leaves nothing to chance","Structured and ready — everything here has a reason and a place"],
-    PURPLE:["Scrolls of notes everywhere, reference books open, maps annotated with questions","Dense with information — this person is always in the middle of figuring something out","Layered and rich — every surface tells you something about what\'s being studied","Covered in research materials — the thinking never really stops here","Full of documentation — whoever camps here processes everything in writing"],
-    BLUE:["Smells like a shared meal — there\'s always room for one more around this fire","Warm and welcoming — this is the camp people drift toward without being invited","Set up for company — comfort and connection are built into how this space is arranged","Open and easy — this person wants others to feel at home here","Inviting and lived-in — this camp feels like somewhere the group belongs"],
-    GREEN:["A storm passed through, but it\'s exactly where it needs to be","Creative chaos — it works, even if you can\'t quite explain why","Ordered by instinct rather than system — intuition over structure","Looks scattered, functions perfectly — this person knows where everything is","Dynamic and unpredictable — this space reflects a mind that moves fast"]
+    PURPLE:["Scrolls of notes everywhere, reference books open, maps annotated with questions","Dense with information — this person is always in the middle of figuring something out","Layered and rich — every surface tells you something about what's being studied","Covered in research materials — the thinking never really stops here","Full of documentation — whoever camps here processes everything in writing"],
+    BLUE:["Smells like a shared meal — there's always room for one more around this fire","Warm and welcoming — this is the camp people drift toward without being invited","Set up for company — comfort and connection are built into how this space is arranged","Open and easy — this person wants others to feel at home here","Inviting and lived-in — this camp feels like somewhere the group belongs"],
+    GREEN:["A storm passed through, but it's exactly where it needs to be","Creative chaos — it works, even if you can't quite explain why","Ordered by instinct rather than system — intuition over structure","Looks scattered, functions perfectly — this person knows where everything is","Dynamic and unpredictable — this space reflects a mind that moves fast"]
   },
   Q06:{
-    RED:["Be straight — name the flaw, give the fix, and let you get back to training","Skip the softening and tell you exactly what needs to change","Be direct and specific — you don\'t need cushioning, you need accuracy","Get to the point — what\'s wrong and how do you correct it","Give you the honest version without the padding — you can handle it"],
-    PURPLE:["Walk you through the full reasoning — why it\'s wrong and what correct form achieves","Explain the logic completely so you understand the principle, not just the correction","Give you the technical breakdown — what you\'re doing, why it fails, and what works instead","Justify every point of critique so you can evaluate and apply it properly","Show their working — the reasoning behind the feedback matters as much as the feedback itself"],
-    BLUE:["Lead with what you did well before moving to what needs work","Frame the critique with care — acknowledge the effort before addressing the gap","Make sure the feedback lands in a way that keeps you motivated, not deflated","Be thoughtful about how it\'s delivered — you respond better when respect is part of the exchange","Balance the hard feedback with recognition of what\'s already working"],
-    GREEN:["Have a conversation about it, not a lecture","Talk it through together rather than just telling you what\'s wrong","Make it a two-way exchange — you learn better when you\'re part of the discussion","Explore it with you, not at you — the back-and-forth is how you absorb things","Turn it into a dialogue — you\'ll take more from a conversation than a correction"]
+    RED:["Be straight — name the flaw, give the fix, and let you get back to training","Skip the softening and tell you exactly what needs to change","Be direct and specific — you don't need cushioning, you need accuracy","Get to the point — what's wrong and how do you correct it","Give you the honest version without the padding — you can handle it"],
+    PURPLE:["Walk you through the full reasoning — why it's wrong and what correct form achieves","Explain the logic completely so you understand the principle, not just the correction","Give you the technical breakdown — what you're doing, why it fails, and what works instead","Justify every point of critique so you can evaluate and apply it properly","Show their working — the reasoning behind the feedback matters as much as the feedback itself"],
+    BLUE:["Lead with what you did well before moving to what needs work","Frame the critique with care — acknowledge the effort before addressing the gap","Make sure the feedback lands in a way that keeps you motivated, not deflated","Be thoughtful about how it's delivered — you respond better when respect is part of the exchange","Balance the hard feedback with recognition of what's already working"],
+    GREEN:["Have a conversation about it, not a lecture","Talk it through together rather than just telling you what's wrong","Make it a two-way exchange — you learn better when you're part of the discussion","Explore it with you, not at you — the back-and-forth is how you absorb things","Turn it into a dialogue — you'll take more from a conversation than a correction"]
   },
   Q07:{
     RED:["The one calling the plan and keeping everyone on task","The one who takes charge and sets a clear direction while others are still processing","The one who makes the call when no one else will","The one who organises the response and pushes the group to act","The one who cuts through the chaos with a clear next step"],
     PURPLE:["The one who already anticipated this might happen and has notes ready","The one who saw it coming and has a framework for what to do","The one who had already thought through this scenario","The one with the contingency plan — you prepared for this","The one who drew on past experience to see this coming before it arrived"],
-    BLUE:["The one making sure no one gets left behind or overlooked","The one checking that everyone in the group is still together and holding up","The one who keeps track of the people, not just the problem","The one ensuring the group stays cohesive while the pressure builds","The one who won\'t let the crisis fracture the team"],
+    BLUE:["The one making sure no one gets left behind or overlooked","The one checking that everyone in the group is still together and holding up","The one who keeps track of the people, not just the problem","The one ensuring the group stays cohesive while the pressure builds","The one who won't let the crisis fracture the team"],
     GREEN:["The one with a wild idea that just might work","The one who finds an unexpected angle nobody else had considered","The one who improvises a solution from the materials available","The one whose creative instinct produces an option when the plan runs out","The one who sees a different way through when every obvious path is blocked"]
   },
   Q08:{
-    RED:["Losing time to indecision and missed deadlines","Watching the group go in circles when a decision should have been made an hour ago","Seeing momentum lost because nobody would commit","A clear path going unused because people couldn\'t stop debating","Delays caused by hesitation when the answer was obvious"],
-    PURPLE:["Watching someone act on incomplete information and make it worse","Seeing a preventable mistake happen because someone didn\'t check their assumptions","A decision made without the necessary evidence — and the consequences that follow","Watching someone commit to the wrong answer because they didn\'t take time to verify","Errors that could have been avoided with five more minutes of preparation"],
-    BLUE:["Seeing a companion\'s feelings dismissed like they don\'t matter","Watching someone\'s emotional reality get treated as irrelevant to the conversation","A person in distress being talked over while the group focuses on logistics","Feelings being brushed aside in favour of moving forward quickly","Someone being made to feel invisible when they needed to be heard"],
-    GREEN:["Being forced into the same rigid route when a better one clearly exists","Watching the group cling to a plan that\'s clearly stopped working","Having a more creative path available and not being able to take it","A system or structure that blocks a clearly better option","Rigidity being enforced when the situation is actively calling for adaptation"]
+    RED:["Losing time to indecision and missed deadlines","Watching the group go in circles when a decision should have been made an hour ago","Seeing momentum lost because nobody would commit","A clear path going unused because people couldn't stop debating","Delays caused by hesitation when the answer was obvious"],
+    PURPLE:["Watching someone act on incomplete information and make it worse","Seeing a preventable mistake happen because someone didn't check their assumptions","A decision made without the necessary evidence — and the consequences that follow","Watching someone commit to the wrong answer because they didn't take time to verify","Errors that could have been avoided with five more minutes of preparation"],
+    BLUE:["Seeing a companion's feelings dismissed like they don't matter","Watching someone's emotional reality get treated as irrelevant to the conversation","A person in distress being talked over while the group focuses on logistics","Feelings being brushed aside in favour of moving forward quickly","Someone being made to feel invisible when they needed to be heard"],
+    GREEN:["Being forced into the same rigid route when a better one clearly exists","Watching the group cling to a plan that's clearly stopped working","Having a more creative path available and not being able to take it","A system or structure that blocks a clearly better option","Rigidity being enforced when the situation is actively calling for adaptation"]
   },
   Q09:{
-    RED:["Following drills step by step until the movements become second nature","Repeating the same sequence until it\'s automatic and reliable","Working through a structured progression from basic to advanced","Building the skill incrementally through disciplined repetition","Running the same pattern again and again until it\'s embedded"],
+    RED:["Following drills step by step until the movements become second nature","Repeating the same sequence until it's automatic and reliable","Working through a structured progression from basic to advanced","Building the skill incrementally through disciplined repetition","Running the same pattern again and again until it's embedded"],
     PURPLE:["Reading the theory first so the movements make sense before you try them","Understanding the principles behind the technique before attempting it","Getting the conceptual framework clear before putting it into practice","Studying the reasoning and structure of the style before drilling it","Knowing why each movement works before committing it to muscle memory"],
-    BLUE:["Sparring with a partner — you learn fastest when someone else is in it with you","Working with another person — the interaction makes it stick","Training alongside someone who can respond to what you\'re doing","Practising in dialogue with a partner rather than drilling alone","Learning through exchange — another person\'s reactions teach you what repetition can\'t"],
+    BLUE:["Sparring with a partner — you learn fastest when someone else is in it with you","Working with another person — the interaction makes it stick","Training alongside someone who can respond to what you're doing","Practising in dialogue with a partner rather than drilling alone","Learning through exchange — another person's reactions teach you what repetition can't"],
     GREEN:["Jumping in and experimenting until something clicks","Trying different approaches and seeing what happens","Playing around with the technique until you find your own version of it","Exploring freely rather than following a prescribed sequence","Testing and adapting until the style makes sense in your own terms"]
   },
   Q10:{
-    RED:["Lock onto the exit and push — doubt is a distraction you can\'t afford right now","Pick the fastest route out and commit to it without looking back","Drive forward with total focus — the goal is clear and nothing else matters","Take control of your own direction and move with absolute certainty","Block out the chaos and execute — hesitation is the only real danger"],
+    RED:["Lock onto the exit and push — doubt is a distraction you can't afford right now","Pick the fastest route out and commit to it without looking back","Drive forward with total focus — the goal is clear and nothing else matters","Take control of your own direction and move with absolute certainty","Block out the chaos and execute — hesitation is the only real danger"],
     PURPLE:["Go quiet, process fast, and calculate the safest path before moving","Slow your breathing, assess the situation, and choose the most logical route","Take two seconds to map the options before committing to any direction","Stay calm and analytical while everything collapses — the right path is there if you think","Filter out the noise and work through the problem with precision"],
-    BLUE:["Call out to make sure no one has been separated or left behind","Check on the group before focusing on the exit","Make sure everyone is accounted for before you start moving","Prioritise the people — you don\'t leave until you know everyone is with you","Keep the group together — no one gets out if the team falls apart first"],
-    GREEN:["Read the room, spot the unexpected exit, and improvise your way through","Find the path nobody else noticed and take it","Look for the unconventional route that opens up when you stop following the obvious one","Trust your instinct to find a way through that wasn\'t in the plan","Adapt on the fly — the standard exits are blocked but there\'s always another way"]
+    BLUE:["Call out to make sure no one has been separated or left behind","Check on the group before focusing on the exit","Make sure everyone is accounted for before you start moving","Prioritise the people — you don't leave until you know everyone is with you","Keep the group together — no one gets out if the team falls apart first"],
+    GREEN:["Read the room, spot the unexpected exit, and improvise your way through","Find the path nobody else noticed and take it","Look for the unconventional route that opens up when you stop following the obvious one","Trust your instinct to find a way through that wasn't in the plan","Adapt on the fly — the standard exits are blocked but there's always another way"]
   },
   Q11:{
     RED:["Clear objective, measurable distance covered, camp set before dark","Steady progress toward a defined goal, no wasted time, tasks completed","A structured route with milestones hit on schedule","Purposeful movement from point to point, ending with results you can measure","Moving efficiently through a planned sequence — productive from start to finish"],
-    PURPLE:["A long stretch of silence broken only by a good book at camp","Deep focus time, minimal interruptions, and space to think without being pulled in different directions","Uninterrupted hours where you can process and work through ideas properly","Quiet, solitary riding followed by an evening of reading and reflection","The kind of day where you can go deep on a problem without resurfacing until you\'ve cracked it"],
-    BLUE:["Long conversations around the fire with people who actually listen","Real exchanges with your companions — the kind that leave you feeling genuinely connected","Deep discussions that make the miles feel shorter and the camp feel like home","Time with the people you\'re travelling with — not logistics, actual connection","A day where the group\'s bonds deepen and everyone goes to sleep more committed to each other"],
-    GREEN:["A mix of everything — no two hours looking the same","Variety and surprise — something unexpected that changes what you thought the day would be","Different terrain, different challenges, different energy — always moving, never stale","Spontaneous detours and new discoveries that weren\'t in the plan","The freedom to follow what\'s interesting, even if it wasn\'t on the route"]
+    PURPLE:["A long stretch of silence broken only by a good book at camp","Deep focus time, minimal interruptions, and space to think without being pulled in different directions","Uninterrupted hours where you can process and work through ideas properly","Quiet, solitary riding followed by an evening of reading and reflection","The kind of day where you can go deep on a problem without resurfacing until you've cracked it"],
+    BLUE:["Long conversations around the fire with people who actually listen","Real exchanges with your companions — the kind that leave you feeling genuinely connected","Deep discussions that make the miles feel shorter and the camp feel like home","Time with the people you're travelling with — not logistics, actual connection","A day where the group's bonds deepen and everyone goes to sleep more committed to each other"],
+    GREEN:["A mix of everything — no two hours looking the same","Variety and surprise — something unexpected that changes what you thought the day would be","Different terrain, different challenges, different energy — always moving, never stale","Spontaneous detours and new discoveries that weren't in the plan","The freedom to follow what's interesting, even if it wasn't on the route"]
   },
   Q12:{
     RED:["The route with the clearest outcome and the fewest unknowns","The option that gets you to the goal most directly and predictably","The path with the best odds of working — not the most interesting, the most reliable","What logic and experience say is most likely to succeed","The most straightforward option — efficiency over elegance"],
-    PURPLE:["The evidence — scouting reports, terrain data, accounts from others who\'ve been there","The information available — you don\'t decide without data to support it","What the facts point to, not what feels right in the moment","Hard evidence over instinct — you need a rationale you can defend","Verified intelligence — intuition is fine until it contradicts the research"],
-    BLUE:["The path the party can survive together — unity matters as much as efficiency","The option the whole group can commit to, even if it\'s not the fastest","What the group reads as right — shared confidence in the direction matters","The route that keeps the team together and functioning","What the people you\'re with can get behind — a divided party can\'t go anywhere"],
-    GREEN:["Your gut — your instincts haven\'t failed you yet and you\'ve learned to follow them","The pull you feel toward one option, even when you can\'t fully explain it","Your instinct — it processes things your conscious mind hasn\'t caught up with yet","What feels right in the moment — you\'ve been wrong before, but so has caution","Your read on the situation — not evidence exactly, just a sense that this is the way"]
+    PURPLE:["The evidence — scouting reports, terrain data, accounts from others who've been there","The information available — you don't decide without data to support it","What the facts point to, not what feels right in the moment","Hard evidence over instinct — you need a rationale you can defend","Verified intelligence — intuition is fine until it contradicts the research"],
+    BLUE:["The path the party can survive together — unity matters as much as efficiency","The option the whole group can commit to, even if it's not the fastest","What the group reads as right — shared confidence in the direction matters","The route that keeps the team together and functioning","What the people you're with can get behind — a divided party can't go anywhere"],
+    GREEN:["Your gut — your instincts haven't failed you yet and you've learned to follow them","The pull you feel toward one option, even when you can't fully explain it","Your instinct — it processes things your conscious mind hasn't caught up with yet","What feels right in the moment — you've been wrong before, but so has caution","Your read on the situation — not evidence exactly, just a sense that this is the way"]
   },
   Q13:{
-    RED:["Rebuild immediately — an imperfect new plan is better than standing still","Scrap what isn\'t working and establish a new direction without delay","Make a fast call about the next move — the group needs something to follow right now","Replace the broken plan with a functional one as quickly as possible","Adapt and move — you can refine as you go, but you can\'t go anywhere standing still"],
+    RED:["Rebuild immediately — an imperfect new plan is better than standing still","Scrap what isn't working and establish a new direction without delay","Make a fast call about the next move — the group needs something to follow right now","Replace the broken plan with a functional one as quickly as possible","Adapt and move — you can refine as you go, but you can't go anywhere standing still"],
     PURPLE:["Stop and diagnose the failure before deciding what to do next","Understand what broke before committing to a new direction","Take the time to figure out why the plan failed — the next plan depends on it","Hold the group for a moment and work out what actually went wrong","Analyse before acting — reacting without understanding is how you make the same mistake twice"],
-    BLUE:["Rally the party first — morale before map","Make sure the group is still together before anything else is decided","Tend to how the team is holding up before addressing the plan itself","Focus on the people\'s state before the strategy — fractured confidence is a bigger problem than a broken plan","Hold the group emotionally before you try to redirect them practically"],
-    GREEN:["Scrap it entirely and improvise — the plan was probably too rigid anyway","Throw out the structure and find your way through on instinct","Let go of the original approach and trust that a better one will emerge","Use the failure as permission to try something you couldn\'t have justified before","Start fresh — the broken plan was holding you back more than guiding you"]
+    BLUE:["Rally the party first — morale before map","Make sure the group is still together before anything else is decided","Tend to how the team is holding up before addressing the plan itself","Focus on the people's state before the strategy — fractured confidence is a bigger problem than a broken plan","Hold the group emotionally before you try to redirect them practically"],
+    GREEN:["Scrap it entirely and improvise — the plan was probably too rigid anyway","Throw out the structure and find your way through on instinct","Let go of the original approach and trust that a better one will emerge","Use the failure as permission to try something you couldn't have justified before","Start fresh — the broken plan was holding you back more than guiding you"]
   },
   Q14:{
-    RED:["Walk over and address the mistake directly — the opportunity can wait","Deal with the problem in front of you before looking at anything else","Speak up immediately — you don\'t let clear errors go unaddressed","Handle the issue with your companion first — new opportunities don\'t require you to ignore what\'s wrong","Point out the mistake without hesitation — that\'s what you\'d want someone to do for you"],
-    PURPLE:["Watch a little longer to make sure you\'ve read the situation correctly before saying anything","Observe carefully — you want to be certain of what you\'re seeing before you act","Take another moment to verify your read on the mistake before intervening","Hold off until you\'re sure — acting on a misread would cause more harm than good","Study the situation for a moment longer before deciding whether to step in"],
-    BLUE:["Notice the mistake but hold back — you don\'t want to embarrass them or create tension","See it, but stay quiet — the relationship matters more than being right in this moment","Hesitate to say anything — the social cost feels too high right now","Let it go for now — bringing it up feels like it would do more damage than the mistake itself","Register the error but choose not to address it — keeping the peace feels more important"],
-    GREEN:["Find yourself drawn toward the new opportunity — someone else will probably sort the other thing","Get distracted by the possibility that\'s just appeared — the mistake will likely resolve itself","Drift toward the new thing — the energy there is more compelling than the friction here","Move toward the opportunity almost without deciding to — it just pulls your attention","Lose focus on the companion\'s mistake as the new option captures your imagination"]
+    RED:["Walk over and address the mistake directly — the opportunity can wait","Deal with the problem in front of you before looking at anything else","Speak up immediately — you don't let clear errors go unaddressed","Handle the issue with your companion first — new opportunities don't require you to ignore what's wrong","Point out the mistake without hesitation — that's what you'd want someone to do for you"],
+    PURPLE:["Watch a little longer to make sure you've read the situation correctly before saying anything","Observe carefully — you want to be certain of what you're seeing before you act","Take another moment to verify your read on the mistake before intervening","Hold off until you're sure — acting on a misread would cause more harm than good","Study the situation for a moment longer before deciding whether to step in"],
+    BLUE:["Notice the mistake but hold back — you don't want to embarrass them or create tension","See it, but stay quiet — the relationship matters more than being right in this moment","Hesitate to say anything — the social cost feels too high right now","Let it go for now — bringing it up feels like it would do more damage than the mistake itself","Register the error but choose not to address it — keeping the peace feels more important"],
+    GREEN:["Find yourself drawn toward the new opportunity — someone else will probably sort the other thing","Get distracted by the possibility that's just appeared — the mistake will likely resolve itself","Drift toward the new thing — the energy there is more compelling than the friction here","Move toward the opportunity almost without deciding to — it just pulls your attention","Lose focus on the companion's mistake as the new option captures your imagination"]
   },
   Q15:{
-    RED:["Point out what needs to improve and offer a clear path to fix it","Name the gap directly and give them something concrete to work on","Tell them honestly what\'s not working and show them how to correct it","Give them the straightforward feedback they need to get back on track","Address the performance gap head-on — vague reassurance won\'t help them"],
-    PURPLE:["Quietly investigate what might be causing the issue before you do anything","Research what\'s actually happening before you offer any kind of response","Observe and gather information — you want to understand the root cause before you act","Hold back your reaction until you know whether you\'ve correctly identified the problem","Diagnose first — you won\'t intervene until you understand what you\'re actually dealing with"],
-    BLUE:["Pull them aside and check in on how they\'re really doing","Ask them what\'s going on — their state matters more than their output right now","Find a quiet moment to connect with them before addressing the performance","Make sure they feel heard and seen before you try to fix anything","Focus on the person first — the struggle usually has a human cause underneath it"],
-    GREEN:["Bring fresh energy to the whole group to lift the mood for everyone","Shift the group\'s energy — sometimes the problem is the environment, not the individual","Inject some momentum and positivity into the group dynamic","Raise the collective energy — a rising tide lifts everyone, including them","Change the tone for the group — your instinct is to reset the atmosphere rather than single anyone out"]
+    RED:["Point out what needs to improve and offer a clear path to fix it","Name the gap directly and give them something concrete to work on","Tell them honestly what's not working and show them how to correct it","Give them the straightforward feedback they need to get back on track","Address the performance gap head-on — vague reassurance won't help them"],
+    PURPLE:["Quietly investigate what might be causing the issue before you do anything","Research what's actually happening before you offer any kind of response","Observe and gather information — you want to understand the root cause before you act","Hold back your reaction until you know whether you've correctly identified the problem","Diagnose first — you won't intervene until you understand what you're actually dealing with"],
+    BLUE:["Pull them aside and check in on how they're really doing","Ask them what's going on — their state matters more than their output right now","Find a quiet moment to connect with them before addressing the performance","Make sure they feel heard and seen before you try to fix anything","Focus on the person first — the struggle usually has a human cause underneath it"],
+    GREEN:["Bring fresh energy to the whole group to lift the mood for everyone","Shift the group's energy — sometimes the problem is the environment, not the individual","Inject some momentum and positivity into the group dynamic","Raise the collective energy — a rising tide lifts everyone, including them","Change the tone for the group — your instinct is to reset the atmosphere rather than single anyone out"]
   },
   Q16:{
-    RED:["Review progress and plan tomorrow\'s priorities","Use the time to get ahead — map the next stage and prepare for what\'s coming","Get your gear in order and think through the plan for the coming days","Spend it productively — rest and preparation are the same thing for you","Turn the downtime into an advantage by planning ahead"],
-    PURPLE:["Read, research, or catch up on something you\'ve been meaning to study","Use the quiet time to go deeper on something you\'ve been thinking about","Find a good text and spend the afternoon actually understanding something","Take the opportunity to learn — you\'ve been waiting for the space to do this","Settle into a long stretch of reading and let your mind wander through ideas"],
-    BLUE:["Spend it with people — a shared meal, a real conversation, time to reconnect","Use it to strengthen the bonds in the group — this is exactly when connection matters","Find the person who\'s been hardest to reach lately and actually talk to them","Invest the time in the relationships that make the campaign worth running","Gather the group for something that isn\'t about the mission — just being together"],
+    RED:["Review progress and plan tomorrow's priorities","Use the time to get ahead — map the next stage and prepare for what's coming","Get your gear in order and think through the plan for the coming days","Spend it productively — rest and preparation are the same thing for you","Turn the downtime into an advantage by planning ahead"],
+    PURPLE:["Read, research, or catch up on something you've been meaning to study","Use the quiet time to go deeper on something you've been thinking about","Find a good text and spend the afternoon actually understanding something","Take the opportunity to learn — you've been waiting for the space to do this","Settle into a long stretch of reading and let your mind wander through ideas"],
+    BLUE:["Spend it with people — a shared meal, a real conversation, time to reconnect","Use it to strengthen the bonds in the group — this is exactly when connection matters","Find the person who's been hardest to reach lately and actually talk to them","Invest the time in the relationships that make the campaign worth running","Gather the group for something that isn't about the mission — just being together"],
     GREEN:["Wander and follow whatever feels interesting in the moment","Explore without a plan — let the afternoon take you wherever it goes","Use the freedom to go somewhere unexpected and see what you find","Follow your curiosity wherever it leads — no agenda, no destination","Let yourself be pulled in different directions — this is exactly what restoration looks like for you"]
   },
   Q17:{
-    RED:["Quickly identify the next objective — momentum matters more than celebration","Look ahead immediately — success is a platform, not a destination","Take a breath, note the win, and start moving toward what\'s next","Acknowledge it briefly, then redirect the group\'s energy toward the next challenge","Register the achievement and then ask what comes next — there\'s always a next"],
+    RED:["Quickly identify the next objective — momentum matters more than celebration","Look ahead immediately — success is a platform, not a destination","Take a breath, note the win, and start moving toward what's next","Acknowledge it briefly, then redirect the group's energy toward the next challenge","Register the achievement and then ask what comes next — there's always a next"],
     PURPLE:["Analyse what actually worked so you can repeat it with precision next time","Take time to understand the win — what factors led to it and how to replicate them","Document what happened and why, so the success can be built on rather than just celebrated","Break down the outcome to understand the mechanism — luck or method makes a big difference","Study the result carefully before the group moves on — knowledge compounds"],
-    BLUE:["Make sure everyone feels celebrated and genuinely seen in the success","Focus on the people — who showed up, who carried weight, who needs to hear they did well","Create the moment where the group actually feels what they\'ve accomplished together","Ensure nobody\'s contribution gets missed in the rush to move on","Hold the space for real acknowledgment — the group earned more than a quick nod"],
-    GREEN:["Start imagining what you could attempt now that this has opened up","Let your mind run ahead — what\'s now possible that wasn\'t before?","Use the success as a launching point for something bigger or completely different","Feel the energy of the win and immediately start thinking about where it could lead","Get excited about what this changes — a door has opened and you\'re already looking through it"]
+    BLUE:["Make sure everyone feels celebrated and genuinely seen in the success","Focus on the people — who showed up, who carried weight, who needs to hear they did well","Create the moment where the group actually feels what they've accomplished together","Ensure nobody's contribution gets missed in the rush to move on","Hold the space for real acknowledgment — the group earned more than a quick nod"],
+    GREEN:["Start imagining what you could attempt now that this has opened up","Let your mind run ahead — what's now possible that wasn't before?","Use the success as a launching point for something bigger or completely different","Feel the energy of the win and immediately start thinking about where it could lead","Get excited about what this changes — a door has opened and you're already looking through it"]
   },
   Q18:{
-    RED:["Brief them on the plan and assign them a clear role as quickly as possible","Get them functional fast — the group needs them contributing, not just observing","Define their responsibilities clearly and integrate them into the existing structure","Tell them what\'s needed from them and how to deliver it — efficiently","Make sure they understand their role before anything else happens"],
+    RED:["Brief them on the plan and assign them a clear role as quickly as possible","Get them functional fast — the group needs them contributing, not just observing","Define their responsibilities clearly and integrate them into the existing structure","Tell them what's needed from them and how to deliver it — efficiently","Make sure they understand their role before anything else happens"],
     PURPLE:["Give them the full picture of context and history before they start","Walk them through everything they need to know to understand the situation properly","Front-load all the information so they can make informed decisions from the beginning","Bring them up to speed completely — gaps in context cause problems later","Take the time to ensure they actually understand the mission before asking them to contribute"],
-    BLUE:["Introduce them to everyone and help them feel at ease before anything practical happens","Make sure they feel welcomed and included before they\'re asked to perform","Focus on the person first — belonging comes before contribution","Create the conditions where they feel safe enough to actually show what they can do","Take the social side seriously — a new person who feels unseen can\'t give you their best"],
-    GREEN:["See what they bring and find a way to fold their strengths into what you\'re doing","Get curious about their capabilities and look for how their perspective adds something new","Explore what they\'re good at and create space for that to be useful","Find the angle they bring that nobody else in the group has","Treat them as an asset to be discovered — what do they see that the rest of you don\'t?"]
+    BLUE:["Introduce them to everyone and help them feel at ease before anything practical happens","Make sure they feel welcomed and included before they're asked to perform","Focus on the person first — belonging comes before contribution","Create the conditions where they feel safe enough to actually show what they can do","Take the social side seriously — a new person who feels unseen can't give you their best"],
+    GREEN:["See what they bring and find a way to fold their strengths into what you're doing","Get curious about their capabilities and look for how their perspective adds something new","Explore what they're good at and create space for that to be useful","Find the angle they bring that nobody else in the group has","Treat them as an asset to be discovered — what do they see that the rest of you don't?"]
   },
   Q19:{
-    RED:["Push through — remind the group of the goal and keep moving","Reconnect everyone to what they\'re fighting for and drive forward","Keep the group moving — stopping now costs more than the effort required to continue","Use the objective to pull the team through — purpose is stronger than fatigue","Name the goal clearly and ask the group to give you one more push toward it"],
-    PURPLE:["Call a proper pause to assess the situation with a clear head","Stop and think before doing anything — the next move needs to be the right one","Take stock of where you are before deciding how to proceed","Use the pause deliberately — you won\'t act until you understand what\'s actually needed","Create space for clear thinking before committing to a direction"],
+    RED:["Push through — remind the group of the goal and keep moving","Reconnect everyone to what they're fighting for and drive forward","Keep the group moving — stopping now costs more than the effort required to continue","Use the objective to pull the team through — purpose is stronger than fatigue","Name the goal clearly and ask the group to give you one more push toward it"],
+    PURPLE:["Call a proper pause to assess the situation with a clear head","Stop and think before doing anything — the next move needs to be the right one","Take stock of where you are before deciding how to proceed","Use the pause deliberately — you won't act until you understand what's actually needed","Create space for clear thinking before committing to a direction"],
     BLUE:["Focus on the people — listen, connect, and restore the trust in the group","Go to each person and make sure they feel heard before you do anything else","Tend the relationships first — depleted trust is a bigger problem than depleted energy","Create a moment of genuine connection before asking anything more of the group","Put the mission on hold for a moment and focus on the humans who have to carry it"],
-    GREEN:["Shake things up — change the environment, the pace, or the approach entirely","Do something different — same conditions are producing the same problem","Find the thing that changes the energy in the room and do that","Break the pattern — whatever made things this way, it won\'t fix itself with more of the same","Disrupt the dynamic — a change of scene, approach, or frame often does more than any pep talk"]
+    GREEN:["Shake things up — change the environment, the pace, or the approach entirely","Do something different — same conditions are producing the same problem","Find the thing that changes the energy in the room and do that","Break the pattern — whatever made things this way, it won't fix itself with more of the same","Disrupt the dynamic — a change of scene, approach, or frame often does more than any pep talk"]
   },
   Q20:{
-    RED:["The one driving the group toward the finish line","The one who sets the pace and keeps everyone pointed at the goal","The one who makes sure forward motion doesn\'t stop","The one who converts energy into progress — relentlessly","The one who leads from the front and pulls the group forward"],
-    PURPLE:["The one who knows the most and prevents the group from making avoidable mistakes","The one who brings the depth that keeps the group from operating on bad assumptions","The one who has thought through the problem more carefully than anyone else","The one whose expertise protects the group from errors they couldn\'t see coming","The one the group turns to when they need to know if they\'re thinking about this correctly"],
-    BLUE:["The one who holds the group together when things get hard","The one who keeps relationships intact when pressure would otherwise break them","The one whose presence means nobody feels alone in the difficulty","The one who ensures the group stays a group, not just a collection of individuals","The one people come to when they\'re struggling — and the one who always has time for that"],
-    GREEN:["The one who sees what\'s possible and keeps the energy from going flat","The one who prevents the group from becoming rigid or losing sight of what else might be available","The one who brings the ideas that open up possibilities others hadn\'t considered","The one whose energy and vision stop the group from settling for the obvious","The one who keeps the future feeling larger than the present problem"]
+    RED:["The one driving the group toward the finish line","The one who sets the pace and keeps everyone pointed at the goal","The one who makes sure forward motion doesn't stop","The one who converts energy into progress — relentlessly","The one who leads from the front and pulls the group forward"],
+    PURPLE:["The one who knows the most and prevents the group from making avoidable mistakes","The one who brings the depth that keeps the group from operating on bad assumptions","The one who has thought through the problem more carefully than anyone else","The one whose expertise protects the group from errors they couldn't see coming","The one the group turns to when they need to know if they're thinking about this correctly"],
+    BLUE:["The one who holds the group together when things get hard","The one who keeps relationships intact when pressure would otherwise break them","The one whose presence means nobody feels alone in the difficulty","The one who ensures the group stays a group, not just a collection of individuals","The one people come to when they're struggling — and the one who always has time for that"],
+    GREEN:["The one who sees what's possible and keeps the energy from going flat","The one who prevents the group from becoming rigid or losing sight of what else might be available","The one who brings the ideas that open up possibilities others hadn't considered","The one whose energy and vision stop the group from settling for the obvious","The one who keeps the future feeling larger than the present problem"]
   },
 };
 
@@ -611,7 +610,7 @@ const WHISPER_MAP = {
     RED:"your drive for efficiency can leave people feeling they were the obstacle, not the answer",
     PURPLE:"your need for accuracy can create pressure that slows a group that needed to move",
     BLUE:"absorbing every slight on behalf of others is real care — and a real cost over time",
-    GREEN:"your resistance to fixed plans can read as resistance to the group, even when it isn\'t"
+    GREEN:"your resistance to fixed plans can read as resistance to the group, even when it isn't"
   },
   Q09:{
     RED:"under pressure, your focus can override the signals telling you the direction itself needs revisiting",
@@ -622,11 +621,11 @@ const WHISPER_MAP = {
   Q11:{
     RED:"your structured approach can become inflexible when conditions shift and the plan needs to bend",
     PURPLE:"your need for deep focus means collaborative or fast-moving environments cost you more than most",
-    BLUE:"your energy is relational — environments without connection don\'t just feel flat, they drain you",
+    BLUE:"your energy is relational — environments without connection don't just feel flat, they drain you",
     GREEN:"the chapters that require staying on one thing rather than moving to the next cost you the most"
   },
   Q03:{
-    RED:"moving fast toward the problem can mean arriving before you understand what you\'re actually solving",
+    RED:"moving fast toward the problem can mean arriving before you understand what you're actually solving",
     PURPLE:"understanding fully before acting is right — but the situation keeps moving while you read it",
     BLUE:"going to the person before the problem means the practical issue keeps running while you tend the human one",
     GREEN:"exploring possibilities before narrowing can create noise when the group needed clarity"
@@ -641,46 +640,46 @@ const WHISPER_MAP = {
     RED:"calling the play before others have processed it creates a plan the group follows without having chosen",
     PURPLE:"a genuinely novel crisis can leave you without the framework you rely on",
     BLUE:"holding the group together during a crisis can delay the decisive action the moment also needs",
-    GREEN:"improvising under pressure can scatter the group\'s focus when they needed a single clear direction"
+    GREEN:"improvising under pressure can scatter the group's focus when they needed a single clear direction"
   },
   Q02:{
     RED:"when the goal is what drives you, the people and the journey can become invisible along the way",
     PURPLE:"when learning is your fuel, output can slow while understanding is still forming",
-    BLUE:"when the group\'s energy drops, so does yours — your stamina is relational and that is also its exposure",
+    BLUE:"when the group's energy drops, so does yours — your stamina is relational and that is also its exposure",
     GREEN:"familiar terrain genuinely drains you, and the people counting on your consistency in it feel that"
   },
   Q10:{
     RED:"your structured rhythm produces output until conditions change — then the rigidity arrives as a cost",
     PURPLE:"your dependence on deep focus means fast-moving environments extract more from you than from others",
-    BLUE:"shallow or transactional environments don\'t just fail to restore you — they quietly deplete you",
+    BLUE:"shallow or transactional environments don't just fail to restore you — they quietly deplete you",
     GREEN:"campaigns that require staying on one track test you in ways that others around you may not see"
   },
   Q19:{
-    RED:"leading from the front can open a gap between you and the group\'s actual capacity without either of you noticing",
-    PURPLE:"being the knowledge anchor creates dependency — if you\'re wrong or unavailable, the group has no fallback",
+    RED:"leading from the front can open a gap between you and the group's actual capacity without either of you noticing",
+    PURPLE:"being the knowledge anchor creates dependency — if you're wrong or unavailable, the group has no fallback",
     BLUE:"holding the group together accumulates in a place that others rarely see or tend",
     GREEN:"keeping possibility alive can resist the narrowing that would have let the group actually finish something"
   },
   Q00:{
-    RED:"planning before moving can mean others are already in the field while you\'re still drawing the map",
+    RED:"planning before moving can mean others are already in the field while you're still drawing the map",
     PURPLE:"researching before committing can create distance between intention and action that others move into",
     BLUE:"checking everyone in before stepping can hold up progress while consensus slowly forms",
     GREEN:"trusting the road to reveal itself can leave others without the map they needed to keep up"
   },
   Q01:{
     RED:"cutting through indecision can leave people who needed more time feeling overridden rather than led",
-    PURPLE:"waiting until you\'re certain can mean the room has moved on by the time your contribution arrives",
-    BLUE:"feeling the room before moving it can mean some moments needed a push that didn\'t come",
+    PURPLE:"waiting until you're certain can mean the room has moved on by the time your contribution arrives",
+    BLUE:"feeling the room before moving it can mean some moments needed a push that didn't come",
     GREEN:"offering a third path when the group needed to commit to one of the first two can reopen what was closing"
   },
   Q04:{
-    RED:"moving toward the problem first can mean you arrive before you understand what you\'re solving",
+    RED:"moving toward the problem first can mean you arrive before you understand what you're solving",
     PURPLE:"reading the scene fully before acting takes time that the situation may not have had",
     BLUE:"going to the person before the problem means the practical issue keeps moving while you tend the human one",
     GREEN:"generating possibilities before narrowing creates noise when the group needed a clear answer"
   },
   Q08:{
-    RED:"drilling the same approach until it\'s reliable can make you slower to adapt when conditions fundamentally change",
+    RED:"drilling the same approach until it's reliable can make you slower to adapt when conditions fundamentally change",
     PURPLE:"needing the theory before acting delays output in situations that reward experimentation",
     BLUE:"needing someone else in the learning makes independent skill-building genuinely harder",
     GREEN:"feeling your way through produces real understanding that can be hard for others to follow"
@@ -689,7 +688,7 @@ const WHISPER_MAP = {
     RED:"addressing problems directly can skip the relational groundwork that makes people actually willing to change",
     PURPLE:"observing carefully before acting can tip into waiting when the moment needed earlier intervention",
     BLUE:"holding back to protect the relationship means the unsaid things accumulate and come out sideways",
-    GREEN:"turning toward what\'s next can leave the unresolved thing behind — and others are still in it"
+    GREEN:"turning toward what's next can leave the unresolved thing behind — and others are still in it"
   },
   Q14:{
     RED:"direct coaching can skip the emotional readiness that makes feedback actually land",
@@ -700,13 +699,13 @@ const WHISPER_MAP = {
   Q16:{
     RED:"moving to the next objective before celebrating can quietly erode the motivation that got you here",
     PURPLE:"understanding the win before moving on takes time the situation may reward moving through faster",
-    BLUE:"making sure everyone feels seen can delay the group\'s return to momentum when timing matters",
+    BLUE:"making sure everyone feels seen can delay the group's return to momentum when timing matters",
     GREEN:"already looking through the next door can leave people still standing in the one you just came through"
   },
   Q17:{
     RED:"assigning a role before someone feels welcomed can produce compliance without real commitment",
-    PURPLE:"front-loading full context can overwhelm a newcomer before they\'ve found their footing",
-    BLUE:"letting belonging come before contribution can stretch beyond the group\'s capacity to wait",
+    PURPLE:"front-loading full context can overwhelm a newcomer before they've found their footing",
+    BLUE:"letting belonging come before contribution can stretch beyond the group's capacity to wait",
     GREEN:"exploring what a newcomer brings can leave them without the clear structure they needed"
   },
   Q18:{
@@ -724,7 +723,7 @@ const WHISPER_MAP = {
   Q15:{
     RED:"rest that doubles as planning means you carry the last campaign into the next without fully putting it down",
     PURPLE:"solitary recovery can read as unavailability to people who needed you present",
-    BLUE:"needing connection to restore means isolation costs you in ways other people\'s solitude does not",
+    BLUE:"needing connection to restore means isolation costs you in ways other people's solitude does not",
     GREEN:"resetting through exploration can leave practical needs unattended until they become harder to ignore"
   },
 };
@@ -855,6 +854,7 @@ const FRICTION_Q_MAP = {
   },
 };
 // Trait descriptors used in The Price influence sentences
+// eslint-disable-next-line no-unused-vars
 const COLOR_DESCRIPTORS = {
   RED:    "decisive streak",
   PURPLE: "analytical depth",
@@ -1303,6 +1303,12 @@ async function generateCharacterSheetPDF(playerName, topColor, myClass, scores, 
   }
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ orientation:"portrait", unit:"mm", format:"a4" });
+  const cd = data.classData ? data.classData[myClass] : null;
+  const myAbilities = cd ? cd.abilities : [];
+  const singleLockedName = cd ? cd.locked : null;
+  const myStrengths = cd ? cd.strengths : (data.strengths||[]);
+  const myBlindspot = cd ? cd.blindspot : (data.blindspot||'');
+  const myQuest = cd ? cd.quest : (data.quest||'');
   const W = 210; const H = 297;
 
   function hexRGB(hex) {
@@ -1487,12 +1493,6 @@ async function generateCharacterSheetPDF(playerName, topColor, myClass, scores, 
   doc.setTextColor(cr,cg,cb);
   doc.text("CLASS ABILITIES", 10, 206);
 
-  const cd = data.classData ? data.classData[myClass] : null;
-  const myAbilities = cd ? cd.abilities : [];
-  const singleLockedName = cd ? cd.locked : null;
-  const myStrengths = cd ? cd.strengths : (data.strengths||[]);
-  const myBlindspot = cd ? cd.blindspot : (data.blindspot||'');
-  const myQuest = cd ? cd.quest : (data.quest||'');
 
   myAbilities.forEach((ab, i) => {
     const isLocked = singleLockedName === ab.name;
@@ -1566,6 +1566,7 @@ export default function App(){
   const [cycleColor,setCycleColor]=useState("#C0392B");
   const [cycleCrest,setCycleCrest]=useState("RED");
   const [shuffleKey,setShuffleKey]=useState(0);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const QUESTIONS=useMemo(()=>buildShuffledQuestions(),[shuffleKey]);
 
   // ── Google Sheets webhook URL — paste your Apps Script Web App URL here ──
@@ -1805,7 +1806,6 @@ export default function App(){
           ...baseAbilities.filter(ab=>!isAbilityLocked(ab)).sort((a,b)=>scoreAbility(b)-scoreAbility(a)),
           ...baseAbilities.filter(ab=>isAbilityLocked(ab)),
         ];
-        const displayLocked=isTie&&dualProfile?dualProfile.abilities.filter(a=>a.locked).map(a=>a.name):(singleLockedName?[singleLockedName]:[]);
         return(
           <div style={{maxWidth:680,width:"100%",animation:"fadeIn 0.8s ease"}}>
             <style>{`@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}} @keyframes revealIn{from{opacity:0;transform:scale(0.96) translateY(24px)}to{opacity:1;transform:none}} @keyframes runeReveal{0%{opacity:0;transform:scale(0.5) rotate(-20deg)}60%{transform:scale(1.3) rotate(5deg)}100%{opacity:1;transform:scale(1) rotate(0deg)}} @keyframes runeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}} @keyframes glow{0%,100%{box-shadow:0 0 20px rgba(183,149,11,0.3)}50%{box-shadow:0 0 50px rgba(183,149,11,0.6)}}`}</style>
