@@ -73,178 +73,121 @@ const CLASSES = {
     color:"#C0392B", light:"#FADBD8", glow:"rgba(192,57,43,0.3)", hex:"#C0392B",
     label:"RED BRAIN", classes:["Fighter","Monk","Barbarian"], thresholds:[9,12,20],
     flavor:"The machine that never stops — precise, powerful, and relentless.",
+    strengths:["Structured problem-solving — you cut through confusion with clear, sequential thinking","Leading by example — your discipline inspires others without needing to demand it"],
+    blindspot:"You move fast and can leave people behind emotionally. Slow down before deciding when others are involved.",
+    quest:"This week, set one goal with 3 specific steps and share it with someone who can hold you accountable.",
     symbol:"⚔", rune:"ᚱ",
-    // Per-class: strengths, blindspot, quest, abilities escalate with rank
-    classData:{
-      Fighter:{
-        strengths:["You move quickly from problem to solution — your decisiveness stops groups from spinning in circles","You lead by example: when you commit, others follow"],
-        blindspot:"The price of moving fast is that the people behind you pay it. Your decisiveness clears the road — but those who needed more time to find their footing can be left behind without either of you noticing.",
-        quest:"This week, before acting on a decision, name one person it affects and consider their experience first.",
-        abilities:[
-          {name:"Battle Plan",desc:"Set a clear step-by-step goal and rally others around it.",eq:"Structured problem-solving"},
-          {name:"Shield of Routine",desc:"Use familiar structure to stay steady when pressure builds.",eq:"Self-regulation"},
-          {name:"Precision Strike",desc:"Cut through noise and distraction with single-minded focus.",eq:"Attention control"},
-          {name:"Discipline Surge",desc:"Inspire others by modelling the consistency you demand of yourself.",eq:"Leading by example"},
-        ],
-        locked:"Discipline Surge",
-      },
-      Monk:{
-        strengths:["Your discipline is quiet but visible — you raise the bar just by showing up","You stay composed when others escalate, and that steadiness changes the room"],
-        blindspot:"The price of high standards is the quiet weight they put on everyone around you. Your discipline is real — but it costs the people who can feel your assessment of them, even when you never say a word.",
-        quest:"This week, catch yourself when you're silently assessing someone else's effort — and say something supportive instead.",
-        abilities:[
-          {name:"Breath of Focus",desc:"Regulate your own emotional state before addressing group conflict.",eq:"Emotional regulation"},
-          {name:"Flow State",desc:"Move through structure so naturally that others follow your rhythm without being asked.",eq:"Adaptability within structure"},
-          {name:"Inner Balance",desc:"Respond to provocation with calm logic rather than reaction.",eq:"Conflict management"},
-          {name:"Routine Kata",desc:"Teach others how to build the habits that made you consistent.",eq:"Coaching consistency"},
-        ],
-        locked:"Routine Kata",
-      },
-      Barbarian:{
-        strengths:["Your intensity is contagious — when you're committed, the group feels it and rises","You convert frustration directly into fuel, where others get stuck you get moving"],
-        blindspot:"The price of running at full power is that everything around you runs hotter too — including the friction, the pressure, and the fear of falling short. The people who keep up with you pay a cost they may never name.",
-        quest:"This week, after making a strong push, stop and explicitly ask the group how they're doing — and mean it.",
-        abilities:[
-          {name:"Rage Channel",desc:"Transform frustration into a focused burst of productive momentum.",eq:"Emotional redirection"},
-          {name:"Grounded Strength",desc:"Stay anchored to your goal even when everything around you is uncertain.",eq:"Resilience"},
-          {name:"Battle Rhythm",desc:"Use relentless repetition to break through resistance — yours and the group's.",eq:"Stress management"},
-          {name:"Momentum Drive",desc:"Carry the team forward on sheer force of will when no one else has enough left.",eq:"Motivation"},
-        ],
-        locked:"Momentum Drive",
-      },
+    abilities:{
+      Fighter:[
+        {name:"Battle Plan",desc:"Gain clarity by setting a step-by-step goal.",eq:"Structured problem-solving"},
+        {name:"Shield of Routine",desc:"Reduce stress by sticking to familiar patterns.",eq:"Self-regulation"},
+        {name:"Precision Strike",desc:"Cut through distractions with focus.",eq:"Attention control"},
+        {name:"Discipline Surge",desc:"Inspire others by modelling consistency.",eq:"Leading by example"},
+      ],
+      Monk:[
+        {name:"Breath of Focus",desc:"Calm emotions through mindful breathing.",eq:"Emotional regulation"},
+        {name:"Flow State",desc:"Enter routine seamlessly, boosting efficiency.",eq:"Adaptability within structure"},
+        {name:"Inner Balance",desc:"Deflect conflict with calm logic.",eq:"Conflict management"},
+        {name:"Routine Kata",desc:"Teach others structured habits.",eq:"Coaching consistency"},
+      ],
+      Barbarian:[
+        {name:"Rage Channel",desc:"Transform frustration into productive energy.",eq:"Emotional redirection"},
+        {name:"Grounded Strength",desc:"Stay rooted in goals despite chaos.",eq:"Resilience"},
+        {name:"Battle Rhythm",desc:"Use repetition to stabilise emotions.",eq:"Stress management"},
+        {name:"Momentum Drive",desc:"Push team forward with sheer determination.",eq:"Motivation"},
+      ],
     },
+    lockedByClass:{"Fighter":"Discipline Surge","Monk":"Routine Kata","Barbarian":"Momentum Drive"},
   },
   PURPLE: {
     color:"#6C3483", light:"#E8DAEF", glow:"rgba(108,52,131,0.3)", hex:"#6C3483",
     label:"PURPLE BRAIN", classes:["Wizard","Artificer","Rogue"], thresholds:[9,12,20],
     flavor:"The vast library — every answer is already inside, waiting to be found.",
-    symbol:"✦", rune:"ᚦ",
-    classData:{
-      Wizard:{
-        strengths:["You bring clarity when others bring panic — your structured thinking becomes the group's anchor","You gather information before acting, which means your moves tend to hold up"],
-        blindspot:"The price of precision is time — and time is what situations rarely have enough of. Your certainty, when it arrives, is worth it. What it costs is the ground others covered while you were still gathering.",
-        quest:"This week, identify one decision you've been deferring and commit to it within 24 hours with the information you already have.",
-        abilities:[
-          {name:"Knowledge is Power",desc:"Calm your own anxiety by replacing assumptions with facts.",eq:"Cognitive reframing"},
-          {name:"Spell of Clarity",desc:"Break complex emotional situations into understandable parts.",eq:"Emotional labelling"},
-          {name:"Arcane Archive",desc:"Draw on past experience to recognise patterns others miss.",eq:"Memory-based learning"},
-          {name:"Magic of Logic",desc:"Replace the group's uncertainty with structured reasoning.",eq:"Reducing ambiguity"},
-        ],
-        locked:"Arcane Archive",
-      },
-      Artificer:{
-        strengths:["You build systems and frameworks that outlast the moment — your solutions keep working after you've left the room","You stay analytical when the group gets emotional, which is exactly when analytical thinking is most needed"],
-        blindspot:"The price of building airtight systems is that people have to live inside them. Your frameworks hold — but the humans they're built for are messier than the logic, and that gap is yours to close.",
-        quest:"This week, take one of your existing frameworks and ask someone else how it actually works for them — listen without defending it.",
-        abilities:[
-          {name:"Tinker Insight",desc:"Design practical emotional tools that help the group manage themselves.",eq:"Creative problem-solving"},
-          {name:"Blueprint Mind",desc:"Map structured solutions to team conflicts before they escalate.",eq:"Planning"},
-          {name:"Adaptive Gadget",desc:"Modify your approach when the current method stops working.",eq:"Flexibility"},
-          {name:"Logic Engine",desc:"Hold the group's reasoning steady when emotions are running high.",eq:"Emotional grounding"},
-        ],
-        locked:"Logic Engine",
-      },
-      Rogue:{
-        strengths:["You read rooms with precision — you know what's actually happening beneath the surface before anyone speaks","Your analytical edge gives you influence in group dynamics that others don't notice you exercising"],
-        blindspot:"The price of seeing clearly is the distance it creates. When you can read a room before anyone speaks, genuine surprise becomes rare — and so does the kind of trust that only forms when you let your guard down.",
-        quest:"This week, share something genuine about your own uncertainty with someone you'd normally only observe.",
-        abilities:[
-          {name:"Silent Observation",desc:"Read the full emotional landscape of a room before committing to a move.",eq:"Empathy through observation"},
-          {name:"Calculated Risk",desc:"Make high-stakes decisions by mapping outcomes with analytical precision.",eq:"Decision-making"},
-          {name:"Shadow Adaptation",desc:"Adjust your communication style fluidly to match who you're with.",eq:"Social awareness"},
-          {name:"Emotional Sleight",desc:"Redirect tension, defuse conflict, or shift group energy with precise timing.",eq:"Defusing conflict"},
-        ],
-        locked:"Emotional Sleight",
-      },
+    strengths:["Cognitive reframing — you replace anxiety with structured reasoning when others spiral","Emotional grounding — you keep yourself and your decisions steady under pressure"],
+    blindspot:"You wait for certainty that rarely comes. Practice deciding with 80% of the information.",
+    quest:"Find one situation this week where you're overthinking and commit to a decision within 10 minutes.",
+    symbol:"✦", rune:"ᛈ",
+    abilities:{
+      Wizard:[
+        {name:"Knowledge is Power",desc:"Calm anxiety by gathering facts.",eq:"Cognitive reframing"},
+        {name:"Spell of Clarity",desc:"Simplify complex emotions into understandable steps.",eq:"Emotional labelling"},
+        {name:"Arcane Archive",desc:"Recall lessons to solve current problems.",eq:"Memory-based learning"},
+        {name:"Magic of Logic",desc:"Replace uncertainty with structured reasoning.",eq:"Reducing ambiguity"},
+      ],
+      Artificer:[
+        {name:"Tinker Insight",desc:"Build emotional tools to solve problems.",eq:"Creative problem-solving"},
+        {name:"Blueprint Mind",desc:"Map out structured solutions for team conflicts.",eq:"Planning"},
+        {name:"Adaptive Gadget",desc:"Invent new coping strategies.",eq:"Flexibility"},
+        {name:"Logic Engine",desc:"Keep emotions steady with rational analysis.",eq:"Emotional grounding"},
+      ],
+      Rogue:[
+        {name:"Silent Observation",desc:"Read the room before acting.",eq:"Empathy through observation"},
+        {name:"Calculated Risk",desc:"Manage fear by weighing outcomes.",eq:"Decision-making"},
+        {name:"Shadow Adaptation",desc:"Blend into group dynamics smoothly.",eq:"Social awareness"},
+        {name:"Emotional Sleight",desc:"Redirect tension with humour or wit.",eq:"Defusing conflict"},
+      ],
     },
+    lockedByClass:{"Wizard":"Arcane Archive","Artificer":"Logic Engine","Rogue":"Emotional Sleight"},
   },
   BLUE: {
     color:"#1A5276", light:"#D6EAF8", glow:"rgba(26,82,118,0.3)", hex:"#1A5276",
     label:"BLUE BRAIN", classes:["Healer","Bard","Champion"], thresholds:[9,12,20],
     flavor:"The warm hearth — steady, safe, and the reason people stay.",
+    strengths:["Active listening — you make people feel genuinely seen, which builds trust faster than any skill","Group alignment — you sense when a team is drifting and pull people back toward shared purpose"],
+    blindspot:"You absorb others' stress and avoid conflict to keep peace. Your silence costs you more than your voice would.",
+    quest:"This week, say something honest that you've been holding back — with care, but without softening it away.",
     symbol:"◈", rune:"ᛒ",
-    classData:{
-      Healer:{
-        strengths:["People feel genuinely heard around you — that alone builds more trust than most skills","You absorb the group's emotional temperature and respond to what it actually needs"],
-        blindspot:"The price of keeping the peace is paid in the things left unsaid. Every silence that protected the group from discomfort also protected a problem from being solved — and over time, both accumulate.",
-        quest:"This week, say something honest that you've been holding back — with care, but without softening it away.",
-        abilities:[
-          {name:"Empathy Touch",desc:"Meet people in their emotional reality before trying to move them.",eq:"Empathy"},
-          {name:"Calm Aura",desc:"Reduce group stress by holding your own steadiness.",eq:"Emotional contagion"},
-          {name:"Listening Ward",desc:"Create safety through full, undivided attention.",eq:"Active listening"},
-          {name:"Shared Burden",desc:"Consciously absorb some of the team's emotional load to free their capacity.",eq:"Supportiveness"},
-        ],
-        locked:"Shared Burden",
-      },
-      Bard:{
-        strengths:["You shift group energy through presence, story, and warmth — people don't know why they feel better, but you do","You build relational bridges between people who wouldn't naturally connect"],
-        blindspot:"The price of warmth is that the truth sometimes can't find a way through it. People feel good around you — and that feeling can cost them the honest feedback they needed more than the comfort you gave.",
-        quest:"This week, in one conversation, give honest feedback instead of reassurance — even if the moment feels uncomfortable.",
-        abilities:[
-          {name:"Song of Unity",desc:"Shift group mood toward connection through warmth and shared narrative.",eq:"Relationship building"},
-          {name:"Emotional Echo",desc:"Reflect feelings back to validate without fixing or deflecting.",eq:"Empathy validation"},
-          {name:"Performance Shift",desc:"Deliberately reframe group energy through story, humour, or reframing.",eq:"Emotional influence"},
-          {name:"Harmony Chord",desc:"Align people around shared values when the group is pulling apart.",eq:"Group alignment"},
-        ],
-        locked:"Harmony Chord",
-      },
-      Champion:{
-        strengths:["You hold groups together under pressure that would fracture most teams — people stay because of you","Your empathy has edges: you can advocate, confront, and protect, not just support"],
-        blindspot:"The price of holding the group together is carried quietly and almost entirely by you. Every fracture you absorb, every conflict you internalise — it compounds in a place others don't see, because you made it look like nothing.",
-        quest:"This week, name one thing you've been carrying on behalf of the group and put it back in the room — openly.",
-        abilities:[
-          {name:"Shield of Trust",desc:"Build reliability so complete that the group trusts you before the crisis hits.",eq:"Trust-building"},
-          {name:"Voice of Justice",desc:"Speak up for fairness even when it's uncomfortable — especially then.",eq:"Advocacy"},
-          {name:"Team Anchor",desc:"Hold the group's emotional centre when everything else is shifting.",eq:"Stability"},
-          {name:"Inspire Courage",desc:"Name what the group is afraid of and give them permission to face it.",eq:"Motivation through empathy"},
-        ],
-        locked:"Inspire Courage",
-      },
+    abilities:{
+      Healer:[
+        {name:"Empathy Touch",desc:"Heal emotional wounds with compassion.",eq:"Empathy"},
+        {name:"Calm Aura",desc:"Reduce group stress by radiating peace.",eq:"Emotional contagion"},
+        {name:"Listening Ward",desc:"Protect others by listening deeply.",eq:"Active listening"},
+        {name:"Shared Burden",desc:"Absorb some of the team's stress.",eq:"Supportiveness"},
+      ],
+      Bard:[
+        {name:"Song of Unity",desc:"Inspire harmony through shared joy.",eq:"Relationship building"},
+        {name:"Emotional Echo",desc:"Reflect back feelings to validate others.",eq:"Empathy validation"},
+        {name:"Performance Shift",desc:"Change group mood with storytelling.",eq:"Emotional influence"},
+        {name:"Harmony Chord",desc:"Align team values for cohesion.",eq:"Group alignment"},
+      ],
+      Champion:[
+        {name:"Shield of Trust",desc:"Defend teammates by building reliability.",eq:"Trust-building"},
+        {name:"Voice of Justice",desc:"Speak up for fairness.",eq:"Advocacy"},
+        {name:"Team Anchor",desc:"Keep group grounded during stress.",eq:"Stability"},
+        {name:"Inspire Courage",desc:"Boost morale in tough times.",eq:"Motivation through empathy"},
+      ],
     },
+    lockedByClass:{"Healer":"Shared Burden","Bard":"Harmony Chord","Champion":"Inspire Courage"},
   },
   GREEN: {
     color:"#1E8449", light:"#D5F5E3", glow:"rgba(30,132,73,0.3)", hex:"#1E8449",
     label:"GREEN BRAIN", classes:["Ranger","Sorcerer","Druid"], thresholds:[9,12,20],
     flavor:"The lightning storm — electric, unpredictable, and impossible to ignore.",
-    symbol:"❋", rune:"ᛞ",
-    classData:{
-      Ranger:{
-        strengths:["You find paths others don't look for — your instinct for alternatives keeps the group from getting stuck","You adapt your approach quickly when the situation changes"],
-        blindspot:"The price of always moving toward what's next is that some things worth finishing never get finished. The people who believed in your ideas pay that price alongside you.",
-        quest:"Pick one project you have started but not finished and spend one focused hour this week moving it forward — no new ideas allowed.",
-        abilities:[
-          {name:"Trailblazer",desc:"Generate viable alternative routes when the group hits a dead end.",eq:"Creative problem-solving"},
-          {name:"Adapt to Terrain",desc:"Shift your emotional approach to match what the situation actually calls for.",eq:"Adaptability"},
-          {name:"Scout Ahead",desc:"Anticipate what's coming so the group isn't caught off guard.",eq:"Foresight"},
-          {name:"Wild Empathy",desc:"Connect authentically with people whose thinking style is very different from yours.",eq:"Inclusivity"},
-        ],
-        locked:"Scout Ahead",
-      },
-      Sorcerer:{
-        strengths:["Your creative energy is genuinely contagious — ideas flow from you and the group catches fire","You thrive in ambiguity and complexity where others freeze, which makes you invaluable in chaos"],
-        blindspot:"The price of intensity is the trail it leaves. When you move on, the energy moves with you — and what remains is the half-built thing that needed you to stay just a little longer.",
-        quest:"This week, finish something old before starting something new — and notice the resistance that comes up.",
-        abilities:[
-          {name:"Chaos Spark",desc:"Turn a scattered, panicked group into a generative creative force.",eq:"Innovation"},
-          {name:"Emotional Surge",desc:"Channel your own passion to shift the energy of the group around you.",eq:"Emotional contagion"},
-          {name:"Unstructured Flow",desc:"Hold your centre in environments of ambiguity that destabilise others.",eq:"Resilience in uncertainty"},
-          {name:"Magic of Spontaneity",desc:"Produce unexpected solutions at the moment they're most needed.",eq:"Improvisation"},
-        ],
-        locked:"Magic of Spontaneity",
-      },
-      Druid:{
-        strengths:["You see cycles and patterns in groups that others treat as isolated events — your long view is a genuine strategic asset","You bring creative balance: generative and grounding at the same time, which is rare"],
-        blindspot:"The price of holding everything together is that it has to be held somewhere — and that somewhere is usually you. The group draws on your capacity without knowing it has limits. You feel the weight long before anyone else thinks to look.",
-        quest:"This week, name the creative idea or direction you've been circling without committing to — and take one concrete step toward it or let it go.",
-        abilities:[
-          {name:"Nature's Balance",desc:"Restore group equilibrium by reframing the pattern underneath the conflict.",eq:"Reframing"},
-          {name:"Seasonal Adaptation",desc:"Read where the group is in its cycle and respond to what that phase actually needs.",eq:"Emotional awareness"},
-          {name:"Growth Mindset",desc:"Reframe failure as data and model that genuinely — not performatively.",eq:"Resilience"},
-          {name:"Circle of Ideas",desc:"Facilitate collective creativity so that the group's output exceeds what any individual could produce.",eq:"Collaborative innovation"},
-        ],
-        locked:"Circle of Ideas",
-      },
+    strengths:["Creative problem-solving — you find paths others haven't even looked for","Improvisation — when the plan breaks, you're the one who keeps the energy alive"],
+    blindspot:"You start more than you finish. Your ideas are only as powerful as your follow-through.",
+    quest:"Pick one idea you've had for more than a month and take ONE concrete action on it today.",
+    symbol:"❋", rune:"ᚷ",
+    abilities:{
+      Ranger:[
+        {name:"Trailblazer",desc:"Generate new paths when stuck.",eq:"Creative problem-solving"},
+        {name:"Adapt to Terrain",desc:"Adjust emotions to fit context.",eq:"Adaptability"},
+        {name:"Scout Ahead",desc:"Anticipate challenges before they arise.",eq:"Foresight"},
+        {name:"Wild Empathy",desc:"Connect with diverse personalities.",eq:"Inclusivity"},
+      ],
+      Sorcerer:[
+        {name:"Chaos Spark",desc:"Turn scattered ideas into breakthroughs.",eq:"Innovation"},
+        {name:"Emotional Surge",desc:"Harness passion to energise others.",eq:"Emotional contagion"},
+        {name:"Unstructured Flow",desc:"Thrive in ambiguity.",eq:"Resilience in uncertainty"},
+        {name:"Magic of Spontaneity",desc:"Surprise team with creative solutions.",eq:"Improvisation"},
+      ],
+      Druid:[
+        {name:"Nature's Balance",desc:"Restore harmony by shifting perspective.",eq:"Reframing"},
+        {name:"Seasonal Adaptation",desc:"Flow with emotional cycles.",eq:"Emotional awareness"},
+        {name:"Growth Mindset",desc:"Encourage learning from mistakes.",eq:"Resilience"},
+        {name:"Circle of Ideas",desc:"Generate collective creativity.",eq:"Collaborative innovation"},
+      ],
     },
+    lockedByClass:{"Ranger":"Scout Ahead","Sorcerer":"Magic of Spontaneity","Druid":"Circle of Ideas"},
   },
 };
 
@@ -256,177 +199,33 @@ function getClass(data, score) {
 
 // ── Scoring logic with tie detection and minimum threshold ───────────────────
 function resolveResult(scores) {
+  const DUAL_GAP  = 2; // top 2 must be within 2 points to be a dual result
+  const DUAL_MIN  = 7; // second color needs at least 7 answers to count as meaningful
+  const DUAL_SEP  = 2; // second must be at least 2 ahead of third (no 3-way muddle)
+
   const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
   const top    = sorted[0][1];
   const second = sorted[1][1];
   const third  = sorted[2][1];
   const fourth = sorted[3][1];
-  const gap      = top - second;
-  const sep      = second - third;
 
-  // Shapeshifter: all four exactly equal
+  // Shapeshifter: only when all four scores are exactly equal
   if (top === second && second === third && third === fourth) {
-    return { type:"shapeshifter", colors:sorted.map(([c])=>c), scores, influence:[] };
+    return { type: "shapeshifter", colors: sorted.map(([c]) => c), scores };
   }
 
-  // Dual: second must be within 1 point of top, score at least 6, and clearly ahead of 3rd
-  // gap≤1 ensures genuine co-dominance (not just a notable secondary)
-  // second>=6 ensures the second color is genuinely strong, not a scattered secondary
-  // sep>=1 prevents 3-way ties from being read as dual
-  const isDual =
-    gap <= 1 && second >= 6 && sep >= 1;
-
-  if (isDual) {
-    // Surface any 3rd color scoring >=5 as an undertone even in dual results
-    const dualUndertone = [];
-    for (let i = 2; i < sorted.length; i++) {
-      if (sorted[i][1] >= 5 && dualUndertone.length < 1) {
-        dualUndertone.push(sorted[i][0]);
-      }
-    }
-    return { type:"dual", colors:[sorted[0][0], sorted[1][0]], scores, influence:dualUndertone };
+  // Dual class: top 2 are notably close, both meaningful, clearly above the rest
+  if ((top - second) <= DUAL_GAP
+      && second >= DUAL_MIN
+      && (second - third) >= DUAL_SEP) {
+    return { type: "dual", colors: [sorted[0][0], sorted[1][0]], scores };
   }
 
-  // Single with underlying influence:
-  // Any non-primary color scoring >=4 (20%+ of answers) surfaces as influence.
-  // Cap at 2 colors. Works regardless of gap size — catches close results
-  // like GREEN=6 RED=5 BLUE=5 that fall just short of dual thresholds.
-  const influence = [];
-  for (let i = 1; i < sorted.length; i++) {
-    if (sorted[i][1] >= 5 && influence.length < 2) {
-      influence.push(sorted[i][0]);
-    }
-  }
-
-  return { type:"single", colors:[sorted[0][0]], scores, influence };
+  // Clear single winner
+  return { type: "single", colors: [sorted[0][0]], scores };
 }
 
 // ── Questions ─────────────────────────────────────────────────────────────────
-// ── Answer variant pools — 5 options per color per question ─────────────────
-// On each load, one variant is picked per color, then answers are shuffled
-const ANSWER_VARIANTS = {
-  Q01:{
-    RED:["Plan your route, mark your waypoints, and move at first light","Lay out everything you need, set a clear objective, and get moving","Map the fastest path to the goal and prepare to leave immediately","Organise your gear, set your target, and head out on schedule","Set a clear plan, brief anyone coming with you, and depart without delay"],
-    PURPLE:["Study every map and legend you can find before taking a single step","Research the terrain, the risks, and the context thoroughly before committing","Gather as much information as possible — you won't move until you understand the full picture","Read everything available about the assignment before deciding how to approach it","Spend time learning the background and conditions before forming a plan"],
-    BLUE:["Check in with your companions — you travel together or not at all","Talk to the people who'll be joining you before anything else is decided","Make sure everyone is aligned and comfortable with the direction before you move","Find out how your group feels about the task before you start planning","Bring the team together first — shared readiness matters more than speed"],
-    GREEN:["Grab your pack and head out — the road will show you the way","Set off now and figure out the details as you go","Trust your instincts and start moving — you'll adapt as needed","Pick a direction and go — the journey itself will reveal what's needed","Get started immediately and adjust the plan as things unfold"]
-  },
-  Q02:{
-    RED:["Push for a decision — every hour spent arguing is a mile you're not covering","Cut the debate short and call for a vote — you need to move","Name the most likely option and push the group to commit","Step in and make the call — indecision is the biggest risk right now","Drive the group toward a decision — standing still costs more than being wrong"],
-    PURPLE:["Stay quiet, weigh both arguments carefully, then speak once with precision","Listen to every point made, then offer the most logically sound option","Hold back until you have a clear view, then make one well-reasoned contribution","Analyse both paths quietly before stating your conclusion with evidence","Wait for the full picture before you speak — then say exactly what you think"],
-    BLUE:["Watch how your companions are feeling and guide the group toward unity","Pay attention to who's being heard and who isn't, and bring the group into alignment","Focus on what the team can agree on and build the decision from there","Make sure everyone's perspective is included before the group commits","Read the room and help the group find the path they can all support"],
-    GREEN:["Suggest a third path nobody considered yet","Offer a completely different option that reframes the whole conversation","Interrupt the debate with an idea that changes what's being debated","Propose something unexpected that opens up possibilities they hadn't seen","Find the angle nobody's thought of and put it on the table"]
-  },
-  Q03:{
-    RED:["The target — every step gets you closer to completing the mission","The finish line — knowing the goal exists is enough to keep you going","The objective — you measure progress in outcomes, not effort","The result you're working toward — it pulls you forward through everything","The clear destination — when you know what success looks like, you keep moving"],
-    PURPLE:["The knowledge you're gaining — each challenge teaches you something new","The understanding you're building — the difficulty itself is the lesson","The insight that comes from facing hard problems — it compounds over time","The learning — every obstacle is information you didn't have before","The intellectual depth you're developing — that growth sustains you"],
-    BLUE:["The people beside you — you fight harder for your companions than for yourself","The relationships — knowing the people around you are depending on you","The team — their belief in the mission is what keeps yours alive","The group — you'd quit for yourself long before you'd quit for them","The bonds built on the road — they're the reason the difficulty is worth it"],
-    GREEN:["The unknown ahead — you never know what you might discover around the next bend","The possibility of what comes next — the uncertainty is the draw, not the destination","The sense that something surprising might be just ahead — that keeps you curious","The uncharted territory — each day could bring something completely unexpected","The adventure itself — not knowing what's coming is exactly what motivates you"]
-  },
-  Q04:{
-    RED:["Identify the most likely escape route and move immediately","Assess the fastest path to recover the situation and act on it","Make a quick decision about direction and start closing the distance","Take immediate action — waiting costs you the advantage","Move toward the problem without hesitation — speed matters here"],
-    PURPLE:["Examine every track, piece of cargo, and clue before drawing any conclusion","Gather evidence carefully — you won't move until you understand what happened","Study the scene in detail before committing to any direction","Analyse everything available before forming a theory about what occurred","Take stock of all the information before deciding what to do next"],
-    BLUE:["Speak to the shaken merchant first — their state matters before the logistics do","Check on the merchant before anything else — they need steadying before you can help effectively","Make sure the merchant is alright before you start investigating","Attend to the person first — the situation can wait a moment","Ask the merchant how they're doing before you start asking what happened"],
-    GREEN:["Start suggesting theories and see which one the evidence supports","Generate several possible explanations and explore which fits best","Think out loud about what might have happened and follow the most interesting lead","Offer a range of interpretations of what you're seeing before narrowing anything down","Let your mind go wide — consider every possibility before committing to one"]
-  },
-  Q05:{
-    RED:["Everything in place, gear sorted, fire banked — ready for an early departure","Organised, efficient, nothing wasted — this person knows exactly what they need","Prepared and orderly — this space is optimised for the mission","Clean lines, clear purpose — the person who built this leaves nothing to chance","Structured and ready — everything here has a reason and a place"],
-    PURPLE:["Scrolls of notes everywhere, reference books open, maps annotated with questions","Dense with information — this person is always in the middle of figuring something out","Layered and rich — every surface tells you something about what's being studied","Covered in research materials — the thinking never really stops here","Full of documentation — whoever camps here processes everything in writing"],
-    BLUE:["Smells like a shared meal — there's always room for one more around this fire","Warm and welcoming — this is the camp people drift toward without being invited","Set up for company — comfort and connection are built into how this space is arranged","Open and easy — this person wants others to feel at home here","Inviting and lived-in — this camp feels like somewhere the group belongs"],
-    GREEN:["A storm passed through, but it's exactly where it needs to be","Creative chaos — it works, even if you can't quite explain why","Ordered by instinct rather than system — intuition over structure","Looks scattered, functions perfectly — this person knows where everything is","Dynamic and unpredictable — this space reflects a mind that moves fast"]
-  },
-  Q06:{
-    RED:["Be straight — name the flaw, give the fix, and let you get back to training","Skip the softening and tell you exactly what needs to change","Be direct and specific — you don't need cushioning, you need accuracy","Get to the point — what's wrong and how do you correct it","Give you the honest version without the padding — you can handle it"],
-    PURPLE:["Walk you through the full reasoning — why it's wrong and what correct form achieves","Explain the logic completely so you understand the principle, not just the correction","Give you the technical breakdown — what you're doing, why it fails, and what works instead","Justify every point of critique so you can evaluate and apply it properly","Show their working — the reasoning behind the feedback matters as much as the feedback itself"],
-    BLUE:["Lead with what you did well before moving to what needs work","Frame the critique with care — acknowledge the effort before addressing the gap","Make sure the feedback lands in a way that keeps you motivated, not deflated","Be thoughtful about how it's delivered — you respond better when respect is part of the exchange","Balance the hard feedback with recognition of what's already working"],
-    GREEN:["Have a conversation about it, not a lecture","Talk it through together rather than just telling you what's wrong","Make it a two-way exchange — you learn better when you're part of the discussion","Explore it with you, not at you — the back-and-forth is how you absorb things","Turn it into a dialogue — you'll take more from a conversation than a correction"]
-  },
-  Q07:{
-    RED:["The one calling the plan and keeping everyone on task","The one who takes charge and sets a clear direction while others are still processing","The one who makes the call when no one else will","The one who organises the response and pushes the group to act","The one who cuts through the chaos with a clear next step"],
-    PURPLE:["The one who already anticipated this might happen and has notes ready","The one who saw it coming and has a framework for what to do","The one who had already thought through this scenario","The one with the contingency plan — you prepared for this","The one who drew on past experience to see this coming before it arrived"],
-    BLUE:["The one making sure no one gets left behind or overlooked","The one checking that everyone in the group is still together and holding up","The one who keeps track of the people, not just the problem","The one ensuring the group stays cohesive while the pressure builds","The one who won't let the crisis fracture the team"],
-    GREEN:["The one with a wild idea that just might work","The one who finds an unexpected angle nobody else had considered","The one who improvises a solution from the materials available","The one whose creative instinct produces an option when the plan runs out","The one who sees a different way through when every obvious path is blocked"]
-  },
-  Q08:{
-    RED:["Losing time to indecision and missed deadlines","Watching the group go in circles when a decision should have been made an hour ago","Seeing momentum lost because nobody would commit","A clear path going unused because people couldn't stop debating","Delays caused by hesitation when the answer was obvious"],
-    PURPLE:["Watching someone act on incomplete information and make it worse","Seeing a preventable mistake happen because someone didn't check their assumptions","A decision made without the necessary evidence — and the consequences that follow","Watching someone commit to the wrong answer because they didn't take time to verify","Errors that could have been avoided with five more minutes of preparation"],
-    BLUE:["Seeing a companion's feelings dismissed like they don't matter","Watching someone's emotional reality get treated as irrelevant to the conversation","A person in distress being talked over while the group focuses on logistics","Feelings being brushed aside in favour of moving forward quickly","Someone being made to feel invisible when they needed to be heard"],
-    GREEN:["Being forced into the same rigid route when a better one clearly exists","Watching the group cling to a plan that's clearly stopped working","Having a more creative path available and not being able to take it","A system or structure that blocks a clearly better option","Rigidity being enforced when the situation is actively calling for adaptation"]
-  },
-  Q09:{
-    RED:["Following drills step by step until the movements become second nature","Repeating the same sequence until it's automatic and reliable","Working through a structured progression from basic to advanced","Building the skill incrementally through disciplined repetition","Running the same pattern again and again until it's embedded"],
-    PURPLE:["Reading the theory first so the movements make sense before you try them","Understanding the principles behind the technique before attempting it","Getting the conceptual framework clear before putting it into practice","Studying the reasoning and structure of the style before drilling it","Knowing why each movement works before committing it to muscle memory"],
-    BLUE:["Sparring with a partner — you learn fastest when someone else is in it with you","Working with another person — the interaction makes it stick","Training alongside someone who can respond to what you're doing","Practising in dialogue with a partner rather than drilling alone","Learning through exchange — another person's reactions teach you what repetition can't"],
-    GREEN:["Jumping in and experimenting until something clicks","Trying different approaches and seeing what happens","Playing around with the technique until you find your own version of it","Exploring freely rather than following a prescribed sequence","Testing and adapting until the style makes sense in your own terms"]
-  },
-  Q10:{
-    RED:["Lock onto the exit and push — doubt is a distraction you can't afford right now","Pick the fastest route out and commit to it without looking back","Drive forward with total focus — the goal is clear and nothing else matters","Take control of your own direction and move with absolute certainty","Block out the chaos and execute — hesitation is the only real danger"],
-    PURPLE:["Go quiet, process fast, and calculate the safest path before moving","Slow your breathing, assess the situation, and choose the most logical route","Take two seconds to map the options before committing to any direction","Stay calm and analytical while everything collapses — the right path is there if you think","Filter out the noise and work through the problem with precision"],
-    BLUE:["Call out to make sure no one has been separated or left behind","Check on the group before focusing on the exit","Make sure everyone is accounted for before you start moving","Prioritise the people — you don't leave until you know everyone is with you","Keep the group together — no one gets out if the team falls apart first"],
-    GREEN:["Read the room, spot the unexpected exit, and improvise your way through","Find the path nobody else noticed and take it","Look for the unconventional route that opens up when you stop following the obvious one","Trust your instinct to find a way through that wasn't in the plan","Adapt on the fly — the standard exits are blocked but there's always another way"]
-  },
-  Q11:{
-    RED:["Clear objective, measurable distance covered, camp set before dark","Steady progress toward a defined goal, no wasted time, tasks completed","A structured route with milestones hit on schedule","Purposeful movement from point to point, ending with results you can measure","Moving efficiently through a planned sequence — productive from start to finish"],
-    PURPLE:["A long stretch of silence broken only by a good book at camp","Deep focus time, minimal interruptions, and space to think without being pulled in different directions","Uninterrupted hours where you can process and work through ideas properly","Quiet, solitary riding followed by an evening of reading and reflection","The kind of day where you can go deep on a problem without resurfacing until you've cracked it"],
-    BLUE:["Long conversations around the fire with people who actually listen","Real exchanges with your companions — the kind that leave you feeling genuinely connected","Deep discussions that make the miles feel shorter and the camp feel like home","Time with the people you're travelling with — not logistics, actual connection","A day where the group's bonds deepen and everyone goes to sleep more committed to each other"],
-    GREEN:["A mix of everything — no two hours looking the same","Variety and surprise — something unexpected that changes what you thought the day would be","Different terrain, different challenges, different energy — always moving, never stale","Spontaneous detours and new discoveries that weren't in the plan","The freedom to follow what's interesting, even if it wasn't on the route"]
-  },
-  Q12:{
-    RED:["The route with the clearest outcome and the fewest unknowns","The option that gets you to the goal most directly and predictably","The path with the best odds of working — not the most interesting, the most reliable","What logic and experience say is most likely to succeed","The most straightforward option — efficiency over elegance"],
-    PURPLE:["The evidence — scouting reports, terrain data, accounts from others who've been there","The information available — you don't decide without data to support it","What the facts point to, not what feels right in the moment","Hard evidence over instinct — you need a rationale you can defend","Verified intelligence — intuition is fine until it contradicts the research"],
-    BLUE:["The path the party can survive together — unity matters as much as efficiency","The option the whole group can commit to, even if it's not the fastest","What the group reads as right — shared confidence in the direction matters","The route that keeps the team together and functioning","What the people you're with can get behind — a divided party can't go anywhere"],
-    GREEN:["Your gut — your instincts haven't failed you yet and you've learned to follow them","The pull you feel toward one option, even when you can't fully explain it","Your instinct — it processes things your conscious mind hasn't caught up with yet","What feels right in the moment — you've been wrong before, but so has caution","Your read on the situation — not evidence exactly, just a sense that this is the way"]
-  },
-  Q13:{
-    RED:["Rebuild immediately — an imperfect new plan is better than standing still","Scrap what isn't working and establish a new direction without delay","Make a fast call about the next move — the group needs something to follow right now","Replace the broken plan with a functional one as quickly as possible","Adapt and move — you can refine as you go, but you can't go anywhere standing still"],
-    PURPLE:["Stop and diagnose the failure before deciding what to do next","Understand what broke before committing to a new direction","Take the time to figure out why the plan failed — the next plan depends on it","Hold the group for a moment and work out what actually went wrong","Analyse before acting — reacting without understanding is how you make the same mistake twice"],
-    BLUE:["Rally the party first — morale before map","Make sure the group is still together before anything else is decided","Tend to how the team is holding up before addressing the plan itself","Focus on the people's state before the strategy — fractured confidence is a bigger problem than a broken plan","Hold the group emotionally before you try to redirect them practically"],
-    GREEN:["Scrap it entirely and improvise — the plan was probably too rigid anyway","Throw out the structure and find your way through on instinct","Let go of the original approach and trust that a better one will emerge","Use the failure as permission to try something you couldn't have justified before","Start fresh — the broken plan was holding you back more than guiding you"]
-  },
-  Q14:{
-    RED:["Walk over and address the mistake directly — the opportunity can wait","Deal with the problem in front of you before looking at anything else","Speak up immediately — you don't let clear errors go unaddressed","Handle the issue with your companion first — new opportunities don't require you to ignore what's wrong","Point out the mistake without hesitation — that's what you'd want someone to do for you"],
-    PURPLE:["Watch a little longer to make sure you've read the situation correctly before saying anything","Observe carefully — you want to be certain of what you're seeing before you act","Take another moment to verify your read on the mistake before intervening","Hold off until you're sure — acting on a misread would cause more harm than good","Study the situation for a moment longer before deciding whether to step in"],
-    BLUE:["Notice the mistake but hold back — you don't want to embarrass them or create tension","See it, but stay quiet — the relationship matters more than being right in this moment","Hesitate to say anything — the social cost feels too high right now","Let it go for now — bringing it up feels like it would do more damage than the mistake itself","Register the error but choose not to address it — keeping the peace feels more important"],
-    GREEN:["Find yourself drawn toward the new opportunity — someone else will probably sort the other thing","Get distracted by the possibility that's just appeared — the mistake will likely resolve itself","Drift toward the new thing — the energy there is more compelling than the friction here","Move toward the opportunity almost without deciding to — it just pulls your attention","Lose focus on the companion's mistake as the new option captures your imagination"]
-  },
-  Q15:{
-    RED:["Point out what needs to improve and offer a clear path to fix it","Name the gap directly and give them something concrete to work on","Tell them honestly what's not working and show them how to correct it","Give them the straightforward feedback they need to get back on track","Address the performance gap head-on — vague reassurance won't help them"],
-    PURPLE:["Quietly investigate what might be causing the issue before you do anything","Research what's actually happening before you offer any kind of response","Observe and gather information — you want to understand the root cause before you act","Hold back your reaction until you know whether you've correctly identified the problem","Diagnose first — you won't intervene until you understand what you're actually dealing with"],
-    BLUE:["Pull them aside and check in on how they're really doing","Ask them what's going on — their state matters more than their output right now","Find a quiet moment to connect with them before addressing the performance","Make sure they feel heard and seen before you try to fix anything","Focus on the person first — the struggle usually has a human cause underneath it"],
-    GREEN:["Bring fresh energy to the whole group to lift the mood for everyone","Shift the group's energy — sometimes the problem is the environment, not the individual","Inject some momentum and positivity into the group dynamic","Raise the collective energy — a rising tide lifts everyone, including them","Change the tone for the group — your instinct is to reset the atmosphere rather than single anyone out"]
-  },
-  Q16:{
-    RED:["Review progress and plan tomorrow's priorities","Use the time to get ahead — map the next stage and prepare for what's coming","Get your gear in order and think through the plan for the coming days","Spend it productively — rest and preparation are the same thing for you","Turn the downtime into an advantage by planning ahead"],
-    PURPLE:["Read, research, or catch up on something you've been meaning to study","Use the quiet time to go deeper on something you've been thinking about","Find a good text and spend the afternoon actually understanding something","Take the opportunity to learn — you've been waiting for the space to do this","Settle into a long stretch of reading and let your mind wander through ideas"],
-    BLUE:["Spend it with people — a shared meal, a real conversation, time to reconnect","Use it to strengthen the bonds in the group — this is exactly when connection matters","Find the person who's been hardest to reach lately and actually talk to them","Invest the time in the relationships that make the campaign worth running","Gather the group for something that isn't about the mission — just being together"],
-    GREEN:["Wander and follow whatever feels interesting in the moment","Explore without a plan — let the afternoon take you wherever it goes","Use the freedom to go somewhere unexpected and see what you find","Follow your curiosity wherever it leads — no agenda, no destination","Let yourself be pulled in different directions — this is exactly what restoration looks like for you"]
-  },
-  Q17:{
-    RED:["Quickly identify the next objective — momentum matters more than celebration","Look ahead immediately — success is a platform, not a destination","Take a breath, note the win, and start moving toward what's next","Acknowledge it briefly, then redirect the group's energy toward the next challenge","Register the achievement and then ask what comes next — there's always a next"],
-    PURPLE:["Analyse what actually worked so you can repeat it with precision next time","Take time to understand the win — what factors led to it and how to replicate them","Document what happened and why, so the success can be built on rather than just celebrated","Break down the outcome to understand the mechanism — luck or method makes a big difference","Study the result carefully before the group moves on — knowledge compounds"],
-    BLUE:["Make sure everyone feels celebrated and genuinely seen in the success","Focus on the people — who showed up, who carried weight, who needs to hear they did well","Create the moment where the group actually feels what they've accomplished together","Ensure nobody's contribution gets missed in the rush to move on","Hold the space for real acknowledgment — the group earned more than a quick nod"],
-    GREEN:["Start imagining what you could attempt now that this has opened up","Let your mind run ahead — what's now possible that wasn't before?","Use the success as a launching point for something bigger or completely different","Feel the energy of the win and immediately start thinking about where it could lead","Get excited about what this changes — a door has opened and you're already looking through it"]
-  },
-  Q18:{
-    RED:["Brief them on the plan and assign them a clear role as quickly as possible","Get them functional fast — the group needs them contributing, not just observing","Define their responsibilities clearly and integrate them into the existing structure","Tell them what's needed from them and how to deliver it — efficiently","Make sure they understand their role before anything else happens"],
-    PURPLE:["Give them the full picture of context and history before they start","Walk them through everything they need to know to understand the situation properly","Front-load all the information so they can make informed decisions from the beginning","Bring them up to speed completely — gaps in context cause problems later","Take the time to ensure they actually understand the mission before asking them to contribute"],
-    BLUE:["Introduce them to everyone and help them feel at ease before anything practical happens","Make sure they feel welcomed and included before they're asked to perform","Focus on the person first — belonging comes before contribution","Create the conditions where they feel safe enough to actually show what they can do","Take the social side seriously — a new person who feels unseen can't give you their best"],
-    GREEN:["See what they bring and find a way to fold their strengths into what you're doing","Get curious about their capabilities and look for how their perspective adds something new","Explore what they're good at and create space for that to be useful","Find the angle they bring that nobody else in the group has","Treat them as an asset to be discovered — what do they see that the rest of you don't?"]
-  },
-  Q19:{
-    RED:["Push through — remind the group of the goal and keep moving","Reconnect everyone to what they're fighting for and drive forward","Keep the group moving — stopping now costs more than the effort required to continue","Use the objective to pull the team through — purpose is stronger than fatigue","Name the goal clearly and ask the group to give you one more push toward it"],
-    PURPLE:["Call a proper pause to assess the situation with a clear head","Stop and think before doing anything — the next move needs to be the right one","Take stock of where you are before deciding how to proceed","Use the pause deliberately — you won't act until you understand what's actually needed","Create space for clear thinking before committing to a direction"],
-    BLUE:["Focus on the people — listen, connect, and restore the trust in the group","Go to each person and make sure they feel heard before you do anything else","Tend the relationships first — depleted trust is a bigger problem than depleted energy","Create a moment of genuine connection before asking anything more of the group","Put the mission on hold for a moment and focus on the humans who have to carry it"],
-    GREEN:["Shake things up — change the environment, the pace, or the approach entirely","Do something different — same conditions are producing the same problem","Find the thing that changes the energy in the room and do that","Break the pattern — whatever made things this way, it won't fix itself with more of the same","Disrupt the dynamic — a change of scene, approach, or frame often does more than any pep talk"]
-  },
-  Q20:{
-    RED:["The one driving the group toward the finish line","The one who sets the pace and keeps everyone pointed at the goal","The one who makes sure forward motion doesn't stop","The one who converts energy into progress — relentlessly","The one who leads from the front and pulls the group forward"],
-    PURPLE:["The one who knows the most and prevents the group from making avoidable mistakes","The one who brings the depth that keeps the group from operating on bad assumptions","The one who has thought through the problem more carefully than anyone else","The one whose expertise protects the group from errors they couldn't see coming","The one the group turns to when they need to know if they're thinking about this correctly"],
-    BLUE:["The one who holds the group together when things get hard","The one who keeps relationships intact when pressure would otherwise break them","The one whose presence means nobody feels alone in the difficulty","The one who ensures the group stays a group, not just a collection of individuals","The one people come to when they're struggling — and the one who always has time for that"],
-    GREEN:["The one who sees what's possible and keeps the energy from going flat","The one who prevents the group from becoming rigid or losing sight of what else might be available","The one who brings the ideas that open up possibilities others hadn't considered","The one whose energy and vision stop the group from settling for the obvious","The one who keeps the future feeling larger than the present problem"]
-  },
-};
-
 const RAW_QUESTIONS = [
   { img:"Q01", q:"A quest scroll* arrives at your door. Before setting out, you:", footnote:"* Quest scroll — think of it like receiving a new project brief or assignment handed to you and your team.", mindset:"You've just been given a new challenge alongside a group of people. Think about how you naturally respond in the first few minutes — not what you think you should do, but what you actually do.", options:[{text:"Plan your route, mark your waypoints, and move at first light",color:"RED"},{text:"Study every map and legend you can find before taking a single step",color:"PURPLE"},{text:"Check in with your companions — you travel together or not at all",color:"BLUE"},{text:"Grab your pack and head out. The road will show you the way",color:"GREEN"}]},
   { img:"Q02", q:"Your party* is debating which path to take through the dark forest*. You:", footnote:"* Party — your group or team. * Dark forest — a risky, ambiguous stretch ahead; think of it as an uncertain phase of a project where no one knows the best approach.", mindset:"Your group is stuck in genuine disagreement and no one has authority over the others. There's no right answer here — which of these instincts feels most like you?", options:[{text:"Push for a decision — every hour spent arguing is an hour lost",color:"RED"},{text:"Stay quiet, weigh both arguments carefully, then speak once",color:"PURPLE"},{text:"Watch how your companions are feeling and guide toward unity",color:"BLUE"},{text:"Suggest a third path nobody considered yet",color:"GREEN"}]},
@@ -450,689 +249,6 @@ const RAW_QUESTIONS = [
   { img:"Q20", q:"When you imagine your ideal role in a group, it is:", footnote:null, mindset:"Not the role that sounds most impressive — the one where you feel most alive and most useful. The one people naturally slot you into without asking.", options:[{text:"The one driving the group toward the finish line",color:"RED"},{text:"The one who knows the most and keeps the group from making avoidable mistakes",color:"PURPLE"},{text:"The one who holds the group together when things get hard",color:"BLUE"},{text:"The one who sees what's possible and keeps the energy from going flat",color:"GREEN"}]}
 ];
 
-
-// ── Per-question answer trait mapping ────────────────────────────────────────
-// Each question × color answer produces a strength phrase and a shadow phrase
-// These are assembled into personalised strengths and blindspot text on the result screen
-const Q_TRAIT_MAP = {
-  Q00:{
-    RED:{s:"you build structure before you move — your plans are what make you reliable", sh:"the price of structuring before you move is that the plan can become the point — and the terrain changes while you're still drawing the map"},
-    PURPLE:{s:"you research before you commit — your decisions hold up because your foundations do", sh:"the price of researching before committing is the distance it creates between intention and action — others move into the space you were still studying"},
-    BLUE:{s:"you check in with people before you step — alignment is something you create, not assume", sh:"the price of checking everyone in is the momentum that leaves while consensus is still forming"},
-    GREEN:{s:"you trust momentum over preparation — you adapt as you go where others get stuck planning", sh:"the price of trusting the road is that others sometimes need a map — and you may not notice they're lost until they're far behind"}
-  },
-  Q01:{
-    RED:{s:"you cut through group indecision with directness — you save the group time it didn't know it was wasting", sh:"the price of cutting through indecision is the people who needed more time — they comply without having processed, and that cost surfaces later"},
-    PURPLE:{s:"you hold your counsel until you have something precise to add — your words land because they're considered", sh:"the price of waiting until you're certain is the room that's moved on by the time your contribution arrives"},
-    BLUE:{s:"you feel the room before you move it — your sensitivity to group dynamics prevents a lot of quiet damage", sh:"the price of feeling the room before moving is that some moments needed someone to move them — and the pause was read as absence"},
-    GREEN:{s:"you offer the path no one considered — your creative reframes unlock groups that are stuck in binary choices", sh:"the price of offering the third path is that the group sometimes needed to commit to one of the first two — and your alternative opened a door that couldn't be closed"}
-  },
-  Q02:{
-    RED:{s:"the goal is what drives you — you bring forward momentum that groups rely on more than they realise", sh:"the price of goal-as-fuel is that the people and the journey become invisible — what you produce is real, but so is what you missed"},
-    PURPLE:{s:"the learning sustains you — you extract meaning from difficulty in a way that makes you grow where others just endure", sh:"the price of learning-as-fuel is that output can slow when understanding hasn't arrived yet — and situations don't always wait for comprehension"},
-    BLUE:{s:"the people are what keep you going — your relational stamina is a genuine asset in long sustained efforts", sh:"the price of relational fuel is exposure — when the group's energy drops, yours does too, and you may not have reserves that don't depend on others"},
-    GREEN:{s:"the unknown draws you on — your appetite for discovery keeps you fresh in conditions that exhaust others", sh:"the price of novelty-as-fuel is the familiar — sustained, unglamorous work in known terrain is genuinely harder for you, and the people counting on your consistency feel that"}
-  },
-  Q03:{
-    RED:{s:"you move toward problems first — your action instinct prevents the paralysis that costs groups time", sh:"the price of moving toward the problem first is that you sometimes arrive before you understand what you're solving — and that costs the solution"},
-    PURPLE:{s:"you read the scene before you act — your evidence-gathering prevents moves that have to be undone", sh:"the price of reading the scene completely is the time the scene consumed — speed and evidence are in tension, and situations don't always honour the wait"},
-    BLUE:{s:"you go to the person before the problem — you understand that problems have people attached to them", sh:"the price of going to the person first is that the practical problem keeps moving while you tend the emotional one — both matter, and both need time you may not have"},
-    GREEN:{s:"you generate possibilities before narrowing — your lateral thinking produces options others don't see", sh:"the price of generating possibilities first is the noise it creates before the clarity arrives — and the group may have already committed to something while you were still exploring"}
-  },
-  Q04:{
-    RED:{s:"your environment reflects your discipline — your external order is a system that makes you consistently reliable", sh:"the price of your disciplined environment is that it can read as rigid or unwelcoming to people who think and organise differently"},
-    PURPLE:{s:"your space reflects your layered thinking — you work in an environment that supports your depth", sh:"the price of a layered, reference-rich environment is that your thinking becomes hard to share — the architecture makes sense to you and nowhere else"},
-    BLUE:{s:"your space is somewhere people feel welcome — you create environments others want to be in", sh:"the price of creating spaces people feel welcome in is that your own structural needs can go unmet — warmth outward, under-resourced inward"},
-    GREEN:{s:"your environment is ordered by intuition — it works the way you work, not the way a system says it should", sh:"the price of intuitive order is that it's invisible to others — and collaboration requires a shared map that your system doesn't provide"}
-  },
-  Q05:{
-    RED:{s:"you want feedback direct and actionable — your ability to receive hard truth without defensiveness makes you fast to improve", sh:"the price of wanting feedback direct and actionable is that you can miss the relational layer — feedback that's technically accurate but relationally blunt lands differently than you intend"},
-    PURPLE:{s:"you need the reasoning behind the critique — you integrate feedback deeply when you understand its logic", sh:"the price of needing the full reasoning is that feedback without it gets filtered out — even when the observation was right"},
-    BLUE:{s:"you need the relationship to stay intact — your sensitivity to how feedback is delivered makes you attuned to others when you give it", sh:"the price of needing warmth in how feedback is delivered is that accurate critique from someone who handles it badly gets lost — and the loss is yours"},
-    GREEN:{s:"you learn in dialogue, not instruction — your conversational approach to feedback turns it into genuine exchange", sh:"the price of learning in dialogue is that a conversation isn't always available — and some of what you needed to hear got deflected in the exchange"}
-  },
-  Q06:{
-    RED:{s:"you call the play while others are still reading the situation — your command instinct under pressure is a genuine leadership asset", sh:"the price of calling the play first is the plan the group follows without having chosen — compliance without ownership, and the gap shows when things get hard"},
-    PURPLE:{s:"your crisis response is preparation, not improvisation — you saw this coming and you're ready", sh:"the price of preparation-as-crisis-response is the genuinely novel situation — the one that couldn't be predicted — where the framework doesn't exist yet"},
-    BLUE:{s:"you ensure no one fractures or gets left — your anchor instinct keeps groups together when pressure would otherwise splinter them", sh:"the price of holding the group together during crisis is the action it delays — sometimes the group needed someone to decide before the trust was fully repaired"},
-    GREEN:{s:"you generate options when the plan no longer exists — your best thinking activates when the structure falls away", sh:"the price of improvisation under pressure is direction — creative motion without a shared heading can produce energy that goes nowhere"}
-  },
-  Q07:{
-    RED:{s:"wasted time is a values violation for you — your efficiency standard raises the bar for the groups you're in", sh:"the price of your efficiency standard is the friction it creates with people who move and process at a different speed — what feels like waste to you is often someone else's necessary pace"},
-    PURPLE:{s:"bad decisions from incomplete data frustrate you deeply — your accuracy standard protects groups from preventable mistakes", sh:"the price of your accuracy standard is the atmosphere it creates when speed is required — the group may need to move on incomplete information, and your frustration with that has a cost"},
-    BLUE:{s:"dismissed feelings land as a genuine wrong to you — your sensitivity to dignity in groups makes you an advocate people trust", sh:"the price of feeling others' dignity as your own is that you absorb the weight of every dismissal that happens in your orbit — and that accumulates"},
-    GREEN:{s:"imposed rigidity goes against your nature — your resistance to locked-in routes keeps options alive for the group", sh:"the price of your resistance to rigidity is that it can look like resistance to commitment — even when the structure being resisted was actually necessary"}
-  },
-  Q08:{
-    RED:{s:"structured repetition is how you convert new skills into reliable habits — your discipline compounds over time", sh:"the price of learning through structure is adaptability — when the drill doesn't transfer to the new situation, the gap between training and reality is yours to bridge"},
-    PURPLE:{s:"you need the theory before you build — understanding the architecture of an idea makes your execution more precise", sh:"the price of needing the theory first is the output it delays — understanding is the foundation, but the building still has to go up before the conditions change"},
-    BLUE:{s:"another person in the learning process makes it stick for you — you integrate through relationship as much as instruction", sh:"the price of relational learning is that independent skill-building is genuinely harder — and environments that don't offer a learning partner leave you under-resourced"},
-    GREEN:{s:"you feel your way through to know — your experiential approach produces understanding that is embodied not just conceptual", sh:"the price of experiential learning is consistency — feeling your way through produces understanding that's real but hard to replicate, and others may not be able to follow the path you found"}
-  },
-  Q09:{
-    RED:{s:"pressure sharpens your focus rather than scattering it — you are more useful in a crisis than in a calm", sh:"the price of pressure-sharpened focus is the signal it can override — when doubt is a distraction you've learned to push past, you can also push past the warning that the direction itself is wrong"},
-    PURPLE:{s:"you go quiet and calculate under stress — your inward processing produces better decisions than reactive responses", sh:"the price of going quiet under pressure is the leadership it removes from the room — people who need to see someone thinking out loud may read your stillness as disengagement"},
-    BLUE:{s:"connection is your stabiliser even in collapse — your instinct to maintain the group is a genuine anchor when things fall apart", sh:"the price of connection-as-stabiliser is the action it can delay — the moment sometimes needed a decision before the relational ground was fully restored"},
-    GREEN:{s:"you find exits others aren't looking for — your lateral perception under pressure produces options the group didn't know it had", sh:"the price of lateral thinking under pressure is coherence — the exits you find are real, but they can scatter the group's attention when a single clear direction was what they needed"}
-  },
-  Q10:{
-    RED:{s:"structured milestones are how you sustain momentum — your daily rhythm produces consistent output over long campaigns", sh:"the price of structured milestones is brittleness when the structure has to flex — your rhythm produces output until the conditions change, and then the cost of rigidity arrives"},
-    PURPLE:{s:"your best thinking happens in deep uninterrupted silence — the quality of your output reflects the quality of your focus conditions", sh:"the price of deep-focus dependence is that collaborative and fast-moving environments extract a higher cost from you than from people who can think in fragments"},
-    BLUE:{s:"your best days are built on meaningful conversations — you bring relational depth that changes the quality of group thinking", sh:"the price of relational recharging is that shallow or transactional environments drain you faster than others — and recovery takes longer than the situation may allow"},
-    GREEN:{s:"variety and novelty keep your energy alive — your adaptability across different kinds of work is genuinely rare", sh:"the price of needing variety is the sustained track — not every campaign has novelty in it, and the chapters that require you to stay on one thing are the ones that cost you most"}
-  },
-  Q11:{
-    RED:{s:"clarity and predictability are your decision anchors — you make fast, consistent choices in ambiguous situations", sh:"the price of outcome-anchored decisions is the unconventional option that gets filtered out before it's properly considered — the known path has a selection bias built in"},
-    PURPLE:{s:"you're uncomfortable deciding without evidence — your evidence-based decisions are more durable than intuitive ones", sh:"the price of evidence-based decisions is the window that closes while the evidence is still arriving — perfect information never comes, and waiting for it has a cost"},
-    BLUE:{s:"you trust what the group can survive together — your collective decision instinct builds shared ownership of outcomes", sh:"the price of collective decisions is the lowest common denominator — what the group can survive together isn't always what the situation required"},
-    GREEN:{s:"your gut is a reliable instrument and you've learned to follow it — your instinct often catches what analysis misses", sh:"the price of trusting instinct is that others need a rationale they can follow — and a decision that makes complete sense to you can leave the group without the map they needed to commit"}
-  },
-  Q12:{
-    RED:{s:"imperfect forward motion beats paralysis for you — your bias for action prevents groups from getting stuck in analysis", sh:"the price of immediate rebuilding is the diagnosis that gets skipped — moving forward fast can repeat the structural error that caused the failure, because there wasn't time to find it"},
-    PURPLE:{s:"you diagnose the failure before deciding what's next — your analytical pause prevents the group from repeating what broke", sh:"the price of diagnosing before deciding is that it reads as delay to people who need momentum — and the group may have already started rebuilding on their own"},
-    BLUE:{s:"morale is the first thing you protect when plans fail — your instinct to tend the group prevents fractures that would cost more than the lost time", sh:"the price of protecting morale first is the tactical response that waits too long — by the time the relational ground is restored, the practical window has sometimes closed"},
-    GREEN:{s:"you improvise forward when rigid plans break — your liberation from the original structure keeps momentum alive", sh:"the price of improvising forward is drift — creative motion without a fixed heading can feel purposeful and produce nothing that lasts"}
-  },
-  Q13:{
-    RED:{s:"you address problems directly without holding back — your honesty creates clarity that indirect people cannot", sh:"the price of directness in confrontation is the relational preparation it skips — honesty that lands before the ground is ready can close doors that needed to stay open"},
-    PURPLE:{s:"you observe carefully before you intervene — your certainty before confrontation means your interventions are well-founded", sh:"the price of observing carefully before acting is that the moment sometimes needed earlier intervention — and caution that tips into waiting becomes its own kind of avoidance"},
-    BLUE:{s:"you protect the relationship even in difficulty — your instinct to hold back reflects genuine care for the other person", sh:"the price of protecting the relationship is what it holds back — the unsaid things don't disappear. They compound, and they come out sideways"},
-    GREEN:{s:"new possibility genuinely pulls your attention — your forward-facing energy keeps the group from getting stuck in friction", sh:"the price of turning toward what's next is the unresolved thing you left — it doesn't resolve on its own, and the people still in it pay that cost"}
-  },
-  Q14:{
-    RED:{s:"you fix the problem and show the way — your direct coaching creates clarity people can immediately act on", sh:"the price of direct coaching is the emotional groundwork it skips — people change when they're ready, and readiness requires a relational foundation your directness sometimes bypasses"},
-    PURPLE:{s:"you investigate before you intervene — your diagnostic coaching addresses root causes rather than symptoms", sh:"the price of diagnosing before intervening is the support that arrived too late — understanding the problem fully took the time someone else was still struggling inside it"},
-    BLUE:{s:"you go to the person first — your coaching begins with their emotional reality, which is what makes it land", sh:"the price of going to the person first is the performance issue that waits — tending the relationship while the output problem goes unaddressed has a cost for both of you"},
-    GREEN:{s:"you lift the room's energy rather than the individual — your group-level intervention creates conditions where people recover together", sh:"the price of lifting the room is the individual who stays unresolved beneath the lifted mood — group energy can mask a specific struggle that needed direct attention"}
-  },
-  Q15:{
-    RED:{s:"rest and planning are the same thing for you — your recovery is productive and compounds forward", sh:"the price of productive rest is the actual rest that never happens — and fatigue that isn't acknowledged accumulates until it arrives in a form you didn't plan for"},
-    PURPLE:{s:"you recharge through knowledge and depth — your intellectual recovery is genuine restoration, not avoidance", sh:"the price of solitary recovery is that it reads as unavailability — people who need you present during difficult stretches experience your restoration as absence"},
-    BLUE:{s:"meaningful time with others is how you restore — your relational recovery strengthens the bonds that make you effective", sh:"the price of relational recovery is that isolation — even brief — is a drain rather than a neutral state. Environments that don't offer connection don't just fail to recharge you, they cost you"},
-    GREEN:{s:"you reset by exploring without an agenda — your unstructured recovery produces fresh energy and unexpected insight", sh:"the price of unstructured downtime is the practical ground it leaves uncovered — what felt like genuine restoration may have left real needs unaddressed until they became urgent"}
-  },
-  Q16:{
-    RED:{s:"momentum matters more to you than celebration — your forward orientation keeps groups from losing the ground they've gained", sh:"the price of moving to the next objective is the acknowledgment the current one never received — and the group's long-term motivation runs on recognition that your forward momentum can forget to give"},
-    PURPLE:{s:"you understand the win before you move past it — your post-success analysis is what makes the next effort more precise", sh:"the price of understanding the win before moving on is the momentum that waits for the analysis to complete — sometimes the situation rewards capitalising fast, and the window is brief"},
-    BLUE:{s:"ensuring everyone feels seen in the success is your instinct — your celebration creates the belonging that makes people want to do it again", sh:"the price of collective recognition is the return to momentum it delays — ceremony matters, and so does what the group does next, and they compete for the same time"},
-    GREEN:{s:"a win opens doors and you're already looking through them — your possibility expansion keeps the group from plateauing", sh:"the price of always looking through the open door is that the people still celebrating the win can feel like you've already left — because you have"}
-  },
-  Q17:{
-    RED:{s:"you make new people useful quickly — your functional integration gets them contributing before the group has to carry them", sh:"the price of making people useful quickly is belonging — a role assigned before someone feels seen creates compliance without the investment that makes contribution real"},
-    PURPLE:{s:"you front-load context so they can hit the ground running — your comprehensive integration prevents costly mistakes from the uninformed", sh:"the price of front-loading context is the newcomer who's overwhelmed before they've had a chance to orient — comprehensive integration has a pacing problem"},
-    BLUE:{s:"belonging comes before contribution for you — your welcoming integration creates psychological safety that unlocks better performance", sh:"the price of belonging before contribution is the group's capacity to absorb the wait — not every team can carry a new person through a long belonging phase before they need to perform"},
-    GREEN:{s:"you're curious what a new person brings and how to fold it in — your integrative curiosity expands what the group can do", sh:"the price of exploratory integration is that the newcomer may need a clearer structure than your curiosity provides — not everyone finds their footing through discovery"}
-  },
-  Q18:{
-    RED:{s:"the goal is your answer to exhaustion — your ability to reconnect the group to its purpose is a genuine leadership skill", sh:"the price of goal-as-answer-to-exhaustion is the rest that never gets called — and the group that pushes past its limit on your instruction pays a longer recovery than the one that stopped"},
-    PURPLE:{s:"stopping is a decision, not a failure of nerve — your strategic pause produces better next moves than reactive continuation", sh:"the price of the strategic pause is that it can read as disengagement — and the group that needed visible forward movement may have already started moving in the wrong direction"},
-    BLUE:{s:"you go to the people before you go back to the plan — your instinct to restore trust first is what makes subsequent effort sustainable", sh:"the price of tending the relational dimension first is the tactical window that closes — sometimes the thing that would have actually relieved the exhaustion was a decision, not a conversation"},
-    GREEN:{s:"you change the environment when the environment is the problem — your situational disruption breaks the loop others are stuck in", sh:"the price of disrupting the environment when people are depleted is instability added to an already fragile system — change is energising to you and costly to people who were already at the edge"}
-  },
-  Q19:{
-    RED:{s:"your natural place is setting the pace and direction — you lead by moving, and people follow because you make the path visible", sh:"the price of leading from the front is that the gap between you and the group's actual capacity can open without either of you noticing — people perform for you long past the point of genuine contribution"},
-    PURPLE:{s:"the group depends on your depth to avoid mistakes — your expert knowledge is a protective resource the group relies on", sh:"the price of being the knowledge anchor is the dependency it creates — if your knowledge is wrong, or you're not there, the group has no fallback and may not know it until it matters"},
-    BLUE:{s:"you're the reason the group doesn't fracture under pressure — your anchor presence is the difference between a team and a collection of people", sh:"the price of holding the group together is invisible and accumulating — you absorb more than anyone knows, including you, and it collects in a place that rarely gets tended"},
-    GREEN:{s:"you keep possibility alive so the group doesn't go flat — your energy and vision prevent the creeping rigidity that kills long campaigns", sh:"the price of keeping possibility alive is the narrowing that never happens — you can energise a group into perpetual motion without destination, which is its own kind of being stuck"}
-  }
-};
-
-// ── Answer-aware personalised insight system ────────────────────────────────
-// Per-question, per-color answer fragments — short phrases that describe what
-// THIS specific answer reveals about the person's thinking style
-const Q_FRAGMENTS = {
-  Q00:{ RED:"you structure before you move",          PURPLE:"you research before you commit",             BLUE:"you check the group before you step",          GREEN:"you trust the road to reveal itself" },
-  Q01:{ RED:"you cut through group indecision",       PURPLE:"you hold your counsel until you're sure",    BLUE:"you feel the room before you move it",         GREEN:"you offer the path no one considered" },
-  Q02:{ RED:"the goal is what drives you forward",    PURPLE:"the learning is what sustains you",          BLUE:"the people are what keep you going",           GREEN:"the unknown is what draws you on" },
-  Q03:{ RED:"you move toward problems first",         PURPLE:"you read the scene before you act",          BLUE:"you go to the person before the problem",      GREEN:"you generate possibilities before narrowing" },
-  Q04:{ RED:"your space reflects your discipline",    PURPLE:"your space reflects your layered thinking",  BLUE:"your space is somewhere people feel welcome",  GREEN:"your space is ordered by intuition not design" },
-  Q05:{ RED:"you want feedback direct and actionable",PURPLE:"you need the full reasoning behind it",      BLUE:"you need the relationship to stay intact",     GREEN:"you learn in dialogue not instruction" },
-  Q06:{ RED:"you call the play while others read it", PURPLE:"your crisis response is preparation",        BLUE:"you ensure no one fractures or gets left",     GREEN:"you generate options when the plan fails" },
-  Q07:{ RED:"wasted time is a values violation",      PURPLE:"bad decisions from incomplete data frustrate you", BLUE:"dismissed feelings land as a genuine wrong", GREEN:"imposed rigidity goes against your nature" },
-  Q08:{ RED:"you learn through structured repetition",PURPLE:"you need the theory before you build",       BLUE:"you need another person in the learning",      GREEN:"you feel your way through to know" },
-  Q09:{ RED:"pressure sharpens your focus",           PURPLE:"you go quiet and calculate under stress",    BLUE:"connection is your stabiliser even in collapse",GREEN:"you find exits others aren't looking for" },
-  Q10:{ RED:"you work best in structured blocks",     PURPLE:"your best thinking happens in deep silence", BLUE:"your best days are built on real conversations",GREEN:"variety and novelty keep your energy alive" },
-  Q11:{ RED:"you trust the clearest path with fewest unknowns", PURPLE:"you're uncomfortable deciding without evidence", BLUE:"you trust what the group can survive together", GREEN:"you follow your instinct and trust it" },
-  Q12:{ RED:"an imperfect new plan beats paralysis",  PURPLE:"you diagnose the failure before deciding",   BLUE:"morale is the first thing you protect",        GREEN:"you improvise forward when rigid plans break" },
-  Q13:{ RED:"you address problems directly",          PURPLE:"you observe carefully before you act",       BLUE:"you hold back to protect the relationship",    GREEN:"new possibility pulls your attention away" },
-  Q14:{ RED:"you fix the problem and show the way",   PURPLE:"you investigate before you intervene",       BLUE:"their state matters more than their output",   GREEN:"you lift the whole group's energy" },
-  Q15:{ RED:"rest and planning are the same for you", PURPLE:"you recharge through knowledge and depth",   BLUE:"meaningful time with others is how you restore",GREEN:"you reset by exploring without an agenda" },
-  Q16:{ RED:"momentum matters more than celebration", PURPLE:"you understand the win before moving past it",BLUE:"ensuring everyone feels seen in success",     GREEN:"a win opens doors and you're through them" },
-  Q17:{ RED:"you make new people useful quickly",     PURPLE:"you front-load context so they can run",     BLUE:"belonging comes before contribution for you",  GREEN:"you're curious what they bring" },
-  Q18:{ RED:"the goal is your answer to exhaustion",  PURPLE:"you call a proper pause to think clearly",   BLUE:"trust and connection restore a depleted group", GREEN:"you change the environment when it's the problem" },
-  Q19:{ RED:"your natural place is setting the pace", PURPLE:"the group depends on your depth",            BLUE:"you're the reason the group doesn't fracture", GREEN:"you keep possibility alive so it doesn't go flat" },
-};
-
-// ── Dedicated whisper phrases per question per color ────────────────────────────
-// Plain-language, complete observations written for the secondary advisory role
-const WHISPER_MAP = {
-  Q07:{
-    RED:"your drive for efficiency can leave people feeling they were the obstacle, not the answer",
-    PURPLE:"your need for accuracy can create pressure that slows a group that needed to move",
-    BLUE:"absorbing every slight on behalf of others is real care — and a real cost over time",
-    GREEN:"your resistance to fixed plans can read as resistance to the group, even when it isn't"
-  },
-  Q09:{
-    RED:"under pressure, your focus can override the signals telling you the direction itself needs revisiting",
-    PURPLE:"going inward when things collapse can leave people around you without the visible steadiness they need",
-    BLUE:"reaching for connection in a crisis can delay the decisive move the moment was actually asking for",
-    GREEN:"your lateral thinking under pressure can scatter the group when a single clear direction was what they needed"
-  },
-  Q11:{
-    RED:"your structured approach can become inflexible when conditions shift and the plan needs to bend",
-    PURPLE:"your need for deep focus means collaborative or fast-moving environments cost you more than most",
-    BLUE:"your energy is relational — environments without connection don't just feel flat, they drain you",
-    GREEN:"the chapters that require staying on one thing rather than moving to the next cost you the most"
-  },
-  Q03:{
-    RED:"moving fast toward the problem can mean arriving before you understand what you're actually solving",
-    PURPLE:"understanding fully before acting is right — but the situation keeps moving while you read it",
-    BLUE:"going to the person before the problem means the practical issue keeps running while you tend the human one",
-    GREEN:"exploring possibilities before narrowing can create noise when the group needed clarity"
-  },
-  Q12:{
-    RED:"rebuilding immediately after failure can skip the diagnosis that would prevent the same mistake twice",
-    PURPLE:"waiting for the right evidence before deciding can look like hesitation to a group that needed momentum",
-    BLUE:"protecting morale first can mean the practical window closes before the relational ground is restored",
-    GREEN:"improvising forward can feel purposeful while the group quietly loses the shared heading they needed"
-  },
-  Q06:{
-    RED:"calling the play before others have processed it creates a plan the group follows without having chosen",
-    PURPLE:"a genuinely novel crisis can leave you without the framework you rely on",
-    BLUE:"holding the group together during a crisis can delay the decisive action the moment also needs",
-    GREEN:"improvising under pressure can scatter the group's focus when they needed a single clear direction"
-  },
-  Q02:{
-    RED:"when the goal is what drives you, the people and the journey can become invisible along the way",
-    PURPLE:"when learning is your fuel, output can slow while understanding is still forming",
-    BLUE:"when the group's energy drops, so does yours — your stamina is relational and that is also its exposure",
-    GREEN:"familiar terrain genuinely drains you, and the people counting on your consistency in it feel that"
-  },
-  Q10:{
-    RED:"your structured rhythm produces output until conditions change — then the rigidity arrives as a cost",
-    PURPLE:"your dependence on deep focus means fast-moving environments extract more from you than from others",
-    BLUE:"shallow or transactional environments don't just fail to restore you — they quietly deplete you",
-    GREEN:"campaigns that require staying on one track test you in ways that others around you may not see"
-  },
-  Q19:{
-    RED:"leading from the front can open a gap between you and the group's actual capacity without either of you noticing",
-    PURPLE:"being the knowledge anchor creates dependency — if you're wrong or unavailable, the group has no fallback",
-    BLUE:"holding the group together accumulates in a place that others rarely see or tend",
-    GREEN:"keeping possibility alive can resist the narrowing that would have let the group actually finish something"
-  },
-  Q00:{
-    RED:"planning before moving can mean others are already in the field while you're still drawing the map",
-    PURPLE:"researching before committing can create distance between intention and action that others move into",
-    BLUE:"checking everyone in before stepping can hold up progress while consensus slowly forms",
-    GREEN:"trusting the road to reveal itself can leave others without the map they needed to keep up"
-  },
-  Q01:{
-    RED:"cutting through indecision can leave people who needed more time feeling overridden rather than led",
-    PURPLE:"waiting until you're certain can mean the room has moved on by the time your contribution arrives",
-    BLUE:"feeling the room before moving it can mean some moments needed a push that didn't come",
-    GREEN:"offering a third path when the group needed to commit to one of the first two can reopen what was closing"
-  },
-  Q04:{
-    RED:"moving toward the problem first can mean you arrive before you understand what you're solving",
-    PURPLE:"reading the scene fully before acting takes time that the situation may not have had",
-    BLUE:"going to the person before the problem means the practical issue keeps moving while you tend the human one",
-    GREEN:"generating possibilities before narrowing creates noise when the group needed a clear answer"
-  },
-  Q08:{
-    RED:"drilling the same approach until it's reliable can make you slower to adapt when conditions fundamentally change",
-    PURPLE:"needing the theory before acting delays output in situations that reward experimentation",
-    BLUE:"needing someone else in the learning makes independent skill-building genuinely harder",
-    GREEN:"feeling your way through produces real understanding that can be hard for others to follow"
-  },
-  Q13:{
-    RED:"addressing problems directly can skip the relational groundwork that makes people actually willing to change",
-    PURPLE:"observing carefully before acting can tip into waiting when the moment needed earlier intervention",
-    BLUE:"holding back to protect the relationship means the unsaid things accumulate and come out sideways",
-    GREEN:"turning toward what's next can leave the unresolved thing behind — and others are still in it"
-  },
-  Q14:{
-    RED:"direct coaching can skip the emotional readiness that makes feedback actually land",
-    PURPLE:"diagnosing before intervening means support sometimes arrives after the moment has passed",
-    BLUE:"tending the person before the performance issue means the output problem waits while the relationship heals",
-    GREEN:"lifting the room can leave a specific struggle unaddressed beneath the raised collective mood"
-  },
-  Q16:{
-    RED:"moving to the next objective before celebrating can quietly erode the motivation that got you here",
-    PURPLE:"understanding the win before moving on takes time the situation may reward moving through faster",
-    BLUE:"making sure everyone feels seen can delay the group's return to momentum when timing matters",
-    GREEN:"already looking through the next door can leave people still standing in the one you just came through"
-  },
-  Q17:{
-    RED:"assigning a role before someone feels welcomed can produce compliance without real commitment",
-    PURPLE:"front-loading full context can overwhelm a newcomer before they've found their footing",
-    BLUE:"letting belonging come before contribution can stretch beyond the group's capacity to wait",
-    GREEN:"exploring what a newcomer brings can leave them without the clear structure they needed"
-  },
-  Q18:{
-    RED:"using the goal to push through collective exhaustion can extend the group past its actual limit",
-    PURPLE:"calling a pause can be misread as stepping back when the group needed visible forward movement",
-    BLUE:"tending the relational dimension of exhaustion first can let the practical relief wait longer than it should",
-    GREEN:"changing the environment when people are already depleted can add instability to a system at its edge"
-  },
-  Q05:{
-    RED:"your structured environment can feel inflexible to people who need a different kind of space",
-    PURPLE:"your layered environment makes sense to you — and can be hard for others to navigate or share",
-    BLUE:"creating space where people feel welcome can mean your own structural needs quietly go unmet",
-    GREEN:"your intuitive order can create friction when shared work needs a common map"
-  },
-  Q15:{
-    RED:"rest that doubles as planning means you carry the last campaign into the next without fully putting it down",
-    PURPLE:"solitary recovery can read as unavailability to people who needed you present",
-    BLUE:"needing connection to restore means isolation costs you in ways other people's solitude does not",
-    GREEN:"resetting through exploration can leave practical needs unattended until they become harder to ignore"
-  },
-};
-
-// ── Friction map: primary Q answer × weakest color → interpersonal friction observation
-// Keyed by Q index, then by the weakest color the person scored low on.
-// Surfaces 2-3 of these based on highest-priority Qs answered as primary color.
-const FRICTION_Q_MAP = {
-  Q00:{
-    RED:"When a new challenge arrives, someone whose instinct is to lock in a plan before moving can be hard to keep up with. You adapt as you go — they need the route settled before they'll step.",
-    PURPLE:"When a new challenge arrives, someone whose first move is to research before committing can feel like they're stalling. You're already moving while they're still gathering the picture they need.",
-    BLUE:"When a new challenge arrives, someone whose first instinct is to check whether everyone is aligned can feel like a bottleneck. You're ready to move — they need the group to be ready first.",
-    GREEN:"When a new challenge arrives, someone who trusts the road to reveal itself can feel unpredictable to plan around. They'll adjust as they go — which works until the plan needs to hold."
-  },
-  Q01:{
-    RED:"When the group is stuck in debate, someone who pushes for a fast decision can feel like they're bulldozing the conversation. You want the right answer — they want any answer that moves things forward.",
-    PURPLE:"When the group is debating, someone who holds back until they're certain can look like disengagement. You've already read the room — they're still building the rationale they need before speaking.",
-    BLUE:"When the group is divided, someone focused on how people are feeling rather than what to decide can feel like they're slowing the resolution. You want the answer — they want the group intact.",
-    GREEN:"When the group is stuck, someone who offers an entirely different option can feel like they're derailing progress. You were close to a decision — they just reopened what you were closing."
-  },
-  Q02:{
-    RED:"Someone whose fuel is the goal itself can feel relentless in ways that leave the people around them behind. What drives them forward is the same thing that makes them hard to slow down.",
-    PURPLE:"Someone who is sustained by learning can feel frustratingly slow to execute. The challenge is the curriculum for them — which means they won't rush past the parts you'd want to skip.",
-    BLUE:"Someone who runs on relational energy can feel like they need too much from the people around them. When the group's morale drops, so does their drive — and that can be hard to account for.",
-    GREEN:"Someone fuelled by novelty can be electric when things are new and quietly absent when they aren't. The motivation is real — it just doesn't survive routine the way yours does."
-  },
-  Q03:{
-    RED:"When a problem appears, someone whose instinct is to move immediately can feel like they skipped the step where you understand what you're solving. Speed is their default, even when the problem needed reading first.",
-    PURPLE:"When a problem appears, someone who reads the scene before acting can feel dangerously slow. They want the full picture — you can see a workable response already and waiting feels like losing ground.",
-    BLUE:"When a problem appears, someone who goes to the person before the logistics can feel like they're avoiding the actual issue. They're solving the human side — which is real, but not always what the moment needs first.",
-    GREEN:"When a problem appears, someone who generates possibilities before narrowing can feel like they're making things more complicated. You want a workable answer — they're still finding the interesting angles."
-  },
-  Q04:{
-    RED:"Someone whose space reflects discipline and structure can feel rigid or inflexible to work around. Their environment is a system — and systems have rules that aren't always visible until you break one.",
-    PURPLE:"Someone whose environment is layered with notes and reference material can be hard to collaborate with. Their thinking is rich but dense — and what's obvious to them often isn't on the surface.",
-    BLUE:"Someone who organises their space around warmth and welcome can feel unfocused to you. The environment is designed for people, not for output — and that has a cost when output is what's needed.",
-    GREEN:"Someone whose space reflects intuition rather than system can be genuinely hard to predict. It works for them — but sharing a workspace or workflow with them requires tolerance for an order you can't follow."
-  },
-  Q05:{
-    RED:"Someone who wants feedback direct and unfiltered can feel like they're skipping the relational layer entirely. Their comfort with bluntness doesn't account for what that same directness costs someone who hears it differently.",
-    PURPLE:"Someone who needs the full reasoning behind any critique can feel like they're making feedback harder than it needs to be. They won't integrate what they can't understand — which takes time you may not want to spend.",
-    BLUE:"Someone who needs the relationship to stay intact while receiving feedback can feel overly sensitive to work with. They hear the tone as much as the content — and a critique delivered without warmth may not land at all.",
-    GREEN:"Someone who learns through dialogue rather than instruction can feel like they're negotiating feedback rather than receiving it. The conversation is part of how they absorb things — but it can feel like resistance."
-  },
-  Q06:{
-    RED:"In a crisis, someone who calls the play before others have processed can feel like they've made a unilateral decision. They have — and sometimes that's right, but the group wasn't always given the chance to be part of it.",
-    PURPLE:"In a crisis, someone who already prepared for this scenario can feel frustratingly calm. They saw it coming — which means they're two steps ahead in a way that can read as detachment when you needed presence.",
-    BLUE:"In a crisis, someone whose instinct is to hold the group together before addressing the problem can feel like they're prioritising comfort over action. The people mattered to them first — and that delay has a cost.",
-    GREEN:"In a crisis, someone who improvises rather than follows a plan can feel unreliable exactly when you need reliability. Their best thinking happens when structure falls away — which is also when you most want structure."
-  },
-  Q07:{
-    RED:"Someone for whom wasted time is a values violation can feel relentless and impatient to be around. Their frustration with inefficiency is genuine — and it has a way of filling the room when they're not watching it.",
-    PURPLE:"Someone who is deeply frustrated by decisions made on incomplete information can feel like they slow everything down. Their accuracy standard is real — but it creates friction when speed matters more than certainty.",
-    BLUE:"Someone who experiences dismissed feelings as a genuine wrong can seem to take things too personally in professional settings. For them, how people are treated is never a secondary concern — it's always the main one.",
-    GREEN:"Someone who finds imposed rigidity genuinely painful can seem resistant to structure even when structure is necessary. Their frustration with locked-in routes is a real value — not just a preference."
-  },
-  Q08:{
-    RED:"Someone who learns through structured repetition can feel inflexible when you need them to adapt quickly. They build mastery through drilling the method — which means unlearning is harder for them than it is for you.",
-    PURPLE:"Someone who needs the theory before they'll attempt something can feel like they're overthinking a task that just needs doing. The conceptual foundation is non-negotiable for them — practice without it doesn't stick.",
-    BLUE:"Someone who needs another person in their learning process can be hard to support independently. They absorb through relationship — which means they may struggle in contexts that require solo skill-building.",
-    GREEN:"Someone who learns by experimenting rather than following a method can be hard to teach in a structured way. They need to feel their way through — which produces real understanding, but on their own timeline."
-  },
-  Q09:{
-    RED:"Under pressure, someone who locks focus and pushes through can override the signals that the direction itself is wrong. Their resolve is real — but it can carry the group past the point where a correction was still possible.",
-    PURPLE:"Under pressure, someone who goes quiet and calculates can read as disengaged when the group needs visible leadership. Their processing is thorough — but it happens in a way that can feel like absence.",
-    BLUE:"Under pressure, someone who reaches for connection before action can delay the decisive move the moment needs. Their instinct to tend the group is genuine — but the timing can work against what the crisis requires.",
-    GREEN:"Under pressure, someone who improvises laterally can scatter the group's focus when a single clear direction was what everyone needed. Their exits are often real — but not always ones the group can follow."
-  },
-  Q10:{
-    RED:"Someone who thrives on structured milestones can feel rigid when circumstances change. Their rhythm produces output — until conditions shift, at which point the structure becomes the problem.",
-    PURPLE:"Someone who needs deep uninterrupted focus can be hard to pull into collaborative or reactive environments. The quality of their thinking depends on conditions most workplaces don't provide.",
-    BLUE:"Someone who recharges through meaningful human exchange can seem to need too much from the people around them. Their energy is relational — and environments that don't offer that deplete them in ways that aren't always visible.",
-    GREEN:"Someone who needs variety to stay engaged can be difficult to rely on for sustained, repetitive work. Their energy is real — it just doesn't distribute evenly across a long campaign with predictable terrain."
-  },
-  Q11:{
-    RED:"Someone who trusts the clearest path with fewest unknowns can feel like they're always choosing the safe option. Their judgment is sound — but it has a bias toward the familiar that can filter out the better answer.",
-    PURPLE:"Someone who won't decide without sufficient evidence can feel like they're holding the group hostage to a standard that's never quite met. Perfect information rarely arrives — and waiting for it has a cost.",
-    BLUE:"Someone who trusts what the group can survive together can produce the lowest-common-denominator decision rather than the right one. Shared buy-in is real — but it isn't always the same as the best outcome.",
-    GREEN:"Someone who follows their gut even when they can't explain it can be genuinely hard to plan around. Their instinct is often accurate — but a decision that makes sense to them doesn't always give others something to follow."
-  },
-  Q12:{
-    RED:"When a plan fails, someone who rebuilds immediately can skip the diagnosis that would have prevented the next failure. Their bias for forward motion is valuable — but it can repeat the structural error that caused the collapse.",
-    PURPLE:"When a plan fails, someone who diagnoses before acting can feel dangerously slow. Their pause is purposeful — but it reads as inaction when the group is looking for someone to move first.",
-    BLUE:"When a plan fails, someone who tends to morale before strategy can delay the practical response the moment requires. The relational repair is necessary — but the window for tactical action doesn't always wait for it.",
-    GREEN:"When a plan fails, someone who improvises forward can produce motion without a fixed destination. Their direction is energetic — but the group can lose the shared heading they needed while following the energy."
-  },
-  Q13:{
-    RED:"Someone who addresses problems directly and without delay can feel like they skip the step of checking whether the other person is ready to hear it. The feedback is usually accurate — the timing and delivery are another matter.",
-    PURPLE:"Someone who observes carefully before acting can wait longer than the situation warranted. Their caution is usually right — until the moment passes and the window for useful feedback closes with it.",
-    BLUE:"Someone who holds back to protect the relationship leaves the problem in place while protecting the feeling. Their instinct is kind — but the unsaid things accumulate, and they surface at a worse moment later.",
-    GREEN:"Someone whose attention drifts toward new possibilities can leave friction unresolved because something more interesting pulled their focus. The problem doesn't go away — it just becomes someone else's to carry."
-  },
-  Q14:{
-    RED:"Someone who coaches by naming the gap and showing the path can skip the emotional readiness that makes feedback land. Their directness is efficient — but it sometimes arrives before the person was ready to receive it.",
-    PURPLE:"Someone who investigates before intervening can take longer than the person struggling actually had. Their thoroughness is real — but by the time they understand the root cause fully, the moment may have passed.",
-    BLUE:"Someone who prioritises a person's emotional state before addressing performance can leave the performance issue unresolved while tending the relationship. Both matter — but they're not always on the same timeline.",
-    GREEN:"Someone who lifts the whole group's energy rather than addressing the individual can let specific struggles disappear beneath the raised collective mood. The group feels better — the struggling person is still struggling."
-  },
-  Q15:{
-    RED:"Someone who treats rest and planning as the same thing never fully stops. They carry the last campaign into the next without fully putting it down — and the fatigue accumulates in a place that isn't visible until it is.",
-    PURPLE:"Someone who recovers through solitude can be genuinely hard to reach during their restoration time. Their recovery is real — but it looks like unavailability to anyone who needed them present.",
-    BLUE:"Someone who restores through connection needs more from the people around them than other recovery styles. Isolation — even brief — is a cost for them, not a neutral state, and that changes what they need from the group.",
-    GREEN:"Someone who resets through unstructured exploration can leave practical needs unattended in the name of restoration. The wandering is genuine recovery — but things pile up while they're following where the afternoon leads."
-  },
-  Q16:{
-    RED:"Someone who identifies the next target before the current win has been acknowledged can leave the group without the recognition that sustains long-term motivation. The momentum is real — but so is the cost of never stopping.",
-    PURPLE:"Someone who analyses what worked before moving on can slow the group's return to momentum when the situation rewards moving fast. Their reflection is valuable — but the window to capitalise sometimes closes during it.",
-    BLUE:"Someone who ensures everyone feels seen in a success can delay the group's return to action when timing matters. The acknowledgment is necessary — but so is knowing when the moment for it has passed.",
-    GREEN:"Someone who is already imagining what the win makes possible can feel like they left before the celebration ended. They're looking through the next door — and people still standing in this one can feel abandoned."
-  },
-  Q17:{
-    RED:"Someone who assigns a role before a new person feels settled can create compliance without belonging. Getting them functional fast is efficient — but the person may be performing a role they never actually chose.",
-    PURPLE:"Someone who front-loads context before a new person has oriented can overwhelm rather than prepare. The information is accurate and necessary — but pacing matters, and thoroughness isn't always the same as welcome.",
-    BLUE:"Someone who prioritises belonging before contribution can stretch beyond what the group can absorb. The social investment is genuine — but not every team can carry a long onboarding process before they need the person to perform.",
-    GREEN:"Someone who explores what a new person brings before giving them structure can leave them without the clear footing they need. The curiosity is generous — but some people need a defined role before they can show what they're capable of."
-  },
-  Q18:{
-    RED:"Someone who uses the goal to push through collective exhaustion can extend the group past what it can actually sustain. Their resolve is a genuine leadership asset — until it becomes the thing that breaks the group it was supposed to carry.",
-    PURPLE:"Someone who calls a deliberate pause to think clearly can be misread as stepping back when the group needed visible forward motion. The pause is strategic — but it can feel like disengagement to people who needed to see someone lead.",
-    BLUE:"Someone who focuses on restoring trust and connection before returning to the plan can let the practical problem wait longer than it should. The relational repair is necessary — but the tactical window doesn't always stay open.",
-    GREEN:"Someone who changes the environment or approach when people are exhausted can add instability to a system that needed steadiness. The disruption is well-intentioned — but change costs energy, and depleted people don't always have it."
-  },
-  Q19:{
-    RED:"Someone whose natural role is driving toward the finish line can pull ahead of the group's actual capacity. The pace they set is real leadership — until the gap between them and the group becomes too wide to manage.",
-    PURPLE:"Someone whose natural role is the knowledge anchor creates a dependency the group may not know they have until it matters. When they're wrong or unavailable, the group is exposed in a way no one prepared for.",
-    BLUE:"Someone whose natural role is holding the group together absorbs more than anyone realises — including them. The stability they provide is real, and so is the invisible cost of providing it without end.",
-    GREEN:"Someone whose natural role is keeping possibility alive can resist the narrowing that would let the group actually finish something. The energy is genuine — but it can sustain motion without ever producing arrival."
-  },
-};
-// Trait descriptors used in The Price influence sentences
-// eslint-disable-next-line no-unused-vars
-const COLOR_DESCRIPTORS = {
-  RED:    "decisive streak",
-  PURPLE: "analytical depth",
-  BLUE:   "relational warmth",
-  GREEN:  "creative energy",
-};
-
-// Per-color theme language — assembled from multiple answers
-const COLOR_THEMES = {
-  RED:{
-    core:    "goal-driven and decisive — you move groups forward through discipline and clarity of direction",
-    medium:  "a results-oriented thread runs through your thinking",
-    low:     "a decisive streak shows up in how you approach challenges",
-    connector: "The Fighter in you shows up in",
-  },
-  PURPLE:{
-    core:    "analytical and precise — you bring depth that others rely on without always realising it",
-    medium:  "a thoughtful, information-seeking thread runs through you",
-    low:     "a careful, investigative instinct shows up in how you approach problems",
-    connector: "The Wizard in you shows up in",
-  },
-  BLUE:{
-    core:    "deeply relational — people are the lens through which you read every situation",
-    medium:  "a strong relational thread runs through you",
-    low:     "a people-first instinct shows up in how you read situations",
-    connector: "The Healer in you shows up in",
-  },
-  GREEN:{
-    core:    "creative and possibility-driven — you generate paths that others don't think to look for",
-    medium:  "a generative, exploratory thread runs through you",
-    low:     "a creative, adaptive streak shows up in how you respond to change",
-    connector: "The Ranger in you shows up in",
-  },
-};
-
-
-// Maps each class ability to the Q indices (0-based) most associated with it
-// Used to surface abilities that match the questions the user answered as their color
-const ABILITY_Q_MAP = {
-  // RED classes
-  "Battle Plan":       [0,1,6,12,17],   // Q01 initiative, Q02 group decision, Q07 crisis, Q13 plan fails, Q18 onboarding
-  "Shield of Routine": [0,4,5,8,15],    // Q01 planning, Q05 environment, Q06 feedback, Q09 learning, Q16 downtime
-  "Precision Strike":  [1,3,7,11,13],   // Q02 conflict, Q04 problem, Q08 frustration, Q12 decision, Q14 confrontation
-  "Discipline Surge":  [2,9,14,18,19],  // Q03 motivation, Q10 pressure, Q15 coaching, Q19 fatigue, Q20 role
-  "Breath of Focus":   [1,5,9,18],      // Q02 conflict nav, Q06 feedback, Q10 stress, Q19 fatigue
-  "Flow State":        [0,8,10,15],     // Q01 initiative, Q09 learning, Q11 rhythm, Q16 downtime
-  "Inner Balance":     [1,7,9,13],      // Q02 conflict, Q08 values, Q10 pressure, Q14 confrontation
-  "Routine Kata":      [5,8,14,18],     // Q06 feedback, Q09 learning, Q15 coaching, Q19 fatigue
-  "Rage Channel":      [7,9,16,19],     // Q08 frustration, Q10 pressure, Q17 post-win, Q20 role
-  "Grounded Strength": [2,11,12,18],    // Q03 motivation, Q12 decision, Q13 plan fails, Q19 fatigue
-  "Battle Rhythm":     [7,10,15,18],    // Q08 values, Q11 rhythm, Q16 downtime, Q19 fatigue
-  "Momentum Drive":    [2,16,19],       // Q03 motivation, Q17 post-win, Q20 role
-  // PURPLE classes
-  "Knowledge is Power":[0,3,5,8],       // Q01 initiative, Q04 problem, Q06 feedback, Q09 learning
-  "Spell of Clarity":  [3,7,11,12],     // Q04 problem, Q08 frustration, Q12 decision, Q13 plan fails
-  "Arcane Archive":    [2,8,15,19],     // Q03 motivation, Q09 learning, Q16 downtime, Q20 role
-  "Magic of Logic":    [1,7,11,13],     // Q02 conflict, Q08 frustration, Q12 decision, Q14 confront
-  "Tinker Insight":    [3,7,12,14],     // Q04 problem, Q08 values, Q13 plan fails, Q15 coaching
-  "Blueprint Mind":    [0,6,12,17],     // Q01 initiative, Q07 crisis, Q13 plan fails, Q18 onboard
-  "Adaptive Gadget":   [5,8,12,15],     // Q06 feedback, Q09 learning, Q13 change, Q16 downtime
-  "Logic Engine":      [1,9,13,18],     // Q02 conflict, Q10 pressure, Q14 confront, Q19 fatigue
-  "Silent Observation":[3,6,11,13],     // Q04 problem, Q07 crisis, Q12 decision, Q14 confront
-  "Calculated Risk":   [3,7,11,12],     // Q04 problem, Q08 frustration, Q12 decision, Q13 change
-  "Shadow Adaptation": [1,5,9,17],      // Q02 conflict, Q06 feedback, Q10 stress, Q18 onboard
-  "Emotional Sleight": [1,7,9,13],      // Q02 conflict, Q08 values, Q10 pressure, Q14 confront
-  // BLUE classes
-  "Empathy Touch":     [3,4,14,17],     // Q04 problem, Q05 environment, Q15 coaching, Q18 onboard
-  "Calm Aura":         [1,9,13,18],     // Q02 conflict, Q10 pressure, Q14 confront, Q19 fatigue
-  "Listening Ward":    [5,8,14,17],     // Q06 feedback, Q09 learning, Q15 coaching, Q18 onboard
-  "Shared Burden":     [2,9,14,18],     // Q03 motivation, Q10 pressure, Q15 coaching, Q19 fatigue
-  "Song of Unity":     [1,10,12,17],    // Q02 conflict, Q11 rhythm, Q13 plan fails, Q18 onboard
-  "Emotional Echo":    [5,8,14,16],     // Q06 feedback, Q09 learning, Q15 coaching, Q17 post-win
-  "Performance Shift": [1,12,13,18],    // Q02 conflict, Q13 plan fails, Q14 confront, Q19 fatigue
-  "Harmony Chord":     [1,7,13,16],     // Q02 conflict, Q08 values, Q14 confront, Q17 post-win
-  "Shield of Trust":   [2,4,9,19],      // Q03 motivation, Q05 env, Q10 pressure, Q20 role
-  "Voice of Justice":  [7,13,14,19],    // Q08 values, Q14 confront, Q15 coaching, Q20 role
-  "Team Anchor":       [9,12,18,19],    // Q10 pressure, Q13 plan fails, Q19 fatigue, Q20 role
-  "Inspire Courage":   [6,12,16,19],    // Q07 crisis, Q13 plan fails, Q17 post-win, Q20 role
-  // GREEN classes
-  "Trailblazer":       [1,3,11,12],     // Q02 conflict, Q04 problem, Q12 decision, Q13 change
-  "Adapt to Terrain":  [4,8,12,18],     // Q05 env, Q09 learning, Q13 change, Q19 fatigue
-  "Scout Ahead":       [0,6,11,16],     // Q01 initiative, Q07 crisis, Q12 decision, Q17 post-win
-  "Wild Empathy":      [2,4,14,17],     // Q03 motivation, Q05 env, Q15 coaching, Q18 onboard
-  "Chaos Spark":       [1,3,6,18],      // Q02 conflict, Q04 problem, Q07 crisis, Q19 fatigue
-  "Emotional Surge":   [2,9,14,18],     // Q03 motivation, Q10 pressure, Q15 coaching, Q19 fatigue
-  "Unstructured Flow": [4,8,12,15],     // Q05 env, Q09 learning, Q13 change, Q16 downtime
-  "Magic of Spontaneity":[6,9,12,13],   // Q07 crisis, Q10 pressure, Q13 change, Q14 confront
-  "Nature's Balance":  [1,7,12,18],    // Q02 conflict, Q08 values, Q13 change, Q19 fatigue
-  "Seasonal Adaptation":[2,6,11,19],    // Q03 motivation, Q07 crisis, Q12 decision, Q20 role
-  "Growth Mindset":    [5,8,12,15],     // Q06 feedback, Q09 learning, Q13 change, Q16 downtime
-  "Circle of Ideas":   [1,3,16,19],     // Q02 conflict, Q04 problem, Q17 post-win, Q20 role
-};
-
-// Build personalised insight, strengths, and blindspot from raw answers
-function buildInsight(rawAnswers, scores, topColor, influence, QUESTIONS) {
-  if (!rawAnswers) return null;
-
-  const primaryTheme = COLOR_THEMES[topColor];
-  if (!primaryTheme) return null;
-
-  // Collect fragments and traits by color from actual answers
-  const byColor    = {RED:[],PURPLE:[],BLUE:[],GREEN:[]};
-  const inflTraits = {};   // per influence color: their strength/shadow phrases
-
-  // Diagnostic priority: questions most revealing of CBCI core traits
-  // Higher = more diagnostic for strengths/blindspot selection
-  const DIAG_PRIORITY = {
-    Q07:10, Q09:9, Q11:9, Q03:8, Q12:8, Q06:8,
-    Q02:7,  Q10:7, Q19:7, Q00:6, Q04:6, Q08:6,
-    Q01:5,  Q13:5, Q16:5, Q17:5, Q05:4, Q14:4, Q15:4, Q18:4,
-  };
-
-  // Collect with diagnostic weight
-  const strengthsWeighted = [];  // {s, priority}
-  const shadowsWeighted   = [];  // {sh, priority}
-
-  Object.entries(rawAnswers).forEach(([qIdx, color]) => {
-    const key = "Q" + String(parseInt(qIdx)).padStart(2,"0");
-    const priority = DIAG_PRIORITY[key] || 3;
-    // Fragment for insight paragraph
-    const frag = Q_FRAGMENTS[key]?.[color];
-    if (frag && byColor[color]) byColor[color].push(frag);
-    // Trait for personalised strengths/blindspot
-    const trait = Q_TRAIT_MAP[key]?.[color];
-    if (trait) {
-      if (color === topColor) {
-        strengthsWeighted.push({s:trait.s, priority});
-        shadowsWeighted.push({sh:trait.sh, priority});
-      } else if (influence.includes(color)) {
-        if (!inflTraits[color]) inflTraits[color] = {s:[],sh:[],shw:[]};
-        inflTraits[color].s.push(trait.s);
-        inflTraits[color].sh.push(trait.sh);
-        inflTraits[color].shw.push({sh:trait.sh, priority});
-      }
-    }
-  });
-
-  // Sort by diagnostic priority, deduplicate, take top entries
-  strengthsWeighted.sort((a,b)=>b.priority-a.priority);
-  shadowsWeighted.sort((a,b)=>b.priority-a.priority);
-  const strengths = strengthsWeighted.map(x=>x.s);
-  const shadows   = shadowsWeighted.map(x=>x.sh);
-
-  // Opening sentence
-  const opening = `You are ${primaryTheme.core}.`;
-
-  // Primary detail from top 2 fragments of dominant color
-  const primaryFrags = byColor[topColor].slice(0,2);
-  const youLed = f => /^you /i.test(f);
-  const primaryDetail = (() => {
-    if (!primaryFrags.length) return "";
-    const [f1, f2] = primaryFrags;
-    if (!f2) return youLed(f1) ? `This shows up in how ${f1}.` : `This shows up when ${f1}.`;
-    if (youLed(f1) && youLed(f2))   return `This shows up in how ${f1}, and in how ${f2}.`;
-    if (youLed(f1) && !youLed(f2))  return `This shows up in how ${f1}, and when ${f2}.`;
-    if (!youLed(f1) && youLed(f2))  return `This shows up when ${f1}, and in how ${f2}.`;
-    return `This shows up when ${f1}, and when ${f2}.`;
-  })();
-
-  // Influence sentences using base class connector
-  // Smart connector: "shows up in [verb phrase]" vs "shows up when [noun phrase]"
-  const connectFrag = (connector, frag) => {
-    if (!frag) return "";
-    if (/^you /i.test(frag)) {
-      // Insert "how" before "you" fragment: "shows up in how you X"
-      return `${connector} how ${frag}`;
-    }
-    // Non-"you" fragment — switch to "shows up when"
-    const whenConnector = connector.replace(" shows up in", " shows up when");
-    return `${whenConnector} ${frag}`;
-  };
-
-  const influenceSentences = influence.map(inflColor => {
-    const theme = COLOR_THEMES[inflColor];
-    if (!theme) return "";
-    const inflFrags = byColor[inflColor];
-    if (inflFrags.length >= 2) {
-      const p1 = connectFrag(theme.connector, inflFrags[0]);
-      // Smart second connector based on fragment type
-      const p2 = /^you /i.test(inflFrags[1])
-        ? `and in how ${inflFrags[1]}`
-        : `and when ${inflFrags[1]}`;
-      return `${p1}, ${p2}.`;
-    } else if (inflFrags.length === 1) {
-      return `${connectFrag(theme.connector, inflFrags[0])}.`;
-    } else {
-      const intensity = (scores[inflColor]||0) >= 6 ? "medium" : "low";
-      const tp = theme[intensity];
-      return `${tp.charAt(0).toUpperCase()+tp.slice(1)} also shapes how you show up.`;
-    }
-  }).filter(Boolean);
-
-  // Personalised strengths: pick up to 2 from primary answers
-  const personalisedStrengths = strengths.slice(0,2).map(s =>
-    s.charAt(0).toUpperCase() + s.slice(1)
-  );
-
-  // Personalised blindspot: pick the most revealing shadow from primary answers
-  // Prefer answers from diagnostic questions (Q08=frustration, Q14=conflict, Q10=pressure)
-  const personalisedBlindspot = shadows.length > 0
-    ? shadows[0].charAt(0).toUpperCase() + shadows[0].slice(1) + "."
-    : null;
-
-  // Influence contribution to blindspot (one per influence color)
-  // Look up the best whisper phrase from WHISPER_MAP using the highest-priority
-  // question the person answered as this influence color
-  const inflBlindspots = influence.map(inflColor => {
-    const t = inflTraits[inflColor];
-    if (!t || !t.sh.length) return null;
-    // Find highest-priority Q that has a WHISPER_MAP entry for this color
-    const bestEntry = t.shw && t.shw.length
-      ? [...t.shw]
-          .sort((a,b)=>b.priority-a.priority)
-          .find(entry => {
-            // Match shw entry back to a Q key via the rawAnswers
-            const qKey = Object.entries(rawAnswers||{})
-              .find(([qi, c]) => c === inflColor &&
-                Q_TRAIT_MAP["Q"+String(parseInt(qi)).padStart(2,"0")]?.[inflColor]?.sh === entry.sh
-              );
-            if (!qKey) return false;
-            const qk = "Q"+String(parseInt(qKey[0])).padStart(2,"0");
-            return WHISPER_MAP[qk]?.[inflColor];
-          })
-      : null;
-    // Find the Q key for the best entry
-    const whisperText = (() => {
-      if (!bestEntry) return null;
-      const qEntry = Object.entries(rawAnswers||{})
-        .find(([qi, c]) => c === inflColor &&
-          Q_TRAIT_MAP["Q"+String(parseInt(qi)).padStart(2,"0")]?.[inflColor]?.sh === bestEntry.sh
-        );
-      if (!qEntry) return null;
-      const qk = "Q"+String(parseInt(qEntry[0])).padStart(2,"0");
-      return WHISPER_MAP[qk]?.[inflColor] || null;
-    })();
-    if (!whisperText) return null;
-    return `And quietly, ${whisperText}.`;
-  }).filter(Boolean);
-
-  // ── Friction observations: weakest color × high-priority primary Qs ─────
-  // Find the weakest color (lowest score, score < 5, not primary)
-  const allColors = ["RED","PURPLE","BLUE","GREEN"];
-  // Exclude primary + any influence colors from weakest (they are already surfaced)
-  const excludeFromWeakest = new Set([topColor, ...influence]);
-  const weakestColor = allColors
-    .filter(c => !excludeFromWeakest.has(c))
-    .sort((a,b) => (scores[a]||0) - (scores[b]||0))[0];
-  const weakestScore = scores[weakestColor] || 0;
-
-  // Only surface friction if weakest score is genuinely low (< 5)
-  const frictionObservations = [];
-  if (weakestScore < 5 && weakestColor) {
-    // Find highest-priority Qs the person answered as their primary color
-    const primaryQEntries = Object.entries(rawAnswers||{})
-      .filter(([qi, c]) => c === topColor)
-      .map(([qi]) => { const k="Q"+String(parseInt(qi)).padStart(2,"0"); return {k, priority: DIAG_PRIORITY[k]||3}; })
-      .sort((a,b) => b.priority - a.priority);
-    // Pick up to 2 friction observations from top-priority Qs
-    for (const {k} of primaryQEntries) {
-      if (frictionObservations.length >= 2) break;
-      const obs = FRICTION_Q_MAP[k]?.[weakestColor];
-      if (obs) frictionObservations.push(obs);
-    }
-  }
-
-  return {
-    opening,
-    primaryDetail,
-    influenceSentences,
-    personalisedStrengths,
-    personalisedBlindspot,
-    inflBlindspots,
-    frictionObservations,
-    weakestColor,
-    weakestScore,
-  };
-}
-
 // ── Dual-color combination profiles ─────────────────────────────────────────
 // Key format: "COLOR1_COLOR2" always alphabetical order
 function getDualKey(c1, c2) {
@@ -1142,20 +258,20 @@ function getDualKey(c1, c2) {
 
 const DUAL_PROFILES = {
   "PURPLE_RED": {
-    label:"The Strategist", rune:"ᚱᚦ",
+    label:"The Strategist", rune:"ᚱᛈ",
     color1:"#C0392B", color2:"#6C3483",
     flavor:"You think before you strike — and strike hard when you do. The rarest of commanders.",
     strengths:[
       "Strategic execution — you combine analytical depth with decisive action, producing well-reasoned moves at pace",
       "Pressure clarity — when others panic you get quieter and sharper, drawing on both logic and discipline simultaneously",
     ],
-    blindspot:"The price of combining precision with decisiveness is the people caught between them. When analysis and action align, you are formidable — but when they don't, the gap tends to be paid by whoever needed more time.",
+    blindspot:"You optimise for correctness and efficiency, but can steamroll the human side of decisions. People may feel like variables in your equations rather than partners in your work.",
     quest:"This week, before making a major decision, ask one person how they feel about it — and genuinely sit with the answer before proceeding.",
     abilities:[
-      {name:"Iron Analysis",      desc:"Combine data and decisiveness to cut through ambiguous problems fast.",              eq:"Strategic decision-making",       locked:false,lean1:"RED",lean2:"PURPLE"},
-      {name:"Calculated Advance", desc:"Move forward only when logic and momentum align — but when they do, nothing stops you.", eq:"Disciplined execution",          locked:false,lean1:"RED",lean2:"PURPLE"},
-      {name:"Tactical Reframe",   desc:"Replace panic with structured options when the group is overwhelmed.",              eq:"Cognitive reframing under pressure", locked:false,lean1:"PURPLE",lean2:"RED"},
-      {name:"Precision Command",  desc:"Give clear, well-informed direction that others can follow without confusion.",     eq:"Leadership clarity",               locked:true,lean1:"RED",lean2:"PURPLE"},
+      {name:"Iron Analysis",      desc:"Combine data and decisiveness to cut through ambiguous problems fast.",              eq:"Strategic decision-making",       locked:false},
+      {name:"Calculated Advance", desc:"Move forward only when logic and momentum align — but when they do, nothing stops you.", eq:"Disciplined execution",          locked:false},
+      {name:"Tactical Reframe",   desc:"Replace panic with structured options when the group is overwhelmed.",              eq:"Cognitive reframing under pressure", locked:false},
+      {name:"Precision Command",  desc:"Give clear, well-informed direction that others can follow without confusion.",     eq:"Leadership clarity",               locked:true},
     ],
   },
   "BLUE_RED": {
@@ -1166,81 +282,81 @@ const DUAL_PROFILES = {
       "Motivational leadership — you set the pace and carry others with you, combining directness with genuine care for the group",
       "Trust under pressure — your team knows you will push hard but never leave them behind, which earns loyalty other leaders cannot buy",
     ],
-    blindspot:"The price of driving hard while caring deeply is the oscillation between them. Under pressure the two modes compete, and the people around you feel the switch — warmth one moment, efficiency the next — without always knowing which version is coming.",
+    blindspot:"You oscillate between task and people depending on stress. Under pressure you may flip between cold efficiency and over-accommodation, confusing the people around you about where you actually stand.",
     quest:"This week, notice the moment you switch from task-mode to care-mode. Name it out loud to someone you trust — then ask which one the situation actually needed.",
     abilities:[
-      {name:"Rally the Charge",   desc:"Inspire a fatigued group to push forward by combining urgency with empathy.",     eq:"Motivational leadership",   locked:false,lean1:"RED",lean2:"BLUE"},
-      {name:"Structured Support", desc:"Hold people accountable while making them feel genuinely backed.",                eq:"Accountable empathy",        locked:false,lean1:"RED",lean2:"BLUE"},
-      {name:"Morale Advance",     desc:"Keep the group emotionally stable while still moving toward the goal.",           eq:"Emotional momentum",        locked:false,lean1:"BLUE",lean2:"RED"},
-      {name:"Steady Command",     desc:"Lead clearly in chaos without sacrificing the trust you have built.",             eq:"Resilient leadership",      locked:true,lean1:"RED",lean2:"BLUE"},
+      {name:"Rally the Charge",   desc:"Inspire a fatigued group to push forward by combining urgency with empathy.",     eq:"Motivational leadership",   locked:false},
+      {name:"Structured Support", desc:"Hold people accountable while making them feel genuinely backed.",                eq:"Accountable empathy",        locked:false},
+      {name:"Morale Advance",     desc:"Keep the group emotionally stable while still moving toward the goal.",           eq:"Emotional momentum",        locked:false},
+      {name:"Steady Command",     desc:"Lead clearly in chaos without sacrificing the trust you have built.",             eq:"Resilient leadership",      locked:true},
     ],
   },
   "GREEN_RED": {
-    label:"The Pioneer", rune:"ᚱᛞ",
+    label:"The Pioneer", rune:"ᚱᚷ",
     color1:"#C0392B", color2:"#1E8449",
     flavor:"You blaze trails and sprint down them. Unstoppable when focused — dangerous when not.",
     strengths:[
       "Bold execution — you do not just have ideas, you act on them immediately, turning possibility into progress faster than anyone else",
       "Adaptive drive — when the plan breaks you do not stop, you improvise forward, finding new routes without losing momentum",
     ],
-    blindspot:"The price of executing on your own ideas is fragmentation. Your capacity to generate and act is rare, but without a forcing function it distributes across too many self-started things — and momentum without direction is just motion.",
+    blindspot:"You move fast in multiple directions. Without a forcing function, your energy fragments across too many self-started initiatives. You may inspire without consolidating.",
     quest:"List every active initiative you are currently running. Pick one to kill or pause. Direct that energy into the one that matters most this week.",
     abilities:[
-      {name:"Frontier Sprint",      desc:"Turn a creative spark into a concrete plan and move on it the same day.",          eq:"Idea-to-action speed",       locked:false,lean1:"RED",lean2:"GREEN"},
-      {name:"Course Correction",    desc:"Adapt the plan without losing the goal when conditions change.",                   eq:"Agile execution",            locked:false,lean1:"GREEN",lean2:"RED"},
-      {name:"Momentum Forge",       desc:"Use discipline to sustain creative energy past the exciting early phase.",         eq:"Follow-through on innovation",locked:true,lean1:"RED",lean2:"GREEN"},
-      {name:"Trailblazing Focus",   desc:"Channel big-picture vision into specific, measurable next steps.",                eq:"Creative discipline",        locked:false,lean1:"GREEN",lean2:"RED"},
+      {name:"Frontier Sprint",      desc:"Turn a creative spark into a concrete plan and move on it the same day.",          eq:"Idea-to-action speed",       locked:false},
+      {name:"Course Correction",    desc:"Adapt the plan without losing the goal when conditions change.",                   eq:"Agile execution",            locked:false},
+      {name:"Momentum Forge",       desc:"Use discipline to sustain creative energy past the exciting early phase.",         eq:"Follow-through on innovation",locked:true},
+      {name:"Trailblazing Focus",   desc:"Channel big-picture vision into specific, measurable next steps.",                eq:"Creative discipline",        locked:false},
     ],
   },
   "BLUE_PURPLE": {
-    label:"The Counsellor", rune:"ᚦᛒ",
+    label:"The Counsellor", rune:"ᛈᛒ",
     color1:"#6C3483", color2:"#1A5276",
     flavor:"You understand people at the level most never reach — both their logic and their heart.",
     strengths:[
       "Deep relational intelligence — you combine emotional attunement with analytical observation, seeing both what people say and what they mean",
       "Trusted advisor — people bring you their hardest problems because you listen fully and think carefully before responding",
     ],
-    blindspot:"The price of understanding people and situations deeply is the action it delays. You often know what needs to happen long before you move — and in that gap, the situation continues without you.",
+    blindspot:"You are exquisitely sensitive to complexity — in data and in people. This can make you slow to act and prone to carrying others' emotional weight alongside your own cognitive load. You may know what needs to happen long before you do it.",
     quest:"This week, identify one situation where you already know the answer but have not acted. Set a 48-hour deadline and move — imperfect action beats perfect inaction.",
     abilities:[
-      {name:"Informed Empathy",    desc:"Use knowledge of someone's context to offer support that actually fits their situation.", eq:"Contextual emotional intelligence", locked:false,lean1:"BLUE",lean2:"PURPLE"},
-      {name:"Pattern of Care",     desc:"Detect recurring group dynamics before they become conflict.",                    eq:"Relational pattern recognition",    locked:false,lean1:"PURPLE",lean2:"BLUE"},
-      {name:"Quiet Authority",     desc:"Build influence through depth of understanding rather than volume.",              eq:"Expert credibility",                locked:true,lean1:"PURPLE",lean2:"BLUE"},
-      {name:"Grounded Compassion", desc:"Hold emotional space for others without losing your own stability.",             eq:"Regulated empathy",                 locked:false,lean1:"BLUE",lean2:"PURPLE"},
+      {name:"Informed Empathy",    desc:"Use knowledge of someone's context to offer support that actually fits their situation.", eq:"Contextual emotional intelligence", locked:false},
+      {name:"Pattern of Care",     desc:"Detect recurring group dynamics before they become conflict.",                    eq:"Relational pattern recognition",    locked:false},
+      {name:"Quiet Authority",     desc:"Build influence through depth of understanding rather than volume.",              eq:"Expert credibility",                locked:true},
+      {name:"Grounded Compassion", desc:"Hold emotional space for others without losing your own stability.",             eq:"Regulated empathy",                 locked:false},
     ],
   },
   "GREEN_PURPLE": {
-    label:"The Visionary", rune:"ᚦᛞ",
+    label:"The Visionary", rune:"ᛈᚷ",
     color1:"#6C3483", color2:"#1E8449",
     flavor:"You see what others do not and can explain why. The architect of things that do not exist yet.",
     strengths:[
       "Innovative thinking — you combine creative breadth with analytical depth, generating ideas that are both original and structurally sound",
       "Complex problem fluency — you move comfortably in ambiguity, finding elegant solutions where others see only noise",
     ],
-    blindspot:"The price of ideas that are both original and defensible is the translation cost. Between your intellectual model and the world that has to run it, there is a gap — and bridging it requires the kind of patience that complexity doesn't always reward.",
+    blindspot:"You live in the world of ideas and frameworks. The gap between your intellectual models and real-world execution can be vast — and you may underestimate how much translation is required to bring others along.",
     quest:"Take one idea you have been refining mentally and share it with someone outside your head this week. Their confusion is data, not ignorance — use it to sharpen the idea.",
     abilities:[
-      {name:"Structured Imagination", desc:"Build creative concepts with enough internal logic that others can actually execute them.", eq:"Applied innovation",           locked:false,lean1:"PURPLE",lean2:"GREEN"},
-      {name:"Possibility Mapping",    desc:"Chart multiple future scenarios and evaluate them with both intuition and evidence.",   eq:"Strategic foresight",         locked:false,lean1:"GREEN",lean2:"PURPLE"},
-      {name:"Conceptual Bridge",      desc:"Translate complex ideas into forms that different types of thinkers can grasp.",        eq:"Intellectual communication",   locked:true,lean1:"PURPLE",lean2:"GREEN"},
-      {name:"Elegant Reframe",        desc:"Replace a stuck group's assumptions with a better model that opens new options.",      eq:"Systems reframing",           locked:false,lean1:"GREEN",lean2:"PURPLE"},
+      {name:"Structured Imagination", desc:"Build creative concepts with enough internal logic that others can actually execute them.", eq:"Applied innovation",           locked:false},
+      {name:"Possibility Mapping",    desc:"Chart multiple future scenarios and evaluate them with both intuition and evidence.",   eq:"Strategic foresight",         locked:false},
+      {name:"Conceptual Bridge",      desc:"Translate complex ideas into forms that different types of thinkers can grasp.",        eq:"Intellectual communication",   locked:true},
+      {name:"Elegant Reframe",        desc:"Replace a stuck group's assumptions with a better model that opens new options.",      eq:"Systems reframing",           locked:false},
     ],
   },
   "BLUE_GREEN": {
-    label:"The Inspirer", rune:"ᛒᛞ",
+    label:"The Inspirer", rune:"ᛒᚷ",
     color1:"#1A5276", color2:"#1E8449",
     flavor:"You light up rooms and people. Where you go, energy and belonging follow.",
     strengths:[
       "Energising inclusion — you make people feel welcome and inspired simultaneously, creating the psychological safety needed for genuine creativity",
       "Culture-building — your presence shifts group dynamics toward openness, trust, and possibility without anyone quite knowing how you did it",
     ],
-    blindspot:"The price of warmth and energy together is the structure neither builds. You make people feel welcome and excited — and then the thing that needed building in order to sustain that feeling doesn't get built, because you moved on.",
+    blindspot:"You are warm and exciting, which makes it easy to get people on board — but you may move from spark to spark without building the structures that sustain what you have started. People love following you and then wonder where you went.",
     quest:"Identify one group or initiative you have energised in the last month. What would it need from you to still be thriving in three months? Do one concrete thing toward that this week.",
     abilities:[
-      {name:"Creative Belonging", desc:"Make space for both new ideas and the people behind them simultaneously.",            eq:"Inclusive innovation",               locked:false,lean1:"BLUE",lean2:"GREEN"},
-      {name:"Inspired Trust",     desc:"Build connection through shared possibility rather than just shared history.",        eq:"Vision-led relationship building",    locked:false,lean1:"GREEN",lean2:"BLUE"},
-      {name:"Warm Disruption",    desc:"Challenge the status quo in ways that feel exciting rather than threatening.",       eq:"Change facilitation",                locked:true,lean1:"GREEN",lean2:"BLUE"},
-      {name:"Resonant Spark",     desc:"Match the right creative energy to each person's emotional state to unlock them.",  eq:"Adaptive motivation",                locked:false,lean1:"GREEN",lean2:"BLUE"},
+      {name:"Creative Belonging", desc:"Make space for both new ideas and the people behind them simultaneously.",            eq:"Inclusive innovation",               locked:false},
+      {name:"Inspired Trust",     desc:"Build connection through shared possibility rather than just shared history.",        eq:"Vision-led relationship building",    locked:false},
+      {name:"Warm Disruption",    desc:"Challenge the status quo in ways that feel exciting rather than threatening.",       eq:"Change facilitation",                locked:true},
+      {name:"Resonant Spark",     desc:"Match the right creative energy to each person's emotional state to unlock them.",  eq:"Adaptive motivation",                locked:false},
     ],
   },
   "SPLIT": {
@@ -1251,13 +367,13 @@ const DUAL_PROFILES = {
       "Contextual adaptability — you flex naturally between thinking styles, making you unusually effective in teams where others are more fixed",
       "Cross-type translation — you can bridge different brain color styles because you authentically carry something of each, making you a natural mediator",
     ],
-    blindspot:"The price of being everything the situation needs is never quite knowing what you are when the situation doesn't need anything in particular. Adaptability without a default is its own kind of disorientation.",
+    blindspot:"When everything feels equally natural, it becomes hard to know what you actually stand for. Others may experience your adaptability as inconsistency. Under pressure you may lack a default that grounds you.",
     quest:"This week, in one important situation, consciously choose your mode before entering it — and hold it. Notice what it feels like to lead from one color deliberately rather than letting context decide.",
     abilities:[
-      {name:"Mode Switch",        desc:"Consciously shift into whichever thinking style the situation demands.",            eq:"Metacognitive flexibility",          locked:false,lean1:"RED",lean2:"PURPLE"},
-      {name:"Full Spectrum Read", desc:"Diagnose a group's dynamic across all four brain color dimensions simultaneously.", eq:"Systemic emotional intelligence",    locked:false,lean1:"BLUE",lean2:"PURPLE"},
-      {name:"Bridge Build",       desc:"Translate between conflicting styles in a team, reducing friction others cannot see.",eq:"Cross-type mediation",             locked:true,lean1:"BLUE",lean2:"GREEN"},
-      {name:"Adaptive Anchor",    desc:"Ground yourself deliberately in one mode when pulled in too many directions.",     eq:"Intentional self-regulation",        locked:false,lean1:"RED",lean2:"BLUE"},
+      {name:"Mode Switch",        desc:"Consciously shift into whichever thinking style the situation demands.",            eq:"Metacognitive flexibility",          locked:false},
+      {name:"Full Spectrum Read", desc:"Diagnose a group's dynamic across all four brain color dimensions simultaneously.", eq:"Systemic emotional intelligence",    locked:false},
+      {name:"Bridge Build",       desc:"Translate between conflicting styles in a team, reducing friction others cannot see.",eq:"Cross-type mediation",             locked:true},
+      {name:"Adaptive Anchor",    desc:"Ground yourself deliberately in one mode when pulled in too many directions.",     eq:"Intentional self-regulation",        locked:false},
     ],
   },
 };
@@ -1269,24 +385,8 @@ function getDualProfile(resolved) {
 }
 
 
-
-
 function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-function pickVariant(variants){
-  return variants[Math.floor(Math.random()*variants.length)];
-}
-function buildShuffledQuestions(){
-  return RAW_QUESTIONS.map((q,qi)=>{
-    const pool=ANSWER_VARIANTS[q.img];
-    const options=pool
-      ? shuffle(['RED','PURPLE','BLUE','GREEN'].map(color=>({
-          color,
-          text: pickVariant(pool[color])
-        })))
-      : shuffle(q.options);
-    return {...q, options};
-  });
-}
+function buildShuffledQuestions(){return RAW_QUESTIONS.map(q=>({...q,options:shuffle(q.options)}));}
 
 const KEYS=["RED","PURPLE","BLUE","GREEN"];
 const LABELS=["A","B","C","D"];
@@ -1303,12 +403,6 @@ async function generateCharacterSheetPDF(playerName, topColor, myClass, scores, 
   }
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ orientation:"portrait", unit:"mm", format:"a4" });
-  const cd = data.classData ? data.classData[myClass] : null;
-  const myAbilities = cd ? cd.abilities : [];
-  const singleLockedName = cd ? cd.locked : null;
-  const myStrengths = cd ? cd.strengths : (data.strengths||[]);
-  const myBlindspot = cd ? cd.blindspot : (data.blindspot||'');
-  const myQuest = cd ? cd.quest : (data.quest||'');
   const W = 210; const H = 297;
 
   function hexRGB(hex) {
@@ -1425,7 +519,7 @@ async function generateCharacterSheetPDF(playerName, topColor, myClass, scores, 
   doc.line(10,112,W-10,112);
   doc.setGState(new doc.GState({opacity:1}));
 
-  // ── Strengths ───────────────────────────────────────────────────────────
+  // ── EQ Strengths ───────────────────────────────────────────────────────────
   doc.setFillColor(cr,cg,cb);
   doc.setGState(new doc.GState({opacity:0.15}));
   doc.roundedRect(10,115,W-20,30,boxR,boxR,"F");
@@ -1437,12 +531,12 @@ async function generateCharacterSheetPDF(playerName, topColor, myClass, scores, 
   doc.setFontSize(6.5);
   doc.setFont("helvetica","bold");
   doc.setTextColor(cr,cg,cb);
-  doc.text("STRENGTHS", 15,121);
+  doc.text("EQ STRENGTHS", 15,121);
 
   doc.setFont("helvetica","normal");
   doc.setTextColor(220,210,185);
   doc.setFontSize(8);
-  myStrengths.forEach((s,i) => {
+  data.strengths.forEach((s,i) => {
     const lines = doc.splitTextToSize(`• ${s}`, W-32);
     doc.text(lines, 15, 126 + i*10);
   });
@@ -1459,12 +553,12 @@ async function generateCharacterSheetPDF(playerName, topColor, myClass, scores, 
   doc.setFontSize(6.5);
   doc.setFont("helvetica","bold");
   doc.setTextColor(220,80,80);
-  doc.text("THE PRICE", 15,155);
+  doc.text("BLIND SPOT", 15,155);
 
   doc.setFont("helvetica","normal");
   doc.setTextColor(220,210,185);
   doc.setFontSize(8);
-  const blines = doc.splitTextToSize(myBlindspot, W-32);
+  const blines = doc.splitTextToSize(data.blindspot, W-32);
   doc.text(blines, 15, 161);
 
   // ── First Quest ────────────────────────────────────────────────────────────
@@ -1484,7 +578,7 @@ async function generateCharacterSheetPDF(playerName, topColor, myClass, scores, 
   doc.setFont("helvetica","normal");
   doc.setTextColor(240,225,180);
   doc.setFontSize(8);
-  const qlines = doc.splitTextToSize(myQuest, W-32);
+  const qlines = doc.splitTextToSize(data.quest, W-32);
   doc.text(qlines, 15, 187);
 
   // ── Class Abilities ────────────────────────────────────────────────────────
@@ -1493,6 +587,8 @@ async function generateCharacterSheetPDF(playerName, topColor, myClass, scores, 
   doc.setTextColor(cr,cg,cb);
   doc.text("CLASS ABILITIES", 10, 206);
 
+  const myAbilities = data.abilities[myClass] || [];
+  const singleLockedName = data.lockedByClass ? data.lockedByClass[myClass] : null;
 
   myAbilities.forEach((ab, i) => {
     const isLocked = singleLockedName === ab.name;
@@ -1550,7 +646,7 @@ async function generateCharacterSheetPDF(playerName, topColor, myClass, scores, 
 
 
 // ── App ───────────────────────────────────────────────────────────────────────
-const ALL_RUNES=[{r:"ᚱ",c:"#C0392B"},{r:"ᚦ",c:"#6C3483"},{r:"ᛒ",c:"#1A5276"},{r:"ᛞ",c:"#1E8449"}];
+const ALL_RUNES=[{r:"ᚱ",c:"#C0392B"},{r:"ᛈ",c:"#6C3483"},{r:"ᛒ",c:"#1A5276"},{r:"ᚷ",c:"#1E8449"}];
 
 export default function App(){
   const [phase,setPhase]=useState("intro");
@@ -1564,34 +660,18 @@ export default function App(){
 
   const [cycleRune,setCycleRune]=useState("ᚱ");
   const [cycleColor,setCycleColor]=useState("#C0392B");
-  const [cycleCrest,setCycleCrest]=useState("RED");
-  const [shuffleKey,setShuffleKey]=useState(0);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const QUESTIONS=useMemo(()=>buildShuffledQuestions(),[shuffleKey]);
+  const QUESTIONS=useMemo(()=>buildShuffledQuestions(),[]);
 
   // ── Google Sheets webhook URL — paste your Apps Script Web App URL here ──
-  const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyGmAxsIA4QqcrbcsZvl3OKi-vsFZIUIxAqEU3wSIFYTojq5i8hEOS6DcT-8cMRmJ3G/exec";
+  const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwk67aa9yjMDqGxTDlb-in0T1AaRclGzv8XD4T2WgoiyL97HnKCtJ-4aC8xSO6AJ3qR/exec";
 
-  async function submitResult(resolvedResult, scores, topColor, myClass, dualProfile, rawAnswers) {
+  async function submitResult(resolvedResult, scores, topColor, myClass, dualProfile) {
     if (!SHEET_WEBHOOK_URL || SHEET_WEBHOOK_URL === "YOUR_APPS_SCRIPT_URL_HERE") return;
     try {
       const isTieResult = resolvedResult.type === "dual" || resolvedResult.type === "shapeshifter";
       const secondColor = isTieResult ? resolvedResult.colors[1] : "";
       const secondClass = isTieResult && secondColor
         ? getClass(CLASSES[secondColor], scores[secondColor])
-        : "";
-      // Compute weakest color (lowest score, not primary or dual partner, score < 5)
-      const _excludeWeak = new Set([topColor, ...(resolvedResult.influence||[])]);
-      const _weakest = ["RED","PURPLE","BLUE","GREEN"]
-        .filter(c => !_excludeWeak.has(c))
-        .sort((a,b) => (scores[a]||0) - (scores[b]||0))[0];
-      const _weakestScore = _weakest ? (scores[_weakest]||0) : 0;
-      // Encode raw per-question answers as Q00=RED,Q01=BLUE,... for the sheet
-      const answerStr = rawAnswers
-        ? Object.entries(rawAnswers)
-            .sort((a,b)=>parseInt(a[0])-parseInt(b[0]))
-            .map(([i,c])=>`Q${String(parseInt(i)).padStart(2,"0")}=${c}`)
-            .join(",")
         : "";
       const payload = {
         timestamp:    new Date().toISOString(),
@@ -1606,10 +686,6 @@ export default function App(){
         scorePURPLE:  scores.PURPLE,
         scoreBLUE:    scores.BLUE,
         scoreGREEN:   scores.GREEN,
-        answers:      answerStr,
-        influence:    (resolvedResult.influence||[]).join("+"),
-        weakestColor: (_weakestScore < 5 ? _weakest : "")||"",
-        weakestScore: _weakestScore,
       };
       // Use GET with URL params — avoids CORS preflight on Apps Script
       const params = new URLSearchParams(payload).toString();
@@ -1629,8 +705,6 @@ export default function App(){
         const pick=ALL_RUNES[Math.floor(Math.random()*ALL_RUNES.length)];
         setCycleRune(pick.r);
         setCycleColor(pick.c);
-        const crestColors=["RED","PURPLE","BLUE","GREEN"];
-        setCycleCrest(crestColors[Math.floor(Math.random()*crestColors.length)]);
       },120);
     } else {
       if(cycleRef.current){clearInterval(cycleRef.current);cycleRef.current=null;}
@@ -1652,14 +726,14 @@ export default function App(){
         const fs={RED:0,PURPLE:0,BLUE:0,GREEN:0};
         Object.values(newAnswers).forEach(c=>{fs[c]++;});
         const resolved=resolveResult(fs);
-        setResult({scores:fs,topColor:resolved.colors[0],resolved,rawAnswers:{...newAnswers}});
+        setResult({scores:fs,topColor:resolved.colors[0],resolved});
         setPhase("result");
         scrollTop();
       }
     },320);
   }
 
-  function reset(){setPhase("intro");setAnswers({});setCurrent(0);setResult(null);setRevealed(false);setCycleRune("ᚱ");setCycleColor("#C0392B");setShuffleKey(k=>k+1);scrollTop();}
+  function reset(){setPhase("intro");setAnswers({});setCurrent(0);setResult(null);setRevealed(false);setCycleRune("ᚱ");setCycleColor("#C0392B");scrollTop();}
 
   async function handleDownloadPDF(){
     if(!result)return;
@@ -1746,10 +820,6 @@ export default function App(){
               <p style={{fontSize:12,lineHeight:1.65,color:"#7a5c30",margin:0,fontFamily:"Calibri,sans-serif"}}>{q.footnote}</p>
             </div>
           ):<div style={{height:11}}/>}
-          <div style={{background:t.mindsetBg,border:`1px solid ${t.mindsetBorder}`,borderRadius:10,padding:"11px 15px",marginTop:14,display:"flex",gap:10,alignItems:"flex-start"}}>
-            <span style={{fontSize:14,color:t.accent,flexShrink:0,marginTop:1}}>🧭</span>
-            <p style={{fontSize:13,lineHeight:1.65,color:t.muted,margin:0,fontStyle:"italic"}}>{q.mindset}</p>
-          </div>
           <div style={{display:"flex",flexDirection:"column",gap:9,marginTop:2}}>
             {q.options.map((opt,i)=>{
               const isSel=selectedColor===opt.color;
@@ -1761,10 +831,14 @@ export default function App(){
               );
             })}
           </div>
+          <div style={{background:t.mindsetBg,border:`1px solid ${t.mindsetBorder}`,borderRadius:10,padding:"11px 15px",marginTop:14,display:"flex",gap:10,alignItems:"flex-start"}}>
+            <span style={{fontSize:14,color:t.accent,flexShrink:0,marginTop:1}}>🧭</span>
+            <p style={{fontSize:13,lineHeight:1.65,color:t.muted,margin:0,fontStyle:"italic"}}>{q.mindset}</p>
+          </div>
           <div style={{display:"flex",justifyContent:"space-between",marginTop:14}}>
             <button onClick={()=>{if(current>0){setCurrent(current-1);scrollTop();}}} disabled={current===0} style={{background:"none",border:"1px solid rgba(255,255,255,0.1)",borderRadius:8,padding:"9px 18px",color:current===0?"#333":t.muted,cursor:current===0?"default":"pointer",fontFamily:"Georgia",fontSize:13}}>← Back</button>
             {Object.keys(answers).length===QUESTIONS.length&&current===QUESTIONS.length-1&&(
-              <button onClick={()=>{const fs={RED:0,PURPLE:0,BLUE:0,GREEN:0};Object.values(answers).forEach(c=>{fs[c]++;});const resolved=resolveResult(fs);setResult({scores:fs,topColor:resolved.colors[0],resolved,rawAnswers:{...answers}});setPhase("result");}} style={{background:`linear-gradient(135deg,${t.accent},${t.accent}cc)`,border:"none",borderRadius:8,padding:"9px 22px",color:"#0d0d12",fontWeight:700,fontFamily:"Georgia",fontSize:14,cursor:"pointer",letterSpacing:"0.05em"}}>Reveal My Class ✦</button>
+              <button onClick={()=>{const fs={RED:0,PURPLE:0,BLUE:0,GREEN:0};Object.values(answers).forEach(c=>{fs[c]++;});const resolved=resolveResult(fs);setResult({scores:fs,topColor:resolved.colors[0],resolved});setPhase("result");}} style={{background:`linear-gradient(135deg,${t.accent},${t.accent}cc)`,border:"none",borderRadius:8,padding:"9px 22px",color:"#0d0d12",fontWeight:700,fontFamily:"Georgia",fontSize:14,cursor:"pointer",letterSpacing:"0.05em"}}>Reveal My Class ✦</button>
             )}
           </div>
         </div>
@@ -1772,40 +846,19 @@ export default function App(){
 
       {/* RESULT */}
       {phase==="result"&&result&&(()=>{
-        const resolved=result.resolved||{type:"single",colors:[result.topColor],influence:[]};
+        const resolved=result.resolved||{type:"single",colors:[result.topColor]};
         const isTie=resolved.type==="dual"||resolved.type==="shapeshifter";
-        const influence=(!isTie&&resolved.influence&&resolved.influence.length>0)?resolved.influence:[];
-        const rawAnswers=result.rawAnswers||{};
-        // Always build insight for friction — pass empty influence for dual results
-        const insight=buildInsight(rawAnswers,result.scores,result.topColor,isTie?[]:influence,QUESTIONS);
         const dualProfile=isTie?getDualProfile(resolved):null;
         const data=CLASSES[result.topColor];
         const myScore=result.scores[result.topColor];
         const myClass=getClass(data,myScore);
-        const cd=data.classData?data.classData[myClass]:null;
         const sorted=Object.entries(result.scores).sort((a,b)=>b[1]-a[1]);
-        const displayStrengths=isTie&&dualProfile?dualProfile.strengths:(cd?cd.strengths:data.strengths||[]);
-        const displayBlindspot=isTie&&dualProfile?dualProfile.blindspot:(cd?cd.blindspot:data.blindspot||"");
-        const displayQuest=isTie&&dualProfile?dualProfile.quest:(cd?cd.quest:data.quest||"");
-        // Score each ability by how many of its Q indices the user answered as primary color
-        const rawAns = result.rawAnswers || {};
-        const primaryColorAnswers = new Set(
-          Object.entries(rawAns)
-            .filter(([,c]) => c === result.topColor)
-            .map(([i]) => parseInt(i))
-        );
-        const scoreAbility = (ab) => {
-          const qs = ABILITY_Q_MAP[ab.name] || [];
-          return qs.filter(q => primaryColorAnswers.has(q)).length;
-        };
-        const baseAbilities = isTie&&dualProfile ? dualProfile.abilities : (cd?cd.abilities:[]);
-        // Reorder: locked ability always last, unlocked sorted by resonance score
-        const singleLockedName = cd ? cd.locked : null;
-        const isAbilityLocked = (ab) => isTie&&dualProfile ? ab.locked : ab.name===singleLockedName;
-        const displayAbilities = [
-          ...baseAbilities.filter(ab=>!isAbilityLocked(ab)).sort((a,b)=>scoreAbility(b)-scoreAbility(a)),
-          ...baseAbilities.filter(ab=>isAbilityLocked(ab)),
-        ];
+        const displayStrengths=isTie&&dualProfile?dualProfile.strengths:data.strengths;
+        const displayBlindspot=isTie&&dualProfile?dualProfile.blindspot:data.blindspot;
+        const displayQuest=isTie&&dualProfile?dualProfile.quest:data.quest;
+        const displayAbilities=isTie&&dualProfile?dualProfile.abilities:(data.abilities[myClass]||[]);
+        const singleLockedName=data.lockedByClass?data.lockedByClass[myClass]:null;
+        const displayLocked=isTie&&dualProfile?dualProfile.abilities.filter(a=>a.locked).map(a=>a.name):(singleLockedName?[singleLockedName]:[]);
         return(
           <div style={{maxWidth:680,width:"100%",animation:"fadeIn 0.8s ease"}}>
             <style>{`@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}} @keyframes revealIn{from{opacity:0;transform:scale(0.96) translateY(24px)}to{opacity:1;transform:none}} @keyframes runeReveal{0%{opacity:0;transform:scale(0.5) rotate(-20deg)}60%{transform:scale(1.3) rotate(5deg)}100%{opacity:1;transform:scale(1) rotate(0deg)}} @keyframes runeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}} @keyframes glow{0%,100%{box-shadow:0 0 20px rgba(183,149,11,0.3)}50%{box-shadow:0 0 50px rgba(183,149,11,0.6)}}`}</style>
@@ -1813,7 +866,7 @@ export default function App(){
             {!revealed&&(
               <div style={{textAlign:"center",padding:"40px 20px",animation:"fadeIn 0.6s ease"}}>
                 <div style={{position:"relative",width:100,height:100,margin:"0 auto 16px",display:"flex",alignItems:"center",justifyContent:"center"}}>
-                  <img src={CREST_MAP[cycleCrest]} alt="" style={{position:"absolute",width:90,height:90,objectFit:"contain",opacity:0.18,filter:`blur(1px) drop-shadow(0 0 20px ${cycleColor})`,transition:"opacity 0.1s ease"}}/>
+                  <img src={CREST_MAP[result.topColor]} alt="" style={{position:"absolute",width:90,height:90,objectFit:"contain",opacity:0.18,filter:`blur(1px) drop-shadow(0 0 20px ${cycleColor})`}}/>
                   <div style={{fontSize:64,animation:"runeFloat 2s ease-in-out infinite",color:cycleColor,transition:"color 0.08s ease",textShadow:`0 0 30px ${cycleColor}88`,position:"relative",zIndex:1}}>{cycleRune}</div>
                 </div>
                 <div style={{fontSize:11,letterSpacing:"0.3em",color:"#b7950b",textTransform:"uppercase",marginBottom:8}}>Your class has been determined</div>
@@ -1821,12 +874,12 @@ export default function App(){
                 <p style={{fontSize:14,color:"#8a7f6e",fontStyle:"italic",margin:"0 0 32px",lineHeight:1.7}}>Twenty questions. Twenty choices. One truth.</p>
                 <button onClick={()=>{
                   setRevealed(true);
-                  const res=result.resolved||{type:"single",colors:[result.topColor],influence:[]};
+                  const res=result.resolved||{type:"single",colors:[result.topColor]};
                   const d=CLASSES[result.topColor];
                   const sc=result.scores[result.topColor];
                   const mc=getClass(d,sc);
                   const dp=res.type==="dual"||res.type==="shapeshifter"?getDualProfile(res):null;
-                  submitResult(res,result.scores,result.topColor,mc,dp,result.rawAnswers||{});
+                  submitResult(res,result.scores,result.topColor,mc,dp);
                 }} style={{background:`linear-gradient(135deg,${data.color},${data.color}cc)`,border:"none",borderRadius:12,padding:"16px 40px",color:"#fff",fontSize:17,fontWeight:700,fontFamily:"Georgia,serif",letterSpacing:"0.08em",cursor:"pointer",boxShadow:`0 0 40px ${data.color}55`,animation:"glow 2s ease infinite"}}>
                   Reveal My Class ✦
                 </button>
@@ -1845,28 +898,7 @@ export default function App(){
                 </div>
               </div>
               <h2 style={{fontSize:"clamp(26px,6vw,42px)",margin:"0 0 8px",color:"#f0ebe0",letterSpacing:"0.05em"}}>{myClass}</h2>
-              <p style={{fontSize:14,color:"#8a7f6e",fontStyle:"italic",margin:"0 0 10px"}}>"{data.flavor}"</p>
-              {!isTie&&insight&&(
-                <div style={{background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:12,padding:"14px 18px",margin:"10px 0",textAlign:"left"}}>
-                  <p style={{fontSize:13,lineHeight:1.75,color:"#e8e4d9",margin:"0 0 8px",fontFamily:"Georgia,serif",fontStyle:"italic"}}>{insight.opening}</p>
-                  {insight.primaryDetail&&<p style={{fontSize:13,lineHeight:1.75,color:"#c9c1b0",margin:"0 0 8px",fontFamily:"Calibri,sans-serif"}}>{insight.primaryDetail}</p>}
-                  {insight.influenceSentences.length>0&&(
-                    <div style={{borderTop:"1px solid rgba(255,255,255,0.08)",paddingTop:8,marginTop:4}}>
-                      <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:6}}>
-                        {influence.map(c=>(
-                          <span key={c} style={{display:"inline-flex",alignItems:"center",gap:3,background:CLASSES[c].color+"22",border:`1px solid ${CLASSES[c].color}44`,borderRadius:20,padding:"2px 8px"}}>
-                            <img src={CREST_MAP[c]} alt={c} style={{width:12,height:12,objectFit:"contain"}}/>
-                            <span style={{fontSize:9,fontWeight:700,color:CLASSES[c].color,letterSpacing:"0.1em"}}>{CLASSES[c].label}</span>
-                          </span>
-                        ))}
-                      </div>
-                      {insight.influenceSentences.map((s,i)=>(
-                        <p key={i} style={{fontSize:12,lineHeight:1.7,color:"#a09880",margin:"0 0 4px",fontFamily:"Calibri,sans-serif"}}>{s}</p>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
+              <p style={{fontSize:14,color:"#8a7f6e",fontStyle:"italic",margin:"0 0 12px"}}>"{data.flavor}"</p>
               {playerName&&<p style={{fontSize:13,color:data.color,margin:0}}>Your class is set, <strong>{playerName}</strong>. Your quest begins now.</p>}
             </div>
             )}
@@ -1912,78 +944,34 @@ export default function App(){
             </div>
 
             {/* Strengths & Blindspot */}
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:18,alignItems:"start"}}>
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:18}}>
               <div style={{background:`${data.color}12`,border:`1px solid ${data.color}33`,borderRadius:12,padding:"18px 16px"}}>
-                <div style={{fontSize:11,letterSpacing:"0.2em",color:isTie?"#b7950b":data.color,textTransform:"uppercase",marginBottom:10}}>⚔ Strengths</div>
-                {(insight&&insight.personalisedStrengths&&insight.personalisedStrengths.length>0
-                  ?insight.personalisedStrengths
-                  :displayStrengths
-                ).map((s,i)=><p key={i} style={{fontSize:13,lineHeight:1.65,color:"#c9c1b0",margin:"0 0 9px",fontFamily:"Calibri,sans-serif"}}>• {s}</p>)}
+                <div style={{fontSize:11,letterSpacing:"0.2em",color:isTie?"#b7950b":data.color,textTransform:"uppercase",marginBottom:10}}>⚔ EQ Strengths</div>
+                {displayStrengths.map((s,i)=><p key={i} style={{fontSize:13,lineHeight:1.65,color:"#c9c1b0",margin:"0 0 9px",fontFamily:"Calibri,sans-serif"}}>• {s}</p>)}
               </div>
               <div style={{display:"flex",flexDirection:"column",gap:10}}>
-                <div style={{background:"rgba(192,57,43,0.08)",border:"1px solid rgba(192,57,43,0.25)",borderRadius:12,padding:"18px 16px",minHeight:0,overflow:"visible"}}>
-                  <div style={{fontSize:11,letterSpacing:"0.2em",color:"#C0392B",textTransform:"uppercase",marginBottom:10}}>⚠ The Price</div>
-                  <p style={{fontSize:13,lineHeight:1.65,color:"#c9c1b0",margin:"0 0 6px",fontFamily:"Calibri,sans-serif"}}>
-                    {isTie?displayBlindspot:(insight&&insight.personalisedBlindspot?insight.personalisedBlindspot:displayBlindspot)}
-                  </p>
-                  {insight&&insight.inflBlindspots&&insight.inflBlindspots.map((b,i)=>(
-                    <p key={i} style={{fontSize:11,lineHeight:1.6,color:"#9a8060",margin:"8px 0 0",fontFamily:"Calibri,sans-serif",fontStyle:"italic",borderTop:"1px solid rgba(150,100,60,0.15)",paddingTop:6,overflowWrap:"break-word",wordBreak:"break-word"}}>{b}</p>
-                  ))}
+                <div style={{background:"rgba(192,57,43,0.08)",border:"1px solid rgba(192,57,43,0.25)",borderRadius:12,padding:"18px 16px",flex:1}}>
+                  <div style={{fontSize:11,letterSpacing:"0.2em",color:"#C0392B",textTransform:"uppercase",marginBottom:10}}>⚠ Blind Spot</div>
+                  <p style={{fontSize:13,lineHeight:1.65,color:"#c9c1b0",margin:0,fontFamily:"Calibri,sans-serif"}}>{displayBlindspot}</p>
                 </div>
               </div>
-
             </div>
 
-            {/* Friction Section — above class abilities */}
-            {insight&&insight.frictionObservations&&insight.frictionObservations.length>0&&(
-              <div style={{background:"rgba(80,40,20,0.12)",border:"1px solid rgba(150,80,40,0.28)",borderRadius:12,padding:"18px 18px",marginBottom:18}}>
-                <div style={{fontSize:11,letterSpacing:"0.18em",color:"#b06040",textTransform:"uppercase",marginBottom:12}}>⚔ Who You May Clash With</div>
-                {insight.frictionObservations.map((obs,i)=>(
-                  <p key={i} style={{fontSize:13,lineHeight:1.75,color:"#c9b8a0",margin:i===0?"0 0 12px":"12px 0 0",fontFamily:"Calibri,sans-serif",overflowWrap:"break-word",wordBreak:"break-word"}}>{obs}</p>
-                ))}
-                <p style={{fontSize:10,color:"#8a6040",marginTop:12,fontStyle:"italic",fontFamily:"Calibri,sans-serif",borderTop:"1px solid rgba(150,80,40,0.2)",paddingTop:8}}>
-                  {`This reflects the ${ CLASSES[insight.weakestColor]?.label || insight.weakestColor} thinking style — the one furthest from your natural instincts.`}
-                </p>
-              </div>
-            )}
             {/* Abilities */}
             <div style={{marginBottom:18}}>
               <div style={{fontSize:11,letterSpacing:"0.2em",color:"#8a7f6e",textTransform:"uppercase",marginBottom:12}}>Class Abilities</div>
               <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
                 {displayAbilities.map((ab,i)=>{
-                  const isLocked=isAbilityLocked(ab);
-                  // Dual abilities have lean1/lean2 — use diagonal gradient between their colors
-                  const COLOR_HEX={RED:"#C0392B",PURPLE:"#6C3483",BLUE:"#1A5276",GREEN:"#1E8449"};
-                  const isDualAb = !isLocked && ab.lean1 && ab.lean2;
-                  const lean1hex = isDualAb ? COLOR_HEX[ab.lean1]||dualProfile?.color1||data.color : null;
-                  const lean2hex = isDualAb ? COLOR_HEX[ab.lean2]||dualProfile?.color2||data.color : null;
-                  const abBg = isLocked
-                    ? "rgba(20,18,18,0.85)"
-                    : isDualAb
-                    ? `linear-gradient(135deg, ${lean1hex}18 0%, ${lean2hex}12 100%)`
-                    : `${isTie&&dualProfile?dualProfile.color1:data.color}10`;
-                  const abBorder = isLocked
-                    ? "1px solid rgba(80,70,70,0.3)"
-                    : isDualAb
-                    ? `1px solid ${lean1hex}40`
-                    : `1px solid ${isTie&&dualProfile?dualProfile.color1:data.color}30`;
+                  const isLocked=ab.locked!==undefined?ab.locked:displayLocked.includes(ab.name);
                   return(
-                    <div key={i} style={{background:abBg,border:abBorder,borderRadius:10,padding:"14px 14px",position:"relative",overflow:"hidden"}}>
+                    <div key={i} style={{background:isLocked?"rgba(20,15,35,0.8)":`${isTie&&dualProfile?dualProfile.color1:data.color}10`,border:isLocked?"1px solid rgba(80,60,120,0.3)":`1px solid ${isTie&&dualProfile?dualProfile.color1:data.color}30`,borderRadius:10,padding:"14px 14px",position:"relative",overflow:"hidden"}}>
                       {isLocked&&<div style={{position:"absolute",inset:0,background:"rgba(10,8,20,0.6)",backdropFilter:"blur(2px)",borderRadius:10,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:4}}>
                         <span style={{fontSize:18}}>🔒</span>
-                        <span style={{fontSize:10,color:"#8a7a7a",textAlign:"center",lineHeight:1.5,padding:"0 4px"}}>Unlock this ability by joining<br/>the Hero's Journey Workshop</span>
+                        <span style={{fontSize:10,color:"#6a5a8a",textAlign:"center",lineHeight:1.5,padding:"0 4px"}}>Unlock this ability by joining<br/>the Hero's Journey Workshop</span>
                       </div>}
-                      <div style={{fontSize:12,fontWeight:700,color:isLocked?"#6a6060":isDualAb?lean1hex:(isTie&&dualProfile?dualProfile.color1:data.color),marginBottom:4}}>{ab.name}</div>
+                      <div style={{fontSize:12,fontWeight:700,color:isLocked?"#4a3a6a":(isTie&&dualProfile?dualProfile.color1:data.color),marginBottom:4}}>{ab.name}</div>
                       <div style={{fontSize:11,color:isLocked?"#3a2a5a":"#b0a890",lineHeight:1.5,marginBottom:4,fontFamily:"Calibri,sans-serif"}}>{ab.desc}</div>
-                      <div style={{fontSize:10,marginTop:2,display:"flex",alignItems:"center",gap:6}}>
-                        <span style={{color:isLocked?"#2a1a4a":"#7a6a50",fontFamily:"Calibri,sans-serif",fontStyle:"italic"}}>EQ: {ab.eq}</span>
-                        {isDualAb&&(
-                          <span style={{display:"inline-flex",gap:3,marginLeft:"auto"}}>
-                            <span style={{width:7,height:7,borderRadius:"50%",background:lean1hex,display:"inline-block",opacity:0.85}}/>
-                            <span style={{width:7,height:7,borderRadius:"50%",background:lean2hex,display:"inline-block",opacity:0.85}}/>
-                          </span>
-                        )}
-                      </div>
+                      <div style={{fontSize:10,color:isLocked?"#2a1a4a":"#7a6a50",fontFamily:"Calibri,sans-serif"}}>EQ: {ab.eq}</div>
                     </div>
                   );
                 })}
