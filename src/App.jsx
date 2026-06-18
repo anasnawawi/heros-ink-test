@@ -81,10 +81,10 @@ const CLASSES = {
         blindspot:"The price of moving fast is that the people behind you pay it. Your decisiveness clears the road — but those who needed more time to find their footing can be left behind without either of you noticing.",
         quest:"This week, before acting on a decision, name one person it affects and consider their experience first.",
         abilities:[
-          {name:"Battle Plan",desc:"Set a clear step-by-step goal and rally others around it.",eq:"Structured problem-solving"},
-          {name:"Shield of Routine",desc:"Use familiar structure to stay steady when pressure builds.",eq:"Self-regulation"},
-          {name:"Precision Strike",desc:"Cut through noise and distraction with single-minded focus.",eq:"Attention control"},
-          {name:"Discipline Surge",desc:"Inspire others by modelling the consistency you demand of yourself.",eq:"Leading by example"},
+          {name:"Battle Plan",actions:2,desc:"Declare a 3-step plan for the current challenge. Roll Investigation (DC 11). On success, each step reduces the scene DC by 1 as the group executes it.",eq:"Structured problem-solving"},
+          {name:"Shield of Routine",actions:1,desc:"When pressure hits, name your anchor (a habit, process, or rule). Roll Athletics (DC 10). On success, you ignore the next DC increase this scene.",eq:"Self-regulation"},
+          {name:"Precision Strike",actions:1,desc:"Eliminate one distraction from the scene by naming it directly. Roll Investigation (DC 11). On success, the DC of your next action drops by 2.",eq:"Attention control"},
+          {name:"Discipline Surge",actions:3,desc:"LOCKED. When the group flags, make an Intimidation or Persuasion check (DC 12). On success, one party member gains Advantage on their next action roll.",eq:"Leading by example"},
         ],
         locked:"Discipline Surge",
       },
@@ -93,10 +93,10 @@ const CLASSES = {
         blindspot:"The price of high standards is the quiet weight they put on everyone around you. Your discipline is real — but it costs the people who can feel your assessment of them, even when you never say a word.",
         quest:"This week, catch yourself when you're silently assessing someone else's effort — and say something supportive instead.",
         abilities:[
-          {name:"Breath of Focus",desc:"Regulate your own emotional state before addressing group conflict.",eq:"Emotional regulation"},
-          {name:"Flow State",desc:"Move through structure so naturally that others follow your rhythm without being asked.",eq:"Adaptability within structure"},
-          {name:"Inner Balance",desc:"Respond to provocation with calm logic rather than reaction.",eq:"Conflict management"},
-          {name:"Routine Kata",desc:"Teach others how to build the habits that made you consistent.",eq:"Coaching consistency"},
+          {name:"Breath of Focus",actions:1,desc:"Pause the scene — take no action this round. Roll Insight (DC 10). On success, gain +2 to your next check this scene and the DC does not escalate this round.",eq:"Emotional regulation"},
+          {name:"Flow State",actions:1,desc:"Move through your next action without hesitation. Roll Acrobatics (DC 10). On success, your next check this scene costs 1 fewer action and gains +1.",eq:"Adaptability within structure"},
+          {name:"Inner Balance",actions:1,desc:"When provoked, respond without matching the other person's register. Roll Insight (DC 11). On success, the tension drops — remove 1 Exhaustion level from the group.",eq:"Conflict management"},
+          {name:"Routine Kata",actions:2,desc:"LOCKED. During a Short Rest, coach one party member. Roll Medicine (DC 11). On success, they gain +1 to their next roll against the same challenge type.",eq:"Coaching consistency"},
         ],
         locked:"Routine Kata",
       },
@@ -105,10 +105,10 @@ const CLASSES = {
         blindspot:"The price of running at full power is that everything around you runs hotter too — including the friction, the pressure, and the fear of falling short. The people who keep up with you pay a cost they may never name.",
         quest:"This week, after making a strong push, stop and explicitly ask the group how they're doing — and mean it.",
         abilities:[
-          {name:"Rage Channel",desc:"Transform frustration into a focused burst of productive momentum.",eq:"Emotional redirection"},
-          {name:"Grounded Strength",desc:"Stay anchored to your goal even when everything around you is uncertain.",eq:"Resilience"},
-          {name:"Battle Rhythm",desc:"Use relentless repetition to break through resistance — yours and the group's.",eq:"Stress management"},
-          {name:"Momentum Drive",desc:"Carry the team forward on sheer force of will when no one else has enough left.",eq:"Motivation"},
+          {name:"Rage Channel",actions:0,desc:"FREE once per scene. Name your frustration aloud. Roll Athletics (DC 10). On success, your next action gains +2 and restores 1 HP. On failure, you gain the Depleted condition — the naming was right, the timing was off.",eq:"Emotional redirection"},
+          {name:"Grounded Strength",actions:1,desc:"When chaos hits, state your goal out loud and don't budge. Roll Athletics (DC 11). On success, you and one ally ignore the next Exhaustion gain this scene.",eq:"Resilience"},
+          {name:"Battle Rhythm",actions:1,desc:"Keep pushing through a stalled situation by maintaining pace. Roll Athletics (DC 12). On success, the group's next roll gets +1 and you remove 1 condition from yourself.",eq:"Stress management"},
+          {name:"Momentum Drive",actions:2,desc:"LOCKED. Declare a direction and move without waiting. Roll Intimidation (DC 12). On success, all who follow gain a free 1-action. On failure, those who hesitate make a Reflex Save DC 3.",eq:"Motivation"},
         ],
         locked:"Momentum Drive",
       },
@@ -125,22 +125,22 @@ const CLASSES = {
         blindspot:"The price of precision is time — and time is what situations rarely have enough of. Your certainty, when it arrives, is worth it. What it costs is the ground others covered while you were still gathering.",
         quest:"This week, identify one decision you've been deferring and commit to it within 24 hours with the information you already have.",
         abilities:[
-          {name:"Knowledge is Power",desc:"Calm your own anxiety by replacing assumptions with facts.",eq:"Cognitive reframing"},
-          {name:"Spell of Clarity",desc:"Break complex emotional situations into understandable parts.",eq:"Emotional labelling"},
-          {name:"Arcane Archive",desc:"Draw on past experience to recognise patterns others miss.",eq:"Memory-based learning"},
-          {name:"Magic of Logic",desc:"Replace the group's uncertainty with structured reasoning.",eq:"Reducing ambiguity"},
+          {name:"Knowledge is Power",actions:2,desc:"Ask the GM one direct question about the scene. Roll Investigation (DC 11). On success, the GM answers truthfully and the scene DC drops by 1 (max −2 per scene).",eq:"Cognitive reframing"},
+          {name:"Spell of Clarity",actions:1,desc:"Name the emotional dynamic at play in plain terms. Roll Investigation (DC 10). On success, one party member of your choice gains +1 to their next roll as confusion clears.",eq:"Emotional labelling"},
+          {name:"Arcane Archive",actions:1,desc:"Recall a relevant past situation and name the pattern. Roll History (DC 11). On success, gain +2 to your next roll against this type of challenge.",eq:"Memory-based learning"},
+          {name:"Magic of Logic",actions:3,desc:"LOCKED. Name one false assumption the group is acting on. Roll Investigation (DC 13). On success, remove one group condition and drop scene DC by 2.",eq:"Reducing ambiguity"},
         ],
-        locked:"Arcane Archive",
+        locked:"Magic of Logic",
       },
       Artificer:{
         strengths:["You build systems and frameworks that outlast the moment — your solutions keep working after you've left the room","You stay analytical when the group gets emotional, which is exactly when analytical thinking is most needed"],
         blindspot:"The price of building airtight systems is that people have to live inside them. Your frameworks hold — but the humans they're built for are messier than the logic, and that gap is yours to close.",
         quest:"This week, take one of your existing frameworks and ask someone else how it actually works for them — listen without defending it.",
         abilities:[
-          {name:"Tinker Insight",desc:"Design practical emotional tools that help the group manage themselves.",eq:"Creative problem-solving"},
-          {name:"Blueprint Mind",desc:"Map structured solutions to team conflicts before they escalate.",eq:"Planning"},
-          {name:"Adaptive Gadget",desc:"Modify your approach when the current method stops working.",eq:"Flexibility"},
-          {name:"Logic Engine",desc:"Hold the group's reasoning steady when emotions are running high.",eq:"Emotional grounding"},
+          {name:"Tinker Insight",actions:1,desc:"Propose a new approach to the current sticking point. Roll Arcana (DC 10). On success, one party member may re-attempt a failed action using your proposed method with +1.",eq:"Creative problem-solving"},
+          {name:"Blueprint Mind",actions:2,desc:"Map who wants what in this scene before acting. Roll Investigation (DC 12). On success, one party member of your choice gains +2 to their next roll this round.",eq:"Planning"},
+          {name:"Adaptive Gadget",actions:1,desc:"Pivot to a different approach mid-scene. Roll Sleight of Hand (DC 11). On success, your next action avoids any penalties from the current conditions.",eq:"Flexibility"},
+          {name:"Logic Engine",actions:2,desc:"LOCKED. State three things: what is real, what is assumed, what needs a response. Roll History (DC 11). On success, remove 1 Exhaustion level and drop next scene DC by 1.",eq:"Emotional grounding"},
         ],
         locked:"Logic Engine",
       },
@@ -149,10 +149,10 @@ const CLASSES = {
         blindspot:"The price of seeing clearly is the distance it creates. When you can read a room before anyone speaks, genuine surprise becomes rare — and so does the kind of trust that only forms when you let your guard down.",
         quest:"This week, share something genuine about your own uncertainty with someone you'd normally only observe.",
         abilities:[
-          {name:"Silent Observation",desc:"Read the full emotional landscape of a room before committing to a move.",eq:"Empathy through observation"},
-          {name:"Calculated Risk",desc:"Make high-stakes decisions by mapping outcomes with analytical precision.",eq:"Decision-making"},
-          {name:"Shadow Adaptation",desc:"Adjust your communication style fluidly to match who you're with.",eq:"Social awareness"},
-          {name:"Emotional Sleight",desc:"Redirect tension, defuse conflict, or shift group energy with precise timing.",eq:"Defusing conflict"},
+          {name:"Silent Observation",actions:1,desc:"Watch for one round without acting. Roll Perception (DC 10). On success, the GM reveals one hidden truth about the scene and your next roll gains +2.",eq:"Empathy through observation"},
+          {name:"Calculated Risk",actions:1,desc:"Weigh the options before committing. Roll Investigation (DC 11). On success, you may choose which outcome applies when two results are both possible this round.",eq:"Decision-making"},
+          {name:"Shadow Adaptation",actions:1,desc:"Mirror the register of the person you're addressing. Roll Stealth (DC 10). On success, your next Persuasion or Deception check against this person gains +2.",eq:"Social awareness"},
+          {name:"Emotional Sleight",actions:2,desc:"LOCKED. When tension peaks, say one unexpected true thing. Roll Deception or Insight (DC 13). On success, the scene resets — remove 2 Exhaustion levels from the group.",eq:"Defusing conflict"},
         ],
         locked:"Emotional Sleight",
       },
@@ -169,10 +169,10 @@ const CLASSES = {
         blindspot:"The price of keeping the peace is paid in the things left unsaid. Every silence that protected the group from discomfort also protected a problem from being solved — and over time, both accumulate.",
         quest:"This week, say something honest that you've been holding back — with care, but without softening it away.",
         abilities:[
-          {name:"Empathy Touch",desc:"Meet people in their emotional reality before trying to move them.",eq:"Empathy"},
-          {name:"Calm Aura",desc:"Reduce group stress by holding your own steadiness.",eq:"Emotional contagion"},
-          {name:"Listening Ward",desc:"Create safety through full, undivided attention.",eq:"Active listening"},
-          {name:"Shared Burden",desc:"Consciously absorb some of the team's emotional load to free their capacity.",eq:"Supportiveness"},
+          {name:"Empathy Touch",actions:2,desc:"Move toward one person in distress and say one thing — no advice, no solutions. Roll Medicine (DC 10). On success, remove 1 Exhaustion level and one condition from the target.",eq:"Empathy"},
+          {name:"Calm Aura",actions:1,desc:"Hold your composure visibly when the group is fracturing. Roll Insight (DC 10). On success, all party members gain +1 to their next Fortitude Save and remove 1 Exhaustion level.",eq:"Emotional contagion"},
+          {name:"Listening Ward",actions:2,desc:"Give someone your complete attention without responding. Roll Medicine (DC 11). On success, they reveal something they have not shared with anyone — the GM provides information the group could not otherwise access.",eq:"Active listening"},
+          {name:"Shared Burden",actions:2,desc:"LOCKED. When your HP is 3 or higher, take 1 HP of strain to support a depleted party member. Roll Medicine (DC 11). On success, they remove all conditions and recover 1 HP. On failure, the moment passes — no effect this scene.",eq:"Supportiveness"},
         ],
         locked:"Shared Burden",
       },
@@ -181,10 +181,10 @@ const CLASSES = {
         blindspot:"The price of warmth is that the truth sometimes can't find a way through it. People feel good around you — and that feeling can cost them the honest feedback they needed more than the comfort you gave.",
         quest:"This week, in one conversation, give honest feedback instead of reassurance — even if the moment feels uncomfortable.",
         abilities:[
-          {name:"Song of Unity",desc:"Shift group mood toward connection through warmth and shared narrative.",eq:"Relationship building"},
-          {name:"Emotional Echo",desc:"Reflect feelings back to validate without fixing or deflecting.",eq:"Empathy validation"},
-          {name:"Performance Shift",desc:"Deliberately reframe group energy through story, humour, or reframing.",eq:"Emotional influence"},
-          {name:"Harmony Chord",desc:"Align people around shared values when the group is pulling apart.",eq:"Group alignment"},
+          {name:"Song of Unity",actions:2,desc:"Name one value both conflicting sides share. Roll Persuasion (DC 11). On success, remove 1 Exhaustion level and drop the DC of the next social check by 2.",eq:"Relationship building"},
+          {name:"Emotional Echo",actions:1,desc:"Repeat back what someone said in your own words — no advice, no reframe. Roll Insight (DC 10). On success, that person opens up further — the GM gives you +1 to your next roll involving them.",eq:"Empathy validation"},
+          {name:"Performance Shift",actions:1,desc:"Shift the mood through a story, reframe, or well-placed humour. Roll Performance (DC 11). On success, the group's next check loses the Exhaustion penalty and one party member gains +1.",eq:"Emotional influence"},
+          {name:"Harmony Chord",actions:3,desc:"LOCKED. Ask each party member for one word, then name the shared value underneath. Roll Performance (DC 14). On success, clear all group Exhaustion. On failure, gain 1 Exhaustion.",eq:"Group alignment"},
         ],
         locked:"Harmony Chord",
       },
@@ -193,10 +193,10 @@ const CLASSES = {
         blindspot:"The price of holding the group together is carried quietly and almost entirely by you. Every fracture you absorb, every conflict you internalise — it compounds in a place others don't see, because you made it look like nothing.",
         quest:"This week, name one thing you've been carrying on behalf of the group and put it back in the room — openly.",
         abilities:[
-          {name:"Shield of Trust",desc:"Build reliability so complete that the group trusts you before the crisis hits.",eq:"Trust-building"},
-          {name:"Voice of Justice",desc:"Speak up for fairness even when it's uncomfortable — especially then.",eq:"Advocacy"},
-          {name:"Team Anchor",desc:"Hold the group's emotional centre when everything else is shifting.",eq:"Stability"},
-          {name:"Inspire Courage",desc:"Name what the group is afraid of and give them permission to face it.",eq:"Motivation through empathy"},
+          {name:"Shield of Trust",actions:0,desc:"State one promise aloud at the start of a scene. No roll needed — the promise is the action. If kept: all party members gain +1 to their next roll. If broken: the group gains 1 Exhaustion.",eq:"Trust-building"},
+          {name:"Voice of Justice",actions:1,desc:"Name something unfair that the group is tolerating. Roll Persuasion (DC 11). On success, the situation shifts — the GM adjusts the scene DC in the group's favour by 1.",eq:"Advocacy"},
+          {name:"Team Anchor",actions:1,desc:"Position yourself as the calm point in a fracturing scene. Roll Intimidation (DC 10). On success, the group ignores the next Exhaustion gain this scene and you remove 1 condition from one ally.",eq:"Stability"},
+          {name:"Inspire Courage",actions:3,desc:"LOCKED. Name the specific fear holding one person back. Roll Insight (DC 13). On success, that person acts immediately with no roll required. On failure, the moment passes — the opportunity is gone this scene, but nothing worsens.",eq:"Motivation through empathy"},
         ],
         locked:"Inspire Courage",
       },
@@ -213,22 +213,22 @@ const CLASSES = {
         blindspot:"The price of always moving toward what's next is that some things worth finishing never get finished. The people who believed in your ideas pay that price alongside you.",
         quest:"Pick one project you have started but not finished and spend one focused hour this week moving it forward — no new ideas allowed.",
         abilities:[
-          {name:"Trailblazer",desc:"Generate viable alternative routes when the group hits a dead end.",eq:"Creative problem-solving"},
-          {name:"Adapt to Terrain",desc:"Shift your emotional approach to match what the situation actually calls for.",eq:"Adaptability"},
-          {name:"Scout Ahead",desc:"Anticipate what's coming so the group isn't caught off guard.",eq:"Foresight"},
-          {name:"Wild Empathy",desc:"Connect authentically with people whose thinking style is very different from yours.",eq:"Inclusivity"},
+          {name:"Trailblazer",actions:1,desc:"Propose an alternative nobody has considered. Roll Survival (DC 10). On success, the group gains a new option — the GM narrates one additional path forward.",eq:"Creative problem-solving"},
+          {name:"Adapt to Terrain",actions:1,desc:"Switch your approach mid-scene to match what's actually needed. Roll Acrobatics (DC 10). On success, ignore penalties from the current scene conditions for this round.",eq:"Adaptability"},
+          {name:"Scout Ahead",actions:1,desc:"At scene start, name one specific risk you predict. Roll Perception (DC 10). If correct, the group gains +1 to their first roll. If wrong, you gain +1 to your next Perception check — the miss sharpens you.",eq:"Foresight"},
+          {name:"Wild Empathy",actions:2,desc:"LOCKED. Approach an overlooked person in the scene with genuine curiosity. Roll Animal Handling (DC 10). On success, the GM reveals one thing no other approach could have uncovered.",eq:"Inclusivity"},
         ],
-        locked:"Scout Ahead",
+        locked:"Wild Empathy",
       },
       Sorcerer:{
         strengths:["Your creative energy is genuinely contagious — ideas flow from you and the group catches fire","You thrive in ambiguity and complexity where others freeze, which makes you invaluable in chaos"],
         blindspot:"The price of intensity is the trail it leaves. When you move on, the energy moves with you — and what remains is the half-built thing that needed you to stay just a little longer.",
         quest:"This week, finish something old before starting something new — and notice the resistance that comes up.",
         abilities:[
-          {name:"Chaos Spark",desc:"Turn a scattered, panicked group into a generative creative force.",eq:"Innovation"},
-          {name:"Emotional Surge",desc:"Channel your own passion to shift the energy of the group around you.",eq:"Emotional contagion"},
-          {name:"Unstructured Flow",desc:"Hold your centre in environments of ambiguity that destabilise others.",eq:"Resilience in uncertainty"},
-          {name:"Magic of Spontaneity",desc:"Produce unexpected solutions at the moment they're most needed.",eq:"Improvisation"},
+          {name:"Chaos Spark",actions:1,desc:"Combine two unrelated elements from the scene into one idea — declare it before anyone else speaks this round. Roll Arcana (DC 10). On success, the GM narrates a viable forward path from your idea. Once per scene.",eq:"Innovation"},
+          {name:"Emotional Surge",actions:1,desc:"Express genuine passion about the current direction — no performance, just real feeling. Roll Performance (DC 11). On success, every party member gains +1 to their next roll this scene.",eq:"Emotional contagion"},
+          {name:"Unstructured Flow",actions:1,desc:"When the plan falls apart, keep moving without waiting for a new one. Roll Survival (DC 11). On success, your next action gains +2 and the group does not gain Exhaustion from the disruption.",eq:"Resilience in uncertainty"},
+          {name:"Magic of Spontaneity",actions:1,desc:"LOCKED. When the plan collapses, declare the new direction before anyone else proposes one. Roll Sleight of Hand (DC 12). On success, the group builds on it and removes 1 Exhaustion level.",eq:"Improvisation"},
         ],
         locked:"Magic of Spontaneity",
       },
@@ -237,10 +237,10 @@ const CLASSES = {
         blindspot:"The price of holding everything together is that it has to be held somewhere — and that somewhere is usually you. The group draws on your capacity without knowing it has limits. You feel the weight long before anyone else thinks to look.",
         quest:"This week, name the creative idea or direction you've been circling without committing to — and take one concrete step toward it or let it go.",
         abilities:[
-          {name:"Nature's Balance",desc:"Restore group equilibrium by reframing the pattern underneath the conflict.",eq:"Reframing"},
-          {name:"Seasonal Adaptation",desc:"Read where the group is in its cycle and respond to what that phase actually needs.",eq:"Emotional awareness"},
-          {name:"Growth Mindset",desc:"Reframe failure as data and model that genuinely — not performatively.",eq:"Resilience"},
-          {name:"Circle of Ideas",desc:"Facilitate collective creativity so that the group's output exceeds what any individual could produce.",eq:"Collaborative innovation"},
+          {name:"Nature's Balance",actions:1,desc:"Restate the current situation from a completely different angle. Roll Nature (DC 10). On success, one new option appears that no other approach could produce — the GM must honour it.",eq:"Reframing"},
+          {name:"Seasonal Adaptation",actions:1,desc:"Name the phase the group is in (building, stretching, consolidating, resting) and respond to it. Roll Insight (DC 10). On success, the group gains +1 to all rolls appropriate to that phase this scene.",eq:"Emotional awareness"},
+          {name:"Growth Mindset",actions:1,desc:"After any failed roll, name what it revealed rather than what it cost. Roll Nature (DC 10). On success, the party converts the failure — the failed roll's DC drops by 1 for the next attempt.",eq:"Resilience"},
+          {name:"Circle of Ideas",actions:2,desc:"LOCKED. Invite every party member to contribute one idea — none dismissed. Roll Insight (DC 11). On success, the group's combined solution removes 1 Exhaustion level and clears any Breaking Point condition.",eq:"Collaborative innovation"},
         ],
         locked:"Circle of Ideas",
       },
@@ -280,7 +280,7 @@ function resolveResult(scores) {
     // Surface any 3rd color scoring >=5 as an undertone even in dual results
     const dualUndertone = [];
     for (let i = 2; i < sorted.length; i++) {
-      if (sorted[i][1] >= 5 && dualUndertone.length < 1) {
+      if (sorted[i][1] >= 6 && dualUndertone.length < 1) {
         dualUndertone.push(sorted[i][0]);
       }
     }
@@ -293,7 +293,7 @@ function resolveResult(scores) {
   // like GREEN=6 RED=5 BLUE=5 that fall just short of dual thresholds.
   const influence = [];
   for (let i = 1; i < sorted.length; i++) {
-    if (sorted[i][1] >= 5 && influence.length < 2) {
+    if (sorted[i][1] >= 6 && influence.length < 2) {
       influence.push(sorted[i][0]);
     }
   }
@@ -946,6 +946,41 @@ const ABILITY_Q_MAP = {
   "Seasonal Adaptation":[2,6,11,19],    // Q03 motivation, Q07 crisis, Q12 decision, Q20 role
   "Growth Mindset":    [5,8,12,15],     // Q06 feedback, Q09 learning, Q13 change, Q16 downtime
   "Circle of Ideas":   [1,3,16,19],     // Q02 conflict, Q04 problem, Q17 post-win, Q20 role
+  // DUAL-CLASS abilities
+  "Iron Analysis":          [1,3,7,11],   // Q02 conflict, Q04 problem, Q08 frustration, Q12 decision
+  "Calculated Advance":     [0,6,9,12],   // Q01 initiative, Q07 crisis, Q10 pressure, Q13 plan fails
+  "Tactical Reframe":       [3,7,11,12],  // Q04 problem, Q08 frustration, Q12 decision, Q13 change
+  "Precision Command":      [2,6,17,19],  // Q03 motivation, Q07 crisis, Q18 onboard, Q20 role
+  "Rally the Charge":       [1,9,12,18],  // Q02 conflict, Q10 pressure, Q13 plan fails, Q19 fatigue
+  "Structured Support":     [0,6,14,19],  // Q01 initiative, Q07 crisis, Q15 coaching, Q20 role
+  "Morale Advance":         [1,2,9,18],   // Q02 conflict, Q03 motivation, Q10 pressure, Q19 fatigue
+  "Steady Command":         [6,12,18,19], // Q07 crisis, Q13 plan fails, Q19 fatigue, Q20 role
+  "Frontier Sprint":        [0,1,3,6],    // Q01 initiative, Q02 conflict, Q04 problem, Q07 crisis
+  "Course Correction":      [4,8,12,13],  // Q05 env, Q09 learning, Q13 change, Q14 confront
+  "Momentum Forge":         [2,10,15,19], // Q03 motivation, Q11 rhythm, Q16 downtime, Q20 role
+  "Trailblazing Focus":     [0,3,11,16],  // Q01 initiative, Q04 problem, Q12 decision, Q17 post-win
+  "Informed Empathy":       [3,5,14,17],  // Q04 problem, Q06 feedback, Q15 coaching, Q18 onboard
+  "Pattern of Care":        [1,7,11,13],  // Q02 conflict, Q08 values, Q12 decision, Q14 confront
+  "Quiet Authority":        [2,6,16,19],  // Q03 motivation, Q07 crisis, Q17 post-win, Q20 role
+  "Grounded Compassion":    [1,9,13,18],  // Q02 conflict, Q10 pressure, Q14 confront, Q19 fatigue
+  "Structured Imagination": [3,8,11,12],  // Q04 problem, Q09 learning, Q12 decision, Q13 change
+  "Possibility Mapping":    [1,3,6,11],   // Q02 conflict, Q04 problem, Q07 crisis, Q12 decision
+  "Conceptual Bridge":      [5,8,16,19],  // Q06 feedback, Q09 learning, Q17 post-win, Q20 role
+  "Elegant Reframe":        [1,7,12,13],  // Q02 conflict, Q08 values, Q13 change, Q14 confront
+  "Creative Belonging":     [2,4,14,17],  // Q03 motivation, Q05 env, Q15 coaching, Q18 onboard
+  "Inspired Trust":         [1,10,12,16], // Q02 conflict, Q11 rhythm, Q13 change, Q17 post-win
+  "Warm Disruption":        [1,6,13,18],  // Q02 conflict, Q07 crisis, Q14 confront, Q19 fatigue
+  "Resonant Spark":         [2,9,14,18],  // Q03 motivation, Q10 pressure, Q15 coaching, Q19 fatigue
+  "Mode Switch":            [1,6,12,19],  // Q02 conflict, Q07 crisis, Q13 change, Q20 role
+  "Full Spectrum Read":     [3,7,11,17],  // Q04 problem, Q08 values, Q12 decision, Q18 onboard
+  "Bridge Build":           [1,5,13,14],  // Q02 conflict, Q06 feedback, Q14 confront, Q15 coaching
+  "Adaptive Anchor":        [9,12,18,19], // Q10 pressure, Q13 change, Q19 fatigue, Q20 role
+  "Divergent Architecture": [3,6,11,12],  // Q04 problem, Q07 crisis, Q12 decision, Q13 change
+  "Systems Ignition":       [2,7,11,19],  // Q03 motivation, Q08 values, Q12 decision, Q20 role
+  "Spark of Belonging":     [2,4,14,17],  // Q03 motivation, Q05 env, Q15 coaching, Q18 onboard
+  "Contagious Vision":      [1,2,9,18],   // Q02 conflict, Q03 motivation, Q10 pressure, Q19 fatigue
+  "Adaptive Presence":      [1,6,12,19],  // Q02 conflict, Q07 crisis, Q13 change, Q20 role
+  "All Things to All People":[2,7,11,19], // Q03 motivation, Q08 values, Q12 decision, Q20 role
 };
 
 // ── Per-Q personalised quest map ──────────────────────────────────────────────
@@ -1156,18 +1191,22 @@ function buildInsight(rawAnswers, scores, topColor, influence, QUESTIONS) {
   const influenceSentences = influence.map(inflColor => {
     const theme = COLOR_THEMES[inflColor];
     if (!theme) return "";
+    const inflScore = scores[inflColor] || 0;
+    const isStrong = inflScore >= 8;
     const inflFrags = byColor[inflColor];
+    // Strong undertone (≥8): use stronger connector prefix
+    const strongConnector = theme.connector.replace("shows up in", "runs strongly through");
+    const activeConnector = isStrong ? strongConnector : theme.connector;
     if (inflFrags.length >= 2) {
-      const p1 = connectFrag(theme.connector, inflFrags[0]);
-      // Smart second connector based on fragment type
+      const p1 = connectFrag(activeConnector, inflFrags[0]);
       const p2 = /^you /i.test(inflFrags[1])
         ? `and in how ${inflFrags[1]}`
         : `and when ${inflFrags[1]}`;
       return `${p1}, ${p2}.`;
     } else if (inflFrags.length === 1) {
-      return `${connectFrag(theme.connector, inflFrags[0])}.`;
+      return `${connectFrag(activeConnector, inflFrags[0])}.`;
     } else {
-      const intensity = (scores[inflColor]||0) >= 6 ? "medium" : "low";
+      const intensity = inflScore >= 8 ? "medium" : "low";
       const tp = theme[intensity];
       return `${tp.charAt(0).toUpperCase()+tp.slice(1)} also shapes how you show up.`;
     }
@@ -1695,6 +1734,1296 @@ async function generateCharacterSheetPDF(playerName, topColor, myClass, scores, 
 // ── App ───────────────────────────────────────────────────────────────────────
 const ALL_RUNES=[{r:"ᚱ",c:"#C0392B"},{r:"ᚦ",c:"#6C3483"},{r:"ᛒ",c:"#1A5276"},{r:"ᛞ",c:"#1E8449"}];
 
+
+// ── STAT BLOCKS — from HeroJourney_StatBlocks.xlsx ────────────────────────────
+const STAT_BLOCKS = {
+  Fighter: {
+    hp:4, healMod:"+1", speed:"High — Acts before others process", fort:"3/5", ref:"2/5", will:"1/5",
+    archetype:"Structured Achiever — high output, low relational radar",
+    nativeBonus:"+2 to Investigation checks when planning; Battle Plan reduces scene DC by 1 per step",
+    penalty:"−1 to Fortitude vs BLUE/PURPLE social moves",
+    sigAbility:{name:"Battle Plan",actions:2,
+      desc:"Declare a 3-step plan for the current challenge. Roll Investigation +2. On success, the group gains +1 to each step's roll as they execute the plan this scene."},
+    lockedAbility:{name:"Discipline Surge",actions:3,
+      desc:"When the group is flagging, make an Intimidation or Persuasion check (DC 12). On success, one party member of your choice gains Advantage on their next action roll."},
+    strengthEdge:"Execution under pressure. Nobody finishes faster or cleaner.",
+    blindPrice:"People can become invisible to you when the goal is in sight.",
+    trigger:"Will Save DC 4 — flattery or a social NPC targeting your drive",
+    dynamics:{RED:"Equal footing — matched drive, shared language",PURPLE:"RED charges; PURPLE pauses. Frustration fires fast.",BLUE:"RED efficiency wounds BLUE care without meaning to.",GREEN:"RED discipline vs GREEN improvisation — clash on method."}
+  },
+  Monk: {
+    hp:5, healMod:"+2", speed:"Med — Precise timing, not speed", fort:"4/5", ref:"3/5", will:"2/5",
+    archetype:"Calm Executor — precision self-regulation, depth over speed",
+    nativeBonus:"+2 to Insight checks during conflict; Inner Balance removes +1 extra Exhaustion on success",
+    penalty:"−1 to Will vs BLUE emotional moves; −1 to Reflex vs GREEN chaos",
+    passive:{name:"Sanctuary State",
+      desc:"PASSIVE. While your HP is 4+, all party members gain +1 to Insight checks. When you succeed on Inner Balance, the group removes 1 Exhaustion level."},
+    sigAbility:{name:"Breath of Focus",actions:1,
+      desc:"Declare a pause. Make a Insight check (DC 10). On success, you gain +2 to your next check this scene and the scene DC does not escalate this round."},
+    lockedAbility:{name:"Routine Kata",actions:2,
+      desc:"During a Short Rest, coach one party member. Make a Medicine check (DC 11). On success, they gain +1 to their next roll against the same challenge type."},
+    strengthEdge:"Calm under fire. The room regulates to their baseline.",
+    blindPrice:"Speaking before certainty. Silence can cost the moment.",
+    trigger:"Will Save DC 4 — emotional NPC appealing to the Monk's care instinct",
+    dynamics:{RED:"RED/Monk = internal coherence engine. Shared discipline, different tempo.",PURPLE:"Natural allies — both process before acting.",BLUE:"Monk's calm steadies BLUE; BLUE's care softens Monk's rigidity.",GREEN:"Monk grounds GREEN. GREEN disrupts Monk. Both learn."}
+  },
+  Barbarian: {
+    hp:6, healMod:"+3", speed:"Very High — First mover, high stakes", fort:"5/5", ref:"4/5", will:"1/5",
+    archetype:"Unstoppable Force — raw emotional power, low social defence",
+    nativeBonus:"+2 to Athletics checks; Rage Channel is free once per scene",
+    penalty:"−2 to Will vs BLUE/PURPLE manipulation; on failed Will Save, Barbarian gains Depleted",
+    sigAbility:{name:"Rage Channel",actions:0,
+      desc:"FREE once per scene. Name your frustration aloud. Make an Athletics check (DC 10). On success, your next action gains +2 and restores 1 HP. On failure, you gain the Depleted condition — the naming was right, the timing was off."},
+    lockedAbility:{name:"Momentum Drive",actions:2,
+      desc:"Declare a direction and move without waiting for consensus. Make a Persuasion check (DC 12). On success, all who follow gain a free 1-action. On failure, those who hesitate make a Reflex Save DC 3 or lose their action."},
+    strengthEdge:"Emotional fuel. Turns frustration into force. Moves parties that won't move.",
+    blindPrice:"The contagion works both ways. Panic spreads as fast as courage.",
+    trigger:"Will Save DC 5 — flattery, being praised for something false",
+    dynamics:{RED:"Two Barbarians amplify each other dangerously — double momentum or double chaos.",PURPLE:"Barbarian's speed clashes with PURPLE's need to understand.",BLUE:"Barbarian's force wounds BLUE unless they channel it into protection.",GREEN:"Most dangerous pairing — Barbarian's drive + GREEN's improvisation = brilliant chaos."}
+  },
+  Wizard: {
+    hp:4, healMod:"+1", speed:"Low — Processes before moving; +2 if waits 1 round", fort:"2/5", ref:"2/5", will:"3/5",
+    archetype:"Knowledge Keeper — high cognitive EQ, low crisis immediacy",
+    nativeBonus:"+2 to Investigation checks; +2 to next roll if you observe for a full round before acting",
+    penalty:"−2 to Fortitude vs RED direct challenge; −1 to Reflex vs GREEN surprise moves",
+    sigAbility:{name:"Knowledge is Power",actions:2,
+      desc:"Ask the GM one direct question about the current scene. Make an Investigation check (DC 11). On success, the GM answers truthfully and the scene DC drops by 1 (max −2 per scene)."},
+    lockedAbility:{name:"Magic of Logic",actions:3,
+      desc:"Name one false assumption the group is acting on. Make an Investigation check (DC 13). On success, remove one group condition and drop scene DC by 2."},
+    strengthEdge:"Information advantage. Sees what others don't. Reframes what others can't.",
+    blindPrice:"Waiting for complete understanding while the moment passes.",
+    trigger:"Fortitude Save DC 4 — direct challenge, being interrupted mid-analysis",
+    dynamics:{RED:"PURPLE analysis vs RED action. Perpetual timing conflict.",PURPLE:"Dangerous echo chamber. Two Wizards can over-analyse to paralysis.",BLUE:"Strong pairing — PURPLE's logic + BLUE's empathy = full picture.",GREEN:"PURPLE structure frustrated by GREEN chaos. Growth potential is high."}
+  },
+  Artificer: {
+    hp:5, healMod:"+2", speed:"Low-Med — Deliberate; accelerates after first move", fort:"2/5", ref:"3/5", will:"4/5",
+    archetype:"System Builder — strategic conflict prevention, low urgency response",
+    nativeBonus:"+2 to Investigation checks for conflict mapping; failed party rolls can be re-used via Retrofit Engine",
+    penalty:"−1 to Fortitude vs RED pressure; −2 to Reflex vs sudden GREEN improvisation",
+    passive:{name:"Retrofit Engine",
+      desc:"PASSIVE. When any party member's roll fails (1-2), you may spend your next action to give them a free re-roll on the same check with +1. Failure becomes data — once per scene per target."},
+    sigAbility:{name:"Blueprint Mind",actions:2,
+      desc:"Map the motivations at play in the current scene. Make an Investigation check (DC 12). On success, one party member of your choice gains +2 to their next roll this round."},
+    lockedAbility:{name:"Logic Engine",actions:2,
+      desc:"State three things aloud: what is real, what is assumed, what needs a response. Make a History check (DC 11). On success, remove 1 Exhaustion level and drop next scene DC by 1."},
+    strengthEdge:"System mapping. Sees conflict as architecture. Prevents before they cure.",
+    blindPrice:"Solutions arrive after the human moment has already passed.",
+    trigger:"Fortitude Save DC 4 — direct personal challenge, someone dismissing their analysis",
+    dynamics:{RED:"Artificer stabilises RED's speed. RED drags Artificer out of planning.",PURPLE:"Productive depth — two analytical minds, risk of over-engineering.",BLUE:"Artificer gives BLUE a map. BLUE gives Artificer the relational read.",GREEN:"Artificer's systems feel like cages to GREEN. Tension is instructive."}
+  },
+  Rogue: {
+    hp:6, healMod:"+2", speed:"Med — Waits, then strikes at exactly the right moment", fort:"2/5", ref:"5/5", will:"5/5",
+    archetype:"Shadow Reader — maximum social intelligence, minimum confrontation tolerance",
+    nativeBonus:"+2 to Insight and Perception checks while in Silent Observation stance",
+    penalty:"−3 to Fortitude vs direct RED/BLUE confrontation; on failed Fort Save, HP drops 1",
+    sigAbility:{name:"Silent Observation",actions:1,
+      desc:"Enter a watching stance for one round — take no other action. Make a Perception check (DC 10). On success, the GM reveals one hidden truth about the scene and your next roll gains +2."},
+    lockedAbility:{name:"Emotional Sleight",actions:2,
+      desc:"When tension is near breaking point, say one unexpected true thing. Make a Deception or Insight check (DC 13). On success, the scene resets — remove 2 Exhaustion levels from the group."},
+    strengthEdge:"Information is power. Knows everything. Moves only when the move matters.",
+    blindPrice:"Withholding until the perfect moment that never quite arrives.",
+    trigger:"Fortitude Save DC 5 — being directly confronted, put on the spot in front of the group",
+    dynamics:{RED:"Rogue reads everything RED misses. RED does everything Rogue avoids.",PURPLE:"The most powerful information pair — if they share what they know.",BLUE:"Rogue's precision and BLUE's warmth unlock NPCs nothing else can.",GREEN:"Rogue maps the territory; GREEN explores it. Excellent pairing."}
+  },
+  Healer: {
+    hp:4, healMod:"+3", speed:"Low-Med — Moves toward people, not problems", fort:"2/5", ref:"2/5", will:"3/5",
+    archetype:"First Responder — relational repair, low self-protection instinct",
+    nativeBonus:"+2 to Medicine checks; healing abilities remove +1 extra Exhaustion level",
+    penalty:"−2 to Reflex vs fast-moving RED/GREEN pressure; healing fails if your own HP is 0",
+    sigAbility:{name:"Empathy Touch",actions:2,
+      desc:"Move toward one person in distress and say one thing — no advice, no solutions. Make a Medicine check (DC 10). On success, remove 1 Exhaustion level and one condition from the target."},
+    lockedAbility:{name:"Shared Burden",actions:2,
+      desc:"Voluntarily take 1 HP of strain to support a depleted party member. Make a Medicine check (DC 11). On success, they recover fully. On failure, you gain the Depleted condition but still remove 1 group Exhaustion."},
+    strengthEdge:"Party Exhaustion engine. Nobody heals the collective like a Healer.",
+    blindPrice:"Absorbing everyone else's weight until there is nothing left to give.",
+    trigger:"Will Save DC 3 — someone weaponising their care",
+    dynamics:{RED:"RED efficiency vs BLUE care. Productive if they take turns. Damaging if they don't.",PURPLE:"BLUE emotion + PURPLE logic = complete picture of what a person needs.",BLUE:"Two Healers can become echo chamber of care with no action.",GREEN:"Healer grounds GREEN's scatter. GREEN opens Healer to new possibility."}
+  },
+  Bard: {
+    hp:5, healMod:"+4", speed:"Med — Reads room first, then moves at the right moment", fort:"2/5", ref:"3/5", will:"4/5",
+    archetype:"Unifier — group cohesion specialist, conflict avoidant under pressure",
+    nativeBonus:"+2 to Performance and Persuasion checks; Story Points accumulate when party names fears aloud",
+    penalty:"−2 to Fortitude vs direct RED challenge; Performance Shift fails if Exhaustion is Lv 3",
+    passive:{name:"Narrative Momentum",
+      desc:"PASSIVE. When a party member names their fear out loud (required for some abilities), you gain a Story Point. Spend 1 Story Point to give that player +1 to their next roll against that specific challenge — stories become armour."},
+    sigAbility:{name:"Song of Unity",actions:2,
+      desc:"Name one value both conflicting sides share. Make a Persuasion check (DC 11). On success, remove 1 Exhaustion level and drop the DC of the next social check by 2."},
+    lockedAbility:{name:"Harmony Chord",actions:3,
+      desc:"Ask each party member for one word about what they care about, then name the shared value underneath. Make a Performance check (DC 14). On success, clear all group Exhaustion. On failure, gain 1 Exhaustion."},
+    strengthEdge:"Narrative repair. Turns conflict into cohesion through story.",
+    blindPrice:"Sitting in someone else's story is harder than shaping it.",
+    trigger:"Fortitude Save DC 4 — being directly challenged, someone dismissing their narrative",
+    dynamics:{RED:"Bard softens RED's bluntness. RED gives Bard the urgency they sometimes lack.",PURPLE:"Extraordinary depth — story + analysis produces lasting insight.",BLUE:"Two Bards can harmonise forever without resolving anything.",GREEN:"Bard gives GREEN's ideas a narrative home. GREEN gives Bard new material."}
+  },
+  Champion: {
+    hp:6, healMod:"+5", speed:"Low — Moves when it counts; never first, always right", fort:"3/5", ref:"2/5", will:"5/5",
+    archetype:"Trustkeeper — moral leadership, low adaptability to disruption",
+    nativeBonus:"+2 to Persuasion checks for advocacy; Shield of Trust activates at scene start automatically",
+    penalty:"−2 to Reflex vs sudden change; on failed Reflex Save, Party gains 1 Exhaustion",
+    sigAbility:{name:"Shield of Trust",actions:0,
+      desc:"PASSIVE. At the start of each scene, state one promise aloud. Make no roll — the promise itself is the action. If kept by scene end: all party members gain +1 to their next roll. If broken: Party gains 1 Exhaustion."},
+    lockedAbility:{name:"Inspire Courage",actions:3,
+      desc:"Name the specific fear holding one person back. Make an Insight check (DC 13). On success, that person acts immediately with no roll required. On failure, the moment passes — the opportunity is gone this scene, but nothing worsens."},
+    strengthEdge:"Trust architecture. The party's moral compass and emotional anchor.",
+    blindPrice:"Resistance to change can hold the party in place when they need to move.",
+    trigger:"Reflex Save DC 5 — sudden rule change, unexpected betrayal of structure",
+    dynamics:{RED:"Champion holds RED accountable. RED keeps Champion moving.",PURPLE:"Champion grounds PURPLE's analysis in values. Deep partnership.",BLUE:"Two Champions create a fortress of principle — hard to shift even when wrong.",GREEN:"Champion provides the north star GREEN needs. GREEN unsticks Champion."}
+  },
+  Ranger: {
+    hp:4, healMod:"+1", speed:"High — Already scouting before others decide", fort:"2/5", ref:"4/5", will:"2/5",
+    archetype:"Trailblazer — creative navigation, low confrontation and follow-through",
+    nativeBonus:"+2 to Perception checks; +1 to Survival checks; +1 bonus on creative alternative Trailblazer rolls",
+    penalty:"−2 to Will vs manipulation using novelty/curiosity; −1 to Fortitude vs sustained direct pressure",
+    sigAbility:{name:"Scout Ahead",actions:1,
+      desc:"At scene start, name one specific risk you predict. Write it down. Make a Perception check (DC 10). If correct: +1 to the party's first roll. If wrong: +1 to your next Perception check this scene — the miss still sharpens you."},
+    lockedAbility:{name:"Wild Empathy",actions:2,
+      desc:"Move toward an overlooked person in the scene with genuine curiosity. Make an Animal Handling check (DC 10). On success, the GM reveals one thing the party needed that no other approach could have uncovered."},
+    strengthEdge:"Sees paths nobody else is looking for. Connects to people others miss.",
+    blindPrice:"Following one trail long enough to arrive somewhere. Generation without completion.",
+    trigger:"Will Save DC 3 — NPC using novelty or 'this changes everything' framing",
+    dynamics:{RED:"RED completes what GREEN starts. GREEN finds the path RED would never try.",PURPLE:"PURPLE maps it; GREEN scouts it. Excellent functional pairing.",BLUE:"GREEN possibility + BLUE belonging = inclusive exploration.",GREEN:"Two Rangers generate endlessly and arrive nowhere without structure."}
+  },
+  Sorcerer: {
+    hp:5, healMod:"+2", speed:"Very High — Already in motion before the problem is named", fort:"1/5", ref:"5/5", will:"2/5",
+    archetype:"Chaos Spark — innovation engine, critically vulnerable to sustained challenge",
+    nativeBonus:"+2 to Reflex checks; +1 to Arcana checks for creative leaps; Chaos Spark usable once per scene",
+    penalty:"−2 to Fortitude vs RED/BLUE direct confrontation; on failed Fort, loses 1 HP and Emotional Surge is unavailable this scene",
+    passive:{name:"Resonance Field",
+      desc:"PASSIVE. When you succeed on Emotional Surge, every party member gains +1 to their next roll this scene. Costs 1 HP to activate — your spark is contagious but it runs on you."},
+    sigAbility:{name:"Chaos Spark",actions:1,
+      desc:"Combine two unrelated elements from the current scene into one idea — declare it before anyone else speaks this round. Make an Arcana check (DC 10). On success, the GM narrates a viable forward path from your idea. Once per scene."},
+    lockedAbility:{name:"Magic of Spontaneity",actions:1,
+      desc:"When the plan collapses, declare the new direction before anyone else proposes one. Make a Sleight of Hand check (DC 12) — your agility of thought is the roll. On success, the group builds on it and removes 1 Exhaustion."},
+    strengthEdge:"Creative explosion. Moves fast and finds what structured thinking misses.",
+    blindPrice:"Structural environments drain this class faster than any encounter.",
+    trigger:"Fortitude Save DC 5 — direct sustained confrontation, being forced to justify their process",
+    dynamics:{RED:"Sorcerer's spark + RED's execution = rare completion. High-risk, high-reward.",PURPLE:"PURPLE can't follow Sorcerer's leaps. Sorcerer needs PURPLE to land them.",BLUE:"Sorcerer's ideas find a home in BLUE's belonging. BLUE steadies Sorcerer.",GREEN:"Two Sorcerers produce extraordinary ideas and finish nothing."}
+  },
+  Druid: {
+    hp:6, healMod:"+3", speed:"Med-Low — Patient until the system speaks; then moves with full force", fort:"2/5", ref:"4/5", will:"4/5",
+    archetype:"Living System — macro-level wisdom, low immediate crisis response",
+    nativeBonus:"+2 to Nature and Insight checks; Seasonal Guardian sets group modifier at session start",
+    penalty:"−2 to Fortitude vs direct RED confrontation; Growth Mindset requires a failed roll first",
+    passive:{name:"Seasonal Guardian",
+      desc:"PASSIVE. At the start of each session, name the season the group is in: Spring (+1 to all rolls), Summer (+2 but Exhaustion costs hit harder), Autumn (steady), or Winter (−1 but lessons land faster). The group can request a season change once per session."},
+    sigAbility:{name:"Nature's Balance",actions:1,
+      desc:"Restate the current situation from a completely different angle. Make a Nature check (DC 10). On success, one new option appears that no other approach could produce — the GM must honour it."},
+    lockedAbility:{name:"Circle of Ideas",actions:2,
+      desc:"Call every party member to contribute one idea — none dismissed. Make a Persuasion check (DC 11). On success, the group's combined solution removes 1 Exhaustion level and clears any Breaking Point condition."},
+    strengthEdge:"Systems perspective. Sees what caused the problem, not just the problem.",
+    blindPrice:"Contributing to the system rather than only observing it.",
+    trigger:"Fortitude Save DC 4 — being told to stop thinking and just act",
+    dynamics:{RED:"Druid shows RED why the goal matters in context. RED shows Druid how to act.",PURPLE:"Two systems thinkers — extraordinary depth, risk of beautiful inaction.",BLUE:"Druid's seasons + BLUE's care = compassionate wisdom in hard moments.",GREEN:"Druid gives GREEN's chaos a natural home. The most coherent GREEN pairing."}
+  },
+};
+const DUAL_STAT_BLOCKS = {
+  "PURPLE_RED": { hp:5, healMod:"+2", speed:"Med-High", fort:"3/5", ref:"3/5", will:"2/5", archetype:"The Strategist", nativeBonus:"+1 to all rolls; +2 when using analytical precision under time pressure", penalty:"−2 to Will vs charm and emotional manipulation; tends to miss what people feel", sigAbility:{name:"Iron Analysis",actions:2,desc:"Combine data and decisive action. Reduces DC by 2 AND takes an additional 1-action this scene. Once per scene."}, lockedAbility:{name:"Precision Command",actions:3,desc:"Give one clear directive. All party members who follow it gain +2 to their next roll. On miss: party acts without coordination (−1 each)."}, strengthEdge:"Strategic execution under pressure with analytical depth.", blindPrice:"People caught between the analysis and the action.", trigger:"Will Save DC 4 — emotional NPC, flattery, relational appeal" },
+  "BLUE_RED":   { hp:5, healMod:"+4", speed:"Med-High", fort:"3/5", ref:"2/5", will:"3/5", archetype:"The Captain", nativeBonus:"+1 to all rolls; Rally the Charge costs 2 actions and restores 2 Morale simultaneously", penalty:"−1 to Reflex vs surprise change; oscillation condition: switching modes costs 1 HP", sigAbility:{name:"Rally the Charge",actions:2,desc:"Inspire a fatigued group by combining urgency and empathy. Removes 1 Party Exhaustion level AND all party members gain +1 to next roll. Costs 1 HP."}, lockedAbility:{name:"Steady Command",actions:3,desc:"Lead clearly in chaos without losing trust. Party Exhaustion cannot exceed Lv 2 for the rest of this scene. Captain takes all Morale damage instead."}, strengthEdge:"Motivational leadership that earns loyalty through caring and driving simultaneously.", blindPrice:"The switch between warmth and efficiency — people feel the gap.", trigger:"Reflex Save DC 4 — sudden change when the Captain has committed to a plan" },
+  "GREEN_RED":  { hp:5, healMod:"+2", speed:"Very High", fort:"2/5", ref:"5/5", will:"1/5", archetype:"The Pioneer", nativeBonus:"+1 to all rolls; +2 to Reflex; Frontier Sprint costs 1 action", penalty:"−3 to Will — lowest in system; on failed Will Save, pioneer chases a new idea and loses their main action", sigAbility:{name:"Frontier Sprint",actions:1,desc:"Turn a creative spark into a concrete plan and move the same round. Gain 1 extra action this round. Once per scene."}, lockedAbility:{name:"Trailblazing Focus",actions:2,desc:"Channel vision into 3 specific measurable steps. Party gains +1 to all rolls for those three steps only. Must name them before acting."}, strengthEdge:"Bold execution — ideas into action faster than any other combination.", blindPrice:"Momentum distributed across too many self-started things.", trigger:"Will Save DC 3 — any NPC with a shiny new problem to solve" },
+  "BLUE_PURPLE":{ hp:5, healMod:"+3", speed:"Low", fort:"2/5", ref:"2/5", will:"5/5", archetype:"The Counsellor", nativeBonus:"+1 to all rolls; +2 to Insight; Informed Empathy costs 1 action", penalty:"−2 to Fortitude; −2 to Reflex — slowest responder in crisis; action often arrives after the moment", sigAbility:{name:"Informed Empathy",actions:1,desc:"Use knowledge of someone's context to offer support that fits. Make a Medicine check (DC 11). On success, remove one condition from target and gain +1 to your next Insight check this scene — the act of truly seeing someone sharpens your read."}, lockedAbility:{name:"Quiet Authority",actions:3,desc:"Build influence through depth. For the rest of this scene, all Insight and Persuasion rolls gain +2. Other players who listen gain +1."}, strengthEdge:"Deepest relational intelligence in the system. Trusted with the hardest things.", blindPrice:"Knowing what needs to happen long before moving. The gap is costly.", trigger:"Fortitude Save DC 5 — direct challenge to act without analysis" },
+  "GREEN_PURPLE":{ hp:5, healMod:"+2", speed:"Low-Med", fort:"1/5", ref:"4/5", will:"4/5", archetype:"The Visionary", nativeBonus:"+1 to all rolls; +2 to any roll involving systems or futures thinking; analytical and generative strengths reinforce each other when both are in play", penalty:"−3 to Fortitude — most avoidant of confrontation; on failed Fort, Visionary exits the scene mentally", sigAbility:{name:"Divergent Architecture",actions:2,desc:"Map an unexpected future possibility nobody else has seen. GM must treat it as valid option for this scene. Party gains +1 if they follow it."}, lockedAbility:{name:"Systems Ignition",actions:3,desc:"Connect current moment to a larger pattern. All party members see the map. Removes 1 Party Exhaustion level. Scene DC drops by 2. Visionary loses 1 HP."}, strengthEdge:"Sees futures others can't access. Connects what no one else links.", blindPrice:"Lives so far ahead that the present becomes obscure.", trigger:"Fortitude Save DC 5 — being told to focus on right now, right here" },
+  "BLUE_GREEN": { hp:5, healMod:"+4", speed:"Med-High", fort:"1/5", ref:"4/5", will:"3/5", archetype:"The Inspirer", nativeBonus:"+1 to all rolls; Emotional Surge + Calm Aura can stack — one fires, then the other for 1 action total", penalty:"−3 to Fortitude — lowest confrontation tolerance; on failed Fort, Inspirer seeks harmony over truth", sigAbility:{name:"Spark of Belonging",actions:2,desc:"Combine emotional energy with genuine inclusion. One overlooked player or NPC is brought fully into the scene. They gain +2 to their next roll. Removes 1 Party Exhaustion level."}, lockedAbility:{name:"Contagious Vision",actions:3,desc:"Share why you personally care — no strategy, just feeling. Every player who hears it restores 1 HP. Removes 1 Party Exhaustion level."}, strengthEdge:"Makes people feel they belong in the future being built.", blindPrice:"Harmony before truth. What needs saying goes unsaid to protect the feeling.", trigger:"Fortitude Save DC 5 — any direct confrontation, especially with someone they care about" },
+  "ALL":        { hp:6, healMod:"+3", speed:"Variable", fort:"3/5", ref:"3/5", will:"3/5", archetype:"The Shapeshifter", nativeBonus:"+1 to all rolls in any brain colour; can use any class ability once per scene at −1", penalty:"No dominant strength; shadow fires from whichever colour is least used this session", sigAbility:{name:"Adaptive Presence",actions:2,desc:"Read the room and shift into the colour the scene needs most. Gain that colour's native +1 for this scene only. Costs 1 HP."}, lockedAbility:{name:"Bridge Build",actions:3,desc:"Translate between two conflicting styles in the group — name what each side actually needs from the other. Make a Persuasion check (DC 13). On success, remove 2 Exhaustion levels and the next scene starts without tension penalties."}, strengthEdge:"Genuine all-terrain adaptability. No situation is entirely alien.", blindPrice:"No clear identity under sustained pressure. Everything and nothing.", trigger:"Whichever save is worst in the current scene — it shifts each session" },
+};
+
+
+// ── Speed modifier helper ────────────────────────────────────────────────────
+const SPEED_MOD = [
+  ["Very High","+3"],["Med-High","+2"],["High","+2"],["Med","+1"],["Low-Med","0"],["Low","−1"],["Variable","+1"]
+];
+function speedMod(speedStr){
+  if(!speedStr)return"0";
+  const entry=SPEED_MOD.find(([k])=>speedStr.startsWith(k));
+  return entry?entry[1]:"0";
+}
+function saveMod(saveStr){
+  const n=parseInt(saveStr)||0;
+  if(n<=1)return"−1";if(n===2)return"0";if(n===3)return"+1";if(n===4)return"+2";return"+3";
+}
+
+// ── Helper: pip renderer ──────────────────────────────────────────────────────
+function StatPips({value,color}){
+  const n=parseInt(value)||0;
+  return(
+    <div style={{display:"flex",gap:3,alignItems:"center",justifyContent:"center"}}>
+      {[1,2,3,4,5].map(i=>(
+        <div key={i} style={{width:8,height:8,borderRadius:"50%",background:i<=n?color:"rgba(255,255,255,0.1)",boxShadow:i<=n?`0 0 4px ${color}88`:"none"}}/>
+      ))}
+    </div>
+  );
+}
+
+// ── Radar Chart ───────────────────────────────────────────────────────────────
+function RadarChart({scores,rawAnswers,accent}){
+  const COLOR_HEX={RED:"#C0392B",PURPLE:"#6C3483",BLUE:"#1A5276",GREEN:"#1E8449"};
+  const keys=["RED","PURPLE","BLUE","GREEN"];
+  const cx=80,cy=80,r=60;
+  const angles=keys.map((_,i)=>((i*360/4)-90)*(Math.PI/180));
+
+  // Per-question answer counts (histogram radial) — one ring per question answered as that color
+  const qCounts={RED:0,PURPLE:0,BLUE:0,GREEN:0};
+  if(rawAnswers){Object.values(rawAnswers).forEach(c=>{if(qCounts[c]!==undefined)qCounts[c]++;});}
+
+  // Outer radar polygon = scores — scale to actual max so shape fills chart
+  const allScores=Object.values(scores||{}).filter(v=>v>0);
+  const maxVal=allScores.length>0?Math.max(...allScores):20;
+  const toXY=(angle,val,maxR)=>{
+    const frac=val/maxVal;
+    return[cx+Math.cos(angle)*maxR*frac, cy+Math.sin(angle)*maxR*frac];
+  };
+
+  const radarPts=keys.map((k,i)=>toXY(angles[i],scores[k]||0,r));
+  const radarPath=radarPts.map((p,i)=>(i===0?"M":"L")+p[0].toFixed(1)+","+p[1].toFixed(1)).join(" ")+"Z";
+
+  // Grid rings
+  const rings=[0.25,0.5,0.75,1.0];
+
+  // Histogram bars — per color, stacked radially as thin arcs/rectangles
+  // Q answer radial spikes (5 thinner lines per color per answered question)
+  const histSpikes = keys.map((k,ki)=>{
+    const count=qCounts[k]||0;
+    const baseAngle=angles[ki];
+    const spread=0.35; // radians total spread
+    const lines=[];
+    for(let q=0;q<count;q++){
+      const offset=(count>1?((q/(count-1))-0.5)*spread:0);
+      const a=baseAngle+offset;
+      const len=r*(0.35+(q/20)*0.5);
+      lines.push({
+        x1:cx+Math.cos(a)*8,y1:cy+Math.sin(a)*8,
+        x2:cx+Math.cos(a)*len,y2:cy+Math.sin(a)*len,
+        color:COLOR_HEX[k],
+      });
+    }
+    return lines;
+  }).flat();
+
+  return(
+    <svg viewBox="0 0 160 160" style={{width:"100%",height:"100%"}}>
+      {/* Grid rings */}
+      {rings.map((fr,i)=>(
+        <polygon key={i}
+          points={keys.map((_,ki)=>{const[x,y]=toXY(angles[ki],maxVal*fr,r);return`${x.toFixed(1)},${y.toFixed(1)}`}).join(" ")}
+          fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="0.8"
+        />
+      ))}
+      {/* Axis lines */}
+      {keys.map((k,i)=>(
+        <line key={k} x1={cx} y1={cy} x2={(cx+Math.cos(angles[i])*r).toFixed(1)} y2={(cy+Math.sin(angles[i])*r).toFixed(1)}
+          stroke="rgba(255,255,255,0.08)" strokeWidth="0.8"/>
+      ))}
+      {/* Histogram spikes */}
+      {histSpikes.map((s,i)=>(
+        <line key={i} x1={s.x1.toFixed(1)} y1={s.y1.toFixed(1)} x2={s.x2.toFixed(1)} y2={s.y2.toFixed(1)}
+          stroke={s.color} strokeWidth="1.2" opacity="0.4"/>
+      ))}
+      {/* Filled radar polygon */}
+      <path d={radarPath} fill={accent} fillOpacity="0.15" stroke={accent} strokeWidth="1.5" strokeOpacity="0.8"/>
+      {/* Score dots */}
+      {radarPts.map(([x,y],i)=>(
+        <circle key={i} cx={x.toFixed(1)} cy={y.toFixed(1)} r="3" fill={COLOR_HEX[keys[i]]} stroke="#0D0D12" strokeWidth="1"/>
+      ))}
+      {/* Labels */}
+      {keys.map((k,i)=>{
+        const lx=cx+Math.cos(angles[i])*(r+12);
+        const ly=cy+Math.sin(angles[i])*(r+12);
+        return(
+          <text key={k} x={lx.toFixed(1)} y={ly.toFixed(1)} textAnchor="middle" dominantBaseline="middle"
+            fontSize="8" fill={COLOR_HEX[k]} fontFamily="Georgia,serif" opacity="0.9">
+            {k[0]}
+          </text>
+        );
+      })}
+      {/* Score labels on dots */}
+      {radarPts.map(([x,y],i)=>{
+        const score=scores[keys[i]]||0;
+        if(score===0)return null;
+        const lx=cx+Math.cos(angles[i])*(r*(score/maxVal)+10);
+        const ly=cy+Math.sin(angles[i])*(r*(score/maxVal)+10);
+        return(
+          <text key={i} x={lx.toFixed(1)} y={ly.toFixed(1)} textAnchor="middle" dominantBaseline="middle"
+            fontSize="7" fill="#F0EDE6" fontFamily="Georgia,serif" opacity="0.6">{score}</text>
+        );
+      })}
+    </svg>
+  );
+}
+
+// ── Card Shell ─────────────────────────────────────────────────────────────────
+// All cards share the same physical dimensions: 340×480px
+// This makes them printable as poker-sized cards (2.5" × 3.5" at 96dpi)
+const CARD_W=340, CARD_H=480;
+function CardShell({accent,accent2,children,style={}}){
+  return(
+    <div style={{
+      width:CARD_W,maxWidth:"100%",minHeight:CARD_H,
+      borderRadius:18,border:`1px solid ${accent}44`,
+      background:"#0D0D12",
+      boxShadow:`0 0 40px ${accent}22, 0 16px 48px #00000088`,
+      overflow:"hidden",position:"relative",
+      fontFamily:"'Georgia',serif",
+      display:"flex",flexDirection:"column",
+      margin:"0 auto",
+      ...style,
+    }}>
+      <div style={{height:5,background:`linear-gradient(90deg,${accent},${(accent2||accent)+"88"})`,flexShrink:0}}/>
+      {children}
+    </div>
+  );
+}
+
+// ── Ability Art SVGs (geometric mockups per ability type) ─────────────────────
+function AbilityArt({name,accent,isLocked}){
+  const h=name?name.toLowerCase():"";
+  const op=isLocked?0.15:0.75;
+  // Pick geometry based on ability name keywords
+  if(h.includes("battle")||h.includes("plan")||h.includes("precision")||h.includes("command")){
+    return(
+      <svg viewBox="0 0 200 160" style={{width:"100%",height:"100%"}}>
+        <polygon points="100,20 160,60 160,120 100,140 40,120 40,60" fill="none" stroke={accent} strokeWidth="1" opacity={op*0.4}/>
+        <polygon points="100,40 140,65 140,105 100,120 60,105 60,65" fill={accent} opacity={op*0.15}/>
+        <line x1="100" y1="20" x2="100" y2="140" stroke={accent} strokeWidth="0.8" opacity={op*0.3}/>
+        <line x1="40" y1="60" x2="160" y2="120" stroke={accent} strokeWidth="0.8" opacity={op*0.3}/>
+        <line x1="160" y1="60" x2="40" y2="120" stroke={accent} strokeWidth="0.8" opacity={op*0.3}/>
+        <circle cx="100" cy="80" r="12" fill={accent} opacity={op*0.8}/>
+        <polygon points="96,76 104,76 104,84 96,84" fill="#0D0D12" opacity={op}/>
+      </svg>
+    );
+  }
+  if(h.includes("shield")||h.includes("anchor")||h.includes("trust")||h.includes("guard")){
+    return(
+      <svg viewBox="0 0 200 160" style={{width:"100%",height:"100%"}}>
+        <polygon points="100,20 150,45 150,100 100,140 50,100 50,45" fill={accent} opacity={op*0.18}/>
+        <polygon points="100,30 142,52 142,98 100,132 58,98 58,52" fill="none" stroke={accent} strokeWidth="1.5" opacity={op*0.6}/>
+        <polygon points="100,50 125,65 125,95 100,112 75,95 75,65" fill={accent} opacity={op*0.3}/>
+        <line x1="100" y1="50" x2="100" y2="112" stroke="#0D0D12" strokeWidth="2" opacity={op}/>
+        <line x1="75" y1="80" x2="125" y2="80" stroke="#0D0D12" strokeWidth="2" opacity={op}/>
+      </svg>
+    );
+  }
+  if(h.includes("empathy")||h.includes("heal")||h.includes("touch")||h.includes("aura")||h.includes("unity")||h.includes("harmony")){
+    return(
+      <svg viewBox="0 0 200 160" style={{width:"100%",height:"100%"}}>
+        {[0,1,2,3].map(i=>(
+          <circle key={i} cx="100" cy="80" r={20+i*18} fill="none" stroke={accent} strokeWidth="0.8" opacity={op*(0.5-i*0.1)}/>
+        ))}
+        <circle cx="100" cy="80" r="14" fill={accent} opacity={op*0.7}/>
+        <circle cx="100" cy="80" r="7" fill="#0D0D12" opacity={op}/>
+        <line x1="100" y1="30" x2="100" y2="130" stroke={accent} strokeWidth="0.6" opacity={op*0.25}/>
+        <line x1="50" y1="80" x2="150" y2="80" stroke={accent} strokeWidth="0.6" opacity={op*0.25}/>
+      </svg>
+    );
+  }
+  if(h.includes("spark")||h.includes("surge")||h.includes("chaos")||h.includes("rage")||h.includes("channel")){
+    return(
+      <svg viewBox="0 0 200 160" style={{width:"100%",height:"100%"}}>
+        {[[100,80],[70,50],[130,50],[60,110],[140,110],[85,35],[115,35]].map(([x,y],i)=>(
+          <line key={i} x1="100" y1="80" x2={x} y2={y} stroke={accent} strokeWidth={i<3?"2":"1.2"} opacity={op*(0.8-i*0.08)}/>
+        ))}
+        <circle cx="100" cy="80" r="10" fill={accent} opacity={op*0.9}/>
+        {[[70,50],[130,50],[60,110],[140,110]].map(([x,y],i)=>(
+          <circle key={i} cx={x} cy={y} r="4" fill={accent} opacity={op*0.5}/>
+        ))}
+      </svg>
+    );
+  }
+  if(h.includes("knowledge")||h.includes("magic of logic")||h.includes("blueprint")||h.includes("arcane")||h.includes("logic")){
+    return(
+      <svg viewBox="0 0 200 160" style={{width:"100%",height:"100%"}}>
+        <polygon points="100,25 135,65 120,110 80,110 65,65" fill={accent} opacity={op*0.15}/>
+        <polygon points="100,35 128,68 116,104 84,104 72,68" fill="none" stroke={accent} strokeWidth="1.2" opacity={op*0.5}/>
+        {[45,0,-45].map((deg,i)=>{
+          const a=deg*Math.PI/180;const r=30;
+          return <line key={i} x1="100" y1="80" x2={(100+Math.cos(a)*r).toFixed(1)} y2={(80+Math.sin(a)*r).toFixed(1)} stroke={accent} strokeWidth="1.5" opacity={op*0.7}/>;
+        })}
+        <circle cx="100" cy="80" r="8" fill={accent} opacity={op*0.8}/>
+        <circle cx="100" cy="80" r="4" fill="#0D0D12" opacity={op}/>
+      </svg>
+    );
+  }
+  if(h.includes("scout")||h.includes("trail")||h.includes("adapt")||h.includes("wild")||h.includes("nature")||h.includes("circle")||h.includes("seasonal")){
+    return(
+      <svg viewBox="0 0 200 160" style={{width:"100%",height:"100%"}}>
+        <path d="M40,120 Q70,40 100,80 Q130,120 160,40" fill="none" stroke={accent} strokeWidth="1.5" opacity={op*0.7}/>
+        <path d="M40,140 Q70,60 100,100 Q130,140 160,60" fill="none" stroke={accent} strokeWidth="0.8" opacity={op*0.3}/>
+        {[40,70,100,130,160].map((x,i)=>{
+          const y=i%2===0?120:40;
+          return <circle key={i} cx={x} cy={y} r="4" fill={accent} opacity={op*(0.9-i*0.1)}/>;
+        })}
+        <polygon points="100,60 110,80 90,80" fill={accent} opacity={op*0.6}/>
+      </svg>
+    );
+  }
+  if(h.includes("observe")||h.includes("silent")||h.includes("shadow")||h.includes("sleight")){
+    return(
+      <svg viewBox="0 0 200 160" style={{width:"100%",height:"100%"}}>
+        <ellipse cx="100" cy="80" rx="60" ry="30" fill="none" stroke={accent} strokeWidth="1" opacity={op*0.4}/>
+        <ellipse cx="100" cy="80" rx="40" ry="20" fill={accent} opacity={op*0.1}/>
+        <circle cx="100" cy="80" r="12" fill={accent} opacity={op*0.7}/>
+        <circle cx="100" cy="80" r="6" fill="#0D0D12" opacity={op}/>
+        <circle cx="100" cy="80" r="2" fill={accent} opacity={op}/>
+        <line x1="40" y1="80" x2="160" y2="80" stroke={accent} strokeWidth="0.6" opacity={op*0.2}/>
+      </svg>
+    );
+  }
+  // Default — abstract geometric
+  return(
+    <svg viewBox="0 0 200 160" style={{width:"100%",height:"100%"}}>
+      <polygon points="100,25 160,80 100,135 40,80" fill={accent} opacity={op*0.12}/>
+      <polygon points="100,40 145,80 100,120 55,80" fill="none" stroke={accent} strokeWidth="1.2" opacity={op*0.5}/>
+      <circle cx="100" cy="80" r="15" fill={accent} opacity={op*0.6}/>
+      <circle cx="100" cy="80" r="7" fill="#0D0D12" opacity={op}/>
+    </svg>
+  );
+}
+
+// ── Hero Card ─────────────────────────────────────────────────────────────────
+function HeroCard({colorKey,className,dualProfile,resolvedColors,isTie,scores,data,rawAnswers}){
+  const _rc=resolvedColors||[];
+  const sb = isTie&&_rc.length>=2 ? (DUAL_STAT_BLOCKS[getDualKey(_rc[0],_rc[1])]||DUAL_STAT_BLOCKS["ALL"]) : isTie ? DUAL_STAT_BLOCKS["ALL"] : (STAT_BLOCKS[className]||{});
+  const accent = isTie&&dualProfile ? dualProfile.color1 : data.color;
+  const accent2 = isTie&&dualProfile ? dualProfile.color2 : data.color;
+  const rune = data.rune;
+  const displayName = isTie&&dualProfile ? dualProfile.label : className;
+
+  return(
+    <CardShell accent={accent} accent2={accent2}>
+      {/* Ghost rune */}
+      <div style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",fontSize:180,color:accent,opacity:0.04,pointerEvents:"none",lineHeight:1,userSelect:"none",zIndex:0}}>{rune}</div>
+
+      {/* Radar chart fills art window */}
+      <div style={{width:"100%",height:200,position:"relative",zIndex:1,background:`linear-gradient(160deg,${accent}15,#0D0D12 80%)`,display:"flex",alignItems:"center",justifyContent:"center",overflow:"hidden",flexShrink:0}}>
+        <div style={{width:160,height:160}}>
+          <RadarChart scores={scores} rawAnswers={rawAnswers} accent={accent}/>
+        </div>
+        <div style={{position:"absolute",bottom:0,left:0,right:0,height:50,background:"linear-gradient(transparent,#0D0D12)"}}/>
+        <div style={{position:"absolute",top:10,right:14,fontSize:9,color:accent,opacity:0.45,letterSpacing:"0.2em",textTransform:"uppercase"}}>Brain Profile</div>
+      </div>
+
+      {/* Body */}
+      <div style={{padding:"0 22px 18px",position:"relative",zIndex:1,flex:1,display:"flex",flexDirection:"column"}}>
+        {/* Rune + label */}
+        <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:3}}>
+          <span style={{fontSize:17,color:accent}}>{rune}</span>
+          <span style={{fontSize:10,letterSpacing:"0.22em",color:"#F0EDE6",opacity:0.4,textTransform:"uppercase"}}>
+            {isTie&&dualProfile?dualProfile.label:data.label}
+          </span>
+        </div>
+
+        {/* Class name */}
+        <div style={{fontSize:24,fontWeight:700,color:"#F0EDE6",letterSpacing:"-0.01em",lineHeight:1.1,marginBottom:3}}>{displayName}</div>
+        <div style={{fontSize:10,color:accent,opacity:0.65,letterSpacing:"0.08em",marginBottom:12,lineHeight:1.4}}>{sb.archetype}</div>
+
+        <div style={{height:1,marginBottom:11,background:`linear-gradient(90deg,${accent}55,transparent)`}}/>
+
+        {/* Stats row: HP, Heal, Speed */}
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 2fr",gap:6,marginBottom:10}}>
+          {[
+            {label:"MAX HP",main:String(sb.hp||"—"),sub:null},
+            {label:"HEAL MOD",main:String(sb.healMod||"—"),sub:null},
+            {label:"SPEED",main:speedMod(sb.speed||""),sub:sb.speed||"—"},
+          ].map(s=>(
+            <div key={s.label} style={{background:"rgba(255,255,255,0.04)",borderRadius:7,padding:"7px 9px",border:`1px solid ${accent}20`}}>
+              <div style={{fontSize:7,letterSpacing:"0.18em",color:accent,opacity:0.65,textTransform:"uppercase",marginBottom:3}}>{s.label}</div>
+              <div style={{fontSize:s.label==="SPEED"?16:15,fontWeight:700,color:"#F0EDE6",lineHeight:1}}>{s.main}</div>
+              {s.sub&&<div style={{fontSize:8,color:"#8a7f6e",marginTop:3,lineHeight:1.3}}>{s.sub}</div>}
+            </div>
+          ))}
+        </div>
+
+        {/* Saves row */}
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:6,marginBottom:10}}>
+          {[{label:"FORT",val:sb.fort},{label:"REFLEX",val:sb.ref},{label:"WILL",val:sb.will}].map(sv=>(
+            <div key={sv.label} style={{background:"rgba(255,255,255,0.04)",borderRadius:7,padding:"7px 8px",border:`1px solid ${accent}20`,textAlign:"center"}}>
+              <div style={{fontSize:7,letterSpacing:"0.14em",color:accent,opacity:0.6,textTransform:"uppercase",marginBottom:5}}>{sv.label}</div>
+              <div style={{fontSize:14,fontWeight:700,color:"#F0EDE6",marginBottom:4}}>{saveMod(sv.val)}</div>
+              <StatPips value={sv.val} color={accent}/>
+            </div>
+          ))}
+        </div>
+
+        {/* Native bonus */}
+        {sb.nativeBonus&&(
+          <div style={{background:`${accent}0E`,borderRadius:7,padding:"7px 10px",border:`1px solid ${accent}22`,marginBottom:8}}>
+            <span style={{fontSize:8,letterSpacing:"0.15em",color:accent,textTransform:"uppercase",opacity:0.7}}>Bonus </span>
+            <span style={{fontSize:10,color:"#c9c1b0",fontFamily:"Calibri,sans-serif"}}>{sb.nativeBonus}</span>
+          </div>
+        )}
+
+        {/* Footer */}
+        <div style={{marginTop:"auto",paddingTop:8,display:"flex",justifyContent:"space-between"}}>
+          <span style={{fontSize:8,letterSpacing:"0.2em",color:"#F0EDE6",opacity:0.18,textTransform:"uppercase"}}>{data.label}</span>
+          <span style={{fontSize:8,letterSpacing:"0.15em",color:"#F0EDE6",opacity:0.15}}>Elarion</span>
+        </div>
+      </div>
+    </CardShell>
+  );
+}
+
+// ── Ability Card ──────────────────────────────────────────────────────────────
+function AbilityCardFull({ability,accent,index,isLocked,isSig,isPassive}){
+  const label = isLocked?"LOCKED · MILESTONE 2":isSig?"SIGNATURE":isPassive?"PASSIVE":`ABILITY ${index+1}`;
+  const borderColor = isLocked?"rgba(255,255,255,0.08)":isSig?`${accent}88`:isPassive?`${accent}55`:`${accent}33`;
+  const bgColor = isLocked?"rgba(10,8,20,0.9)":isSig?`${accent}18`:isPassive?`${accent}0E`:`${accent}0A`;
+
+  return(
+    <CardShell accent={accent} style={{borderColor:borderColor,background:bgColor,minHeight:CARD_H,animation:`fadeUp 0.4s ease ${0.05+index*0.07}s both`}}>
+      {/* Lock overlay */}
+      {isLocked&&(
+        <div style={{position:"absolute",inset:0,background:"rgba(8,6,18,0.85)",backdropFilter:"blur(4px)",borderRadius:18,zIndex:10,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:10}}>
+          <span style={{fontSize:32}}>🔒</span>
+          <div style={{textAlign:"center",padding:"0 24px"}}>
+            <div style={{fontSize:14,fontWeight:700,color:"#a09080",marginBottom:6}}>{ability.name}</div>
+            <div style={{fontSize:11,color:"#7a6a5a",lineHeight:1.6,letterSpacing:"0.05em"}}>Unlock by joining the<br/>Hero's Journey Workshop</div>
+          </div>
+        </div>
+      )}
+
+      {/* Art window */}
+      <div style={{width:"100%",height:180,background:`linear-gradient(160deg,${isLocked?"#1a1020":accent+"18"},#0D0D12 85%)`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,position:"relative"}}>
+        <div style={{width:"80%",height:"85%"}}>
+          <AbilityArt name={ability.name} accent={accent} isLocked={isLocked}/>
+        </div>
+        <div style={{position:"absolute",bottom:0,left:0,right:0,height:40,background:"linear-gradient(transparent,"+bgColor+")"}}/>
+      </div>
+
+      {/* Content */}
+      <div style={{padding:"14px 18px 18px",flex:1,display:"flex",flexDirection:"column"}}>
+        <div style={{fontSize:9,letterSpacing:"0.2em",color:isLocked?"rgba(255,255,255,0.12)":accent,textTransform:"uppercase",marginBottom:8,opacity:isLocked?1:0.8}}>{label}</div>
+
+        {ability.actions!==undefined&&!isPassive&&(
+          <div style={{display:"inline-flex",alignItems:"center",background:`${accent}25`,borderRadius:20,padding:"3px 10px",marginBottom:10,alignSelf:"flex-start"}}>
+            <span style={{fontSize:10,color:accent,fontWeight:700,opacity:isLocked?0.2:1}}>
+              {ability.actions===0?"Free":ability.actions===1?"1 Action":`${ability.actions} Actions`}
+            </span>
+          </div>
+        )}
+
+        <div style={{fontSize:15,fontWeight:700,color:"#F0EDE6",marginBottom:8,lineHeight:1.2,opacity:isLocked?0.15:1}}>{ability.name}</div>
+        <div style={{height:1,background:`${accent}22`,marginBottom:10,opacity:isLocked?0.08:1}}/>
+        <div style={{fontSize:12,color:"#c9c1b0",lineHeight:1.7,fontFamily:"Calibri,sans-serif",opacity:isLocked?0.1:1,flex:1}}>{ability.desc}</div>
+
+        {ability.eq&&(
+          <div style={{fontSize:10,color:accent,opacity:isLocked?0.08:0.6,letterSpacing:"0.08em",fontStyle:"italic",marginTop:10}}>EQ: {ability.eq}</div>
+        )}
+
+        <div style={{marginTop:"auto",paddingTop:10,display:"flex",justifyContent:"space-between"}}>
+          <span style={{fontSize:8,color:"#F0EDE6",opacity:0.12,letterSpacing:"0.15em",textTransform:"uppercase"}}>{isSig?"Signature":isPassive?"Passive":isLocked?"Locked":"Class Ability"}</span>
+          <span style={{fontSize:8,color:"#F0EDE6",opacity:0.1,fontFamily:"serif"}}>Elarion</span>
+        </div>
+      </div>
+    </CardShell>
+  );
+}
+
+// ── Quest Card ────────────────────────────────────────────────────────────────
+function QuestCard({quest,personalisedQuest,accent}){
+  const questText=personalisedQuest||quest||"";
+  const subText=personalisedQuest&&quest&&personalisedQuest!==quest?quest:null;
+  return(
+    <CardShell accent="#b7950b" accent2="#d4ac0d">
+      {/* Art window — compass / scroll geometry */}
+      <div style={{width:"100%",height:180,background:"rgba(183,149,11,0.06)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,position:"relative"}}>
+        <svg viewBox="0 0 200 160" style={{width:"80%",height:"85%",opacity:0.7}}>
+          <circle cx="100" cy="80" r="55" fill="none" stroke="#b7950b" strokeWidth="1" opacity="0.4"/>
+          <circle cx="100" cy="80" r="40" fill="none" stroke="#b7950b" strokeWidth="0.8" opacity="0.25"/>
+          <polygon points="100,25 106,74 100,80 94,74" fill="#b7950b" opacity="0.9"/>
+          <polygon points="100,135 106,86 100,80 94,86" fill="#6a5010" opacity="0.6"/>
+          <polygon points="145,80 96,86 80,80 96,74" fill="#b7950b" opacity="0.5"/>
+          <polygon points="55,80 104,74 120,80 104,86" fill="#6a5010" opacity="0.4"/>
+          <circle cx="100" cy="80" r="5" fill="#b7950b" opacity="0.9"/>
+          {[0,45,90,135,180,225,270,315].map((deg,i)=>{
+            const a=deg*Math.PI/180;
+            return <line key={i} x1={(100+Math.cos(a)*43).toFixed(1)} y1={(80+Math.sin(a)*43).toFixed(1)} x2={(100+Math.cos(a)*50).toFixed(1)} y2={(80+Math.sin(a)*50).toFixed(1)} stroke="#b7950b" strokeWidth="1.2" opacity="0.5"/>;
+          })}
+        </svg>
+        <div style={{position:"absolute",bottom:0,left:0,right:0,height:40,background:"linear-gradient(transparent,#0D0D12)"}}/>
+      </div>
+
+      <div style={{padding:"14px 18px 18px",flex:1,display:"flex",flexDirection:"column"}}>
+        <div style={{fontSize:9,letterSpacing:"0.2em",color:"#b7950b",textTransform:"uppercase",marginBottom:12}}>✦ Your First Quest</div>
+        <div style={{height:1,background:"rgba(183,149,11,0.2)",marginBottom:14}}/>
+        <div style={{fontSize:13,color:"#e8e4d9",lineHeight:1.8,fontFamily:"Calibri,sans-serif",flex:1}}>{questText}</div>
+        {subText&&(
+          <div style={{borderTop:"1px solid rgba(183,149,11,0.12)",paddingTop:10,marginTop:12}}>
+            <div style={{fontSize:11,color:"#9a8a60",lineHeight:1.65,fontFamily:"Calibri,sans-serif",fontStyle:"italic"}}>{subText}</div>
+          </div>
+        )}
+        <div style={{marginTop:"auto",paddingTop:10,display:"flex",justifyContent:"space-between"}}>
+          <span style={{fontSize:8,color:"#F0EDE6",opacity:0.18,letterSpacing:"0.15em",textTransform:"uppercase"}}>Quest Card</span>
+          <span style={{fontSize:8,color:"#F0EDE6",opacity:0.12,fontFamily:"serif"}}>Elarion</span>
+        </div>
+      </div>
+    </CardShell>
+  );
+}
+
+// ── Trigger Card ──────────────────────────────────────────────────────────────
+function TriggerCard({sb,accent,className,dualProfile,isTie,resolved}){
+  return(
+    <CardShell accent="#C0392B" accent2="#6C3483">
+      {/* Art window — warning geometry */}
+      <div style={{width:"100%",height:180,background:"rgba(192,57,43,0.06)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,position:"relative"}}>
+        <svg viewBox="0 0 200 160" style={{width:"80%",height:"85%",opacity:0.7}}>
+          <polygon points="100,20 170,140 30,140" fill="none" stroke="#C0392B" strokeWidth="1.5" opacity="0.5"/>
+          <polygon points="100,38 155,132 45,132" fill="#C0392B" opacity="0.08"/>
+          <polygon points="100,55 142,125 58,125" fill="none" stroke="#C0392B" strokeWidth="0.8" opacity="0.3"/>
+          <line x1="100" y1="65" x2="100" y2="105" stroke="#C0392B" strokeWidth="2.5" opacity="0.8" strokeLinecap="round"/>
+          <circle cx="100" cy="118" r="4" fill="#C0392B" opacity="0.9"/>
+          <polygon points="100,20 170,140 30,140" fill="none" stroke="#6C3483" strokeWidth="0.6" opacity="0.2" transform="translate(3,3)"/>
+        </svg>
+        <div style={{position:"absolute",bottom:0,left:0,right:0,height:40,background:"linear-gradient(transparent,#0D0D12)"}}/>
+        <div style={{position:"absolute",top:12,left:0,right:0,textAlign:"center",fontSize:9,color:"#C0392B",opacity:0.5,letterSpacing:"0.25em",textTransform:"uppercase"}}>⚠ Shadow Triggers</div>
+      </div>
+
+      <div style={{padding:"14px 18px 18px",flex:1,display:"flex",flexDirection:"column",gap:10}}>
+
+        <div style={{background:"rgba(255,255,255,0.03)",borderRadius:8,padding:"10px 12px",border:"1px solid rgba(255,255,255,0.07)"}}>
+          <div style={{fontSize:9,letterSpacing:"0.15em",color:"#e8c4a0",textTransform:"uppercase",marginBottom:5}}>Strength Edge</div>
+          <div style={{fontSize:11,color:"#c9b8a0",lineHeight:1.55,fontFamily:"Calibri,sans-serif"}}>{sb.strengthEdge}</div>
+        </div>
+
+        <div style={{background:"rgba(192,57,43,0.08)",borderRadius:8,padding:"10px 12px",border:"1px solid rgba(192,57,43,0.2)"}}>
+          <div style={{fontSize:9,letterSpacing:"0.15em",color:"#e08080",textTransform:"uppercase",marginBottom:5}}>The Blind Price</div>
+          <div style={{fontSize:11,color:"#c9a090",lineHeight:1.55,fontFamily:"Calibri,sans-serif"}}>{sb.blindPrice}</div>
+        </div>
+
+        <div style={{background:"rgba(120,60,10,0.1)",borderRadius:8,padding:"10px 12px",border:"1px solid rgba(183,100,30,0.22)"}}>
+          <div style={{fontSize:9,letterSpacing:"0.15em",color:"#d4a060",textTransform:"uppercase",marginBottom:5}}>GM Trigger</div>
+          <div style={{fontSize:11,color:"#c4a070",lineHeight:1.55,fontFamily:"Calibri,sans-serif"}}>{sb.trigger}</div>
+        </div>
+
+        {sb.penalty&&(
+          <div style={{background:"rgba(80,20,80,0.1)",borderRadius:8,padding:"10px 12px",border:"1px solid rgba(120,40,120,0.2)"}}>
+            <div style={{fontSize:9,letterSpacing:"0.15em",color:"#c090d0",textTransform:"uppercase",marginBottom:5}}>Color Penalty</div>
+            <div style={{fontSize:11,color:"#b090c0",lineHeight:1.55,fontFamily:"Calibri,sans-serif"}}>{sb.penalty}</div>
+          </div>
+        )}
+
+        <div style={{marginTop:"auto",paddingTop:6,display:"flex",justifyContent:"space-between"}}>
+          <span style={{fontSize:8,color:"#F0EDE6",opacity:0.18,letterSpacing:"0.15em",textTransform:"uppercase"}}>Trigger Card</span>
+          <span style={{fontSize:8,color:"#F0EDE6",opacity:0.12,fontFamily:"serif"}}>Elarion</span>
+        </div>
+      </div>
+    </CardShell>
+  );
+}
+
+// ── Dynamics Card (separate, same size) ──────────────────────────────────────
+function DynamicsCard({sb,accent}){
+  if(!sb.dynamics)return null;
+  return(
+    <CardShell accent={accent} accent2={accent+"88"}>
+      <div style={{width:"100%",height:180,background:`${accent}08`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,position:"relative"}}>
+        <svg viewBox="0 0 200 160" style={{width:"80%",height:"85%",opacity:0.65}}>
+          {["#C0392B","#6C3483","#1A5276","#1E8449"].map((c,i)=>{
+            const angles=[(-90)*Math.PI/180,(0)*Math.PI/180,(90)*Math.PI/180,(180)*Math.PI/180];
+            const x=100+Math.cos(angles[i])*50,y=80+Math.sin(angles[i])*45;
+            return(<g key={i}>
+              <circle cx={x.toFixed(1)} cy={y.toFixed(1)} r="14" fill={c} opacity="0.25"/>
+              <circle cx={x.toFixed(1)} cy={y.toFixed(1)} r="8" fill={c} opacity="0.6"/>
+              <line x1="100" y1="80" x2={x.toFixed(1)} y2={y.toFixed(1)} stroke={c} strokeWidth="1" opacity="0.4"/>
+            </g>);
+          })}
+          <circle cx="100" cy="80" r="10" fill={accent} opacity="0.8"/>
+          <circle cx="100" cy="80" r="5" fill="#0D0D12" opacity="1"/>
+        </svg>
+        <div style={{position:"absolute",bottom:0,left:0,right:0,height:40,background:"linear-gradient(transparent,#0D0D12)"}}/>
+        <div style={{position:"absolute",top:12,left:0,right:0,textAlign:"center",fontSize:9,color:accent,opacity:0.5,letterSpacing:"0.25em",textTransform:"uppercase"}}>Cross-Color Dynamics</div>
+      </div>
+
+      <div style={{padding:"14px 18px 18px",flex:1,display:"flex",flexDirection:"column",gap:8}}>
+        {Object.entries(sb.dynamics).map(([clr,txt])=>(
+          <div key={clr} style={{background:`${(CLASSES[clr]?.color||"#888")}10`,borderRadius:8,padding:"8px 10px",border:`1px solid ${(CLASSES[clr]?.color||"#888")}25`}}>
+            <div style={{fontSize:9,fontWeight:700,color:CLASSES[clr]?.color||"#888",marginBottom:3,letterSpacing:"0.1em"}}>vs {clr}</div>
+            <div style={{fontSize:11,color:"#b0a890",lineHeight:1.5,fontFamily:"Calibri,sans-serif"}}>{txt}</div>
+          </div>
+        ))}
+        <div style={{marginTop:"auto",paddingTop:8,display:"flex",justifyContent:"space-between"}}>
+          <span style={{fontSize:8,color:"#F0EDE6",opacity:0.18,letterSpacing:"0.15em",textTransform:"uppercase"}}>Dynamics Card</span>
+          <span style={{fontSize:8,color:"#F0EDE6",opacity:0.12,fontFamily:"serif"}}>Elarion</span>
+        </div>
+      </div>
+    </CardShell>
+  );
+}
+
+
+
+// ── Q_SKILL_MAP — each quiz answer contributes +1 to specific skills ──────────
+// Keyed by Q index (0-based integer) × color → array of skill names to increment
+// These are added on top of the class base modifiers in buildSkillList
+const Q_SKILL_MAP = {
+  // Principle: each answer maps to the skill that class naturally expresses in that scenario.
+  // Every proficient skill for every class must appear in at least 2 Qs for that color.
+  // All 17 skills appear in at least 2 colors. Deception, Nature, Stealth, Animal Handling
+  // are now represented — previously missing entirely.
+  0:{  // Q00 — How you approach a new challenge
+    RED:["Investigation"], PURPLE:["History"], BLUE:["Insight"], GREEN:["Survival"]
+  },
+  1:{  // Q01 — How you handle group indecision
+    RED:["Intimidation"], PURPLE:["Investigation"], BLUE:["Insight"], GREEN:["Persuasion"]
+  },
+  2:{  // Q02 — What drives you on a long campaign
+    RED:["Athletics"], PURPLE:["History"], BLUE:["Medicine"], GREEN:["Perception"]
+  },
+  3:{  // Q03 — First response to a problem
+    RED:["Athletics"], PURPLE:["Investigation"], BLUE:["Medicine"], GREEN:["Nature"]
+  },
+  4:{  // Q04 — Your environment/workspace
+    RED:["History"], PURPLE:["History"], BLUE:["Persuasion"], GREEN:["Acrobatics"]
+    // RED gets History here — Monk uses History + it's natural RED organised-workspace instinct
+  },
+  5:{  // Q05 — How you receive feedback
+    RED:["Athletics"], PURPLE:["Insight"], BLUE:["Insight"], GREEN:["Performance"]
+    // PURPLE gets Insight — Rogue/Wizard read intent when receiving critique
+  },
+  6:{  // Q06 — Your role in a crisis
+    RED:["Intimidation"], PURPLE:["Stealth"], BLUE:["Medicine"], GREEN:["Survival"]
+    // PURPLE gets Stealth — Rogue/Artificer observe quietly in crisis before acting
+  },
+  7:{  // Q07 — What frustrates you most
+    RED:["Investigation"], PURPLE:["Arcana"], BLUE:["Persuasion"], GREEN:["Acrobatics"]
+  },
+  8:{  // Q08 — How you learn best
+    RED:["Acrobatics"], PURPLE:["Arcana"], BLUE:["Insight"], GREEN:["Sleight of Hand"]
+    // RED gets Acrobatics — Monk's learning style is physical/procedural (kata)
+  },
+  9:{  // Q09 — Under extreme pressure
+    RED:["Athletics"], PURPLE:["Investigation"], BLUE:["Medicine"], GREEN:["Perception"]
+  },
+  10:{ // Q10 — Your ideal day on a campaign
+    RED:["Investigation"], PURPLE:["Nature"], BLUE:["Persuasion"], GREEN:["Survival"]
+    // PURPLE gets Nature — Wizard/Artificer map systems; Nature = pattern recognition
+  },
+  11:{ // Q11 — How you make decisions between routes
+    RED:["Investigation"], PURPLE:["Arcana"], BLUE:["Medicine"], GREEN:["Perception"]
+  },
+  12:{ // Q12 — When the plan stops working
+    RED:["Athletics"], PURPLE:["Investigation"], BLUE:["Insight"], GREEN:["Acrobatics"]
+  },
+  13:{ // Q13 — Companion mistake + opportunity
+    RED:["Intimidation"], PURPLE:["Deception"], BLUE:["Insight"], GREEN:["Survival"]
+    // PURPLE gets Deception — Rogue's insight into social subtext, reads what isn't said
+  },
+  14:{ // Q14 — Companion struggling
+    RED:["Intimidation"], PURPLE:["Investigation"], BLUE:["Animal Handling"], GREEN:["Performance"]
+    // BLUE gets Animal Handling — Healer's patient, non-verbal support and attunement
+  },
+  15:{ // Q15 — Free afternoon
+    RED:["Investigation"], PURPLE:["History"], BLUE:["Persuasion"], GREEN:["Perception"]
+  },
+  16:{ // Q16 — After group achievement
+    RED:["Athletics"], PURPLE:["Deception"], BLUE:["Medicine"], GREEN:["Arcana"]
+    // PURPLE gets Deception — Rogue's understated acknowledgement, saying less than they know
+  },
+  17:{ // Q17 — Someone new joins
+    RED:["Intimidation"], PURPLE:["History"], BLUE:["Animal Handling"], GREEN:["Stealth"]
+    // BLUE gets Animal Handling — Healer notices the newcomer nobody else does
+    // GREEN gets Stealth — Ranger scouts the new person before engaging
+  },
+  18:{ // Q18 — Group exhausted
+    RED:["Athletics"], PURPLE:["Investigation"], BLUE:["Medicine"], GREEN:["Nature"]
+    // GREEN gets Nature — Druid reads the group's cycle, names the season
+  },
+  19:{ // Q19 — Your ideal role
+    RED:["Intimidation"], PURPLE:["Investigation"], BLUE:["Medicine"], GREEN:["Performance"]
+  },
+};
+// ── SKILL SYSTEM ──────────────────────────────────────────────────────────────
+// D&D/PF2e skills mapped only to EQ competencies present in the Hero's Journey ability set.
+const SKILLS=[
+  {name:"Acrobatics",      ab:"DEX", eq:"Adaptability within structure"           },
+  {name:"Animal Handling", ab:"WIS", eq:"Inclusivity & connecting with others"    },
+  {name:"Arcana",          ab:"INT", eq:"Structured problem-solving"              },
+  {name:"Athletics",       ab:"STR", eq:"Resilience & stress management"          },
+  {name:"Deception",       ab:"CHA", eq:"Defusing conflict & tension redirection" },
+  {name:"History",         ab:"INT", eq:"Memory-based learning & knowledge"       },
+  {name:"Insight",         ab:"WIS", eq:"Empathy through observation"             },
+  {name:"Intimidation",    ab:"CHA", eq:"Emotional redirection & motivation"      },
+  {name:"Investigation",   ab:"INT", eq:"Cognitive reframing & decision-making"   },
+  {name:"Medicine",        ab:"WIS", eq:"Active listening & supportiveness"       },
+  {name:"Nature",          ab:"INT", eq:"Reframing & ecological awareness"        },
+  {name:"Perception",      ab:"WIS", eq:"Foresight & situational awareness"       },
+  {name:"Performance",     ab:"CHA", eq:"Emotional influence & group alignment"   },
+  {name:"Persuasion",      ab:"CHA", eq:"Advocacy & motivating others"            },
+  {name:"Sleight of Hand", ab:"DEX", eq:"Improvisation & flexibility"             },
+  {name:"Stealth",         ab:"DEX", eq:"Social awareness & reading the room"     },
+  {name:"Survival",        ab:"WIS", eq:"Resilience in uncertainty"               },
+];
+
+// Per-class proficient skills — derived from which EQ skills are primary for each class
+const CLASS_PROFICIENCIES={
+  Fighter:   ["Athletics","Investigation","Intimidation","Perception"],
+  Monk:      ["Acrobatics","Insight","Athletics","History","Medicine"],   // +Medicine: Routine Kata rolls Medicine
+  Barbarian: ["Athletics","Intimidation","Survival","Perception"],        // Momentum Drive now rolls Intimidation (was Persuasion, which is −2)
+  Wizard:    ["Arcana","History","Investigation","Nature"],
+  Artificer: ["Arcana","Investigation","History","Sleight of Hand"],
+  Rogue:     ["Stealth","Deception","Insight","Investigation","Perception"], // +Perception: Silent Observation rolls Perception
+  Healer:    ["Medicine","Insight","Persuasion","Animal Handling"],
+  Bard:      ["Performance","Persuasion","Deception","Insight"],
+  Champion:  ["Persuasion","Medicine","Intimidation","History","Insight"], // +Insight: Inspire Courage rolls Insight (DC 13, mod +2)
+  Ranger:    ["Survival","Perception","Animal Handling","Stealth","Acrobatics"], // +Acrobatics: Adapt to Terrain rolls Acrobatics
+  Sorcerer:  ["Arcana","Performance","Deception","Persuasion","Sleight of Hand","Survival"], // +Sleight of Hand + Survival: ability rolls
+  Druid:     ["Nature","Medicine","Insight","Animal Handling"],           // Circle of Ideas roll changed to Insight in ability text (below)
+};
+
+// pip (1-5) → modifier (-1 to +3)
+function pipMod(n){const v=parseInt(n)||0;return v<=1?-1:v===2?0:v===3?1:v===4?2:3;}
+
+// Derive D&D ability score modifiers from stat block saves + brain colour scores
+// Per-class DIRECT skill modifiers — each skill set independently per class.
+// Values: +2 core domain, +1 secondary, 0 neutral, -1 anti-class
+// Tier 1 (base): moderate spread. Tier 2 (mid): +1 core / -1 anti. Tier 3 (high): +1 more on core / -1 more on anti.
+// Quiz answers add dynamically on top via Q_SKILL_MAP. Final = clamp(base+quiz, -2, +3).
+const CLASS_SKILL_MODS = {
+  // ── RED ──────────────────────────────────────────────────────────────
+  // Fighter — Tier 1: measured precision, goal execution, low relational radar
+  Fighter:{
+    Acrobatics: 0, "Animal Handling":-1, Arcana:-1, Athletics:+2,
+    Deception: -1, History: 0, Insight:-1, Intimidation:+1,
+    Investigation:+2, Medicine:-1, Nature:-1, Perception:+1,
+    Performance:-1, Persuasion:-1, "Sleight of Hand": 0, Stealth: 0, Survival: 0,
+  },
+  // Monk — Tier 2: deeper self-regulation, precision timing, sharper anti-relational
+  Monk:{
+    Acrobatics:+2, "Animal Handling": 0, Arcana: 0, Athletics:+2,
+    Deception: -1, History:+1, Insight:+2, Intimidation: 0,
+    Investigation: 0, Medicine:+1, Nature: 0, Perception:+1,
+    Performance: 0, Persuasion:-1, "Sleight of Hand": 0, Stealth:+1, Survival: 0,
+  },
+  // Barbarian — Tier 3: extreme force, emotional fuel, severely low analytical/relational
+  Barbarian:{
+    Acrobatics: 0, "Animal Handling":-1, Arcana:-2, Athletics:+3,
+    Deception: -2, History:-2, Insight:-1, Intimidation:+2,
+    Investigation:-2, Medicine:-1, Nature: 0, Perception:+1,
+    Performance: 0, Persuasion:-2, "Sleight of Hand":-1, Stealth:-1, Survival:+1,
+  },
+
+  // ── PURPLE ──────────────────────────────────────────────────────────
+  // Wizard — Tier 1: analytical, information-driven, low warmth
+  Wizard:{
+    Acrobatics:-1, "Animal Handling": 0, Arcana:+2, Athletics:-1,
+    Deception: 0, History:+2, Insight:+1, Intimidation:-1,
+    Investigation:+2, Medicine: 0, Nature:+1, Perception: 0,
+    Performance:-1, Persuasion:-1, "Sleight of Hand":-1, Stealth:-1, Survival:-1,
+  },
+  // Artificer — Tier 2: system-builder, sharper analytical and stealth, more anti-social
+  Artificer:{
+    Acrobatics: 0, "Animal Handling":-1, Arcana:+2, Athletics:-1,
+    Deception: 0, History:+1, Insight: 0, Intimidation:-1,
+    Investigation:+2, Medicine:-1, Nature:+1, Perception: 0,
+    Performance:-2, Persuasion:-2, "Sleight of Hand":+1, Stealth:+1, Survival:-1,
+  },
+  // Rogue — Tier 3: maximum observation, stealth, anti-confrontation, anti-warmth
+  Rogue:{
+    Acrobatics:+1, "Animal Handling":-2, Arcana: 0, Athletics:-2,
+    Deception:+2, History: 0, Insight:+2, Intimidation: 0,
+    Investigation:+2, Medicine:-2, Nature:-1, Perception:+1,
+    Performance:-1, Persuasion: 0, "Sleight of Hand":+1, Stealth:+3, Survival:-1,
+  },
+
+  // ── BLUE ─────────────────────────────────────────────────────────────
+  // Healer — Tier 1: relational, empathic, low confrontation
+  Healer:{
+    Acrobatics:-1, "Animal Handling":+2, Arcana:-1, Athletics:-1,
+    Deception: -1, History:-1, Insight:+2, Intimidation:-1,
+    Investigation:-1, Medicine:+2, Nature: 0, Perception:+1,
+    Performance:+1, Persuasion:+1, "Sleight of Hand":-1, Stealth:-1, Survival:-1,
+  },
+  // Bard — Tier 2: deeper connection, narrative, sharper anti-logic
+  Bard:{
+    Acrobatics: 0, "Animal Handling":+1, Arcana:-2, Athletics:-1,
+    Deception:+1, History: 0, Insight:+1, Intimidation:-1,
+    Investigation:-2, Medicine: 0, Nature:-1, Perception:+1,
+    Performance:+2, Persuasion:+2, "Sleight of Hand": 0, Stealth:-1, Survival:-1,
+  },
+  // Champion — Tier 3: trust anchor, advocacy force, deeply stable, anti-adaptability
+  Champion:{
+    Acrobatics:-2, "Animal Handling": 0, Arcana:-1, Athletics:+1,
+    Deception: -2, History:+1, Insight:+2, Intimidation:+1,
+    Investigation: 0, Medicine:+1, Nature:-1, Perception: 0,
+    Performance:+1, Persuasion:+3, "Sleight of Hand":-2, Stealth:-2, Survival:-1,
+  },
+
+  // ── GREEN ────────────────────────────────────────────────────────────
+  // Ranger — Tier 1: adaptive, exploratory, moderate creative
+  Ranger:{
+    Acrobatics:+1, "Animal Handling":+2, Arcana:-1, Athletics:+1,
+    Deception: 0, History:-1, Insight:+1, Intimidation:-1,
+    Investigation:-1, Medicine:-1, Nature:+1, Perception:+2,
+    Performance:+1, Persuasion: 0, "Sleight of Hand": 0, Stealth:+1, Survival:+2,
+  },
+  // Sorcerer — Tier 2: deeper creative surge, charismatic, anti-structure
+  Sorcerer:{
+    Acrobatics:+1, "Animal Handling": 0, Arcana:+1, Athletics:-1,
+    Deception:+1, History:-2, Insight: 0, Intimidation:-1,
+    Investigation:-2, Medicine:-1, Nature:-1, Perception: 0,
+    Performance:+2, Persuasion:+1, "Sleight of Hand":+1, Stealth: 0, Survival: 0,
+  },
+  // Druid — Tier 3: systemic wisdom, deep nature, anti-confrontation, anti-deception
+  Druid:{
+    Acrobatics: 0, "Animal Handling":+2, Arcana: 0, Athletics:-1,
+    Deception: -2, History: 0, Insight:+2, Intimidation:-2,
+    Investigation: 0, Medicine:+1, Nature:+3, Perception:+1,
+    Performance:-1, Persuasion: 0, "Sleight of Hand":-1, Stealth:-1, Survival:+1,
+  },
+};
+
+// Ability score summary per class (for the hex display in SkillCard art window)
+// Derived conceptually, not mathematically, from the skill table above
+const CLASS_ABILITY_SCORES={
+  Fighter:   {STR:+2,DEX: 0,CON:+1,INT: 0,WIS:-1,CHA:-1},
+  Monk:      {STR:+2,DEX:+1,CON:+1,INT: 0,WIS:+1,CHA:-1},
+  Barbarian: {STR:+3,DEX: 0,CON:+2,INT:-1,WIS:-1,CHA: 0},
+  Wizard:    {STR:-1,DEX:-1,CON: 0,INT:+2,WIS:+1,CHA:-1},
+  Artificer: {STR:-1,DEX:+1,CON: 0,INT:+2,WIS: 0,CHA:-1},
+  Rogue:     {STR:-1,DEX:+2,CON: 0,INT:+1,WIS:+1,CHA: 0},
+  Healer:    {STR:-1,DEX:-1,CON: 0,INT:-1,WIS:+2,CHA:+1},
+  Bard:      {STR:-1,DEX: 0,CON: 0,INT:-1,WIS:+1,CHA:+2},
+  Champion:  {STR: 0,DEX:-1,CON:+1,INT: 0,WIS:+1,CHA:+2},
+  Ranger:    {STR: 0,DEX:+2,CON: 0,INT:-1,WIS:+1,CHA: 0},
+  Sorcerer:  {STR:-1,DEX:+1,CON:-1,INT:+1,WIS: 0,CHA:+2},
+  Druid:     {STR:-1,DEX: 0,CON:+1,INT:+1,WIS:+2,CHA: 0},
+};
+function deriveAbilityScores(sb,colorKey,scores,className){
+  // Use class-specific table if className provided, fall back to save-based derivation
+  if(className&&CLASS_ABILITY_SCORES[className]) return CLASS_ABILITY_SCORES[className];
+  // Fallback for dual classes
+  const fort=pipMod(sb.fort),ref=pipMod(sb.ref),will=pipMod(sb.will);
+  const ps=scores?.PURPLE||0;
+  const bg=Math.max(scores?.BLUE||0,scores?.GREEN||0);
+  return{
+    STR:fort, DEX:ref, CON:Math.max(-1,fort-1),
+    INT:ps>=8?2:ps>=5?1:ps>=3?0:-1,
+    WIS:will, CHA:bg>=8?2:bg>=5?1:bg>=3?0:-1,
+  };
+}
+
+// Proficiency bonus by class tier
+function profBonus(cn){
+  return["Barbarian","Rogue","Champion","Druid"].includes(cn)?4:
+         ["Monk","Artificer","Bard","Sorcerer"].includes(cn)?3:2;
+}
+
+// Build the full computed skill list for a character
+// NOTE: Beginner tier (pre-workshop) — no proficiency bonus applied.
+// Proficiency unlocks through the Hero's Journey Workshop campaign.
+function buildSkillList(className,sb,colorKey,scores,rawAnswers){
+  const base=CLASS_SKILL_MODS[className]||{};
+  const profs=new Set(CLASS_PROFICIENCIES[className]||[]);
+  // Each answer contributes 1/20 of a +1 to relevant skills.
+  // 20 answers all pointing at the same skill = +1.0 max quiz contribution.
+  // In practice 4-6 answers = +0.2 to +0.3 — a gentle nudge, never dominates.
+  const ANSWER_WEIGHT=1/20;
+  const quizRaw={};
+  if(rawAnswers){
+    Object.entries(rawAnswers).forEach(([qIdx,color])=>{
+      const skills=Q_SKILL_MAP[parseInt(qIdx)]?.[color]||[];
+      skills.forEach(sk=>{ quizRaw[sk]=(quizRaw[sk]||0)+ANSWER_WEIGHT; });
+    });
+  }
+  return SKILLS.map(sk=>{
+    const b=base[sk.name]??0;
+    const qRaw=quizRaw[sk.name]||0;
+    const combined=b+qRaw;
+    const total=Math.max(-2,Math.min(3,Math.round(combined))); // whole integers only
+    const quizBonusInt=Math.round(qRaw); // 1 when answers push modifier up by a full point
+    return{...sk,abMod:b,quizBonus:quizBonusInt,isProficient:profs.has(sk.name),total};
+  }).sort((a,b)=>b.total-a.total||a.name.localeCompare(b.name));
+}
+
+// ── Skill Card ─────────────────────────────────────────────────────────────────
+function SkillCard({className,sb,colorKey,scores,rawAnswers,accent,accent2}){
+  const skillList=buildSkillList(className,sb,colorKey,scores,rawAnswers);
+  const abs=deriveAbilityScores(sb,colorKey,scores,className);
+  const prof=profBonus(className);
+
+  const AB_LABEL={STR:"STR",DEX:"DEX",CON:"CON",INT:"INT",WIS:"WIS",CHA:"CHA"};
+  const AB_COLOR={
+    STR:"#C0392B",DEX:"#1E8449",CON:"#935116",
+    INT:"#6C3483",WIS:"#1A5276",CHA:"#2E86C1",
+  };
+
+  // Grouped by ability score for the header row
+  const AB_ORDER=["STR","DEX","CON","INT","WIS","CHA"];
+  const fmtMod=n=>n>=0?`+${n}`:String(n);
+
+  return(
+    <CardShell accent={accent} accent2={accent2||accent}>
+      {/* Art window — ability score hexes */}
+      <div style={{width:"100%",height:180,background:`linear-gradient(160deg,${accent}12,#0D0D12 80%)`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,position:"relative",overflow:"hidden"}}>
+        {/* Ability score hex grid */}
+        <div style={{display:"flex",gap:6,flexWrap:"wrap",justifyContent:"center",padding:"16px 20px"}}>
+          {AB_ORDER.map(ab=>(
+            <div key={ab} style={{
+              width:56,height:56,borderRadius:10,
+              background:AB_COLOR[ab]+"22",
+              border:`1px solid ${AB_COLOR[ab]}55`,
+              display:"flex",flexDirection:"column",
+              alignItems:"center",justifyContent:"center",
+              gap:1,
+            }}>
+              <div style={{fontSize:16,fontWeight:700,color:"#F0EDE6",lineHeight:1}}>{fmtMod(abs[ab])}</div>
+              <div style={{fontSize:8,letterSpacing:"0.12em",color:AB_COLOR[ab],textTransform:"uppercase",opacity:0.85}}>{ab}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{position:"absolute",bottom:0,left:0,right:0,height:40,background:"linear-gradient(transparent,#0D0D12)"}}/>
+        <div style={{position:"absolute",top:12,right:14,fontSize:9,color:accent,opacity:0.45,letterSpacing:"0.2em",textTransform:"uppercase"}}>Skills</div>
+        {/* Beginner tier badge */}
+        <div style={{position:"absolute",top:12,left:14,background:"rgba(255,255,255,0.06)",borderRadius:20,padding:"3px 8px",border:"1px solid rgba(255,255,255,0.12)"}}>
+          <span style={{fontSize:9,color:"#8a7f6e",letterSpacing:"0.08em"}}>Beginner · No proficiency yet</span>
+        </div>
+      </div>
+
+      {/* Skill list */}
+      <div style={{padding:"10px 16px 14px",flex:1,display:"flex",flexDirection:"column",overflow:"hidden"}}>
+        <div style={{fontSize:9,letterSpacing:"0.2em",color:accent,textTransform:"uppercase",marginBottom:10,opacity:0.8}}>Skill Modifiers</div>
+
+        <div style={{flex:1,display:"flex",flexDirection:"column",gap:3,overflowY:"auto"}}>
+          {skillList.map(sk=>(
+            <div key={sk.name} style={{
+              display:"flex",alignItems:"center",gap:8,
+              padding:"4px 8px",borderRadius:6,
+              background:sk.isProficient?`${accent}12`:"transparent",
+              border:sk.isProficient?`1px solid ${accent}28`:"1px solid transparent",
+            }}>
+              {/* Proficiency dot — filled = will unlock at workshop; empty = untrained */}
+              <div style={{
+                width:6,height:6,borderRadius:"50%",flexShrink:0,
+                background:"transparent",
+                border:sk.isProficient?`1.5px solid ${accent}`:"1.5px solid rgba(255,255,255,0.15)",
+                boxShadow:sk.isProficient?`0 0 4px ${accent}55`:"none",
+              }}/>
+
+              {/* Modifier + quiz bonus indicator */}
+              <div style={{display:"flex",alignItems:"baseline",gap:3,minWidth:44,justifyContent:"flex-end"}}>
+                <div style={{
+                  fontSize:13,fontWeight:700,
+                  color:sk.total>0?accent:sk.total<0?"#c08080":"#8a7f6e",
+                  fontFamily:"Georgia,serif",
+                }}>
+                  {fmtMod(sk.total)}
+                </div>
+                {sk.quizBonus>=1&&(
+                  <div style={{fontSize:8,color:accent,opacity:0.55,fontFamily:"sans-serif"}}>
+                    ✦
+                  </div>
+                )}
+              </div>
+
+              {/* Skill name */}
+              <div style={{flex:1,fontSize:11,color:sk.isProficient?"#F0EDE6":"#c9c1b0",fontWeight:sk.isProficient?600:400}}>
+                {sk.name}
+              </div>
+
+              {/* Ability tag */}
+              <div style={{
+                fontSize:8,color:AB_COLOR[sk.ab],letterSpacing:"0.1em",
+                background:AB_COLOR[sk.ab]+"18",borderRadius:4,padding:"1px 5px",
+                flexShrink:0,
+              }}>
+                {sk.ab}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* EQ label row — show top 3 proficient skills' EQ tags */}
+        <div style={{marginTop:8,paddingTop:8,borderTop:`1px solid ${accent}18`}}>
+          <div style={{fontSize:8,letterSpacing:"0.15em",color:"#8a7f6e",textTransform:"uppercase",marginBottom:5}}>⬡ Workshop Unlocks (dotted = future proficiency)</div>
+          <div style={{display:"flex",flexWrap:"wrap",gap:4}}>
+            {skillList.filter(sk=>sk.isProficient).map(sk=>(
+              <div key={sk.name} style={{fontSize:8,color:accent,opacity:0.7,background:`${accent}12`,borderRadius:4,padding:"2px 6px",fontStyle:"italic"}}>
+                {sk.eq}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{marginTop:8,display:"flex",justifyContent:"space-between"}}>
+          <span style={{fontSize:8,color:"#F0EDE6",opacity:0.18,letterSpacing:"0.15em",textTransform:"uppercase"}}>Skill Card</span>
+          <span style={{fontSize:8,color:"#F0EDE6",opacity:0.12,fontFamily:"serif"}}>Elarion</span>
+        </div>
+      </div>
+    </CardShell>
+  );
+}
+
+// ── Full Card Reveal Screen ────────────────────────────────────────────────────
+function CardRevealScreen({result,playerName,onClose,reset}){
+  useEffect(()=>{ window.scrollTo({top:0,behavior:"instant"}); },[]);
+  const resolved=result.resolved||{type:"single",colors:[result.topColor],influence:[]};
+  const isTie=resolved.type==="dual"||resolved.type==="shapeshifter";
+  const data=CLASSES[result.topColor];
+  const myScore=result.scores[result.topColor];
+  const myClass=getClass(data,myScore);
+  const cd=data.classData?data.classData[myClass]:null;
+  const dualProfile=isTie?getDualProfile(resolved):null;
+  const insight=buildInsight(result.rawAnswers||{},result.scores,result.topColor,isTie?[]:resolved.influence||[],null);
+  const accent = isTie&&dualProfile?dualProfile.color1:data.color;
+
+  // Get stat block
+  const getDualSBKey=(dp)=>{
+    if(!dp)return"ALL";
+    const order=["BLUE","GREEN","PURPLE","RED"];
+    const c1=resolved.colors[0]||"RED",c2=resolved.colors[1]||"PURPLE";
+    return[c1,c2].sort((a,b)=>order.indexOf(a)-order.indexOf(b)).join("_");
+  };
+  const sb = isTie ? (DUAL_STAT_BLOCKS[getDualSBKey(dualProfile)]||DUAL_STAT_BLOCKS["ALL"]) : (STAT_BLOCKS[myClass]||{});
+
+  // Abilities
+  const rawAns=result.rawAnswers||{};
+  const primaryColorAnswers=new Set(Object.entries(rawAns).filter(([,c])=>c===result.topColor).map(([i])=>parseInt(i)));
+  const scoreAbility=(ab)=>{const qs=ABILITY_Q_MAP[ab.name]||[];return qs.filter(q=>primaryColorAnswers.has(q)).length;};
+  const baseAbilities=isTie&&dualProfile?dualProfile.abilities:(cd?cd.abilities:[]);
+  const singleLockedName=cd?cd.locked:null;
+  const isAbilityLocked=(ab)=>isTie&&dualProfile?ab.locked:(ab.name===singleLockedName||ab.desc?.startsWith("LOCKED."));
+  const displayAbilities=[
+    ...baseAbilities.filter(ab=>!isAbilityLocked(ab)).sort((a,b)=>scoreAbility(b)-scoreAbility(a)),
+    ...baseAbilities.filter(ab=>isAbilityLocked(ab)),
+  ];
+
+  const displayQuest=isTie&&dualProfile?dualProfile.quest:(cd?cd.quest:"");
+
+  return(
+    <div style={{minHeight:"100vh",background:"#080810",fontFamily:"'Georgia',serif",color:"#e8e4d9",padding:"0 16px 60px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+      <style>{`
+        @keyframes revealIn{from{opacity:0;transform:translateY(20px) scale(0.97)}to{opacity:1;transform:none}}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+        ::-webkit-scrollbar{display:none}
+      `}</style>
+
+      {/* Back */}
+      <div style={{width:"100%",maxWidth:680,padding:"20px 0 0",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+        <button onClick={onClose} style={{background:"none",border:"none",color:"#8a7f6e",cursor:"pointer",fontSize:13,fontFamily:"Georgia",display:"flex",alignItems:"center",gap:6}}>
+          ← Back to Results
+        </button>
+        <div style={{fontSize:10,letterSpacing:"0.3em",color:"#b7950b",textTransform:"uppercase"}}>Your Character Cards</div>
+      </div>
+
+      <div style={{width:"100%",maxWidth:680}}>
+
+        {/* Section: Hero Card */}
+        <div style={{margin:"28px 0 10px",fontSize:10,letterSpacing:"0.25em",color:"#8a7f6e",textTransform:"uppercase",textAlign:"center"}}>Hero Card</div>
+        <HeroCard
+          colorKey={result.topColor}
+          className={myClass}
+          dualProfile={dualProfile}
+          resolvedColors={resolved.colors||[]}
+          isTie={isTie}
+          scores={result.scores}
+          data={data}
+          rawAnswers={result.rawAnswers||{}}
+        />
+
+        {/* Section: Signature + Passive + Abilities */}
+        <div style={{margin:"28px 0 12px",fontSize:10,letterSpacing:"0.25em",color:"#8a7f6e",textTransform:"uppercase",textAlign:"center"}}>Ability Cards</div>
+
+        <div style={{display:"flex",flexDirection:"column",gap:12}}>
+          {/* Passive ability from stat block — unique to class, not in CLASSES list */}
+          {sb.passive&&(
+            <AbilityCardFull ability={sb.passive} accent={accent} index={0} isLocked={false} isSig={false} isPassive={true}/>
+          )}
+          {/* Class abilities — sorted by resonance, locked always last */}
+          {displayAbilities.map((ab,i)=>{
+            // Mark as signature if name matches stat block sigAbility
+            const isSig=sb.sigAbility&&ab.name===sb.sigAbility.name;
+            // Use stat block desc for sig ability (has full mechanics) if available
+            const displayAb=isSig&&sb.sigAbility?{...ab,desc:sb.sigAbility.desc,actions:sb.sigAbility.actions}:ab;
+            return(
+              <AbilityCardFull
+                key={i}
+                ability={displayAb}
+                accent={isTie&&dualProfile&&ab.lean1?({RED:"#C0392B",PURPLE:"#6C3483",BLUE:"#1A5276",GREEN:"#1E8449"}[ab.lean1]||accent):accent}
+                index={i+(sb.passive?1:0)}
+                isLocked={isAbilityLocked(ab)}
+                isSig={!!isSig}
+                isPassive={false}
+              />
+            );
+          })}
+        </div>
+
+        {/* Section: Quest Card */}
+        <div style={{margin:"28px 0 12px",fontSize:10,letterSpacing:"0.25em",color:"#8a7f6e",textTransform:"uppercase",textAlign:"center"}}>Quest Card</div>
+        <QuestCard quest={displayQuest} personalisedQuest={insight?.personalisedQuest} accent={accent}/>
+
+        {/* Section: Skill Card */}
+        <div style={{margin:"28px 0 12px",fontSize:10,letterSpacing:"0.25em",color:"#8a7f6e",textTransform:"uppercase",textAlign:"center"}}>Skill Card</div>
+        <SkillCard
+          className={myClass}
+          sb={sb}
+          colorKey={result.topColor}
+          scores={result.scores}
+          rawAnswers={result.rawAnswers||{}}
+          accent={accent}
+          accent2={isTie&&dualProfile?dualProfile.color2:data.color}
+        />
+
+        {/* Section: Trigger Card */}
+        <div style={{margin:"28px 0 12px",fontSize:10,letterSpacing:"0.25em",color:"#8a7f6e",textTransform:"uppercase",textAlign:"center"}}>Trigger Card</div>
+        <TriggerCard sb={sb} accent={accent} className={myClass} dualProfile={dualProfile} isTie={isTie} resolved={resolved}/>
+
+        {/* Section: Dynamics Card */}
+        {sb.dynamics&&(
+          <>
+            <div style={{margin:"28px 0 12px",fontSize:10,letterSpacing:"0.25em",color:"#8a7f6e",textTransform:"uppercase",textAlign:"center"}}>Dynamics Card</div>
+            <DynamicsCard sb={sb} accent={accent}/>
+          </>
+        )}
+
+        {/* Print / PDF CTA */}
+        <div style={{marginTop:40,textAlign:"center",padding:"28px 22px",background:"rgba(255,255,255,0.02)",borderRadius:14,border:"1px solid rgba(255,255,255,0.08)"}}>
+          <p style={{fontSize:13,color:"#8a7f6e",margin:"0 0 8px",lineHeight:1.75}}>Your locked abilities are revealed in the Hero's Journey Workshop.</p>
+          <p style={{fontSize:11,color:"#6a6050",margin:"0 0 20px",fontStyle:"italic"}}>Print these cards → cut them out → bring them to Day 1.</p>
+          <div style={{display:"flex",gap:12,flexWrap:"wrap",justifyContent:"center"}}>
+            <button
+              onClick={()=>{
+                const style=document.createElement("style");
+                style.id="print-card-styles";
+                style.textContent=`
+                  @media print{
+                    body>*:not(#card-print-root){display:none!important;}
+                    #card-print-root{display:block!important;}
+                    @page{size:A4 portrait;margin:12mm;}
+                    .print-card-grid{display:grid!important;grid-template-columns:repeat(2,1fr);gap:8mm;page-break-inside:avoid;}
+                    .print-card{break-inside:avoid;page-break-inside:avoid;}
+                    body{background:#fff!important;}
+                  }
+                `;
+                document.head.appendChild(style);
+                const root=document.createElement("div");
+                root.id="card-print-root";
+                root.style.display="none";
+                root.style.position="fixed";
+                root.style.inset="0";
+                root.style.background="#fff";
+                root.style.zIndex="99999";
+                document.body.appendChild(root);
+                window.print();
+                setTimeout(()=>{
+                  document.head.removeChild(style);
+                  document.body.removeChild(root);
+                },1000);
+              }}
+              style={{background:`linear-gradient(135deg,${accent},${accent}cc)`,border:"none",borderRadius:8,padding:"13px 28px",color:"#fff",fontWeight:700,fontFamily:"Georgia",fontSize:14,cursor:"pointer",letterSpacing:"0.05em",display:"flex",alignItems:"center",gap:8}}
+            >
+              🖨 Print Character Cards
+            </button>
+            <button onClick={reset} style={{background:"none",border:"1px solid rgba(255,255,255,0.15)",borderRadius:8,padding:"13px 20px",color:"#8a7f6e",cursor:"pointer",fontFamily:"Georgia",fontSize:13}}>
+              Retake Test
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
 export default function App(){
   const [phase,setPhase]=useState("intro");
   const [playerName,setPlayerName]=useState("");
@@ -1705,11 +3034,20 @@ export default function App(){
   const [animating,setAnimating]=useState(false);
   const [generating,setGenerating]=useState(false);
   const [revealed,setRevealed]=useState(false);
+  const [showCards,setShowCards]=useState(false);
 
   const [cycleRune,setCycleRune]=useState("ᚱ");
   const [cycleColor,setCycleColor]=useState("#C0392B");
   const [cycleCrest,setCycleCrest]=useState("RED");
   const [shuffleKey,setShuffleKey]=useState(0);
+  // ── Popup / nudge states ──────────────────────────────────────────────────
+  const [showMindsetPopup,setShowMindsetPopup]=useState(false); // Q1 anchor popup
+  const [showSlowPopup,setShowSlowPopup]=useState(false);       // >45s on one Q
+  const [showFastPopup,setShowFastPopup]=useState(false);       // 3 Qs < 12s total
+  const qStartTimeRef=useRef(null);    // when current Q was shown
+  const recentAnswerTimesRef=useRef([]); // timestamps of last 3 answers
+  const slowTimerRef=useRef(null);     // timeout for slow nudge
+  const mindsetShownRef=useRef(false); // only show mindset popup once
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const QUESTIONS=useMemo(()=>buildShuffledQuestions(),[shuffleKey]);
 
@@ -1863,6 +3201,19 @@ export default function App(){
 
   function selectAnswer(color,text){
     if(animating)return;
+
+    // ── Timing checks ────────────────────────────────────────────────────
+    const now = Date.now();
+    // Clear any pending slow-nudge timer
+    if(slowTimerRef.current){clearTimeout(slowTimerRef.current);slowTimerRef.current=null;}
+    // Record this answer timestamp for fast-detection (keep last 3)
+    recentAnswerTimesRef.current = [...recentAnswerTimesRef.current, now].slice(-3);
+    // Fast check: if 3 answers happened in under 12 seconds, show fast nudge
+    if(recentAnswerTimesRef.current.length===3){
+      const span = recentAnswerTimesRef.current[2] - recentAnswerTimesRef.current[0];
+      if(span < 12000 && !showFastPopup){setShowFastPopup(true);}
+    }
+
     const newAnswers={...answers,[current]:color};
     const newAnswerTexts={...answerTexts,[current]:text||""};
     setAnswers(newAnswers);
@@ -1870,8 +3221,16 @@ export default function App(){
     setAnimating(true);
     setTimeout(()=>{
       setAnimating(false);
-      if(current<QUESTIONS.length-1){setCurrent(current+1);scrollTop();}
-      else{
+      if(current<QUESTIONS.length-1){
+        setCurrent(current+1);
+        scrollTop();
+        // Start slow-nudge timer for next Q (45s)
+        qStartTimeRef.current = Date.now();
+        slowTimerRef.current = setTimeout(()=>{
+          setShowSlowPopup(true);
+          slowTimerRef.current = null;
+        }, 45000);
+      } else{
         const fs={RED:0,PURPLE:0,BLUE:0,GREEN:0};
         Object.values(newAnswers).forEach(c=>{fs[c]++;});
         const resolved=resolveResult(fs);
@@ -1882,7 +3241,12 @@ export default function App(){
     },320);
   }
 
-  function reset(){setPhase("intro");setAnswers({});setAnswerTexts({});setCurrent(0);setResult(null);setRevealed(false);setCycleRune("ᚱ");setCycleColor("#C0392B");setShuffleKey(k=>k+1);scrollTop();}
+  function reset(){
+    if(slowTimerRef.current){clearTimeout(slowTimerRef.current);slowTimerRef.current=null;}
+    recentAnswerTimesRef.current=[];
+    mindsetShownRef.current=false;
+    setShowMindsetPopup(false);setShowSlowPopup(false);setShowFastPopup(false);
+    setPhase("intro");setAnswers({});setAnswerTexts({});setCurrent(0);setResult(null);setRevealed(false);setCycleRune("ᚱ");setCycleColor("#C0392B");setShuffleKey(k=>k+1);scrollTop();}
 
   async function handleDownloadPDF(){
     if(!result)return;
@@ -1903,6 +3267,18 @@ export default function App(){
   const q=QUESTIONS[current];
   const t=Q_THEMES[current]||Q_THEMES[0];
   const selectedColor=answers[current];
+
+  // ── Card Reveal Screen ──────────────────────────────────────────────────
+  if(showCards&&result){
+    return(
+      <CardRevealScreen
+        result={result}
+        playerName={playerName}
+        onClose={()=>setShowCards(false)}
+        reset={()=>{setShowCards(false);reset();}}
+      />
+    );
+  }
 
   return(
     <div style={{minHeight:"100vh",background:"#080810",fontFamily:"'Georgia',serif",color:"#e8e4d9",display:"flex",flexDirection:"column",alignItems:"center",padding:"0 16px 60px"}}>
@@ -1935,7 +3311,13 @@ export default function App(){
               </div>
             ))}
           </div>
-          <button onClick={()=>{setPhase("quiz");scrollTop();}} style={{width:"100%",padding:"17px",background:"linear-gradient(135deg,#b7950b,#d4a017)",border:"none",borderRadius:10,color:"#0d0d12",fontSize:16,fontWeight:700,fontFamily:"Georgia,serif",letterSpacing:"0.08em",cursor:"pointer",animation:"glow 3s ease infinite"}}>
+          <button onClick={()=>{setPhase("quiz");
+          if(!mindsetShownRef.current){setShowMindsetPopup(true);mindsetShownRef.current=true;}
+          // Start slow timer for Q1
+          qStartTimeRef.current=Date.now();
+          if(slowTimerRef.current)clearTimeout(slowTimerRef.current);
+          slowTimerRef.current=setTimeout(()=>{setShowSlowPopup(true);slowTimerRef.current=null;},45000);
+          scrollTop();}} style={{width:"100%",padding:"17px",background:"linear-gradient(135deg,#b7950b,#d4a017)",border:"none",borderRadius:10,color:"#0d0d12",fontSize:16,fontWeight:700,fontFamily:"Georgia,serif",letterSpacing:"0.08em",cursor:"pointer",animation:"glow 3s ease infinite"}}>
             Begin the Test ✦
           </button>
         </div>
@@ -1944,6 +3326,42 @@ export default function App(){
       {/* QUIZ */}
       {phase==="quiz"&&q&&(
         <div style={{maxWidth:660,width:"100%",animation:"fadeIn 0.35s ease"}}>
+
+          {/* ── MINDSET POPUP — shown once at start of quiz ── */}
+          {showMindsetPopup&&(
+            <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.82)",zIndex:999,display:"flex",alignItems:"center",justifyContent:"center",padding:"24px"}}>
+              <div style={{background:"#1a1020",border:"1px solid rgba(183,149,11,0.45)",borderRadius:16,padding:"32px 28px",maxWidth:420,width:"100%",textAlign:"center"}}>
+                <div style={{fontSize:28,marginBottom:12}}>⚔</div>
+                <p style={{fontSize:15,fontWeight:"bold",color:"#e8e4d9",fontFamily:"Georgia,serif",marginBottom:14,lineHeight:1.5}}>Answer as the hero you are — not the one you want to be.</p>
+                <p style={{fontSize:13,color:"#9a8f78",fontFamily:"Calibri,sans-serif",lineHeight:1.7,marginBottom:20}}>This quest isn't about who you're striving to become. It's about who you are right now — your real habits, your actual instincts, the choices you genuinely make under pressure.<br/><br/>The road to becoming a legend starts with seeing yourself clearly. Answer as you <em>are</em>, not as you wish you were.</p>
+                <button onClick={()=>setShowMindsetPopup(false)} style={{background:"linear-gradient(135deg,#b7950b,#d4ac0d)",border:"none",borderRadius:10,padding:"12px 32px",color:"#0d0d12",fontWeight:"bold",fontSize:14,cursor:"pointer",fontFamily:"Georgia,serif",letterSpacing:"0.05em"}}>I'm ready ✦</button>
+              </div>
+            </div>
+          )}
+
+          {/* ── SLOW NUDGE POPUP — triggered after 45s on one Q ── */}
+          {showSlowPopup&&(
+            <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.75)",zIndex:999,display:"flex",alignItems:"center",justifyContent:"center",padding:"24px"}}>
+              <div style={{background:"#0f1420",border:"1px solid rgba(100,120,200,0.4)",borderRadius:16,padding:"28px 24px",maxWidth:380,width:"100%",textAlign:"center"}}>
+                <div style={{fontSize:24,marginBottom:10}}>🜂</div>
+                <p style={{fontSize:14,fontWeight:"bold",color:"#c9d4f0",fontFamily:"Georgia,serif",marginBottom:12,lineHeight:1.5}}>Still deciding?</p>
+                <p style={{fontSize:13,color:"#7a8aaa",fontFamily:"Calibri,sans-serif",lineHeight:1.7,marginBottom:18}}>There's no right answer — only your honest one. Trust your first instinct. What would you actually do, not what you think you should do?</p>
+                <button onClick={()=>setShowSlowPopup(false)} style={{background:"rgba(100,120,200,0.2)",border:"1px solid rgba(100,120,200,0.5)",borderRadius:10,padding:"10px 28px",color:"#c9d4f0",fontSize:13,cursor:"pointer",fontFamily:"Georgia,serif"}}>Got it</button>
+              </div>
+            </div>
+          )}
+
+          {/* ── FAST NUDGE POPUP — triggered if 3 Qs answered in < 12s ── */}
+          {showFastPopup&&(
+            <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.75)",zIndex:999,display:"flex",alignItems:"center",justifyContent:"center",padding:"24px"}}>
+              <div style={{background:"#140f0f",border:"1px solid rgba(192,57,43,0.4)",borderRadius:16,padding:"28px 24px",maxWidth:380,width:"100%",textAlign:"center"}}>
+                <div style={{fontSize:24,marginBottom:10}}>⚠</div>
+                <p style={{fontSize:14,fontWeight:"bold",color:"#f0c9c0",fontFamily:"Georgia,serif",marginBottom:12,lineHeight:1.5}}>Hold on, adventurer.</p>
+                <p style={{fontSize:13,color:"#a07060",fontFamily:"Calibri,sans-serif",lineHeight:1.7,marginBottom:18}}>Each question in this test maps to a real dimension of how you lead and think. Your results are only as accurate as your attention.<br/><br/>Take a breath. Read each one properly.</p>
+                <button onClick={()=>{setShowFastPopup(false);recentAnswerTimesRef.current=[];}} style={{background:"rgba(192,57,43,0.2)",border:"1px solid rgba(192,57,43,0.5)",borderRadius:10,padding:"10px 28px",color:"#f0c9c0",fontSize:13,cursor:"pointer",fontFamily:"Georgia,serif"}}>I'll slow down</button>
+              </div>
+            </div>
+          )}
           <style>{`@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}`}</style>
           <div style={{marginBottom:18}}>
             <div style={{display:"flex",justifyContent:"space-between",fontSize:12,color:t.muted,marginBottom:7}}>
@@ -2229,12 +3647,12 @@ export default function App(){
               )}
             </div>
 
-            {/* CTA + PDF */}
+            {/* CTA — Draw Cards */}
             <div style={{background:"rgba(255,255,255,0.03)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:14,padding:"26px 22px"}}>
               <p style={{fontSize:13,color:"#8a7f6e",margin:"0 0 18px",textAlign:"center"}}>The Hero's Journey Workshop is where your locked abilities are revealed — alongside 20 other adventurers, over 3 immersive days.</p>
               <div style={{display:"flex",gap:12,flexWrap:"wrap",justifyContent:"center"}}>
-                <button onClick={handleDownloadPDF} disabled={generating} style={{background:`linear-gradient(135deg,${data.color},${data.color}cc)`,border:"none",borderRadius:8,padding:"12px 24px",color:"#fff",fontWeight:700,fontFamily:"Georgia",fontSize:14,cursor:generating?"wait":"pointer",letterSpacing:"0.04em",display:"flex",alignItems:"center",gap:8,opacity:generating?0.7:1}}>
-                  {generating?"Generating...":"⬇  Download Character Sheet PDF"}
+                <button onClick={()=>{setShowCards(true);window.scrollTo({top:0,behavior:"instant"});}} style={{background:`linear-gradient(135deg,${data.color},${data.color}cc)`,border:"none",borderRadius:8,padding:"12px 24px",color:"#fff",fontWeight:700,fontFamily:"Georgia",fontSize:14,cursor:"pointer",letterSpacing:"0.04em",display:"flex",alignItems:"center",gap:8}}>
+                  ✦ Draw Your Character Cards
                 </button>
                 <button onClick={reset} style={{background:"none",border:"1px solid rgba(255,255,255,0.15)",borderRadius:8,padding:"12px 20px",color:"#8a7f6e",cursor:"pointer",fontFamily:"Georgia",fontSize:13}}>Retake Test</button>
               </div>
