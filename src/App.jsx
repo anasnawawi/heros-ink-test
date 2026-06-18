@@ -2737,8 +2737,9 @@ function buildSkillList(className,sb,colorKey,scores,rawAnswers){
 function SkillCard({className,sb,colorKey,scores,rawAnswers,accent,accent2}){
   const skillList=buildSkillList(className,sb,colorKey,scores,rawAnswers);
   const abs=deriveAbilityScores(sb,colorKey,scores,className);
-  const prof=profBonus(className);
+  const _prof=profBonus(className); // eslint-disable-line no-unused-vars
 
+  // eslint-disable-next-line no-unused-vars
   const AB_LABEL={STR:"STR",DEX:"DEX",CON:"CON",INT:"INT",WIS:"WIS",CHA:"CHA"};
   const AB_COLOR={
     STR:"#C0392B",DEX:"#1E8449",CON:"#935116",
@@ -3032,7 +3033,7 @@ export default function App(){
   const [current,setCurrent]=useState(0);
   const [result,setResult]=useState(null);
   const [animating,setAnimating]=useState(false);
-  const [generating,setGenerating]=useState(false);
+  const [generating,setGenerating]=useState(false); // eslint-disable-line no-unused-vars
   const [revealed,setRevealed]=useState(false);
   const [showCards,setShowCards]=useState(false);
 
@@ -3248,6 +3249,7 @@ export default function App(){
     setShowMindsetPopup(false);setShowSlowPopup(false);setShowFastPopup(false);
     setPhase("intro");setAnswers({});setAnswerTexts({});setCurrent(0);setResult(null);setRevealed(false);setCycleRune("ᚱ");setCycleColor("#C0392B");setShuffleKey(k=>k+1);scrollTop();}
 
+  // eslint-disable-next-line no-unused-vars
   async function handleDownloadPDF(){
     if(!result)return;
     setGenerating(true);
