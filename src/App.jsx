@@ -1334,10 +1334,10 @@ const DUAL_PROFILES = {
     blindspot:"The price of combining precision with decisiveness is the people caught between them. When analysis and action align, you are formidable — but when they don't, the gap tends to be paid by whoever needed more time.",
     quest:"This week, before making a major decision, ask one person how they feel about it — and genuinely sit with the answer before proceeding.",
     abilities:[
-      {name:"Iron Analysis",      desc:"Combine data and decisiveness to cut through ambiguous problems fast.",              eq:"Strategic decision-making",       locked:false,lean1:"RED",lean2:"PURPLE"},
-      {name:"Calculated Advance", desc:"Move forward only when logic and momentum align — but when they do, nothing stops you.", eq:"Disciplined execution",          locked:false,lean1:"RED",lean2:"PURPLE"},
-      {name:"Tactical Reframe",   desc:"Replace panic with structured options when the group is overwhelmed.",              eq:"Cognitive reframing under pressure", locked:false,lean1:"PURPLE",lean2:"RED"},
-      {name:"Precision Command",  desc:"Give clear, well-informed direction that others can follow without confusion.",     eq:"Leadership clarity",               locked:true,lean1:"RED",lean2:"PURPLE"},
+      {name:"Iron Analysis", desc:"Name the key variable the group is missing. Roll Investigation (DC 11). On success, the GM reveals one hidden factor and the scene DC drops by 1.",              eq:"Strategic decision-making",       locked:false,lean1:"RED",lean2:"PURPLE"},
+      {name:"Calculated Advance", desc:"Declare the next move and the evidence behind it. Roll History (DC 10). On success, your action gains +2 and one ally may follow for free.", eq:"Disciplined execution",          locked:false,lean1:"RED",lean2:"PURPLE"},
+      {name:"Tactical Reframe", desc:"Name three options aloud when the group has none. Roll Investigation (DC 11). On success, remove 1 Party Exhaustion and drop scene DC by 1.",              eq:"Cognitive reframing under pressure", locked:false,lean1:"PURPLE",lean2:"RED"},
+      {name:"Precision Command",  desc:"LOCKED. Issue a single directive backed by clear logic. Roll Intimidation (DC 13). On success, all allies act at +2 this round and cannot be Depleted.",     eq:"Leadership clarity",               locked:true,lean1:"RED",lean2:"PURPLE"},
     ],
   },
   "BLUE_RED": {
@@ -1351,10 +1351,10 @@ const DUAL_PROFILES = {
     blindspot:"The price of driving hard while caring deeply is the oscillation between them. Under pressure the two modes compete, and the people around you feel the switch — warmth one moment, efficiency the next — without always knowing which version is coming.",
     quest:"This week, notice the moment you switch from task-mode to care-mode. Name it out loud to someone you trust — then ask which one the situation actually needed.",
     abilities:[
-      {name:"Rally the Charge",   desc:"Inspire a fatigued group to push forward by combining urgency with empathy.",     eq:"Motivational leadership",   locked:false,lean1:"RED",lean2:"BLUE"},
-      {name:"Structured Support", desc:"Hold people accountable while making them feel genuinely backed.",                eq:"Accountable empathy",        locked:false,lean1:"RED",lean2:"BLUE"},
-      {name:"Morale Advance",     desc:"Keep the group emotionally stable while still moving toward the goal.",           eq:"Emotional momentum",        locked:false,lean1:"BLUE",lean2:"RED"},
-      {name:"Steady Command",     desc:"Lead clearly in chaos without sacrificing the trust you have built.",             eq:"Resilient leadership",      locked:true,lean1:"RED",lean2:"BLUE"},
+      {name:"Rally the Charge", desc:"Address the group's fear directly and name the path forward. Roll Persuasion (DC 11). On success, remove 1 Party Exhaustion and grant all allies +1 to their next roll.",     eq:"Motivational leadership",   locked:false,lean1:"RED",lean2:"BLUE"},
+      {name:"Structured Support", desc:"Name one person's struggle and one concrete expectation. Roll Medicine (DC 10). On success, that person removes a condition and gains +2 to their next action.",                eq:"Accountable empathy",        locked:false,lean1:"RED",lean2:"BLUE"},
+      {name:"Morale Advance",     desc:"Acknowledge the group's cost and name what it bought. Roll Insight (DC 10). On success, the next scene starts without a Tension penalty.",           eq:"Emotional momentum",        locked:false,lean1:"BLUE",lean2:"RED"},
+      {name:"Steady Command",     desc:"LOCKED. Hold the line when everything is uncertain. Roll Athletics (DC 13). On success, remove all Depleted conditions in the party and grant group +2 to Will saves this scene.",             eq:"Resilient leadership",      locked:true,lean1:"RED",lean2:"BLUE"},
     ],
   },
   "GREEN_RED": {
@@ -1368,10 +1368,10 @@ const DUAL_PROFILES = {
     blindspot:"The price of executing on your own ideas is fragmentation. Your capacity to generate and act is rare, but without a forcing function it distributes across too many self-started things — and momentum without direction is just motion.",
     quest:"List every active initiative you are currently running. Pick one to kill or pause. Direct that energy into the one that matters most this week.",
     abilities:[
-      {name:"Frontier Sprint",      desc:"Turn a creative spark into a concrete plan and move on it the same day.",          eq:"Idea-to-action speed",       locked:false,lean1:"RED",lean2:"GREEN"},
-      {name:"Course Correction",    desc:"Adapt the plan without losing the goal when conditions change.",                   eq:"Agile execution",            locked:false,lean1:"GREEN",lean2:"RED"},
-      {name:"Momentum Forge",       desc:"Use discipline to sustain creative energy past the exciting early phase.",         eq:"Follow-through on innovation",locked:true,lean1:"RED",lean2:"GREEN"},
-      {name:"Trailblazing Focus",   desc:"Channel big-picture vision into specific, measurable next steps.",                eq:"Creative discipline",        locked:false,lean1:"GREEN",lean2:"RED"},
+      {name:"Frontier Sprint", desc:"Convert an unformed idea into a named first action. Roll Athletics (DC 10). On success, the group can begin the plan immediately without a preparation check.",          eq:"Idea-to-action speed",       locked:false,lean1:"RED",lean2:"GREEN"},
+      {name:"Course Correction", desc:"Pivot the approach mid-scene. Roll Acrobatics (DC 10). On success, the group avoids the complication penalty and the scene DC resets to base.",                   eq:"Agile execution",            locked:false,lean1:"GREEN",lean2:"RED"},
+      {name:"Momentum Forge",       desc:"LOCKED. Commit the group to seeing the idea through. Roll Survival (DC 12). On success, remove 1 Party Exhaustion and prevent Depleted conditions this scene.",         eq:"Follow-through on innovation",locked:true,lean1:"RED",lean2:"GREEN"},
+      {name:"Trailblazing Focus", desc:"Translate a vague direction into three concrete steps. Roll Perception (DC 10). On success, the next two party actions each gain +1.",                eq:"Creative discipline",        locked:false,lean1:"GREEN",lean2:"RED"},
     ],
   },
   "BLUE_PURPLE": {
@@ -1385,10 +1385,10 @@ const DUAL_PROFILES = {
     blindspot:"The price of understanding people and situations deeply is the action it delays. You often know what needs to happen long before you move — and in that gap, the situation continues without you.",
     quest:"This week, identify one situation where you already know the answer but have not acted. Set a 48-hour deadline and move — imperfect action beats perfect inaction.",
     abilities:[
-      {name:"Informed Empathy",    desc:"Use knowledge of someone's context to offer support that actually fits their situation.", eq:"Contextual emotional intelligence", locked:false,lean1:"BLUE",lean2:"PURPLE"},
-      {name:"Pattern of Care",     desc:"Detect recurring group dynamics before they become conflict.",                    eq:"Relational pattern recognition",    locked:false,lean1:"PURPLE",lean2:"BLUE"},
-      {name:"Quiet Authority",     desc:"Build influence through depth of understanding rather than volume.",              eq:"Expert credibility",                locked:true,lean1:"PURPLE",lean2:"BLUE"},
-      {name:"Grounded Compassion", desc:"Hold emotional space for others without losing your own stability.",             eq:"Regulated empathy",                 locked:false,lean1:"BLUE",lean2:"PURPLE"},
+      {name:"Informed Empathy", desc:"Ask one precise question that reveals the root of someone's resistance. Roll Insight (DC 10). On success, that person opens up and removes their current condition.", eq:"Contextual emotional intelligence", locked:false,lean1:"BLUE",lean2:"PURPLE"},
+      {name:"Pattern of Care",     desc:"Name a pattern you've noticed across at least two interactions. Roll History (DC 11). On success, the GM confirms or corrects it — either way, the group gains +1 to the next social roll.",                    eq:"Relational pattern recognition",    locked:false,lean1:"PURPLE",lean2:"BLUE"},
+      {name:"Quiet Authority",     desc:"Cite your reasoning calmly under pressure. Roll Investigation (DC 10). On success, one resistant party member shifts to cooperative and the scene DC drops by 1.",              eq:"Expert credibility",                locked:true,lean1:"PURPLE",lean2:"BLUE"},
+      {name:"Grounded Compassion", desc:"LOCKED. Absorb a teammate's Depleted condition into a \u22121 penalty on your next roll. Roll Medicine (DC 13). On success, their condition clears fully and your penalty is waived.",             eq:"Regulated empathy",                 locked:false,lean1:"BLUE",lean2:"PURPLE"},
     ],
   },
   "GREEN_PURPLE": {
@@ -1402,10 +1402,10 @@ const DUAL_PROFILES = {
     blindspot:"The price of ideas that are both original and defensible is the translation cost. Between your intellectual model and the world that has to run it, there is a gap — and bridging it requires the kind of patience that complexity doesn't always reward.",
     quest:"Take one idea you have been refining mentally and share it with someone outside your head this week. Their confusion is data, not ignorance — use it to sharpen the idea.",
     abilities:[
-      {name:"Structured Imagination", desc:"Build creative concepts with enough internal logic that others can actually execute them.", eq:"Applied innovation",           locked:false,lean1:"PURPLE",lean2:"GREEN"},
-      {name:"Possibility Mapping",    desc:"Chart multiple future scenarios and evaluate them with both intuition and evidence.",   eq:"Strategic foresight",         locked:false,lean1:"GREEN",lean2:"PURPLE"},
-      {name:"Conceptual Bridge",      desc:"Translate complex ideas into forms that different types of thinkers can grasp.",        eq:"Intellectual communication",   locked:true,lean1:"PURPLE",lean2:"GREEN"},
-      {name:"Elegant Reframe",        desc:"Replace a stuck group's assumptions with a better model that opens new options.",      eq:"Systems reframing",           locked:false,lean1:"GREEN",lean2:"PURPLE"},
+      {name:"Structured Imagination", desc:"Map a novel idea onto an existing structure to make it actionable. Roll Arcana (DC 11). On success, the idea gains a concrete form and the scene DC drops by 1.", eq:"Applied innovation",           locked:false,lean1:"PURPLE",lean2:"GREEN"},
+      {name:"Possibility Mapping",    desc:"Survey the scene and name the highest-leverage variable. Roll Investigation (DC 11). On success, reveal one hidden path and grant the group +1 to rolls this scene.",   eq:"Strategic foresight",         locked:false,lean1:"GREEN",lean2:"PURPLE"},
+      {name:"Conceptual Bridge",      desc:"LOCKED. Name what two competing approaches share. Roll Arcana (DC 12). On success, the conflict between them resolves and both sides gain +1 to their next roll.",        eq:"Intellectual communication",   locked:true,lean1:"PURPLE",lean2:"GREEN"},
+      {name:"Elegant Reframe",        desc:"Restate the problem so that the obstacle becomes the resource. Roll Investigation (DC 12). On success, remove 1 Party Exhaustion and reverse one negative scene condition.",      eq:"Systems reframing",           locked:false,lean1:"GREEN",lean2:"PURPLE"},
     ],
   },
   "BLUE_GREEN": {
@@ -1419,10 +1419,10 @@ const DUAL_PROFILES = {
     blindspot:"The price of warmth and energy together is the structure neither builds. You make people feel welcome and excited — and then the thing that needed building in order to sustain that feeling doesn't get built, because you moved on.",
     quest:"Identify one group or initiative you have energised in the last month. What would it need from you to still be thriving in three months? Do one concrete thing toward that this week.",
     abilities:[
-      {name:"Creative Belonging", desc:"Make space for both new ideas and the people behind them simultaneously.",            eq:"Inclusive innovation",               locked:false,lean1:"BLUE",lean2:"GREEN"},
-      {name:"Inspired Trust",     desc:"Build connection through shared possibility rather than just shared history.",        eq:"Vision-led relationship building",    locked:false,lean1:"GREEN",lean2:"BLUE"},
-      {name:"Warm Disruption",    desc:"Challenge the status quo in ways that feel exciting rather than threatening.",       eq:"Change facilitation",                locked:true,lean1:"GREEN",lean2:"BLUE"},
-      {name:"Resonant Spark",     desc:"Match the right creative energy to each person's emotional state to unlock them.",  eq:"Adaptive motivation",                locked:false,lean1:"GREEN",lean2:"BLUE"},
+      {name:"Creative Belonging", desc:"Welcome an idea and the person offering it in the same breath. Roll Animal Handling (DC 10). On success, that person gains +2 to their next roll and the group removes 1 Exhaustion.",            eq:"Inclusive innovation",               locked:false,lean1:"BLUE",lean2:"GREEN"},
+      {name:"Inspired Trust",     desc:"Describe a future the group could build together. Roll Persuasion (DC 10). On success, all allies gain +1 to their next roll and any Depleted ally may reroll once.",        eq:"Vision-led relationship building",    locked:false,lean1:"GREEN",lean2:"BLUE"},
+      {name:"Warm Disruption", desc:"LOCKED. Name what needs to change and make it sound like an adventure. Roll Performance (DC 12). On success, the group embraces the change — remove all Tension penalties this scene.",       eq:"Change facilitation",                locked:true,lean1:"GREEN",lean2:"BLUE"},
+      {name:"Resonant Spark",     desc:"Read one person's state and respond in their language. Roll Insight (DC 10). On success, unlock that person's next action for free — they act without spending a turn.",  eq:"Adaptive motivation",                locked:false,lean1:"GREEN",lean2:"BLUE"},
     ],
   },
   "SPLIT": {
@@ -1436,10 +1436,10 @@ const DUAL_PROFILES = {
     blindspot:"The price of being everything the situation needs is never quite knowing what you are when the situation doesn't need anything in particular. Adaptability without a default is its own kind of disorientation.",
     quest:"This week, in one important situation, consciously choose your mode before entering it — and hold it. Notice what it feels like to lead from one color deliberately rather than letting context decide.",
     abilities:[
-      {name:"Mode Switch",        desc:"Consciously shift into whichever thinking style the situation demands.",            eq:"Metacognitive flexibility",          locked:false,lean1:"RED",lean2:"PURPLE"},
-      {name:"Full Spectrum Read", desc:"Diagnose a group's dynamic across all four brain color dimensions simultaneously.", eq:"Systemic emotional intelligence",    locked:false,lean1:"BLUE",lean2:"PURPLE"},
-      {name:"Bridge Build",       desc:"Translate between conflicting styles in a team, reducing friction others cannot see.",eq:"Cross-type mediation",             locked:true,lean1:"BLUE",lean2:"GREEN"},
-      {name:"Adaptive Anchor",    desc:"Ground yourself deliberately in one mode when pulled in too many directions.",     eq:"Intentional self-regulation",        locked:false,lean1:"RED",lean2:"BLUE"},
+      {name:"Mode Switch",        desc:"Declare which brain color you are leading from this scene. Roll Acrobatics (DC 10). On success, gain +2 to all rolls in that mode until the scene ends.",            eq:"Metacognitive flexibility",          locked:false,lean1:"RED",lean2:"PURPLE"},
+      {name:"Full Spectrum Read", desc:"Name the dominant tension in the room across at least two styles. Roll Insight (DC 12). On success, the GM confirms the group's hidden dynamic and the scene DC drops by 2.", eq:"Systemic emotional intelligence",    locked:false,lean1:"BLUE",lean2:"PURPLE"},
+      {name:"Bridge Build",       desc:"LOCKED. Name what each side actually needs from the other. Roll Persuasion (DC 13). On success, remove 2 Party Exhaustion and the next scene starts without Tension.",eq:"Cross-type mediation",             locked:true,lean1:"BLUE",lean2:"GREEN"},
+      {name:"Adaptive Anchor", desc:"Declare your anchor mode and hold it under pressure. Roll Survival (DC 11). On success, you cannot be Depleted this scene and grant one ally +2 to their next roll.",     eq:"Intentional self-regulation",        locked:false,lean1:"RED",lean2:"BLUE"},
     ],
   },
 };
@@ -2837,7 +2837,7 @@ function SkillCard({className,sb,colorKey,scores,rawAnswers,accent,accent2}){
 }
 
 // ── Full Card Reveal Screen ────────────────────────────────────────────────────
-function CardRevealScreen({result,playerName,onClose,reset}){
+function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF}){
   useEffect(()=>{ window.scrollTo({top:0,behavior:"instant"}); },[]);
   const resolved=result.resolved||{type:"single",colors:[result.topColor],influence:[]};
   const isTie=resolved.type==="dual"||resolved.type==="shapeshifter";
@@ -2966,7 +2966,7 @@ function CardRevealScreen({result,playerName,onClose,reset}){
           <p style={{fontSize:11,color:"#6a6050",margin:"0 0 20px",fontStyle:"italic"}}>Print these cards → cut them out → bring them to Day 1.</p>
           <div style={{display:"flex",gap:12,flexWrap:"wrap",justifyContent:"center"}}>
             <button
-              onClick={handleDownloadPDF}
+              onClick={onDownloadPDF}
               style={{background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.15)",borderRadius:8,padding:"13px 20px",color:"#c8b97e",cursor:"pointer",fontFamily:"Georgia",fontSize:13,display:"flex",alignItems:"center",gap:8}}
             >
               ⬇ Download PDF
@@ -3267,6 +3267,7 @@ export default function App(){
         playerName={playerName}
         onClose={()=>setShowCards(false)}
         reset={()=>{setShowCards(false);reset();}}
+        onDownloadPDF={handleDownloadPDF}
       />
     );
   }
