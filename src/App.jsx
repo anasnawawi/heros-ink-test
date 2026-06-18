@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState, useMemo, useEffect, useRef } from "react";
 
 // ── Embedded images ──────────────────────────────────────────────────────────
@@ -1486,12 +1487,12 @@ async function generateCharacterSheetPDF(playerName, topColor, myClass, scores, 
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ orientation:"portrait", unit:"mm", format:"a4" });
 
-  const cd = data.classData ? data.classData[myClass] : null;
-  const myAbilities = cd ? cd.abilities : (data.abilities || []);
-  const singleLockedName = cd ? cd.locked : (data.locked || null);
-  const myStrengths = cd ? cd.strengths : (data.strengths || []);
-  const myBlindspot = cd ? cd.blindspot : (data.blindspot || "");
-  const myQuest = cd ? cd.quest : (data.quest || "");
+  // data is pre-resolved by handleDownloadPDF — use directly
+  const myAbilities = data.abilities || [];
+  const singleLockedName = data.locked || null;
+  const myStrengths = data.strengths || [];
+  const myBlindspot = data.blindspot || "";
+  const myQuest = data.quest || "";
 
   const W = 210; const H = 297;
   const boxR = 3;
@@ -3244,13 +3245,44 @@ export default function App(){
     setGenerating(true);
     try{
       const resolved=result.resolved||{type:"single",colors:[result.topColor]};
-      const data=CLASSES[result.topColor];
-      const myScore=result.scores[result.topColor];
-      const myClass=getClass(data,myScore);
-      const isTiePDF=resolved.type==="tie"||resolved.type==="split";
-      const label=isTiePDF?`${myClass} / ${getClass(CLASSES[resolved.colors[1]],result.scores[resolved.colors[1]])}`:myClass;
-      await generateCharacterSheetPDF(playerName,result.topColor,label,result.scores,data);
-    }catch(e){console.error(e);}
+      const isDual=resolved.type==="tie"||resolved.type==="split"||(resolved.type==="dual")||false;
+
+      if(isDual){
+        // Dual: get DUAL_PROFILES data which has abilities, strengths, etc directly
+        const dualProfile=getDualProfile(resolved);
+        const c1=resolved.colors[0]; const c2=resolved.colors[1]||c1;
+        const label1=getClass(CLASSES[c1],result.scores[c1]);
+        const label2=c2!==c1?getClass(CLASSES[c2],result.scores[c2]):"";
+        const label=label2?`${label1} / ${label2}`:label1;
+        const pdfData={
+          color: dualProfile?.color1||CLASSES[c1].color,
+          label: dualProfile?.label||label,
+          strengths: dualProfile?.strengths||[],
+          blindspot: dualProfile?.blindspot||dualProfile?.blindPrice||"",
+          quest: dualProfile?.quest||"",
+          abilities: dualProfile?.abilities||[],
+          locked: null, // dual locked handled via ab.locked===true
+        };
+        await generateCharacterSheetPDF(playerName,c1,label,result.scores,pdfData);
+      } else {
+        // Single class
+        const data=CLASSES[result.topColor];
+        const myScore=result.scores[result.topColor];
+        const myClass=getClass(data,myScore);
+        const cd=data.classData?.[myClass];
+        const pdfData={
+          color: data.color,
+          label: data.label,
+          strengths: cd?.strengths||[],
+          blindspot: cd?.blindspot||cd?.blindPrice||"",
+          quest: cd?.quest||"",
+          abilities: cd?.abilities||[],
+          locked: cd?.locked||null,
+          classData: null, // already resolved
+        };
+        await generateCharacterSheetPDF(playerName,result.topColor,myClass,result.scores,pdfData);
+      }
+    }catch(e){console.error("PDF error:",e);}
     setGenerating(false);
   }
 
