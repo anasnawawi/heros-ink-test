@@ -2838,7 +2838,7 @@ function SkillCard({className,sb,colorKey,scores,rawAnswers,accent,accent2}){
 }
 
 // ── Full Card Reveal Screen ────────────────────────────────────────────────────
-function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF}){
+function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generating,pdfError}){
   useEffect(()=>{ window.scrollTo({top:0,behavior:"instant"}); },[]);
   const resolved=result.resolved||{type:"single",colors:[result.topColor],influence:[]};
   const isTie=resolved.type==="dual"||resolved.type==="shapeshifter";
@@ -2968,10 +2968,12 @@ function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF}){
           <div style={{display:"flex",gap:12,flexWrap:"wrap",justifyContent:"center"}}>
             <button
               onClick={onDownloadPDF}
-              style={{background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.15)",borderRadius:8,padding:"13px 20px",color:"#c8b97e",cursor:"pointer",fontFamily:"Georgia",fontSize:13,display:"flex",alignItems:"center",gap:8}}
+              disabled={generating}
+              style={{background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.15)",borderRadius:8,padding:"13px 20px",color:generating?"#6a5e3a":"#c8b97e",cursor:generating?"not-allowed":"pointer",fontFamily:"Georgia",fontSize:13,display:"flex",alignItems:"center",gap:8,opacity:generating?0.6:1}}
             >
-              ⬇ Download PDF
+              {generating ? "⏳ Generating PDF…" : "⬇ Download PDF"}
             </button>
+            {pdfError&&<p style={{width:"100%",margin:"8px 0 0",fontSize:11,color:"#c0392b",textAlign:"center"}}>{pdfError}</p>}
             <button
               onClick={()=>{
                 const style=document.createElement("style");
@@ -3025,6 +3027,7 @@ export default function App(){
   const [result,setResult]=useState(null);
   const [animating,setAnimating]=useState(false);
   const [generating,setGenerating]=useState(false);
+  const [pdfError,setPdfError]=useState(null);
   const [revealed,setRevealed]=useState(false);
   const [showCards,setShowCards]=useState(false);
 
@@ -3243,6 +3246,7 @@ export default function App(){
   async function handleDownloadPDF(){
     if(!result)return;
     setGenerating(true);
+    setPdfError(null);
     try{
       const resolved=result.resolved||{type:"single",colors:[result.topColor]};
       const isDual=resolved.type==="tie"||resolved.type==="split"||(resolved.type==="dual")||false;
@@ -3282,8 +3286,7 @@ export default function App(){
         };
         await generateCharacterSheetPDF(playerName,result.topColor,myClass,result.scores,pdfData);
       }
-    }catch(e){console.error("PDF error:",e);}
-    setGenerating(false);
+    }catch(e){console.error("PDF error:",e);setPdfError("PDF generation failed — please try again or use the Print option.");}finally{setGenerating(false);}
   }
 
   const progress=(Object.keys(answers).length/QUESTIONS.length)*100;
@@ -3300,6 +3303,8 @@ export default function App(){
         onClose={()=>setShowCards(false)}
         reset={()=>{setShowCards(false);reset();}}
         onDownloadPDF={handleDownloadPDF}
+        generating={generating}
+        pdfError={pdfError}
       />
     );
   }
