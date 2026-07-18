@@ -3018,7 +3018,7 @@ function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generat
 
       {/* Carousel viewport */}
       <div
-        style={{flex:1,overflow:"hidden",position:"relative"}}
+        style={{flex:1,minHeight:0,overflow:"hidden",position:"relative"}}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
@@ -3035,15 +3035,13 @@ function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generat
               height:"100%",
               overflowY:p.horizontal?"hidden":"auto",
               overflowX:p.horizontal?"auto":"hidden",
-              padding:"24px 0 40px",
+              padding:"24px 16px 24px",
               display:"flex",
               flexDirection:p.horizontal?"row":"column",
               alignItems:p.horizontal?"stretch":"center",
               boxSizing:"border-box",
               gap:p.horizontal?16:0,
               scrollSnapType:p.horizontal?"x mandatory":undefined,
-              paddingLeft:p.horizontal?16:16,
-              paddingRight:p.horizontal?16:16,
             }}>
               {p.horizontal
                 ? React.Children.map(p.content.props.children, (child,ci)=>child&&(
