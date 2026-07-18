@@ -3165,11 +3165,11 @@ export default function App(){
           return Q_QUEST_MAP[qk]?.[topColor] || "";
         })(),
       };
-      // Use GET with URL params — avoids CORS preflight on Apps Script
-      const params = new URLSearchParams(payload).toString();
-      await fetch(`${SHEET_WEBHOOK_URL}?${params}`, {
-        method: "GET",
+      await fetch(SHEET_WEBHOOK_URL, {
+        method: "POST",
         mode: "no-cors",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(payload),
       });
     } catch(e) { console.warn("Sheet submission failed:", e); }
   }
