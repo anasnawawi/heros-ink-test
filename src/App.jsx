@@ -2839,6 +2839,7 @@ function SkillCard({className,sb,colorKey,scores,rawAnswers,accent,accent2}){
 
 // ── Full Card Reveal Screen ────────────────────────────────────────────────────
 function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generating,pdfError}){
+  const [panelIdx,setPanelIdx]=useState(0);
   useEffect(()=>{ window.scrollTo({top:0,behavior:"instant"}); },[]);
   const resolved=result.resolved||{type:"single",colors:[result.topColor],influence:[]};
   const isTie=resolved.type==="dual"||resolved.type==="shapeshifter";
@@ -2850,7 +2851,6 @@ function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generat
   const insight=buildInsight(result.rawAnswers||{},result.scores,result.topColor,isTie?[]:resolved.influence||[],null);
   const accent = isTie&&dualProfile?dualProfile.color1:data.color;
 
-  // Get stat block
   const getDualSBKey=(dp)=>{
     if(!dp)return"ALL";
     const order=["BLUE","GREEN","PURPLE","RED"];
@@ -2859,7 +2859,6 @@ function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generat
   };
   const sb = isTie ? (DUAL_STAT_BLOCKS[getDualSBKey(dualProfile)]||DUAL_STAT_BLOCKS["ALL"]) : (STAT_BLOCKS[myClass]||{});
 
-  // Abilities
   const rawAns=result.rawAnswers||{};
   const primaryColorAnswers=new Set(Object.entries(rawAns).filter(([,c])=>c===result.topColor).map(([i])=>parseInt(i)));
   const scoreAbility=(ab)=>{const qs=ABILITY_Q_MAP[ab.name]||[];return qs.filter(q=>primaryColorAnswers.has(q)).length;};
@@ -2870,30 +2869,12 @@ function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generat
     ...baseAbilities.filter(ab=>!isAbilityLocked(ab)).sort((a,b)=>scoreAbility(b)-scoreAbility(a)),
     ...baseAbilities.filter(ab=>isAbilityLocked(ab)),
   ];
-
   const displayQuest=isTie&&dualProfile?dualProfile.quest:(cd?cd.quest:"");
 
-  return(
-    <div style={{minHeight:"100vh",background:"#080810",fontFamily:"'Georgia',serif",color:"#e8e4d9",padding:"0 16px 60px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-      <style>{`
-        @keyframes revealIn{from{opacity:0;transform:translateY(20px) scale(0.97)}to{opacity:1;transform:none}}
-        @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-        ::-webkit-scrollbar{display:none}
-      `}</style>
-
-      {/* Back */}
-      <div style={{width:"100%",maxWidth:680,padding:"20px 0 0",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-        <button onClick={onClose} style={{background:"none",border:"none",color:"#8a7f6e",cursor:"pointer",fontSize:13,fontFamily:"Georgia",display:"flex",alignItems:"center",gap:6}}>
-          ← Back to Results
-        </button>
-        <div style={{fontSize:10,letterSpacing:"0.3em",color:"#b7950b",textTransform:"uppercase"}}>Your Character Cards</div>
-      </div>
-
-      <div style={{width:"100%",maxWidth:680}}>
-
-        {/* Section: Hero Card */}
-        <div style={{margin:"28px 0 10px",fontSize:10,letterSpacing:"0.25em",color:"#8a7f6e",textTransform:"uppercase",textAlign:"center"}}>Hero Card</div>
+  const panels=[
+    {
+      label:"Hero Card",
+      content:(
         <HeroCard
           colorKey={result.topColor}
           className={myClass}
@@ -2904,20 +2885,17 @@ function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generat
           data={data}
           rawAnswers={result.rawAnswers||{}}
         />
-
-        {/* Section: Signature + Passive + Abilities */}
-        <div style={{margin:"28px 0 12px",fontSize:10,letterSpacing:"0.25em",color:"#8a7f6e",textTransform:"uppercase",textAlign:"center"}}>Ability Cards</div>
-
+      )
+    },
+    {
+      label:"Ability Cards",
+      content:(
         <div style={{display:"flex",flexDirection:"column",gap:12}}>
-          {/* Passive ability from stat block — unique to class, not in CLASSES list */}
           {sb.passive&&(
             <AbilityCardFull ability={sb.passive} accent={accent} index={0} isLocked={false} isSig={false} isPassive={true}/>
           )}
-          {/* Class abilities — sorted by resonance, locked always last */}
           {displayAbilities.map((ab,i)=>{
-            // Mark as signature if name matches stat block sigAbility
             const isSig=sb.sigAbility&&ab.name===sb.sigAbility.name;
-            // Use stat block desc for sig ability (has full mechanics) if available
             const displayAb=isSig&&sb.sigAbility?{...ab,desc:sb.sigAbility.desc,actions:sb.sigAbility.actions}:ab;
             return(
               <AbilityCardFull
@@ -2932,13 +2910,15 @@ function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generat
             );
           })}
         </div>
-
-        {/* Section: Quest Card */}
-        <div style={{margin:"28px 0 12px",fontSize:10,letterSpacing:"0.25em",color:"#8a7f6e",textTransform:"uppercase",textAlign:"center"}}>Quest Card</div>
-        <QuestCard quest={displayQuest} personalisedQuest={insight?.personalisedQuest} accent={accent}/>
-
-        {/* Section: Skill Card */}
-        <div style={{margin:"28px 0 12px",fontSize:10,letterSpacing:"0.25em",color:"#8a7f6e",textTransform:"uppercase",textAlign:"center"}}>Skill Card</div>
+      )
+    },
+    {
+      label:"Quest Card",
+      content:<QuestCard quest={displayQuest} personalisedQuest={insight?.personalisedQuest} accent={accent}/>
+    },
+    {
+      label:"Skill Card",
+      content:(
         <SkillCard
           className={myClass}
           sb={sb}
@@ -2948,46 +2928,36 @@ function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generat
           accent={accent}
           accent2={isTie&&dualProfile?dualProfile.color2:data.color}
         />
-
-        {/* Section: Trigger Card */}
-        <div style={{margin:"28px 0 12px",fontSize:10,letterSpacing:"0.25em",color:"#8a7f6e",textTransform:"uppercase",textAlign:"center"}}>Trigger Card</div>
-        <TriggerCard sb={sb} accent={accent} className={myClass} dualProfile={dualProfile} isTie={isTie} resolved={resolved}/>
-
-        {/* Section: Dynamics Card */}
-        {sb.dynamics&&(
-          <>
-            <div style={{margin:"28px 0 12px",fontSize:10,letterSpacing:"0.25em",color:"#8a7f6e",textTransform:"uppercase",textAlign:"center"}}>Dynamics Card</div>
-            <DynamicsCard sb={sb} accent={accent}/>
-          </>
-        )}
-
-        {/* Print / PDF CTA */}
-        <div style={{marginTop:40,textAlign:"center",padding:"28px 22px",background:"rgba(255,255,255,0.02)",borderRadius:14,border:"1px solid rgba(255,255,255,0.08)"}}>
+      )
+    },
+    {
+      label:"Trigger Card",
+      content:<TriggerCard sb={sb} accent={accent} className={myClass} dualProfile={dualProfile} isTie={isTie} resolved={resolved}/>
+    },
+    ...(sb.dynamics?[{
+      label:"Dynamics Card",
+      content:<DynamicsCard sb={sb} accent={accent}/>
+    }]:[]),
+    {
+      label:"Download",
+      content:(
+        <div style={{textAlign:"center",padding:"28px 22px",background:"rgba(255,255,255,0.02)",borderRadius:14,border:"1px solid rgba(255,255,255,0.08)"}}>
           <p style={{fontSize:13,color:"#8a7f6e",margin:"0 0 8px",lineHeight:1.75}}>Your locked abilities are revealed in the Hero's Journey Workshop.</p>
-          <p style={{fontSize:11,color:"#6a6050",margin:"0 0 20px",fontStyle:"italic"}}>Print these cards → cut them out → bring them to Day 1.</p>
-          <div style={{display:"flex",gap:12,flexWrap:"wrap",justifyContent:"center"}}>
+          <p style={{fontSize:11,color:"#6a6050",margin:"0 0 24px",fontStyle:"italic"}}>Print these cards → cut them out → bring them to Day 1.</p>
+          <div style={{display:"flex",flexDirection:"column",gap:12,alignItems:"center"}}>
             <button
               onClick={onDownloadPDF}
               disabled={generating}
-              style={{background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.15)",borderRadius:8,padding:"13px 20px",color:generating?"#6a5e3a":"#c8b97e",cursor:generating?"not-allowed":"pointer",fontFamily:"Georgia",fontSize:13,display:"flex",alignItems:"center",gap:8,opacity:generating?0.6:1}}
+              style={{background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.15)",borderRadius:8,padding:"13px 28px",color:generating?"#6a5e3a":"#c8b97e",cursor:generating?"not-allowed":"pointer",fontFamily:"Georgia",fontSize:13,display:"flex",alignItems:"center",gap:8,opacity:generating?0.6:1,width:"100%",maxWidth:280,justifyContent:"center"}}
             >
               {generating ? "⏳ Generating PDF…" : "⬇ Download PDF"}
             </button>
-            {pdfError&&<p style={{width:"100%",margin:"8px 0 0",fontSize:11,color:"#c0392b",textAlign:"center"}}>{pdfError}</p>}
+            {pdfError&&<p style={{margin:"4px 0 0",fontSize:11,color:"#c0392b",textAlign:"center"}}>{pdfError}</p>}
             <button
               onClick={()=>{
                 const style=document.createElement("style");
                 style.id="print-card-styles";
-                style.textContent=`
-                  @media print{
-                    body>*:not(#card-print-root){display:none!important;}
-                    #card-print-root{display:block!important;}
-                    @page{size:A4 portrait;margin:12mm;}
-                    .print-card-grid{display:grid!important;grid-template-columns:repeat(2,1fr);gap:8mm;page-break-inside:avoid;}
-                    .print-card{break-inside:avoid;page-break-inside:avoid;}
-                    body{background:#fff!important;}
-                  }
-                `;
+                style.textContent=`@media print{body>*:not(#card-print-root){display:none!important;}#card-print-root{display:block!important;}@page{size:A4 portrait;margin:12mm;}.print-card-grid{display:grid!important;grid-template-columns:repeat(2,1fr);gap:8mm;page-break-inside:avoid;}.print-card{break-inside:avoid;page-break-inside:avoid;}body{background:#fff!important;}}`;
                 document.head.appendChild(style);
                 const root=document.createElement("div");
                 root.id="card-print-root";
@@ -2998,21 +2968,113 @@ function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generat
                 root.style.zIndex="99999";
                 document.body.appendChild(root);
                 window.print();
-                setTimeout(()=>{
-                  document.head.removeChild(style);
-                  document.body.removeChild(root);
-                },1000);
+                setTimeout(()=>{document.head.removeChild(style);document.body.removeChild(root);},1000);
               }}
-              style={{background:`linear-gradient(135deg,${accent},${accent}cc)`,border:"none",borderRadius:8,padding:"13px 28px",color:"#fff",fontWeight:700,fontFamily:"Georgia",fontSize:14,cursor:"pointer",letterSpacing:"0.05em",display:"flex",alignItems:"center",gap:8}}
+              style={{background:`linear-gradient(135deg,${accent},${accent}cc)`,border:"none",borderRadius:8,padding:"13px 28px",color:"#fff",fontWeight:700,fontFamily:"Georgia",fontSize:14,cursor:"pointer",letterSpacing:"0.05em",display:"flex",alignItems:"center",gap:8,width:"100%",maxWidth:280,justifyContent:"center"}}
             >
               🖨 Print Character Cards
             </button>
-            <button onClick={reset} style={{background:"none",border:"1px solid rgba(255,255,255,0.15)",borderRadius:8,padding:"13px 20px",color:"#8a7f6e",cursor:"pointer",fontFamily:"Georgia",fontSize:13}}>
+            <button onClick={reset} style={{background:"none",border:"1px solid rgba(255,255,255,0.15)",borderRadius:8,padding:"13px 28px",color:"#8a7f6e",cursor:"pointer",fontFamily:"Georgia",fontSize:13,width:"100%",maxWidth:280}}>
               Retake Test
             </button>
           </div>
         </div>
+      )
+    },
+  ];
 
+  const total=panels.length;
+  const prev=()=>setPanelIdx(i=>Math.max(0,i-1));
+  const next=()=>setPanelIdx(i=>Math.min(total-1,i+1));
+
+  // Touch/swipe support
+  const touchStartX=React.useRef(null);
+  const onTouchStart=(e)=>{ touchStartX.current=e.touches[0].clientX; };
+  const onTouchEnd=(e)=>{
+    if(touchStartX.current===null)return;
+    const dx=touchStartX.current-e.changedTouches[0].clientX;
+    if(Math.abs(dx)>40){ dx>0?next():prev(); }
+    touchStartX.current=null;
+  };
+
+  return(
+    <div style={{minHeight:"100vh",background:"#080810",fontFamily:"'Georgia',serif",color:"#e8e4d9",overflow:"hidden",display:"flex",flexDirection:"column"}}>
+      <style>{`
+        @keyframes revealIn{from{opacity:0;transform:translateY(20px) scale(0.97)}to{opacity:1;transform:none}}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+        ::-webkit-scrollbar{display:none}
+      `}</style>
+
+      {/* Top bar */}
+      <div style={{padding:"16px 20px",display:"flex",justifyContent:"space-between",alignItems:"center",borderBottom:"1px solid rgba(255,255,255,0.06)",flexShrink:0}}>
+        <button onClick={onClose} style={{background:"none",border:"none",color:"#8a7f6e",cursor:"pointer",fontSize:13,fontFamily:"Georgia",display:"flex",alignItems:"center",gap:6}}>
+          ← Back
+        </button>
+        <div style={{fontSize:10,letterSpacing:"0.25em",color:"#b7950b",textTransform:"uppercase"}}>{panels[panelIdx].label}</div>
+        <div style={{fontSize:11,color:"#4a4438",fontFamily:"Georgia"}}>{panelIdx+1} / {total}</div>
+      </div>
+
+      {/* Carousel viewport */}
+      <div
+        style={{flex:1,overflow:"hidden",position:"relative"}}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
+        <div style={{
+          display:"flex",
+          height:"100%",
+          transform:`translateX(${-panelIdx*100}%)`,
+          transition:"transform 0.38s cubic-bezier(0.4,0,0.2,1)",
+          willChange:"transform",
+        }}>
+          {panels.map((p,i)=>(
+            <div key={i} style={{
+              minWidth:"100%",
+              height:"100%",
+              overflowY:"auto",
+              padding:"24px 16px 40px",
+              display:"flex",
+              flexDirection:"column",
+              alignItems:"center",
+              boxSizing:"border-box",
+            }}>
+              <div style={{width:"100%",maxWidth:680}}>
+                {p.content}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom nav */}
+      <div style={{padding:"14px 20px",display:"flex",justifyContent:"space-between",alignItems:"center",borderTop:"1px solid rgba(255,255,255,0.06)",flexShrink:0,gap:12}}>
+        <button
+          onClick={prev}
+          disabled={panelIdx===0}
+          style={{background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:8,padding:"10px 20px",color:panelIdx===0?"#3a342c":"#c8b97e",cursor:panelIdx===0?"default":"pointer",fontFamily:"Georgia",fontSize:13,opacity:panelIdx===0?0.35:1,transition:"opacity 0.2s"}}
+        >
+          ← Prev
+        </button>
+
+        {/* Dot indicators */}
+        <div style={{display:"flex",gap:7,alignItems:"center"}}>
+          {panels.map((_,i)=>(
+            <button
+              key={i}
+              onClick={()=>setPanelIdx(i)}
+              style={{width:i===panelIdx?20:7,height:7,borderRadius:4,background:i===panelIdx?accent:"rgba(255,255,255,0.2)",border:"none",cursor:"pointer",padding:0,transition:"all 0.25s ease"}}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={next}
+          disabled={panelIdx===total-1}
+          style={{background:panelIdx===total-1?"rgba(255,255,255,0.04)":`linear-gradient(135deg,${accent},${accent}cc)`,border:"none",borderRadius:8,padding:"10px 20px",color:panelIdx===total-1?"#3a342c":"#fff",cursor:panelIdx===total-1?"default":"pointer",fontFamily:"Georgia",fontSize:13,fontWeight:panelIdx===total-1?400:700,opacity:panelIdx===total-1?0.35:1,transition:"opacity 0.2s"}}
+        >
+          Next →
+        </button>
       </div>
     </div>
   );
