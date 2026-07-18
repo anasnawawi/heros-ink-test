@@ -2988,7 +2988,7 @@ function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generat
   const next=()=>setPanelIdx(i=>Math.min(total-1,i+1));
 
   // Touch/swipe support
-  const touchStartX=React.useRef(null);
+  const touchStartX=useRef(null);
   const onTouchStart=(e)=>{ touchStartX.current=e.touches[0].clientX; };
   const onTouchEnd=(e)=>{
     if(touchStartX.current===null)return;
