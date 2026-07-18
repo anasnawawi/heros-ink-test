@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { useState, useMemo, useEffect, useRef } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 
 // ── Embedded images ──────────────────────────────────────────────────────────
 const IMGS = {
@@ -2889,8 +2889,9 @@ function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generat
     },
     {
       label:"Ability Cards",
+      horizontal:true,
       content:(
-        <div style={{display:"flex",flexDirection:"column",gap:12}}>
+        <>
           {sb.passive&&(
             <AbilityCardFull ability={sb.passive} accent={accent} index={0} isLocked={false} isSig={false} isPassive={true}/>
           )}
@@ -2909,7 +2910,7 @@ function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generat
               />
             );
           })}
-        </div>
+        </>
       )
     },
     {
@@ -2998,7 +2999,7 @@ function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generat
   };
 
   return(
-    <div style={{minHeight:"100vh",background:"#080810",fontFamily:"'Georgia',serif",color:"#e8e4d9",overflow:"hidden",display:"flex",flexDirection:"column"}}>
+    <div style={{height:"100vh",background:"#080810",fontFamily:"'Georgia',serif",color:"#e8e4d9",overflow:"hidden",display:"flex",flexDirection:"column"}}>
       <style>{`
         @keyframes revealIn{from{opacity:0;transform:translateY(20px) scale(0.97)}to{opacity:1;transform:none}}
         @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
@@ -3032,16 +3033,26 @@ function CardRevealScreen({result,playerName,onClose,reset,onDownloadPDF,generat
             <div key={i} style={{
               minWidth:"100%",
               height:"100%",
-              overflowY:"auto",
-              padding:"24px 16px 40px",
+              overflowY:p.horizontal?"hidden":"auto",
+              overflowX:p.horizontal?"auto":"hidden",
+              padding:"24px 0 40px",
               display:"flex",
-              flexDirection:"column",
-              alignItems:"center",
+              flexDirection:p.horizontal?"row":"column",
+              alignItems:p.horizontal?"stretch":"center",
               boxSizing:"border-box",
+              gap:p.horizontal?16:0,
+              scrollSnapType:p.horizontal?"x mandatory":undefined,
+              paddingLeft:p.horizontal?16:16,
+              paddingRight:p.horizontal?16:16,
             }}>
-              <div style={{width:"100%",maxWidth:680}}>
-                {p.content}
-              </div>
+              {p.horizontal
+                ? React.Children.map(p.content.props.children, (child,ci)=>child&&(
+                    <div key={ci} style={{minWidth:"min(340px,85vw)",scrollSnapAlign:"start",flexShrink:0}}>
+                      {child}
+                    </div>
+                  ))
+                : <div style={{width:"100%",maxWidth:680}}>{p.content}</div>
+              }
             </div>
           ))}
         </div>
